@@ -1,2 +1,13 @@
-<h1>Manage::Session#index</h1>
-<p>Find me in app/views/manage/session/index.html.erb</p>
+<%= form_tag manage_login_path,name: "form" do %>
+		<div >
+  			<span >用户名</span>
+ 			 <%= text_field_tag :name,params[:name],class: "form-control",placeholder: "请输入用户名","data-toggle"=> "popover",autofocus: true,title:"","data-content"=>"用户名不能为空" %>
+		</div>
+		<div >
+  			<span >密码</span>
+ 			<%= password_field_tag :password,params[:password],class: "form-control",placeholder: "请输入密码","data-toggle"=> "popover",title:"","data-content"=>"密码不能为空" %>
+		</div>
+		<center>
+			<%= submit_tag "登录",:class => "btn btn-large login-button" %>
+		</center>
+   <% end %>
