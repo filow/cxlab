@@ -1,19 +1,34 @@
-== 创新实验室管理系统一期工程（cxlab）
+= 创新实验室管理系统一期工程（cxlab）
+----
+== 如何安装源代码
+首先，你需要自行安装好rails开发环境。所有软件的版本如下：
+* ruby 2.0及以上
+* gem 2.4及以上
+* rails 4
+其次，在gitlab中fork我们的资源库
+然后，运行下面的命令克隆这个资源库
+    git clone git@192.168.0.2:{你的用户名}/cxlab.git
+接下来，将当前目录更改到cxlab目录
+    cd cxlab
+运行bundle install
+    bundle install
+然后，你需要安装mysql数据库，用户名和密码请参照我们项目中config/database.yml中的值设置，一般情况下这个值是：
+    用户名: cxlab
+    密码： db@cxlab
+接下来运行
+    rake db:setup
+    rake db:seed
+第一个语句会创建数据库结构，第二个语句会插入默认数据
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
+然后，就可以运行下面的语句开启本地开发服务器了
+    rails server
+==如何按照要求开发？
+===运行测试用例
+==如何提交代码？
 
 * System dependencies
 
 * Configuration
-
-* Database creation
-
-* Database initialization
 
 * How to run the test suite
 
