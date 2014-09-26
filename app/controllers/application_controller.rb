@@ -4,15 +4,17 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 private
-  def admin_logged?
-    # session[:admin_user]
-  end
-
   def admin_login(admin)
-    session[:admin_user]=admin.to_json
+    session[:admin_user_id]=admin.id
+    session[:admin_user_uid]=admin.uid
   end
 
   def admin_logout
+    session[:admin_user_id]=nil
+    session[:admin_user_uid]=nil
+  end
 
+  def logged_admin_id
+    session[:admin_user_id]
   end
 end
