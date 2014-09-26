@@ -11,6 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140926074154) do
+
+  create_table "admins", force: true do |t|
+    t.string   "uid",                                  null: false
+    t.string   "nickname",                             null: false
+    t.string   "password",   limit: 64,                null: false
+    t.string   "email"
+    t.text     "desc"
+    t.boolean  "is_enabled",            default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
