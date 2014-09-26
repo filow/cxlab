@@ -5,11 +5,20 @@ class Cache
         @expire=expire
     end
 
+    def method_missing(name,*arg)
+        if name =~ /=$/
+            @store.write(full_key(name),arg[0][0],expires_in: expires(arg[0][1]))
+        else
+            @store.read(full_key(name))
+        end
+    end
+
     def [](name)
         @store.read(full_key(name))
     end
 
-    def []=(name,value,expire=nil)
+    # 使用t[key]=value  或者  t[key,expire]=value 调用
+    def []=(name,expire=nil,value)
         unless value.nil?
             @store.write(full_key(name),value,expires_in: expires(expire))
         else
