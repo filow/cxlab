@@ -1,4 +1,4 @@
-class Manage::AdminsController < ApplicationController
+class Manage::AdminsController < ManageController
   before_action :set_manage_admin, only: [:show, :edit, :update, :destroy]
 
   # GET /manage/admins
