@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root 'manage/session#index'
   namespace :manage do
     resources :admins
+    get  '/login'=>'session#index',as:'login'
     post '/login'=>'session#create'
-    get  '/login'=>'session#index'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
