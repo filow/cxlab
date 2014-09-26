@@ -14,6 +14,7 @@ class Manage::SessionController < ApplicationController
   end
 
   def logout
-
+    admin_logout
+    redirect_to manage_login_url
   end
 end

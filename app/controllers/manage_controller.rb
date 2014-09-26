@@ -6,7 +6,7 @@ private
         if logged_admin_id
             @admin=Manage::Admin.find(logged_admin_id)
         else
-            redirect_to manage_login_url,:alert => "请重新登陆"
+            redirect_to manage_login_url
         end
     end
 end
