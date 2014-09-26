@@ -69,6 +69,6 @@ class Manage::AdminsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def manage_admin_params
-      params.require(:manage_admin).permit(:uid, :nickname, :password, :email, :desc, :is_enabled)
+      params.require(:manage_admin).permit(:uid, :nickname, :pwd, :email, :desc, :is_enabled)
     end
 end

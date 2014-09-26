@@ -1,0 +1,61 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+
+cn:
+  date: 
+    month_names: [~, 一月, 二月, 三月, 四月, 五月, 六月, 七月, 八月, 九月, 十月, 十一月, 十二月]
+    order:
+      - year
+      - month
+      - day
+  activerecord:
+    models:
+        manage:
+            admin:"管理员"
+            # admins:"管理员"
+    attributes:
+    errors:
+      template:
+        header:
+          one:   "你提交的表单中有1个错误需要修正"
+          other: "你提交的表单中有%{count}个错误需要修正"
+        body:    "以下是发生错误的表单项"
+      messages:
+        blank: "不能为空"
+        too_short: "长度不够"
+        too_long: "内容过长"
+        taken: "已经被使用过"
+        invalid: "格式不正确"
+        not_a_number: "不是一个数字"
+        less_than_or_equal_to: "应当小于或等于%{count}"
+        greater_than_or_equal_to: "应当大于或等于%{count}"
+  views:
+    pagination:
+      first: "首页"
+      last: "尾页"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    submit:
+      create: "添加%{model}信息"
+      update: "更新%{model}信息"
