@@ -49,3 +49,6 @@ end
 
 # 分页插件
 gem 'kaminari'
+
+# memcache插件，用于缓存
+gem 'dalli'

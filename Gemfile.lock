@@ -43,6 +43,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    dalli (2.7.2)
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.2.1)
@@ -128,6 +129,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   coffee-rails (~> 4.0.0)
+  dalli
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
