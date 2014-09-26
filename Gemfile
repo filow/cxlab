@@ -40,3 +40,12 @@ gem 'spring',        group: :development
 
 # mysql驱动
 gem 'mysql2'
+
+# 更友好地显示错误信息
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
+
+# 分页插件
+gem 'kaminari'
