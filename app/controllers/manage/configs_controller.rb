@@ -1,4 +1,4 @@
-class Manage::ConfigsController < ApplicationController
+class Manage::ConfigsController < ManageController
   before_action :set_manage_config, only: [:show, :edit, :update, :destroy]
 
   # GET /manage/configs

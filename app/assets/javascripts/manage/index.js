@@ -1,10 +1,10 @@
 $(document).ready(function(){
     $('#main_frame').attr('width',document.body.clientWidth-230);
-    $('#main_frame').attr('height',document.body.clientHeight+40);
+    $('#main_frame').attr('height',document.body.clientHeight-5);
 
     $(window).resize(function(data){
         $('#main_frame').attr('width',document.body.clientWidth-230);
-        $('#main_frame').attr('height',document.body.clientHeight+40);
+        $('#main_frame').attr('height',document.body.clientHeight-5);
     });
 
     //sidebar 滚动条初始化

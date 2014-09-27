@@ -1,4 +1,4 @@
-class Manage::RolesController < ApplicationController
+class Manage::RolesController < ManageController
   before_action :set_manage_role, only: [:show, :edit, :update, :destroy]
 
   # GET /manage/roles
