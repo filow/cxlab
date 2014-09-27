@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $('#main_frame').attr('width',document.body.clientWidth-230);
-        $('#main_frame').attr('height',document.body.clientHeight+40);
+    $('#main_frame').attr('height',document.body.clientHeight+40);
 
     $(window).resize(function(data){
         $('#main_frame').attr('width',document.body.clientWidth-230);
