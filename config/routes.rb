@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     delete '/logout'=>'session#logout',as:'logout'
 
     get 'index/index'
+    get 'index/dashboard'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
