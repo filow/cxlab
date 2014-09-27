@@ -24,20 +24,20 @@ class Manage::Admin < ActiveRecord::Base
 		# 当新的密码非空时，设置数据库password字段为加密后的字符串
 		unless new_pw.blank?
 			@pwd=new_pw
-			self.password=self.class.encrypt_password(self.nickname,new_pw)
+			self.password=self.class.encrypt_password(self.uid,new_pw)
 		end
 	end
 
-	def self.auth(nickname,password)
-		if user=find_by_nickname(nickname)
-			if user.password == encrypt_password(user.nickname,password)
+	def self.auth(uid,password)
+		if user=find_by_uid(uid)
+			if user.password == encrypt_password(user.uid,password)
 				user
 			end
 		end
 	end
 
-	def self.encrypt_password(nickname,pw)
-		Digest::SHA2.hexdigest(nickname+"_ADMIN_"+pw)
+	def self.encrypt_password(uid,pw)
+		Digest::SHA2.hexdigest(uid+"_ADMIN_"+pw)
 	end
 
 private
