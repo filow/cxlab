@@ -26,6 +26,10 @@ a{
 	text-decoration: none;
 	cursor: pointer;
 }
+
+p{
+	margin:0;
+}
 .container{
 
 }
@@ -80,6 +84,14 @@ a{
 			&.active{
 				border-left: 5px solid #E76049;
 				background: $sidebar-active-background;
+				a::after{
+					right: 0;
+					content: '';
+					position: absolute;
+					border-top:10px solid transparent;
+					border-bottom: 10px solid transparent;
+					border-right: 10px solid $body-background;
+				}
 			}
 			a{
 				line-height: 16px;
@@ -200,13 +212,20 @@ a{
 								border-radius: 25px;
 							}
 							float: left;
-							margin-right: 5px;
+							margin-right: 15px;
+							margin-left: 10px;
 						}
 						.dropdown-body{
-							padding:6px;
+							padding:10px;
 						}
 						.dropdown-name{
-							color:$text-color;
+							color:#2eb398;
+							font-size:14px;
+							margin-top: 5px;
+							p{
+								margin-top: 5px;
+								color:#89949B;
+							}
 						}
 						.dropdown-title{
 							color:rgb(152,160,163);
@@ -214,6 +233,9 @@ a{
 							padding:6px 15px;
 							border-bottom:solid 1px #f2f2f2;
 							background:#f9fafa;
+						}
+						.dropdown-ctrl{
+							clear:both;
 						}
 					}
 				}
@@ -229,6 +251,15 @@ a{
 	}	
 }
 
+.btn-red{
+	@include btn-round($bg-red);
+	float:left;
+}
+
+.btn-blue{
+	@include btn-round($bg-blue);
+	float:left;
+}
 
 .mCSB_container{
 	margin-right: 0 !important;

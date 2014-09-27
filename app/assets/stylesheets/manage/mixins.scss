@@ -422,6 +422,7 @@ $grid-float-breakpoint: 768px;
   left: $left;
   top:$top;
 }
+
 //Badge
 @mixin round-badge($bg-color,$color){
   font-size: 10px;
@@ -443,4 +444,18 @@ $grid-float-breakpoint: 768px;
   background: $bg-color;
   border-radius: .25em;
   font-weight: 700;
+}
+
+//Button
+@mixin btn-round($bg-color){
+	border-radius: 5px;
+	background:$bg-color;
+	border:none;
+	min-height:30px;
+	min-width:80px; 
+	box-shadow:none;
+	@include transition(all .2s);
+	color:#FFF;
+	text-shadow:none;
+
 }
