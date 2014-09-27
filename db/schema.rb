@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927031514) do
+ActiveRecord::Schema.define(version: 20140927033007) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 20140927031514) do
   end
 
   add_index "admins_roles", ["admin_id", "role_id"], name: "index_admins_roles_on_admin_id_and_role_id", using: :btree
+
+  create_table "config_types", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "configs", force: true do |t|
+    t.string  "key"
+    t.text    "value"
+    t.integer "config_type_id"
+    t.string  "field_type"
+  end
 
   create_table "roles", force: true do |t|
     t.string  "name",                      null: false
