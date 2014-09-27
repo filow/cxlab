@@ -52,3 +52,5 @@ gem 'kaminari'
 
 # memcache插件，用于缓存
 gem 'dalli'
+
+gem 'font-awesome-rails'

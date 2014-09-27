@@ -1,0 +1,446 @@
+
+
+//
+// Variables
+// --------------------------------------------------
+
+// Grayscale
+$black-10:                 darken(#fff, 10%);
+$black-20:                 darken(#fff, 20%);
+$black-30:                 darken(#fff, 30%);
+$black-40:                 darken(#fff, 40%);
+$black-50:                 darken(#fff, 50%);
+$black-60:                 darken(#fff, 60%);
+$black-70:                 darken(#fff, 70%);
+$black-80:                 darken(#fff, 80%);
+$black-90:                 darken(#fff, 90%);
+
+// Brand colors
+$brand-primary:           #428bca;
+$brand-success:           #5cb85c;
+$brand-warning:           #f0ad4e;
+$brand-danger:            #d9534f;
+$brand-info:              #5bc0de;
+
+// Sidebar colors
+$sidebar-background:        #273135;
+// $sidebar-text-color:        #000;
+$sidebar-text-color:        #89949b;
+$sidebar-active-background: #171D1F;
+$sidebar-header-color:      #fff;
+// $sidebar-header-color:      rgba(137,148,155,.4);
+$sidebar-border-color:       rgba(59,70,72,.5);
+$sidebar-nav-background:    #171D1F;
+$sidebar-nav-hover:         #1F272A;
+
+//Colors Gallery
+// $sidebar-background:        #6A83A1;
+// $sidebar-text-color:             #fff;
+// $sidebar-active-background:     #28B2E6;
+// $logo-background:         #8895B4;
+// $body-background: #FFF;
+
+//Infomation colors
+$bg-danger:				#D9534F;
+
+
+// Universal colors
+$bg-orange:     #FFC497;
+$bg-red:				#EA7882;
+$bg-deep-red:			#D71F4B;
+$bg-green:        #44C1AC;
+$bg-darkgreen:			#306C67;
+$bg-blue:				#79B0EC;
+$bg-darkblue:			#4A90E2;
+$bg-darkcyan:			#68A0A5;
+
+// Scaffolding
+$body-background:         #E9F0F5;
+$text-color:              $black-50;
+$logo-background:         #FA7252;
+$text-color-gray:         #89949B;
+$sidebar-width:           225px;
+$navbar-height:           50px;
+
+// Links
+$link-color:              $brand-primary;
+$link-color-hover:        darken($link-color, 15%);
+
+//Fonts
+$font-family:			  "Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei";
+$font-size-base:          14px;
+$font-size-large:         $font-size-base * 1.25; // ~18px
+$font-size-small:         $font-size-base * 0.85; // ~12px
+$font-size-mini:          $font-size-base * 0.75; // ~11px
+
+$line-height-base:        1.4;
+
+$headings-font-family:    inherit; // empty to use BS default, @font-family-base
+$headings-font-weight:    500;
+
+// Forms
+$input-color-placeholder: lighten($text-color, 25%);
+
+// Grid
+// Used with the grid mixins below
+$grid-columns:          12;
+$grid-column-padding:   15px; // Left and right inner padding
+$grid-float-breakpoint: 768px;
+
+
+//
+// Grid system
+// --------------------------------------------------
+
+// Grid
+@mixin make-row{
+	// Negative margin the row out to align the content of columns
+ 	margin-left: -$grid-column-padding;
+  	margin-right: -$grid-column-padding;
+  	// Then clear the floated columns
+  	@include clearfix;
+}
+@mixin make-column{
+	@media (min-width: $grid-float-breakpoint) {
+    	float: left;
+    	// Calculate width based on number of columns available
+    	width: percentage($columns / $grid-columns);
+  	}
+  	// Prevent columns from collapsing when empty
+  	min-height: 1px;
+  	// Set inner padding as gutters instead of margin
+  	padding-left: $grid-column-padding;
+  	padding-right: $grid-column-padding;
+  	// Proper box-model (padding doesn't add to width)
+  	@include box-sizing(border-box);
+}
+@mixin make-column-offset($columns){
+	@media (min-width: $grid-float-breakpoint) {
+    	margin-left: percentage($columns / $grid-columns);
+	}
+}
+
+
+//
+// Mixins: vendor prefixes
+// --------------------------------------------------
+
+// Box sizing
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+     -moz-box-sizing: $box-model; // Firefox <= 19
+          box-sizing: $box-model;
+}
+
+// Single side border-radius
+@mixin border-top-radius($radius) {
+  border-top-right-radius: $radius;
+   border-top-left-radius: $radius;
+}
+@mixin border-right-radius($radius) {
+  border-bottom-right-radius: $radius;
+     border-top-right-radius: $radius;
+}
+@mixin border-bottom-radius($radius) {
+  border-bottom-right-radius: $radius;
+   border-bottom-left-radius: $radius;
+}
+@mixin border-left-radius($radius) {
+  border-bottom-left-radius: $radius;
+     border-top-left-radius: $radius;
+}
+
+// Drop shadows
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+          box-shadow: $shadow;
+}
+
+// Transitions
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+@mixin transition-delay($transition-delay) {
+  -webkit-transition-delay: $transition-delay;
+     -moz-transition-delay: $transition-delay;
+       -o-transition-delay: $transition-delay;
+          transition-delay: $transition-delay;
+}
+@mixin transition-duration($transition-duration) {
+  -webkit-transition-duration: $transition-duration;
+     -moz-transition-duration: $transition-duration;
+       -o-transition-duration: $transition-duration;
+          transition-duration: $transition-duration;
+}
+
+// Transformations
+@mixin rotate($degrees) {
+  -webkit-transform: rotate($degrees);
+     -moz-transform: rotate($degrees);
+      -ms-transform: rotate($degrees);
+       -o-transform: rotate($degrees);
+          transform: rotate($degrees);
+}
+@mixin scale($ratio) {
+  -webkit-transform: scale($ratio);
+     -moz-transform: scale($ratio);
+      -ms-transform: scale($ratio);
+       -o-transform: scale($ratio);
+          transform: scale($ratio);
+}
+@mixin translate($x, $y) {
+  -webkit-transform: translate($x, $y);
+     -moz-transform: translate($x, $y);
+      -ms-transform: translate($x, $y);
+       -o-transform: translate($x, $y);
+          transform: translate($x, $y);
+}
+@mixin skew($x, $y) {
+  -webkit-transform: skew($x, $y);
+     -moz-transform: skew($x, $y);
+      -ms-transform: skewX($x) skewY($y); // See https://github.com/twitter/bootstrap/issues/4885
+       -o-transform: skew($x, $y);
+          transform: skew($x, $y);
+  -webkit-backface-visibility: hidden; // See https://github.com/twitter/bootstrap/issues/5319
+}
+@mixin translate3d($x, $y, $z) {
+  -webkit-transform: translate3d($x, $y, $z);
+     -moz-transform: translate3d($x, $y, $z);
+       -o-transform: translate3d($x, $y, $z);
+          transform: translate3d($x, $y, $z);
+}
+
+// Backface visibility
+//
+// Prevent browsers from flickering when using CSS 3D transforms.
+// Default value is `visible`, but can be changed to `hidden
+// See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
+@mixin backface-visibility($visibility){
+  -webkit-backface-visibility: $visibility;
+     -moz-backface-visibility: $visibility;
+          backface-visibility: $visibility;
+}
+
+// User select
+//
+// For selecting text on the page
+@mixin user-select($select) {
+  -webkit-user-select: $select;
+     -moz-user-select: $select;
+      -ms-user-select: $select;
+       -o-user-select: $select;
+          user-select: $select;
+}
+
+// Opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=#{$opacity-ie}); // IE8
+}
+
+// Placeholder text
+@mixin placeholder($color: $input-color-placeholder) {
+  &:-moz-placeholder            { color: $color; } // Firefox 4-18
+  &::-moz-placeholder           { color: $color; } // Firefox 19+
+  &:-ms-input-placeholder       { color: $color; } // Internet Explorer 10+
+  &::-webkit-input-placeholder  { color: $color; } // Safari and Chrome
+}
+
+// Resize anything
+@mixin resizable($direction) {
+  resize: $direction; // Options: horizontal, vertical, both
+  overflow: auto; // Safari fix
+}
+
+// CSS3 Content Columns
+@mixin content-columns($width, $count, $gap) {
+  -webkit-column-width: $width;
+     -moz-column-width: $width;
+          column-width: $width;
+  -webkit-column-count: $count;
+     -moz-column-count: $count;
+          column-count: $count;
+  -webkit-column-gap: $gap;
+     -moz-column-gap: $gap;
+          column-gap: $gap;
+}
+
+// Optional hyphenation
+@mixin hyphens($mode: auto) {
+  word-wrap: break-word;
+  -webkit-hyphens: $mode;
+     -moz-hyphens: $mode;
+      -ms-hyphens: $mode;
+       -o-hyphens: $mode;
+          hyphens: $mode;
+}
+
+// Gradients
+#gradient {
+  @mixin horizontal($startColor: #555, $endColor: #333) {
+    background-color: $endColor;
+    background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
+    background-image: -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
+    background-image: linear-gradient(to right, $startColor, $endColor); // Standard, IE10
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}',endColorstr='#{$endColor}',GradientType=1);// IE9 and down
+  }
+  @mixin vertical($startColor: #555, $endColor: #333) {
+    background-color: $endColor;
+    background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
+    background-image: linear-gradient(to bottom, $startColor, $endColor); // Standard, IE10
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}',endColorstr='#{$endColor}',GradientType=0);// IE9 and down
+  }
+  @mixin directional($startColor: #555, $endColor: #333, $deg: 45deg) {
+    background-color: $endColor;
+    background-repeat: repeat-x;
+    background-image: -moz-linear-gradient($deg, $startColor, $endColor); // FF 3.6+
+    background-image: -webkit-linear-gradient($deg, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient($deg, $startColor, $endColor); // Opera 11.10
+    background-image: linear-gradient($deg, $startColor, $endColor); // Standard, IE10
+  }
+  @mixin horizontal-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
+    background-color: mix($midColor, $endColor, 80%);
+    background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
+    background-image: -webkit-linear-gradient(left, $startColor, $midColor $colorStop, $endColor);
+    background-image: -moz-linear-gradient(left, $startColor, $midColor $colorStop, $endColor);
+    background-image: -o-linear-gradient(left, $startColor, $midColor $colorStop, $endColor);
+    background-image: linear-gradient(to right, $startColor, $midColor $colorStop, $endColor);
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}',endColorstr='#{$endColor}',GradientType=0);// IE9 and down
+  }
+  @mixin vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
+    background-color: mix($midColor, $endColor, 80%);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
+    background-image: -webkit-linear-gradient($startColor, $midColor $colorStop, $endColor);
+    background-image: -moz-linear-gradient(top, $startColor, $midColor $colorStop, $endColor);
+    background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor);
+    background-image: linear-gradient($startColor, $midColor $colorStop, $endColor);
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}',endColorstr='#{$endColor}',GradientType=0);// IE9 and down
+  }
+  @mixin radial($innerColor: #555, $outerColor: #333) {
+    background-color: $outerColor;
+    background-image: -webkit-gradient(radial, center center, 0, center center, 460, from($innerColor), to($outerColor));
+    background-image: -webkit-radial-gradient(circle, $innerColor, $outerColor);
+    background-image: -moz-radial-gradient(circle, $innerColor, $outerColor);
+    background-image: -o-radial-gradient(circle, $innerColor, $outerColor);
+    background-repeat: no-repeat;
+  }
+  @mixin striped($color: #555, $angle: 45deg) {
+    background-color: $color;
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
+    background-image: -webkit-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  }
+}
+
+// Reset filters for IE
+//
+// Useful for when you want to remove a gradient from an element.
+@mixin reset-filter() {
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+
+
+//
+// Mixins: utilities
+// --------------------------------------------------
+
+// Clearfix
+//
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+@mixin clearfix() {
+  *zoom: 1;
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+    // Fixes Opera/contenteditable bug:
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Center-align a block level element
+@mixin center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Sizing shortcuts
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+@mixin square($size) {
+  @include size($size, $size);
+}
+
+// Text overflow
+//
+// Requires inline-block or block for proper styling
+@mixin text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+//Scroll
+@mixin scroll(){
+
+}
+
+//position
+@mixin absolute-position($left,$top){
+  position: absolute;
+  left: $left;
+  top:$top;
+}
+//Badge
+@mixin round-badge($bg-color,$color){
+  font-size: 10px;
+  padding: 3px 5px;
+  line-height: 9px;
+  margin-top: -10px;
+  position: absolute;
+  color: $color;
+  background: $bg-color;
+  border-radius: 6px;
+}
+
+@mixin square-badge($bg-color){
+  float: right;
+  margin-top: -3px;
+  padding: 5px 10px;
+  margin-right: 30px;
+  color: #fff;
+  background: $bg-color;
+  border-radius: .25em;
+  font-weight: 700;
+}
