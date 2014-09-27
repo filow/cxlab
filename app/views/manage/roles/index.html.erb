@@ -1,0 +1,29 @@
+<h1>Listing manage_roles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Is enabled</th>
+      <th>Remark</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @manage_roles.each do |manage_role| %>
+      <tr>
+        <td><%= manage_role.name %></td>
+        <td><%= manage_role.is_enabled %></td>
+        <td><%= manage_role.remark %></td>
+        <td><%= link_to 'Show', manage_role %></td>
+        <td><%= link_to 'Edit', edit_manage_role_path(manage_role) %></td>
+        <td><%= link_to 'Destroy', manage_role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Role', new_manage_role_path %>

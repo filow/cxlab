@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @manage_role.name %>
+</p>
+
+<p>
+  <strong>Is enabled:</strong>
+  <%= @manage_role.is_enabled %>
+</p>
+
+<p>
+  <strong>Remark:</strong>
+  <%= @manage_role.remark %>
+</p>
+
+<%= link_to 'Edit', edit_manage_role_path(@manage_role) %> |
+<%= link_to 'Back', manage_roles_path %>
