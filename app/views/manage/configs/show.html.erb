@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @manage_config.key %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @manage_config.value %>
+</p>
+
+<p>
+  <strong>Field type:</strong>
+  <%= @manage_config.field_type %>
+</p>
+
+<%= link_to 'Edit', edit_manage_config_path(@manage_config) %> |
+<%= link_to 'Back', manage_configs_path %>
