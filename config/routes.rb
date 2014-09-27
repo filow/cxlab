@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root 'manage/index#index'
   namespace :manage do
-    resources :admins
+    resources :admins do
+    	get 'edit_role'
+    	post 'update_role'
+    end
     resources :roles
     get '/'=> 'index#index'
     get  '/login'=>'session#index',as:'login'

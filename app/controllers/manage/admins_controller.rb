@@ -21,6 +21,25 @@ class Manage::AdminsController < ManageController
   def edit
   end
 
+
+  #GET /mange/admins/role/edit
+  def edit_role
+      @admin_roles= Manage::Admin.find(params[:admin_id]).roles
+      @manage_roles=Manage::Role.all
+  end
+
+  def update_role
+       roles_id=params[:roles]
+       admin_roles= Manage::Admin.find(params[:admin_id]).roles
+       admin_roles.clear
+       roles_id.each do |role_id|
+       	role=Manage::Role.find(role_id)
+       	admin_roles<<role
+       end
+       respond_to do |format|
+            format.html { redirect_to manage_admin_edit_role_path, notice: '角色修改成功' }
+       end
+  end
   # POST /manage/admins
   # POST /manage/admins.json
   def create
