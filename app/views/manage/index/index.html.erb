@@ -1,3 +1,132 @@
-<h1>Manage::Index#index</h1>
+<%= content_for :css do %>
+  <%= stylesheet_link_tag    "jquery.mCustomScrollbar.css", media: 'all', 'data-turbolinks-track' => true %>
+<% end %>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo-container">
+                <div class="logo"><h2>Logo</h2></div>
+            </div>
+            <div class="sidebar-container">
+                <div class="container-fluid">
+                    <div class="sidebar-row">
+                        <div class="sidebar-header">用户管理</div>
+                        <div class="sidebar-nav-container">
+                            <ul class="sidebar-nav">
+                                <li class="active"><a href=""><i class="fa fa-dashboard"></i>用户列表</a></li>
+                                <li class="sidebar-subnav-list">
+                                    <a class="sidebar-subnav-button">
+                                        <i class="fa fa-download"></i>角色管理
+                                        <i class="fa fa-chevron-left toggle-button"></i>
+                                    </a>
+                                        <ul class="sidebar-subnav">
+                                            <li><a href=""><i class="fa fa-star"></i>子导航一</a></li>
+                                            <li><a href=""><i class="fa fa-tag"></i>子导航二</a></li>
+                                            <li><a href=""><i class="fa fa-signal"></i>子导航三</a></li>
+                                        </ul>
+                                </li>
+                                <li><a href=""><i class="fa fa-heart"></i>导航二</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="sidebar-row">
+                        <div class="sidebar-header">导航标题二</div>
+                        <div class="sidebar-nav-container">
+                            <ul class="sidebar-nav">
+                                <li><a href=""><i class="fa fa-dashboard"></i>导航一</a></li>
+                                <li><a href=""><i class="fa fa-envelope"></i>导航二</a></li>
+                                <li class="sidebar-subnav-list">
+                                    <a class="sidebar-subnav-button">
+                                        <i class="fa fa-download"></i>导航二
+                                        <i class="fa fa-chevron-left toggle-button"></i>
+                                    </a>
+                                    <ul class="sidebar-subnav">
+                                        <li><a href=""><i class="fa fa-star"></i>子导航一</a></li>
+                                        <li><a href=""><i class="fa fa-tag"></i>子导航二</a></li>
+                                        <li><a href=""><i class="fa fa-signal"></i>子导航三</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href=""><i class="fa fa-trash"></i>导航四</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="sidebar-row">
+                        <div class="sidebar-header">导航标题三</div>
+                        <div class="sidebar-nav-container">
+                            <ul class="sidebar-nav">
+                                <li><a href=""><i class="fa fa-umbrella"></i>导航一</a></li>
+                                <li><a href=""><i class="fa fa-bell"></i>导航二</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="sidebar-row">
+                        <div class="sidebar-header">导航标题四</div>
+                        <div class="sidebar-nav-container">
+                            <ul class="sidebar-nav">
+                                <li><a href=""><i class="fa fa-bug"></i>导航一</a></li>
+                                <li><a href=""><i class="fa fa-exchange"></i>导航二</a></li>
+                                <li><a href=""><i class="fa fa-user"></i>导航三</a></li>
+                                <li><a href=""><i class="fa fa-comments"></i>导航四</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="navbar">
+                <ul class="navbar-nav">
+                    <li>
+                        <a href="">
+                            <i class="fa fa-user"></i><span class="navbar-nav-ctrl">账户</span>
+                            <div class="navbar-dropdown">
+                            	<div class="dropdown-title">用户管理</div>	
+                            	<div class="dropdown-body">				
+	                                <div class="dropdown-avatar"><%= image_tag "user-thumb.png" %></div>
+	                                <div class="dropdown-name">用户名</div>
+	                                <div class="dropdown-ctrl"><button>个人设置</button></div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa fa-bullhorn"></i><span class="navbar-nav-ctrl">通知</span><span class="navbar-badge badge-orange">3</span>
+                           <div class="navbar-dropdown">
+                            	<div class="dropdown-title">通知管理</div>	
+                            	<div class="dropdown-body">				
+                                </div>
+                            </div>                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa fa-envelope"></i><span class="navbar-nav-ctrl">消息</span><span class="navbar-badge badge-green">3</span>
+                            <div class="navbar-dropdown">
+                            	<div class="dropdown-title">消息管理</div>	
+                            	<div class="dropdown-body">				
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li><a href=""><i class="fa fa-gear"></i><span class="navbar-nav-ctrl">设置</span></a></li>
+                    <li><%= link_to "退出登录",manage_logout_path,method: :delete,:class=>"logout" %></li>
+                </ul>
+            </div>
+            <div class="body" >
+                <h1>Manage::Index#index</h1>
 <p>Find me in app/views/manage/index/index.html.erb</p>
-<%= link_to "退出",manage_logout_path,method: :delete %>
+            </div>
+        </div>
+
+    </div>
+
+
+<%= content_for :js do %>
+<%= javascript_include_tag "jquery.mCustomScrollbar.concat.min.js", 'data-turbolinks-track' => true %>
+<% end %>
