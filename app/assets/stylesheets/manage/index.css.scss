@@ -197,7 +197,7 @@ p{
 						@include border-bottom-radius(5px);
 						background-color: #fff;
 						min-height: 150px;
-						min-width: 250px;
+						min-width: 220px;
 						text-align: left;
 						&::after{
 							content: '';
@@ -236,6 +236,10 @@ p{
 						}
 						.dropdown-ctrl{
 							clear:both;
+							margin-left:10px;
+							button{
+								margin-right:5px;
+							}
 						}
 					}
 				}
@@ -254,11 +258,17 @@ p{
 .btn-red{
 	@include btn-round($bg-red);
 	float:left;
+	&:hover{
+		background-color:#d9534f;
+	}
 }
 
 .btn-blue{
 	@include btn-round($bg-blue);
 	float:left;
+	&:hover{
+		background-color:#3071a9;
+	}
 }
 
 .mCSB_container{
