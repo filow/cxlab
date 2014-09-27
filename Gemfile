@@ -37,6 +37,7 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'bootstrap-sass'
 
 # mysql驱动
 gem 'mysql2'

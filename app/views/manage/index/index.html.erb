@@ -3,6 +3,7 @@
 <head>
   <title>创新实验室管理系统后台</title>
   <%= stylesheet_link_tag    "manage/common", media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    "manage/main_frame", media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    params[:controller], media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    "jquery.mCustomScrollbar.css", media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -88,7 +89,7 @@
                 </ul>
             </div>
             <div class="body" >
-            <iframe src="<%= manage_admins_path %>" width="900px" height="600px" frameborder="0" id="main_frame" name="main_frame"></iframe>
+            <iframe src="<%= manage_index_dashboard_path %>" width="900px" height="600px" frameborder="0" id="main_frame" name="main_frame"></iframe>
             </div>
         </div>
 
