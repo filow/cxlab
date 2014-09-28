@@ -1,19 +1,7 @@
 <h1>Editing manage_admin</h1>
 
 <%= render 'form' %>
-<h1>修改用户角色</h1>
-<p id="notice"><%= notice %></p>
-<%= form_tag  (manage_admin_update_role_path(@manage_admin.id))   do %>
-	 <% @manage_roles.each do |manage_role| %>
-	        <%= check_box_tag 'roles[]',manage_role.id,@admin_roles.include?(manage_role)%>
-	        <%= label_tag manage_role.name %>  
-	        (<%= label_tag manage_role.remark %>)  <br>
-	    <% end %>   
-	    <br>
-	    <%=submit_tag '修改角色'%>
-<% end %>
 <%= link_to 'Back', manage_admins_path %>
-
 <%= link_to 'Edit', edit_manage_admin_path(@manage_admin) %> |
 <%= link_to 'Back', manage_admins_path %>
 <%= link_to 'Show', @manage_admin %> |
