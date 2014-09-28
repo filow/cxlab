@@ -64,3 +64,4 @@ cn:
     submit:
       create: "添加%{model}信息"
       update: "更新%{model}信息"
+  confirm_delete: 确认删除？

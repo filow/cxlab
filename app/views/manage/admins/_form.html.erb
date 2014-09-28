@@ -1,41 +1,33 @@
 <%= form_for(@manage_admin) do |f| %>
-  <% if @manage_admin.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@manage_admin.errors.count, "error") %> prohibited this manage_admin from being saved:</h2>
+  <%= form_errors(@manage_admin) %>
+<table class="table">
+  <tr>
+    <td><%= f.label :uid %></td>
+    <td><%= f.text_field :uid,class:"form-control" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :nickname %></td>
+    <td><%= f.text_field :nickname,class:"form-control" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :pwd %></td>
+    <td><%= f.text_field :pwd,class:"form-control" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :email %></td>
+    <td><%= f.text_field :email,class:"form-control" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :desc %></td>
+    <td><%= f.text_field :desc,class:"form-control" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :is_enabled %></td>
+    <td><%= f.check_box :is_enabled,class:"form-control" %></td>
+  </tr>
+</table>
 
-      <ul>
-      <% @manage_admin.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :uid %><br>
-    <%= f.text_field :uid %>
-  </div>
-  <div class="field">
-    <%= f.label :nickname %><br>
-    <%= f.text_field :nickname %>
-  </div>
-  <div class="field">
-    <%= f.label :pwd %><br>
-    <%= f.text_field :pwd %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :desc %><br>
-    <%= f.text_field :desc %>
-  </div>
-  <div class="field">
-    <%= f.label :is_enabled %><br>
-    <%= f.check_box :is_enabled %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit nil,class:"btn btn-lg btn-primary" %>
   </div>
 <% end %>
