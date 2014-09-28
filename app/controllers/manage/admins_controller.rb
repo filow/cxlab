@@ -20,7 +20,10 @@ class Manage::AdminsController < ManageController
 
   # GET /manage/admins/1/edit
   def edit
-      @admin_roles= Manage::Admin.find(params[:id]).roles
+  end
+
+   def edit_role
+      @admin_roles= Manage::Admin.find(params[:admin_id]).roles
       @manage_roles=Manage::Role.all
   end
 
