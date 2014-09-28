@@ -1,12 +1,16 @@
 $(document).ready(function(){
-    $('#main_frame').attr('width',document.body.clientWidth-230);
-    $('#main_frame').attr('height',document.body.clientHeight-5);
 
-    $(window).resize(function(data){
-        $('#main_frame').attr('width',document.body.clientWidth-230);
-        $('#main_frame').attr('height',document.body.clientHeight-5);
-    });
-
+	//iframe 自适应	
+	var iframe = $('#main_frame');
+	var sidebar_width = $('.sidebar').width();
+	var navbar_height = $('.navbar').height();
+	var main_height = $(window).height();
+	var main_width = $(window).width();
+	var frame_height = main_height - navbar_height-5;
+	var frame_width = $(document).width() - sidebar_width;
+	iframe.height(frame_height);
+	iframe.width(frame_width);
+ 
     //sidebar 滚动条初始化
     $(".sidebar-container").mCustomScrollbar({
         scrollInertia:150
