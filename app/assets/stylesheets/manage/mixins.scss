@@ -23,22 +23,29 @@ $brand-danger:            #d9534f;
 $brand-info:              #5bc0de;
 
 // Sidebar colors
-$sidebar-background:        #273135;
+$sidebar-background:        #F1F1F1;
+//$sidebar-background:        #273135;
 // $sidebar-text-color:        #000;
 $sidebar-text-color:        #89949b;
-$sidebar-active-background: #171D1F;
-$sidebar-header-color:      #fff;
+$sidebar-active-background: #50B89F;
+$sidebar-header-color:      #000;
 // $sidebar-header-color:      rgba(137,148,155,.4);
 $sidebar-border-color:       rgba(59,70,72,.5);
 $sidebar-nav-background:    #171D1F;
-$sidebar-nav-hover:         #1F272A;
+$sidebar-nav-hover:         #DDDDDD;
+$sidebar-text-hover:		#1bb7a0;
+$sidebar-width:           225px;
 
-//Colors Gallery
-// $sidebar-background:        #6A83A1;
-// $sidebar-text-color:             #fff;
-// $sidebar-active-background:     #28B2E6;
-// $logo-background:         #8895B4;
-// $body-background: #FFF;
+//Navbar
+$logo-background:         #232532;
+$navbar-height:           50px;
+$navbar-background:        #232532;
+
+
+// Body
+$body-background:         #F9F9F9;
+$text-color:              $black-50;
+$text-color-gray:         #89949B;
 
 
 //DropDown Scaffolding
@@ -62,13 +69,7 @@ $bg-blue:				#79B0EC;
 $bg-darkblue:			#4A90E2;
 $bg-darkcyan:			#68A0A5;
 
-// Scaffolding
-$body-background:         #E9F0F5;
-$text-color:              $black-50;
-$logo-background:         #FA7252;
-$text-color-gray:         #89949B;
-$sidebar-width:           225px;
-$navbar-height:           50px;
+
 
 // Links
 $link-color:              $brand-primary;

@@ -25,17 +25,17 @@
                             <ul class="sidebar-nav">
     <% val.each do |nav| %>
         <% if nav[:children].nil? %>
-            <li><%= link_to fa_icon(nav[:icon],text:nav[:text]),nav[:options],target: "main_frame" %></li>
+            <li><%= link_to fa_icon(nav[:icon],text:nav[:text]),nav[:options],target: "main_frame",data:{mod: nav[:options][:controller]+'_'+nav[:options][:action]} %></li>
         <% else %>
             <li class="sidebar-subnav-list">
-                <a class="sidebar-subnav-button">
+                <a class="sidebar-subnav-button" >
                     <%= fa_icon(nav[:icon]) %>
                     <%= nav[:text] %>
                     <i class="fa fa-chevron-left toggle-button"></i>
                 </a>
                 <ul class="sidebar-subnav">
                     <% nav[:children].each do |child| %>
-                        <li><%= link_to fa_icon(child[:icon],text:child[:text]),child[:options],target: "main_frame" %></li>
+                        <li><%= link_to fa_icon(child[:icon],text:child[:text]),child[:options],target: "main_frame",data:{mod: child[:options][:controller]+'_'+child[:options][:action]} %></li>
                     <% end %>
                 </ul>
             </li>
