@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  title: MyString
+  remark: MyString
+  extra_data: MyText
+  sort: 1
+  pid: 1
+
+two:
+  name: MyString
+  title: MyString
+  remark: MyString
+  extra_data: MyText
+  sort: 1
+  pid: 1
