@@ -52,27 +52,28 @@
             <div class="navbar">
                 <ul class="navbar-nav">
                     <li>
-                        <a href="">
+                        <a>
                             <i class="fa fa-user navbar-icon"></i><span class="navbar-nav-ctrl">账户</span>
-                            <div class="navbar-dropdown">
+                            <div class="navbar-dropdown dropdown-user">
                             	<div class="dropdown-title">用户管理</div>	
                             	<div class="dropdown-body">				
-	                                <div class="dropdown-avatar"><%= image_tag "user-thumb.png" %></div>
-	                                <div class="dropdown-name">测试用户
+	                                <div class="user-avatar"><%= image_tag "user-thumb.png" %></div>
+	                                <div class="user-name">测试用户
 	                                	<p>后台管理员</p>
 	                                </div>
-	                                <div class="dropdown-user-ctrl">
-	                                	<button class="btn-red">个人设置</button>
-	                                	<button class="btn-blue">更多设置</button>
-	                                </div>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="dropdown-ctrl">
+                                	<button class="notify-ignoreall ctrl-left user-ctrl">个人设置</button>
+                                	<button class="notify-viewall ctrl-right user-ctrl">更多设置</button>
                                 </div>
                             </div>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a>
                             <i class="fa fa-bullhorn navbar-icon"></i><span class="navbar-nav-ctrl">通知</span><span class="navbar-badge badge-orange">3</span>
-                           <div class="navbar-dropdown">
+                           <div class="navbar-dropdown dropdown-notify">
                                 <div class="dropdown-title">通知管理</div>  
                                 <div class="dropdown-body" style="padding:0"> 
                                 	<div class="notify-row">
@@ -92,20 +93,42 @@
                                 		<div class="clear"></div>
                                 	</div>            
                                 </div>
-                                <div class="dropdown-notify-ctrl">
-                                	<button class="notify-ignoreall notify-ctrl-left">忽略全部</button>
-                                	<button class="notify-viewall notify-ctrl-right">查看全部</button>
+                                <div class="dropdown-ctrl">
+                                	<button class="notify-ignoreall ctrl-left notify-ctrl">忽略全部</button>
+                                	<button class="notify-viewall ctrl-right notify-ctrl">查看全部</button>
                                 </div>
                             </div>                            
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a>
                             <i class="fa fa-envelope navbar-icon"></i><span class="navbar-nav-ctrl">消息</span><span class="navbar-badge badge-green">3</span>
-                            <div class="navbar-dropdown">
+                            <div class="navbar-dropdown dropdown-mails">
                                 <div class="dropdown-title">消息管理</div>  
-                                <div class="dropdown-body">             
+                                <div class="dropdown-body"> 
+                                	<div class="mails-row">
+                                		<div class="mails-avatar"><%= image_tag "user-thumb-mini.png" %></div>
+                                		<div class="mails-time"><i class="fa fa-comments"></i>3小时前</div>
+                                		<div class="mails-body">
+                                			<div class="mails-title">消息标题</div>
+                                			<div class="mails-summary">消息内容缩写缩写缩写缩写缩写缩写缩写缩写</div>
+                                		</div>
+                                		<div class="clear"></div>
+                                	</div>     
+                                	<div class="mails-row">
+                                		<div class="mails-avatar"><%= image_tag "user-thumb-mini.png" %></div>
+                                		<div class="mails-time"><i class="fa fa-comments"></i>3小时前</div>
+                                		<div class="mails-body">
+                                			<div class="mails-title">消息标题</div>
+                                			<div class="mails-summary">消息内容缩写缩写缩写缩写缩写缩写缩写缩写</div>
+                                		</div>
+                                		<div class="clear"></div>
+                                	</div>                                
                                 </div>
+                                <div class="dropdown-ctrl">
+                                	<button class="notify-ignoreall ctrl-left mails-ctrl">忽略全部</button>
+                                	<button class="notify-viewall ctrl-right mails-ctrl">查看全部</button>
+                                </div>                                
                             </div>
                         </a>
                     </li>
