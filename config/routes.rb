@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'manage/index#index'
   namespace :manage do
     resources :admins do
-    	get 'edit_role'
+    	#get 'edit_role'
     	post 'update_role'
     end
     resources :roles
