@@ -20,7 +20,6 @@
         <%= switch manage_role.is_enabled,bs_label_tag('启用','success'),bs_label_tag('停用','default') %>
         </td>
         <td>
-        <%= link_to '详情', manage_role,class:"btn btn-info" %>
         <%= link_to '编辑', edit_manage_role_path(manage_role),class:"btn btn-warning" %>
         <%= link_to '删除', manage_role, method: :delete, data: { confirm: t('confirm_delete') },class:"btn btn-danger" %>
       </tr>
