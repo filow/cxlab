@@ -30,13 +30,13 @@ class Cache
         @store.exist?(full_key(name))
     end
 
-    def get(name,expire=nil,&block)
-        if @store.exist?(full_key(name))
+    def get(name,expire=nil,force_refresh=false,&block)
+        if @store.exist?(full_key(name)) && !force_refresh
             @store.read(full_key(name))
         else
             val=yield
             expire=@expire if expire.nil?
-            @store.write(full_key(name),val,expires_in: expires(expire))
+            @store.write(full_key(name),val,expires_in: expires(expire)) unless val.nil?
             val
         end
     end
