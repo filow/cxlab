@@ -29,19 +29,17 @@ cn:
       - day
   activerecord:
     models:
-        manage/admin: 管理员
-        attributes:
-        manage/admin:
+      manage/admin: 管理员
+      manage/role: 角色
+    attributes:
+      manage/admin:
         uid: 登陆id
         nickname: 姓名
         pwd: 密码
         email: 电子邮箱
         desc: 详细介绍
         is_enabled: "是否启用" 
-        
-        manage/role: 角色
-        attributes:
-        manage/role:
+      manage/role:
         name: 角色名
         remark: 描述
         is_enabled: "是否启用" 
