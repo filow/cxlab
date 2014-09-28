@@ -43,14 +43,31 @@ $(document).ready(function(){
         });
     });
 
+	var OldHref = location.href;
+	var NewHrefBase = OldHref.split("#");
+	var BaseHref = NewHrefBase[0];
+	var Module = NewHrefBase[1];
     //sidebar 点击更改url
     $(".sidebar-nav > li > a").click(function(){
 	    module = $(this).attr("data-mod");
-	    var OldHref = location.href;
-	    var NewHrefBase = OldHref.split("#");
-	    var NewHref = NewHrefBase[0] + "#" + module;
-	    location.href = NewHref;
+	    location.href = BaseHref + "#" + module;
     });
+
+    //刷新重载iframe
+    //alert(Module);
+	var Module_url;
+    $(".sidebar-nav > li > a").each(function(){
+    	var thisModule = $(this).attr("data-mod");
+    	if(thisModule == Module)
+    		Module_url = $(this).attr("data-url")
+    	//console.log(Module_url);
+    });
+    $("#message").text("正在加载.."); 
+  	$("iframe").attr("src",Module_url);
+  	$("iframe").load(function(){ 
+        $("#message").text(""); 
+	  	$("iframe").removeClass("iframe");
+    }); 
 
 
 });
