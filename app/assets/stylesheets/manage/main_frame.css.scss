@@ -58,10 +58,6 @@ a,button{
 			padding-left: 25px;
 			padding-right: 25px;
 			.sidebar-row{
-				// margin-left: -25px;
-				// margin-right: -25px;
-				//padding-bottom: 10px;
-				//border-bottom: 1px solid $sidebar-border-color;
 				.sidebar-header{
 					color: $sidebar-header-color;
 					font-size: 15px;
@@ -343,10 +339,9 @@ a,button{
 	}//.navbar end
 
 	.body{
-		height: 600px;
 		background:$body-background;
 		margin-left: $sidebar-width;
-		padding-top: 25px;
+		padding-top: 50px;
 	}	
 }
 
