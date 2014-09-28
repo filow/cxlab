@@ -6,7 +6,8 @@ class Manage::IndexController < ManageController
         ],
         "管理员管理"=> [
             {text: "管理员列表",icon: "list",options:{controller: "admins",action: "index"}},
-            {text: "角色管理",icon: "user",options:{controller: "roles",action: "index"}}
+            {text: "角色管理",icon: "user",options:{controller: "roles",action: "index"}},
+            {text: "权限管理",icon: "key",options:{controller: "nodes",action: "index"}}
         ],
         "系统管理"=> [
             {text: "系统设置",icon: "cog",options:{controller: "configs",action: "index"}},
