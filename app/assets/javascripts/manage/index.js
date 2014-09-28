@@ -43,11 +43,14 @@ $(document).ready(function(){
         });
     });
 
-    // //Navbar dropdown
-    // $(".navbar-nav > li > a").hover(function(){
-    //     $(this).children(".navbar-dropdown").toggle();
-    // },function () {
-    //         $(this).children(".navbar-dropdown").toggle();
-    //     });
-    // });
+    //sidebar 点击更改url
+    $(".sidebar-nav > li > a").click(function(){
+	    module = $(this).attr("data-mod");
+	    var OldHref = location.href;
+	    var NewHrefBase = OldHref.split("#");
+	    var NewHref = NewHrefBase[0] + "#" + module;
+	    location.href = NewHref;
+    });
+
+
 });
