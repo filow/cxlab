@@ -32,9 +32,9 @@ class Manage::AdminsController < ManageController
            roles_id.each do |role_id|
        	  role=Manage::Role.find(role_id)
        	  if role_id==nil
+       	       admin_roles.clear
        	       respond_to do |format|
                           format.html { redirect_to manage_admin_edit_path(params[:admin_id]), notice: '角色不存在,修改失败' }
-                          admin_roles.clear
                       end
                  else
        	       admin_roles<<role
