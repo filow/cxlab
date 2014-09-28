@@ -1,8 +1,5 @@
-<h1>Editing manage_admin</h1>
+<div class="page-header">
+  <h1>编辑“<%= @manage_admin.nickname %>” <small>uid:<%= @manage_admin.uid %></small></h1>
+</div>
 
 <%= render 'form' %>
-<%= link_to 'Back', manage_admins_path %>
-<%= link_to 'Edit', edit_manage_admin_path(@manage_admin) %> |
-<%= link_to 'Back', manage_admins_path %>
-<%= link_to 'Show', @manage_admin %> |
-<%= link_to 'Back', manage_admins_path %>
