@@ -25,7 +25,7 @@
                             <ul class="sidebar-nav">
     <% val.each do |nav| %>
         <% if nav[:children].nil? %>
-            <li><%= link_to fa_icon(nav[:icon],text:nav[:text]),nav[:options],target: "main_frame",data:{mod: nav[:options][:controller]+'_'+nav[:options][:action]} %></li>
+            <li><%= link_to fa_icon(nav[:icon],text:nav[:text]),nav[:options],target: "main_frame",data:{mod: nav[:options][:controller]+'_'+nav[:options][:action],url:url_for(nav[:options])} %></li>
         <% else %>
             <li class="sidebar-subnav-list">
                 <a class="sidebar-subnav-button" >
@@ -35,7 +35,7 @@
                 </a>
                 <ul class="sidebar-subnav">
                     <% nav[:children].each do |child| %>
-                        <li><%= link_to fa_icon(child[:icon],text:child[:text]),child[:options],target: "main_frame",data:{mod: child[:options][:controller]+'_'+child[:options][:action]} %></li>
+                        <li><%= link_to fa_icon(child[:icon],text:child[:text]),child[:options],target: "main_frame",data:{mod: child[:options][:controller]+'_'+child[:options][:action],url:url_for(nav[:options])} %></li>
                     <% end %>
                 </ul>
             </li>
