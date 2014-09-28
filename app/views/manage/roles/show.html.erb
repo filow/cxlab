@@ -1,19 +1,10 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1><%= @manage_role.name %> <small>remark:<%= @manage_role.remark %></small></h1>
+</div>
+<table class="table">
+    <td><%= tm('role.is_enabled') %></td>
+    <td><%= switch @manage_role.is_enabled,bs_label_tag('启用','success'),bs_label_tag('停用','default') %></td>
+  </tr>
+</table>
 
-<p>
-  <strong>Name:</strong>
-  <%= @manage_role.name %>
-</p>
-
-<p>
-  <strong>Is enabled:</strong>
-  <%= @manage_role.is_enabled %>
-</p>
-
-<p>
-  <strong>Remark:</strong>
-  <%= @manage_role.remark %>
-</p>
-
-<%= link_to 'Edit', edit_manage_role_path(@manage_role) %> |
-<%= link_to 'Back', manage_roles_path %>
+<%= link_to '编辑', edit_manage_role_path(@manage_role),class:"btn btn-warning" %>

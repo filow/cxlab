@@ -26,8 +26,6 @@
         <td>
         <%= link_to '详情', manage_admin,class:"btn btn-info" %>
         <%= link_to '编辑', edit_manage_admin_path(manage_admin),class:"btn btn-warning" %>
-        <!-- 请在这里合并“修改角色”以及“编辑” -->
-        <%= link_to '修改角色', manage_admin_edit_role_path(manage_admin),class:"btn btn-warning" %>
         <%= link_to '删除', manage_admin, method: :delete, data: { confirm: t('confirm_delete') },class:"btn btn-danger" %>
       </tr>
     <% end %>
