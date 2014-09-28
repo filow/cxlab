@@ -53,7 +53,7 @@
                 <ul class="navbar-nav">
                     <li>
                         <a href="">
-                            <i class="fa fa-user"></i><span class="navbar-nav-ctrl">账户</span>
+                            <i class="fa fa-user navbar-icon"></i><span class="navbar-nav-ctrl">账户</span>
                             <div class="navbar-dropdown">
                             	<div class="dropdown-title">用户管理</div>	
                             	<div class="dropdown-body">				
@@ -61,7 +61,7 @@
 	                                <div class="dropdown-name">测试用户
 	                                	<p>后台管理员</p>
 	                                </div>
-	                                <div class="dropdown-ctrl">
+	                                <div class="dropdown-user-ctrl">
 	                                	<button class="btn-red">个人设置</button>
 	                                	<button class="btn-blue">更多设置</button>
 	                                </div>
@@ -71,17 +71,37 @@
                     </li>
                     <li>
                         <a href="">
-                            <i class="fa fa-bullhorn"></i><span class="navbar-nav-ctrl">通知</span><span class="navbar-badge badge-orange">3</span>
+                            <i class="fa fa-bullhorn navbar-icon"></i><span class="navbar-nav-ctrl">通知</span><span class="navbar-badge badge-orange">3</span>
                            <div class="navbar-dropdown">
                                 <div class="dropdown-title">通知管理</div>  
-                                <div class="dropdown-body">             
+                                <div class="dropdown-body" style="padding:0"> 
+                                	<div class="notify-row">
+                                		<div class="notify-body">
+                                			<div class="notify-title">通知标题</div>
+                                			<div class="notify-summary">通知内容缩写缩写缩写缩写缩写缩写缩写缩写</div>
+                                		</div>
+                                		<div class="notify-time"><i class="fa fa-comments"></i>3小时前</div>
+                                		<div class="clear"></div>
+                                	</div>  
+                                	<div class="notify-row">
+                                		<div class="notify-body">
+                                			<div class="notify-title">通知标题</div>
+                                			<div class="notify-summary">通知内容缩写缩写缩写缩写缩写缩写缩写缩写</div>
+                                		</div>
+                                		<div class="notify-time"><i class="fa fa-comments"></i>3小时前</div>
+                                		<div class="clear"></div>
+                                	</div>            
+                                </div>
+                                <div class="dropdown-notify-ctrl">
+                                	<button class="notify-ignoreall notify-ctrl-left">忽略全部</button>
+                                	<button class="notify-viewall notify-ctrl-right">查看全部</button>
                                 </div>
                             </div>                            
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <i class="fa fa-envelope"></i><span class="navbar-nav-ctrl">消息</span><span class="navbar-badge badge-green">3</span>
+                            <i class="fa fa-envelope navbar-icon"></i><span class="navbar-nav-ctrl">消息</span><span class="navbar-badge badge-green">3</span>
                             <div class="navbar-dropdown">
                                 <div class="dropdown-title">消息管理</div>  
                                 <div class="dropdown-body">             
