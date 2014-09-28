@@ -19,10 +19,10 @@
     <td>
       <% @admin_roles.each do |admin_role| %>
          <%= admin_role.name %>  
-         (<%= admin_role.remark %>)  <br>
+         <%= admin_role.remark %>  <br>
       <% end %>   
     </td>
   </tr>
 </table>
 
-<%= link_to '编辑用户', edit_manage_admin_path(@manage_admin),class:"btn btn-warning" %>
+<%= link_to '编辑', edit_manage_admin_path(@manage_admin),class:"btn btn-warning" %>
