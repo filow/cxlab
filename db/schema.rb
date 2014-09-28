@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927033007) do
+ActiveRecord::Schema.define(version: 20140928152043) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -41,6 +41,24 @@ ActiveRecord::Schema.define(version: 20140927033007) do
     t.integer "config_type_id"
     t.string  "field_type"
   end
+
+  create_table "nodes", force: true do |t|
+    t.string  "name",       limit: 30,             null: false
+    t.string  "title",                             null: false
+    t.string  "remark"
+    t.text    "extra_data"
+    t.integer "sort",                  default: 0
+    t.integer "pid",                   default: 0
+    t.string  "field_type"
+  end
+
+  create_table "nodes_roles", id: false, force: true do |t|
+    t.integer "role_id",    null: false
+    t.integer "node_id",    null: false
+    t.text    "extra_data"
+  end
+
+  add_index "nodes_roles", ["role_id", "node_id"], name: "index_nodes_roles_on_role_id_and_node_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string  "name",                      null: false

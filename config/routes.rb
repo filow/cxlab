@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :manage do
     resources :admins 
     resources :roles
+    resources :nodes
     resources :configs
     get '/'=> 'index#index'
     get  '/login'=>'session#index',as:'login'
