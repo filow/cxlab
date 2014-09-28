@@ -29,6 +29,13 @@
   <strong>Is enabled:</strong>
   <%= @manage_admin.is_enabled %>
 </p>
+<h1>用户角色</h1>
+<% @admin_roles.each do |admin_role| %>
+       <%= admin_role.name %>  
+       (<%= admin_role.remark %>)  <br>
+<% end %>   
+<br>
+<%= link_to 'Back', manage_admins_path %>
 
 <%= link_to 'Edit', edit_manage_admin_path(@manage_admin) %> |
 <%= link_to 'Back', manage_admins_path %>

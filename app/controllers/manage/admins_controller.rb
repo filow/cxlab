@@ -10,6 +10,7 @@ class Manage::AdminsController < ManageController
   # GET /manage/admins/1
   # GET /manage/admins/1.json
   def show
+      @admin_roles= Manage::Admin.find(params[:id]).roles
   end
 
   # GET /manage/admins/new
@@ -21,6 +22,32 @@ class Manage::AdminsController < ManageController
   def edit
   end
 
+   def edit_role
+      @admin_roles= Manage::Admin.find(params[:admin_id]).roles
+      @manage_roles=Manage::Role.all
+  end
+
+  def update_role
+       roles_id=params[:roles]
+       admin_roles= Manage::Admin.find(params[:admin_id]).roles
+       admin_roles.clear
+       if roles_id
+           roles_id.each do |role_id|
+       	  role=Manage::Role.find(role_id)
+       	  if role_id==nil
+       	       admin_roles.clear
+       	       respond_to do |format|
+                          format.html { redirect_to manage_admin_edit_path(params[:admin_id]), notice: '角色不存在,修改失败' }
+                      end
+                 else
+       	       admin_roles<<role
+                 end
+           end
+         end
+          respond_to do |format|
+              format.html { redirect_to manage_admin_path(params[:admin_id]), notice: '角色修改成功' }
+          end
+  end
   # POST /manage/admins
   # POST /manage/admins.json
   def create
