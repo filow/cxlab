@@ -14,8 +14,9 @@
         <div class="navbar">
             <div class="logo-container">
                 <div class="logo"><h2>Logo</h2></div>
+                <a id="collapsed-min"><i class="fa fa-bars"></i></a>
             </div>
-        	<a id="collapsed-min"><i class="fa fa-bars"></i></a>
+        	
             <ul class="navbar-nav">
                 <li>
                     <a>
@@ -112,24 +113,24 @@
 	                        <div class="sidebar-header"><%= key %></div>
 	                        <div class="sidebar-nav-container">
 	                            <ul class="sidebar-nav">
-	    <% val.each do |nav| %>
-	        <% if nav[:children].nil? %>
-	            <li><%= link_to fa_icon(nav[:icon],text:nav[:text]),nav[:options],target: "main_frame",data:{mod: nav[:options][:controller]+'_'+nav[:options][:action],url:url_for(nav[:options])} %></li>
-	        <% else %>
-	            <li class="sidebar-subnav-list">
-	                <a class="sidebar-subnav-button" >
-	                    <%= fa_icon(nav[:icon]) %>
-	                    <%= nav[:text] %>
-	                    <i class="fa fa-chevron-left toggle-button"></i>
-	                </a>
-	                <ul class="sidebar-subnav">
-	                    <% nav[:children].each do |child| %>
-	                        <li><%= link_to fa_icon(child[:icon],text:child[:text]),child[:options],target: "main_frame",data:{mod: child[:options][:controller]+'_'+child[:options][:action],url:url_for(nav[:options])} %></li>
-	                    <% end %>
-	                </ul>
-	            </li>
-	        <% end %>
-	    <% end %>
+				    <% val.each do |nav| %>
+				        <% if nav[:children].nil? %>
+				            <li><%= link_to fa_icon(nav[:icon],text:nav[:text]),nav[:options],target: "main_frame",data:{mod: nav[:options][:controller]+'_'+nav[:options][:action],url:url_for(nav[:options])} %></li>
+				        <% else %>
+				            <li class="sidebar-subnav-list">
+				                <a class="sidebar-subnav-button" >
+				                    <%= fa_icon(nav[:icon]) %>
+				                    <%= nav[:text] %>
+				                    <i class="fa fa-chevron-left toggle-button"></i>
+				                </a>
+				                <ul class="sidebar-subnav">
+				                    <% nav[:children].each do |child| %>
+				                        <li><%= link_to fa_icon(child[:icon],text:child[:text]),child[:options],target: "main_frame",data:{mod: child[:options][:controller]+'_'+child[:options][:action],url:url_for(nav[:options])} %></li>
+				                    <% end %>
+				                </ul>
+				            </li>
+				        <% end %>
+				    <% end %>
 	                            </ul>
 	                        </div>
 	                    </div>
@@ -138,8 +139,8 @@
 	            </div>
 	        </div>
             <div class="body" >
-            <iframe src="<%= manage_index_dashboard_path %>" class="iframe" frameborder="0" id="main_frame" name="main_frame"></iframe>
-            <div id="message"></div>
+            	<iframe src="<%= manage_index_dashboard_path %>" class="iframe" frameborder="0" id="main_frame" name="main_frame"></iframe>
+            	<div id="message"></div>
             </div>
         </div>
 
