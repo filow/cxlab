@@ -38,10 +38,12 @@ $(document).ready(function(){
  		if(collapsed){
  			collapsed = false;
  			$(".body").css("margin-left","0");
+ 			$("#collapsed-min").css("color","#bbb");
  		}
  		else{
  			collapsed = true;
- 			$(".body").css("margin-left","225px"); 			
+ 			$(".body").css("margin-left","225px"); 	
+ 			$("#collapsed-min").css("color","#fff");
  		}
 	}
 	bodyAutoAdapt();
@@ -92,6 +94,10 @@ $(document).ready(function(){
     $(".sidebar-nav > li > a").click(function(){
 	    module = $(this).attr("data-mod");
 	    location.href = BaseHref + "#" + module;
+	    $(".sidebar-nav > li").each(function(){
+	    	$(this).removeClass("active");
+	    });
+	    $(this).parent().addClass("active");
     });
 
     //刷新重载iframe
@@ -99,7 +105,9 @@ $(document).ready(function(){
     $(".sidebar-nav > li > a").each(function(){
     	var thisModule = $(this).attr("data-mod");
     	if(thisModule == Module)
+    	{
     		Module_url = $(this).attr("data-url")
+    	}
     });
     $("#message").text("正在加载.."); 
   	$("iframe").attr("src",Module_url);
@@ -109,4 +117,24 @@ $(document).ready(function(){
     }); 
 
 
+  	//根据url解析添加navbar的active类
+	if(!Module)
+	{
+	    $(".sidebar-nav > li").each(function(){
+	    	$(this).removeClass("active");
+	    });
+	    $(".sidebar-nav > li").first().addClass("active");		
+	}
+	else{
+	  $(".sidebar-nav > li > a").each(function(){
+	    	var thisModule = $(this).attr("data-mod");
+	    	if(thisModule == Module)
+	    		$(this).parent().addClass("active");
+	    });
+	}
+
+	
+  	$(window).bind('popstate', function() {
+  	//	alert(location.hash);
+  	});
 });
