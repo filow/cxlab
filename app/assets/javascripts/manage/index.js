@@ -4,13 +4,31 @@ $(document).ready(function(){
 	var iframe = $('#main_frame');
 	var sidebar_width = $('.sidebar').width();
 	var navbar_height = $('.navbar').height();
-	var main_height = $(window).height();
-	var main_width = $(window).width();
-	var frame_height = main_height - navbar_height-5;
-	var frame_width = $(document).width() - sidebar_width;
+	var frame_height = $(window).height() - navbar_height-5;
+	var frame_width = $(window).width() - sidebar_width;
 	iframe.height(frame_height);
 	iframe.width(frame_width);
- 
+	$(window).resize(function(data){
+		frame_height = $(window).height() - navbar_height-5;
+		frame_width = $(window).width() - sidebar_width;		
+		iframe.height(frame_height);
+		iframe.width(frame_width);
+		console.log(frame_height+","+frame_width);
+	});
+	
+	var collapsed = false;
+ 	$("#collapsed-min").click(function(){
+ 		$(".sidebar").toggle();
+ 		if(!collapsed){
+ 			collapsed = true;
+ 			$(".body").css("margin-left","0");
+ 		}
+ 		else{
+ 			collapsed = false;
+ 			$(".body").css("margin-left","225px"); 			
+ 		}
+ 	});
+
     //sidebar 滚动条初始化
     $(".sidebar-container").mCustomScrollbar({
         scrollInertia:150
@@ -43,14 +61,29 @@ $(document).ready(function(){
         });
     });
 
+	var OldHref = location.href;
+	var NewHrefBase = OldHref.split("#");
+	var BaseHref = NewHrefBase[0];
+	var Module = NewHrefBase[1];
     //sidebar 点击更改url
     $(".sidebar-nav > li > a").click(function(){
 	    module = $(this).attr("data-mod");
-	    var OldHref = location.href;
-	    var NewHrefBase = OldHref.split("#");
-	    var NewHref = NewHrefBase[0] + "#" + module;
-	    location.href = NewHref;
+	    location.href = BaseHref + "#" + module;
     });
+
+    //刷新重载iframe
+	var Module_url;
+    $(".sidebar-nav > li > a").each(function(){
+    	var thisModule = $(this).attr("data-mod");
+    	if(thisModule == Module)
+    		Module_url = $(this).attr("data-url")
+    });
+    $("#message").text("正在加载.."); 
+  	$("iframe").attr("src",Module_url);
+  	$("iframe").load(function(){ 
+        $("#message").text(""); 
+	  	$("iframe").removeClass("iframe");
+    }); 
 
 
 });
