@@ -309,15 +309,6 @@ a,button{
 		li{
 			margin-left: -25px;
 			margin-right: -25px;
-			&.active{
-				background: $sidebar-active-background;
-				a{
-					color:#fff;
-				}
-				&:hover{
-					background: $sidebar-active-background;
-				}
-			}
 			a{
 				line-height: 16px;
 				padding: 10px 25px;
@@ -332,6 +323,15 @@ a,button{
 					margin-right: 10px;
 				}
 			}
+			&.active{
+				background: $sidebar-active-background;
+				a{
+					color:#fff;
+					&:hover{
+						background: $sidebar-active-background !important;
+					}				
+				}
+			}			
 			&.open{
 				background: $sidebar-nav-hover;
 			}
