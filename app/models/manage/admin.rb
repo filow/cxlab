@@ -40,6 +40,24 @@ class Manage::Admin < ActiveRecord::Base
 		Digest::SHA2.hexdigest(uid+"_ADMIN_"+pw)
 	end
 
+	#修改管理员的用户角色
+	def edit_roles(roles_id)
+		admin_roles= self.roles
+		admin_roles.clear
+		if roles_id
+			roles_id.each do |role_id|
+     			role=Manage::Role.find(role_id)
+       			if role_id==nil
+   	     			admin_roles.clear
+   	     			return false
+           		else
+              		admin_roles<<role
+              	end
+      		end
+        end
+        true
+	end
+
 private
 	def password_must_be_present
 		errors.add(:pwd,"没有找到") unless password.present?

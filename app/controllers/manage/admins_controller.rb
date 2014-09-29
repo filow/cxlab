@@ -10,27 +10,30 @@ class Manage::AdminsController < ManageController
   # GET /manage/admins/1
   # GET /manage/admins/1.json
   def show
-      @admin_roles= Manage::Admin.find(params[:id]).roles
+    @admin_roles= Manage::Admin.find(params[:id]).roles
   end
 
   # GET /manage/admins/new
   def new
     @manage_admin = Manage::Admin.new
+    @admin_roles= @manage_admin.roles
+    @manage_roles=Manage::Role.all
   end
 
   # GET /manage/admins/1/edit
   def edit
-      @admin_roles= Manage::Admin.find(params[:id]).roles
-      @manage_roles=Manage::Role.all
+    @admin_roles= Manage::Admin.find(params[:id]).roles
+    @manage_roles=Manage::Role.all
   end
   # POST /manage/admins
   # POST /manage/admins.json
   def create
     @manage_admin = Manage::Admin.new(manage_admin_params)
-
+    @admin_roles= @manage_admin.roles
+    @manage_roles=Manage::Role.all
     respond_to do |format|
-      if @manage_admin.save
-        format.html { redirect_to @manage_admin, notice: 'Admin was successfully created.' }
+      if @manage_admin.save&&@manage_admin.edit_roles(params[:roles])
+        format.html { redirect_to @manage_admin, notice: "成功创建管理员#{@manage_admin.uid}" }
         format.json { render :show, status: :created, location: @manage_admin }
       else
         format.html { render :new }
@@ -42,28 +45,12 @@ class Manage::AdminsController < ManageController
   # PATCH/PUT /manage/admins/1
   # PATCH/PUT /manage/admins/1.json
   def update
-     roles_id=params[:roles]
-     admin_roles= Manage::Admin.find(params[:id]).roles
-     admin_roles.clear
-     if roles_id
-         roles_id.each do |role_id|
-       	role=Manage::Role.find(role_id)
-       	if role_id==nil
-       	     admin_roles.clear
-       	     respond_to do |format|
-                        format.html { redirect_to manage_admin_edit_path(params[:id]), notice: '角色不存在,修改失败' }
-                    end
-               else
-                  admin_roles<<role
-              end
-         end
-    end
     respond_to do |format|
-      if @manage_admin.update(manage_admin_params)
-        format.html { redirect_to @manage_admin, notice: 'Admin was successfully updated.' }
+      if @manage_admin.update(manage_admin_params)&&@manage_admin.edit_roles(params[:roles])
+        format.html { redirect_to @manage_admin, notice: "成功修改管理员#{@manage_admin.uid}" }
         format.json { render :show, status: :ok, location: @manage_admin }
       else
-        format.html { render :edit }
+        format.html { render :edit,notice:'修改失败'}
         format.json { render json: @manage_admin.errors, status: :unprocessable_entity }
       end
     end
@@ -74,7 +61,7 @@ class Manage::AdminsController < ManageController
   def destroy
     @manage_admin.destroy
     respond_to do |format|
-      format.html { redirect_to manage_admins_url, notice: 'Admin was successfully destroyed.' }
+      format.html { redirect_to manage_admins_url, notice: '成功删除管理员' }
       format.json { head :no_content }
     end
   end

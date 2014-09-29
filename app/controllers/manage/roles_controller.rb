@@ -28,7 +28,7 @@ class Manage::RolesController < ManageController
 
     respond_to do |format|
       if @manage_role.save
-        format.html { redirect_to @manage_role, notice: 'Role was successfully created.' }
+        format.html { redirect_to @manage_role, notice: "成功创建角色#{@manage_role.name}" }
         format.json { render :show, status: :created, location: @manage_role }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Manage::RolesController < ManageController
   def update
     respond_to do |format|
       if @manage_role.update(manage_role_params)
-        format.html { redirect_to manage_roles_url, notice: 'Role was successfully updated.' }
+        format.html { redirect_to manage_roles_url, notice: "成功修改角色#{@manage_role.name}" }
         format.json { render :show, status: :ok, location: @manage_role }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class Manage::RolesController < ManageController
   def destroy
     @manage_role.destroy
     respond_to do |format|
-      format.html { redirect_to manage_roles_url, notice: 'Role was successfully destroyed.' }
+      format.html { redirect_to manage_roles_url, notice: '成功删除角色' }
       format.json { head :no_content }
     end
   end

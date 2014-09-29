@@ -1,11 +1,22 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+#正确的数据
+edit:
+  name: edit
+  is_enabled: 1
+  remark: 编辑管理员
 
-one:
-  name: MyString
-  is_enabled: false
-  remark: MyString
+article:
+  name: article
+  is_enabled: 1
+  remark: 文章管理员
 
-two:
-  name: MyString
-  is_enabled: false
-  remark: MyString
+design:
+  name: design
+  is_enabled: 0
+  remark: 设计管理员
+
+match:
+  name: match
+  is_enabled: 1
+  remark: 比赛管理员
+
+
