@@ -1,12 +1,5 @@
 $(document).ready(function(){
 
-	/*$('#main_frame').attr('width',document.body.clientWidth-230);
-	$('#main_frame').attr('height',document.body.clientHeight+40);
-
-	$(window).resize(function(data){
-    	$('#main_frame').attr('width',document.body.clientWidth-230);
-        $('#main_frame').attr('height',document.body.clientHeight+40);
-    });*/
 	//iframe 自适应	
 	var iframe = $('#main_frame');
 	var sidebar_width = $('.sidebar').width();
@@ -23,7 +16,19 @@ $(document).ready(function(){
 		console.log(frame_height+","+frame_width);
 	});
 	
- 
+	var collapsed = false;
+ 	$("#collapsed-min").click(function(){
+ 		$(".sidebar").toggle();
+ 		if(!collapsed){
+ 			collapsed = true;
+ 			$(".body").css("margin-left","0");
+ 		}
+ 		else{
+ 			collapsed = false;
+ 			$(".body").css("margin-left","225px"); 			
+ 		}
+ 	});
+
     //sidebar 滚动条初始化
     $(".sidebar-container").mCustomScrollbar({
         scrollInertia:150
@@ -67,13 +72,11 @@ $(document).ready(function(){
     });
 
     //刷新重载iframe
-    //alert(Module);
 	var Module_url;
     $(".sidebar-nav > li > a").each(function(){
     	var thisModule = $(this).attr("data-mod");
     	if(thisModule == Module)
     		Module_url = $(this).attr("data-url")
-    	//console.log(Module_url);
     });
     $("#message").text("正在加载.."); 
   	$("iframe").attr("src",Module_url);
