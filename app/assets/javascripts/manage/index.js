@@ -38,10 +38,12 @@ $(document).ready(function(){
  		if(collapsed){
  			collapsed = false;
  			$(".body").css("margin-left","0");
+ 			$("#collapsed-min").css("color","#bbb");
  		}
  		else{
  			collapsed = true;
- 			$(".body").css("margin-left","225px"); 			
+ 			$(".body").css("margin-left","225px"); 	
+ 			$("#collapsed-min").css("color","#fff");
  		}
 	}
 	bodyAutoAdapt();
