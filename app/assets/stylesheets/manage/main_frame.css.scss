@@ -391,3 +391,34 @@ a,button{
 .iframe{
 	display:none;
 }
+
+
+//response 
+@media screen and (max-width:760px){
+	.navbar{
+		.logo-container{
+			float:none;
+			width:100%;
+			background-color:#191B24;
+		}		
+		#collapsed-min{
+			position: absolute;
+			right: 10px;
+			top: 6px;
+			border: none;
+			padding:7px 10px;
+			border-right:5px !important;
+			&:hover{
+				background-color:#0E0F14;
+				border-right:5px !important;
+			}
+		}
+	}
+
+	.main{
+		margin-top:$navbar-height*2;
+	}
+	.sidebar{
+		display:none;
+	}
+}
