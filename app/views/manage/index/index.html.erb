@@ -11,131 +11,132 @@
 <body>
 
     <div class="container">
-        <div class="sidebar">
+        <div class="navbar">
             <div class="logo-container">
                 <div class="logo"><h2>Logo</h2></div>
             </div>
-            <div class="sidebar-container">
-
-                <% @navs.each do |key,val| %>
-                <div class="container-fluid">
-                    <div class="sidebar-row">
-                        <div class="sidebar-header"><%= key %></div>
-                        <div class="sidebar-nav-container">
-                            <ul class="sidebar-nav">
-    <% val.each do |nav| %>
-        <% if nav[:children].nil? %>
-            <li><%= link_to fa_icon(nav[:icon],text:nav[:text]),nav[:options],target: "main_frame",data:{mod: nav[:options][:controller]+'_'+nav[:options][:action],url:url_for(nav[:options])} %></li>
-        <% else %>
-            <li class="sidebar-subnav-list">
-                <a class="sidebar-subnav-button" >
-                    <%= fa_icon(nav[:icon]) %>
-                    <%= nav[:text] %>
-                    <i class="fa fa-chevron-left toggle-button"></i>
-                </a>
-                <ul class="sidebar-subnav">
-                    <% nav[:children].each do |child| %>
-                        <li><%= link_to fa_icon(child[:icon],text:child[:text]),child[:options],target: "main_frame",data:{mod: child[:options][:controller]+'_'+child[:options][:action],url:url_for(nav[:options])} %></li>
-                    <% end %>
-                </ul>
-            </li>
-        <% end %>
-    <% end %>
-                            </ul>
+        	<a id="collapsed-min"><i class="fa fa-bars"></i></a>
+            <ul class="navbar-nav">
+                <li>
+                    <a>
+                        <i class="fa fa-user navbar-icon"></i><span class="navbar-nav-ctrl">账户</span>
+                        <div class="navbar-dropdown dropdown-user">
+                        	<div class="dropdown-title">用户管理</div>	
+                        	<div class="dropdown-body">				
+                                <div class="user-avatar"><%= image_tag "user-thumb.png" %></div>
+                                <div class="user-name">测试用户
+                                	<p>后台管理员</p>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="dropdown-ctrl">
+                            	<button class="notify-ignoreall ctrl-left user-ctrl">个人设置</button>
+                            	<button class="notify-viewall ctrl-right user-ctrl">更多设置</button>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <% end %>
-            </div>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-bullhorn navbar-icon"></i><span class="navbar-nav-ctrl">通知</span><span class="navbar-badge badge-orange">3</span>
+                       <div class="navbar-dropdown dropdown-notify">
+                            <div class="dropdown-title">通知管理</div>  
+                            <div class="dropdown-body" style="padding:0"> 
+                            	<div class="notify-row">
+                            		<div class="notify-body">
+                            			<div class="notify-title">通知标题</div>
+                            			<div class="notify-summary">通知内容缩写缩写缩写缩写缩写缩写缩写缩写</div>
+                            		</div>
+                            		<div class="notify-time"><i class="fa fa-comments"></i>3小时前</div>
+                            		<div class="clear"></div>
+                            	</div>  
+                            	<div class="notify-row">
+                            		<div class="notify-body">
+                            			<div class="notify-title">通知标题</div>
+                            			<div class="notify-summary">通知内容缩写缩写缩写缩写缩写缩写缩写缩写</div>
+                            		</div>
+                            		<div class="notify-time"><i class="fa fa-comments"></i>3小时前</div>
+                            		<div class="clear"></div>
+                            	</div>            
+                            </div>
+                            <div class="dropdown-ctrl">
+                            	<button class="notify-ignoreall ctrl-left notify-ctrl">忽略全部</button>
+                            	<button class="notify-viewall ctrl-right notify-ctrl">查看全部</button>
+                            </div>
+                        </div>                            
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-envelope navbar-icon"></i><span class="navbar-nav-ctrl">消息</span><span class="navbar-badge badge-green">3</span>
+                        <div class="navbar-dropdown dropdown-mails">
+                            <div class="dropdown-title">消息管理</div>  
+                            <div class="dropdown-body"> 
+                            	<div class="mails-row">
+                            		<div class="mails-avatar"><%= image_tag "user-thumb-mini.png" %></div>
+                            		<div class="mails-time"><i class="fa fa-comments"></i>3小时前</div>
+                            		<div class="mails-body">
+                            			<div class="mails-title">消息标题</div>
+                            			<div class="mails-summary">消息内容缩写缩写缩写缩写缩写缩写缩写缩写</div>
+                            		</div>
+                            		<div class="clear"></div>
+                            	</div>     
+                            	<div class="mails-row">
+                            		<div class="mails-avatar"><%= image_tag "user-thumb-mini.png" %></div>
+                            		<div class="mails-time"><i class="fa fa-comments"></i>3小时前</div>
+                            		<div class="mails-body">
+                            			<div class="mails-title">消息标题</div>
+                            			<div class="mails-summary">消息内容缩写缩写缩写缩写缩写缩写缩写缩写</div>
+                            		</div>
+                            		<div class="clear"></div>
+                            	</div>                                
+                            </div>
+                            <div class="dropdown-ctrl">
+                            	<button class="notify-ignoreall ctrl-left mails-ctrl">忽略全部</button>
+                            	<button class="notify-viewall ctrl-right mails-ctrl">查看全部</button>
+                            </div>                                
+                        </div>
+                    </a>
+                </li>
+                <li><a href=""><i class="fa fa-gear"></i><span class="navbar-nav-ctrl">设置</span></a></li>
+                <li><%= link_to "退出登录",manage_logout_path,method: :delete,:class=>"logout" %></li>
+            </ul>
         </div>
+
         <div class="main">
-            <div class="navbar">
-                <ul class="navbar-nav">
-                    <li>
-                        <a>
-                            <i class="fa fa-user navbar-icon"></i><span class="navbar-nav-ctrl">账户</span>
-                            <div class="navbar-dropdown dropdown-user">
-                            	<div class="dropdown-title">用户管理</div>	
-                            	<div class="dropdown-body">				
-	                                <div class="user-avatar"><%= image_tag "user-thumb.png" %></div>
-	                                <div class="user-name">测试用户
-	                                	<p>后台管理员</p>
-	                                </div>
-                                </div>
-                                <div class="clear"></div>
-                                <div class="dropdown-ctrl">
-                                	<button class="notify-ignoreall ctrl-left user-ctrl">个人设置</button>
-                                	<button class="notify-viewall ctrl-right user-ctrl">更多设置</button>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <i class="fa fa-bullhorn navbar-icon"></i><span class="navbar-nav-ctrl">通知</span><span class="navbar-badge badge-orange">3</span>
-                           <div class="navbar-dropdown dropdown-notify">
-                                <div class="dropdown-title">通知管理</div>  
-                                <div class="dropdown-body" style="padding:0"> 
-                                	<div class="notify-row">
-                                		<div class="notify-body">
-                                			<div class="notify-title">通知标题</div>
-                                			<div class="notify-summary">通知内容缩写缩写缩写缩写缩写缩写缩写缩写</div>
-                                		</div>
-                                		<div class="notify-time"><i class="fa fa-comments"></i>3小时前</div>
-                                		<div class="clear"></div>
-                                	</div>  
-                                	<div class="notify-row">
-                                		<div class="notify-body">
-                                			<div class="notify-title">通知标题</div>
-                                			<div class="notify-summary">通知内容缩写缩写缩写缩写缩写缩写缩写缩写</div>
-                                		</div>
-                                		<div class="notify-time"><i class="fa fa-comments"></i>3小时前</div>
-                                		<div class="clear"></div>
-                                	</div>            
-                                </div>
-                                <div class="dropdown-ctrl">
-                                	<button class="notify-ignoreall ctrl-left notify-ctrl">忽略全部</button>
-                                	<button class="notify-viewall ctrl-right notify-ctrl">查看全部</button>
-                                </div>
-                            </div>                            
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <i class="fa fa-envelope navbar-icon"></i><span class="navbar-nav-ctrl">消息</span><span class="navbar-badge badge-green">3</span>
-                            <div class="navbar-dropdown dropdown-mails">
-                                <div class="dropdown-title">消息管理</div>  
-                                <div class="dropdown-body"> 
-                                	<div class="mails-row">
-                                		<div class="mails-avatar"><%= image_tag "user-thumb-mini.png" %></div>
-                                		<div class="mails-time"><i class="fa fa-comments"></i>3小时前</div>
-                                		<div class="mails-body">
-                                			<div class="mails-title">消息标题</div>
-                                			<div class="mails-summary">消息内容缩写缩写缩写缩写缩写缩写缩写缩写</div>
-                                		</div>
-                                		<div class="clear"></div>
-                                	</div>     
-                                	<div class="mails-row">
-                                		<div class="mails-avatar"><%= image_tag "user-thumb-mini.png" %></div>
-                                		<div class="mails-time"><i class="fa fa-comments"></i>3小时前</div>
-                                		<div class="mails-body">
-                                			<div class="mails-title">消息标题</div>
-                                			<div class="mails-summary">消息内容缩写缩写缩写缩写缩写缩写缩写缩写</div>
-                                		</div>
-                                		<div class="clear"></div>
-                                	</div>                                
-                                </div>
-                                <div class="dropdown-ctrl">
-                                	<button class="notify-ignoreall ctrl-left mails-ctrl">忽略全部</button>
-                                	<button class="notify-viewall ctrl-right mails-ctrl">查看全部</button>
-                                </div>                                
-                            </div>
-                        </a>
-                    </li>
-                    <li><a href=""><i class="fa fa-gear"></i><span class="navbar-nav-ctrl">设置</span></a></li>
-                    <li><%= link_to "退出登录",manage_logout_path,method: :delete,:class=>"logout" %></li>
-                </ul>
-            </div>
+	        <div class="sidebar">
+	            <div class="sidebar-container">
+	                <% @navs.each do |key,val| %>
+	                <div class="container-fluid">
+	                    <div class="sidebar-row">
+	                        <div class="sidebar-header"><%= key %></div>
+	                        <div class="sidebar-nav-container">
+	                            <ul class="sidebar-nav">
+	    <% val.each do |nav| %>
+	        <% if nav[:children].nil? %>
+	            <li><%= link_to fa_icon(nav[:icon],text:nav[:text]),nav[:options],target: "main_frame",data:{mod: nav[:options][:controller]+'_'+nav[:options][:action],url:url_for(nav[:options])} %></li>
+	        <% else %>
+	            <li class="sidebar-subnav-list">
+	                <a class="sidebar-subnav-button" >
+	                    <%= fa_icon(nav[:icon]) %>
+	                    <%= nav[:text] %>
+	                    <i class="fa fa-chevron-left toggle-button"></i>
+	                </a>
+	                <ul class="sidebar-subnav">
+	                    <% nav[:children].each do |child| %>
+	                        <li><%= link_to fa_icon(child[:icon],text:child[:text]),child[:options],target: "main_frame",data:{mod: child[:options][:controller]+'_'+child[:options][:action],url:url_for(nav[:options])} %></li>
+	                    <% end %>
+	                </ul>
+	            </li>
+	        <% end %>
+	    <% end %>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                </div>
+	                <% end %>
+	            </div>
+	        </div>
             <div class="body" >
             <iframe src="<%= manage_index_dashboard_path %>" class="iframe" frameborder="0" id="main_frame" name="main_frame"></iframe>
             <div id="message"></div>
