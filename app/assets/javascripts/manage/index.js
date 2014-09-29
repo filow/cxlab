@@ -1,32 +1,57 @@
 $(document).ready(function(){
 
+	//sidebar 适应屏幕
+	$(".sidebar").height($(window.height) - $(".navbar").height());
+	
 	//iframe 自适应	
-	var iframe = $('#main_frame');
-	var sidebar_width = $('.sidebar').width();
-	var navbar_height = $('.navbar').height();
-	var frame_height = $(window).height() - navbar_height-5;
-	var frame_width = $(window).width() - sidebar_width;
-	iframe.height(frame_height);
-	iframe.width(frame_width);
-	$(window).resize(function(data){
-		frame_height = $(window).height() - navbar_height-5;
-		frame_width = $(window).width() - sidebar_width;		
+	function iframeAutoAdapt() 
+	{
+		var iframe = $('#main_frame');
+		var sidebar_width;
+		if($(".sidebar").css("display") == "block") 
+			sidebar_width = $('.sidebar').width();
+		else 
+			sidebar_width = 0;
+		var navbar_height = $('.navbar').height();
+		var frame_height = $(window).height() - navbar_height - 5;
+		var frame_width;
+		if($(window).width()>760)
+			frame_width = $(window).width() - sidebar_width;
+		else 
+			frame_width = $(window).width();
 		iframe.height(frame_height);
-		iframe.width(frame_width);
-		console.log(frame_height+","+frame_width);
+		iframe.width(frame_width);	
+	}
+	iframeAutoAdapt();
+	$(window).resize(function(data){
+		iframeAutoAdapt();
+		bodyAutoAdapt();
 	});
 	
-	var collapsed = false;
- 	$("#collapsed-min").click(function(){
- 		$(".sidebar").toggle();
- 		if(!collapsed){
- 			collapsed = true;
+	//隐藏sidebar按钮
+	var collapsed;
+	function bodyAutoAdapt() //body适应sidebar的有无
+	{
+		var hide = $(".sidebar").css("display");
+		if(hide == "block") collapsed = false;
+		else collapsed = true;
+ 		if(collapsed){
+ 			collapsed = false;
  			$(".body").css("margin-left","0");
+ 			$("#collapsed-min").css("color","#bbb");
  		}
  		else{
- 			collapsed = false;
- 			$(".body").css("margin-left","225px"); 			
+ 			collapsed = true;
+ 			$(".body").css("margin-left","225px"); 	
+ 			$("#collapsed-min").css("color","#fff");
  		}
+	}
+	bodyAutoAdapt();
+ 	$("#collapsed-min").click(function(){
+ 		$(".sidebar").toggle();
+		$(".sidebar").height($(window.height) - $(".navbar").height());
+ 		bodyAutoAdapt();
+ 		iframeAutoAdapt();
  	});
 
     //sidebar 滚动条初始化
@@ -61,29 +86,77 @@ $(document).ready(function(){
         });
     });
 
-	var OldHref = location.href;
-	var NewHrefBase = OldHref.split("#");
-	var BaseHref = NewHrefBase[0];
-	var Module = NewHrefBase[1];
-    //sidebar 点击更改url
-    $(".sidebar-nav > li > a").click(function(){
-	    module = $(this).attr("data-mod");
+
+    var OldHref,NewHrefBase,BaseHref,Module;
+	//解析URL分析module
+	function module_analysis()
+	{
+		OldHref = location.href;
+		NewHrefBase = OldHref.split("#");
+		BaseHref = NewHrefBase[0];
+		Module = NewHrefBase[1];		
+	}
+	module_analysis();
+
+  	function module_set()
+  	{
+	    //刷新重载iframe
+		var Module_url;
+	    $(".sidebar-nav > li > a").each(function(){
+	    	var thisModule = $(this).attr("data-mod");
+	    	if(thisModule == Module)
+	    	{
+	    		Module_url = $(this).attr("data-url")
+	    	}
+	    });
+	    $("#message").text("正在加载.."); 
+	  	$("iframe").attr("src",Module_url);
+	  	$("iframe").load(function(){ 
+	        $("#message").text(""); 
+		  	$("iframe").removeClass("iframe");
+	    }); 
+
+	  	//删除原有的active类
+	  	$(".sidebar-nav > li").each(function(){
+	    	$(this).removeClass("active");
+	    });
+
+	  	//根据url解析添加navbar的active类
+  		if(!Module)
+		{
+		    $(".sidebar-nav > li").each(function(){
+		    	$(this).removeClass("active");
+		    });
+		    $(".sidebar-nav > li").first().addClass("active");		
+		}
+		else{
+		  $(".sidebar-nav > li > a").each(function(){
+		    	var thisModule = $(this).attr("data-mod");
+		    	if(thisModule == Module)
+		    		$(this).parent().addClass("active");
+		    });
+		}		
+  	}
+
+    //sidebar 点击更改url,添加active类
+   	$(".sidebar-nav > li > a").click(function(){
+	    var module = $(this).attr("data-mod");
 	    location.href = BaseHref + "#" + module;
+	    $(".sidebar-nav > li").each(function(){
+	    	$(this).removeClass("active");
+	    });
+	    $(this).parent().addClass("active");
     });
 
-    //刷新重载iframe
-	var Module_url;
-    $(".sidebar-nav > li > a").each(function(){
-    	var thisModule = $(this).attr("data-mod");
-    	if(thisModule == Module)
-    		Module_url = $(this).attr("data-url")
-    });
-    $("#message").text("正在加载.."); 
-  	$("iframe").attr("src",Module_url);
-  	$("iframe").load(function(){ 
-        $("#message").text(""); 
-	  	$("iframe").removeClass("iframe");
-    }); 
+    module_analysis();
+  	module_set();
 
 
+	$(window).bind('hashchange', function() {
+	//	module_analysis();
+	//	module_set();
+		console.log(location.href);
+	});
+
+	console.log(123);
 });
