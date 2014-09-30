@@ -4,7 +4,7 @@ class Manage::NodesController < ManageController
   # GET /manage/nodes
   # GET /manage/nodes.json
   def index
-    @manage_nodes = Manage::Node.all
+    @manage_nodes = Manage::Node.tree_view
   end
 
   # GET /manage/nodes/1
