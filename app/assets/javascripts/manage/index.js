@@ -86,13 +86,61 @@ $(document).ready(function(){
         });
     });
 
-	var OldHref = location.href;
-	var NewHrefBase = OldHref.split("#");
-	var BaseHref = NewHrefBase[0];
-	var Module = NewHrefBase[1];
-    //sidebar 点击更改url
-    $(".sidebar-nav > li > a").click(function(){
-	    module = $(this).attr("data-mod");
+
+    var OldHref,NewHrefBase,BaseHref,Module;
+	//解析URL分析module
+	function module_analysis()
+	{
+		OldHref = location.href;
+		NewHrefBase = OldHref.split("#");
+		BaseHref = NewHrefBase[0];
+		Module = NewHrefBase[1];		
+	}
+	module_analysis();
+
+  	function module_set()
+  	{
+	    //刷新重载iframe
+		var Module_url;
+	    $(".sidebar-nav > li > a").each(function(){
+	    	var thisModule = $(this).attr("data-mod");
+	    	if(thisModule == Module)
+	    	{
+	    		Module_url = $(this).attr("data-url")
+	    	}
+	    });
+	    $("#message").text("正在加载.."); 
+	  	$("iframe").attr("src",Module_url);
+	  	$("iframe").load(function(){ 
+	        $("#message").text(""); 
+		  	$("iframe").removeClass("iframe");
+	    }); 
+
+	  	//删除原有的active类
+	  	$(".sidebar-nav > li").each(function(){
+	    	$(this).removeClass("active");
+	    });
+
+	  	//根据url解析添加navbar的active类
+  		if(!Module)
+		{
+		    $(".sidebar-nav > li").each(function(){
+		    	$(this).removeClass("active");
+		    });
+		    $(".sidebar-nav > li").first().addClass("active");		
+		}
+		else{
+		  $(".sidebar-nav > li > a").each(function(){
+		    	var thisModule = $(this).attr("data-mod");
+		    	if(thisModule == Module)
+		    		$(this).parent().addClass("active");
+		    });
+		}		
+  	}
+
+    //sidebar 点击更改url,添加active类
+   	$(".sidebar-nav > li > a").click(function(){
+	    var module = $(this).attr("data-mod");
 	    location.href = BaseHref + "#" + module;
 	    $(".sidebar-nav > li").each(function(){
 	    	$(this).removeClass("active");
@@ -100,41 +148,15 @@ $(document).ready(function(){
 	    $(this).parent().addClass("active");
     });
 
-    //刷新重载iframe
-	var Module_url;
-    $(".sidebar-nav > li > a").each(function(){
-    	var thisModule = $(this).attr("data-mod");
-    	if(thisModule == Module)
-    	{
-    		Module_url = $(this).attr("data-url")
-    	}
-    });
-    $("#message").text("正在加载.."); 
-  	$("iframe").attr("src",Module_url);
-  	$("iframe").load(function(){ 
-        $("#message").text(""); 
-	  	$("iframe").removeClass("iframe");
-    }); 
+    module_analysis();
+  	module_set();
 
 
-  	//根据url解析添加navbar的active类
-	if(!Module)
-	{
-	    $(".sidebar-nav > li").each(function(){
-	    	$(this).removeClass("active");
-	    });
-	    $(".sidebar-nav > li").first().addClass("active");		
-	}
-	else{
-	  $(".sidebar-nav > li > a").each(function(){
-	    	var thisModule = $(this).attr("data-mod");
-	    	if(thisModule == Module)
-	    		$(this).parent().addClass("active");
-	    });
-	}
+	$(window).bind('hashchange', function() {
+	//	module_analysis();
+	//	module_set();
+		console.log(location.href);
+	});
 
-	
-  	$(window).bind('popstate', function() {
-  	//	alert(location.hash);
-  	});
+	console.log(123);
 });
