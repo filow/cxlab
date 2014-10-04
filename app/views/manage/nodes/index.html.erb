@@ -12,10 +12,7 @@
           <%= manage_node.title %>(<%= manage_node.name %>) 
         </a>
         <span>
-          <%= link_to fa_icon('pencil',text:'编辑'),edit_manage_node_path(manage_node),class: "btn btn-sm btn-warning" %>
-          <% if manage_node.child.empty? %>
-            <%= link_to fa_icon('close',text:'删除'),manage_node,method: :delete, data: { confirm: t('confirm_delete') },class: "btn btn-sm btn-danger" %>
-          <% end %>
+          <%= link_to fa_icon('info',text:'详情'),manage_node,class: "btn btn-sm btn-info" %>
         </span>
       </h3>
     </div>
@@ -26,7 +23,7 @@
             <th><%= tm('node.name') %></th>
             <th><%= tm 'node.remark' %></th>
             <th><%= tm 'node.sort' %></th>
-            <th width="20%">操作</th>
+            <th></th>
           </thead>
           
         <% manage_node.child.each do |cnode| %>
@@ -36,8 +33,7 @@
             <td><%= cnode.remark %></td>
             <td><%= cnode.sort %></td>
             <td>
-              <%= link_to fa_icon('pencil',text:'编辑'), edit_manage_node_path(cnode),class:"btn btn-warning btn-sm" %>
-              <%= link_to fa_icon('close',text:'删除'),cnode,method: :delete, data: { confirm: t('confirm_delete') },class: "btn btn-sm btn-danger" %>
+              <%= link_to fa_icon('info',text:'详情'), cnode,class:"btn btn-info btn-sm" %>
             </td>
           </tr>
         <% end %>
@@ -48,5 +44,3 @@
 <% end %>
 </div>
 
-
-<%= link_to '新建节点', new_manage_node_path,class:"btn btn-success" %>
