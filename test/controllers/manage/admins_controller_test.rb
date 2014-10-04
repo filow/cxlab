@@ -2,7 +2,8 @@ require 'test_helper'
 
 class Manage::AdminsControllerTest < ActionController::TestCase
   setup do
-    @manage_admin = manage_admins(:one)
+    @manage_admin = manage_admins(:admin_one)
+    admin_login
   end
 
   test "should get index" do

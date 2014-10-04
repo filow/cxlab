@@ -3,6 +3,7 @@ require 'test_helper'
 class Manage::ConfigsControllerTest < ActionController::TestCase
   setup do
     @manage_config = manage_configs(:one)
+    admin_login
   end
 
   test "should get index" do
