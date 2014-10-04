@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140928152043) do
+ActiveRecord::Schema.define(version: 20141004045526) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -43,13 +43,14 @@ ActiveRecord::Schema.define(version: 20140928152043) do
   end
 
   create_table "nodes", force: true do |t|
-    t.string  "name",       limit: 30,             null: false
-    t.string  "title",                             null: false
+    t.string  "name",       limit: 30,                 null: false
+    t.string  "title",                                 null: false
     t.string  "remark"
     t.text    "extra_data"
     t.integer "sort",                  default: 0
     t.integer "pid",                   default: 0
     t.string  "field_type"
+    t.boolean "edit_flag",             default: false
   end
 
   create_table "nodes_roles", id: false, force: true do |t|
