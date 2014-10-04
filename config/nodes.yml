@@ -1,0 +1,18 @@
+# 权限节点描述文件
+# 格式：
+#   name:
+#     title:
+#     remark:
+#     extra_data:
+#     sort:
+#     pid:
+#     field_type:
+
+test_node:
+    title: 测试节点
+    remark: 测试节点的说明
+    sort: 1
+    pid: 0
+    field_type: text_field
+test_node1:
+    remark: 测试节点啦啦
