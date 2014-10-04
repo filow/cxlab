@@ -11,30 +11,23 @@
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= manage_node.name %>">
           <%= manage_node.title %>(<%= manage_node.name %>) 
         </a>
-        <span>
-          <%= link_to fa_icon('info',text:'详情'),manage_node,class: "btn btn-sm btn-info" %>
-        </span>
       </h3>
     </div>
     <div id="collapse<%= manage_node.name %>" class="panel-collapse collapse <% if i==0 %>in<% end %>">
         <table class="table table-hover">
           <thead>
-            <th>#</th>
-            <th><%= tm('node.name') %></th>
+            <th><%= tm 'node.name'  %></th>
+            <th><%= tm 'node.title'  %></th>
             <th><%= tm 'node.remark' %></th>
-            <th><%= tm 'node.sort' %></th>
-            <th></th>
+            <th><%= tm 'node.field_type' %></th>
           </thead>
           
         <% manage_node.child.each do |cnode| %>
           <tr>
-            <td>#<%= cnode.id %></td>
-            <td><%= cnode.title %>(<%= cnode.name %>)</td>
+            <td><%= cnode.name %></td>
+            <td><%= cnode.title %></td>
             <td><%= cnode.remark %></td>
-            <td><%= cnode.sort %></td>
-            <td>
-              <%= link_to fa_icon('info',text:'详情'), cnode,class:"btn btn-info btn-sm" %>
-            </td>
+            <td><%= cnode.field_type %></td>
           </tr>
         <% end %>
         </table>
