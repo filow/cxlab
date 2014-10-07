@@ -6,4 +6,5 @@ class Manage::Role < ActiveRecord::Base
 	validates_presence_of :remark
 
 	has_and_belongs_to_many :admins
+    has_and_belongs_to_many :nodes
 end

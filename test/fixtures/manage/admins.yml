@@ -1,17 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  uid: MyString
-  nickname: MyString
-  password: MyString
-  email: MyString
-  desc: MyString
-  is_enabled: false
-
-two:
-  uid: MyString
-  nickname: MyString
-  password: MyString
-  email: MyString
-  desc: MyString
-  is_enabled: false
+admin_one:
+  uid: admin
+  nickname: admin
+  password: <%= Manage::Admin.encrypt_password("admin","123456789") %>
+  email: hoho@few.com
+  desc: 测试管理员
+  is_enabled: true

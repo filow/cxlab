@@ -22,6 +22,7 @@
 
 </body>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag  "manage/common",'data-turbolinks-track' => true %>
 <%= javascript_include_tag params[:controller], 'data-turbolinks-track' => true %>
 <%= yield :js %>
 </html>

@@ -31,6 +31,7 @@ cn:
     models:
       manage/admin: 管理员
       manage/role: 角色
+      manage/node: 权限节点
     attributes:
       manage/admin:
         uid: 登陆id
@@ -43,6 +44,14 @@ cn:
         name: 角色名
         remark: 描述
         is_enabled: "是否启用" 
+      manage/node:
+        name: 节点代号
+        title: 节点名称
+        remark: 说明
+        extra_data: 增强数据
+        field_type: 增强规则
+        sort: 排序号
+        pid: 父节点id
     errors:
       template:
         header:

@@ -3,6 +3,7 @@ require 'test_helper'
 class Manage::RolesControllerTest < ActionController::TestCase
   setup do
     @manage_role = manage_roles(:one)
+    admin_login
   end
 
   test "should get index" do
