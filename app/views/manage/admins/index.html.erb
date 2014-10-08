@@ -35,3 +35,9 @@
 <br>
 
 <%= link_to fa_icon('plus',text:'添加管理员'), new_manage_admin_path,class:"btn btn-success" %>
+
+
+<%= javascript_include_tag "ext-all.js", 'data-turbolinks-track' => true %>
+<%= javascript_include_tag "grid.js", 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag    "theme-all.css", media: 'all', 'data-turbolinks-track' => true %>
+<div id="grid" style="margin:10px 10px"></div>
