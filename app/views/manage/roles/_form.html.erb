@@ -13,6 +13,12 @@
     <td><%= f.label :is_enabled %></td>
     <td><%= f.check_box :is_enabled,class:"form-control" %></td>
   </tr>
+  <tr>
+    <td>权限列表</td>
+    <td>
+      <!-- 这里要把权限按照父-子结构排列出来，通过checkbox筛选。选中父级别的权限会将子级别全选或取消全选。最后通过id发送到服务器 -->
+    </td>
+  </tr>
 </table>
   <div class="actions">
     <%= f.submit nil,class:"btn btn-lg btn-primary" %>

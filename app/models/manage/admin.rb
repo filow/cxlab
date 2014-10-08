@@ -41,21 +41,22 @@ class Manage::Admin < ActiveRecord::Base
 	end
 
 	#修改管理员的用户角色
-	def edit_roles(roles_id)
-		admin_roles= self.roles
-		admin_roles.clear
-		if roles_id
-			roles_id.each do |role_id|
-     			role=Manage::Role.find(role_id)
-       			if role_id==nil
-   	     			admin_roles.clear
-   	     			return false
-           		else
-              		admin_roles<<role
-              	end
-      		end
-        end
-        true
+	def roles_in_id=(id_array=nil)
+		# 清空所有角色信息
+		roles.clear
+
+		# 如果id数组不为空，就遍历
+		if id_array
+			id_array.each do |role_id|
+				# 找到对应的角色
+				role = Manage::Role.find_by_id(role_id)
+				# 如果角色不为空，就插入数据库
+				roles << role if role
+			end
+		end
+
+		# 返回角色信息
+		roles
 	end
 
 private

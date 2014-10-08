@@ -28,10 +28,14 @@
   <tr>
      <td>用户角色</td>
      <td>
-        <% @manage_roles.each do |manage_role| %>
-         <%= check_box_tag 'roles[]',manage_role.id,@admin_roles.include?(manage_role)%>
-         <%= label_tag manage_role.name %>  
-         <%= label_tag manage_role.remark %> <br>
+         <% @manage_roles.each do |manage_role| %>
+            <% if @admin_roles %>
+              <%= check_box_tag 'roles[]',manage_role.id,@admin_roles.include?(manage_role)%>
+            <% else %>
+              <%= check_box_tag 'roles[]',manage_role.id,false %>
+            <% end %>
+            <%= label_tag manage_role.name %>  
+            <%= label_tag manage_role.remark %> <br>
         <% end %>   
       </td>
   </tr>

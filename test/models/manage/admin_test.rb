@@ -11,14 +11,14 @@ class Manage::AdminTest < ActiveSupport::TestCase
 
   test "email格式" do
     ok = %w{ 142064699@qq.com fr_1ed@gmail.com fred@sina.com FRED@163.com 
-           		ABC13a@123.com abcdf@QQ.COM}
-    bad = %w{ 142ABC@A abcdef fred@qq_com 1313*~&abc@qq.com}
+           		ABC13a@123.com abcdf@QQ.COM 1313*~&abc@qq.com}
+    bad = %w{ 142ABC@A abcdef fred@qq_com }
   
-    admin = Manage::Admin.new(:uid        => "admin",
+    admin = Manage::Admin.new(:uid        => "admin1",
                               :nickname   => "管理员",
                               :is_enabled => 1,
                               :desc       => "管理员",
-                              :password   =>"123abc123")
+                              :password   =>"123456789")
     ok.each do |email|
         admin.email=email
         assert admin.valid?, admin.errors.full_messages
