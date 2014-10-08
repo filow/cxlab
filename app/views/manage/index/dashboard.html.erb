@@ -4,8 +4,27 @@
 </div>
 
 <!-- <h3>系统概况</h3> -->
+<h3>Task Board</h3>
+<table class="table">
+    <thead>
+        <th>任务信息</th>
+        <th>状态</th>
+        <th>任务执行人</th>
+    </thead>
+    <% @tasks.each do |key,task| %>
+    <% if task["status"] == "正在进行" %>
+    <tr class="success">
+    <% else %>
+    <tr>
+    <% end %>
+        <td><%= task["name"] %></td>
+        <td><%= task["status"] %></td>
+        <td><%= task["developer"] %></td>
+    </tr>
+    <% end %>
+</table>
 
-<h3>版本库提交信息概况</h3>
+<h3>版本库最新提交情况</h3>
 <table class="table">
     <thead>
         <th>id</th>
