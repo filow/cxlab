@@ -5,7 +5,10 @@ class Manage::AdminsController < ManageController
   # GET /manage/admins
   # GET /manage/admins.json
   def index
-    @manage_admins = Manage::Admin.all
+  	@total_count = Manage::Admin.count()
+  	offset = params[:start]
+  	limit = params[:limit]
+    @manage_admins = Manage::Admin.limit(limit).offset(offset)
   end
 
   # GET /manage/admins/1
