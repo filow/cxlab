@@ -24,6 +24,15 @@ class Manage::IndexController < ManageController
   end
 
   def dashboard
-
+    commit_log = `git log --pretty=format:"%h|%an|%ad|%s"`
+    @commit_log = []
+    commit_log.split(/\n/).each do |log|
+        info = log.split(/\|/)
+        info_in_hash = {id: info[0],
+                        author: info[1], 
+                        date: Time.parse(info[2]),
+                        message: info[3]}
+        @commit_log << info_in_hash
+    end
   end
 end
