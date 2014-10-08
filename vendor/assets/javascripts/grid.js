@@ -20,16 +20,17 @@ Ext.onReady(function() {
             'email',
             'desc',
             'roles',
-            { name: 'active', type: 'bool' }
+            { name: 'is_enabled', type: 'bool' }
         ]
     });
 
     var store= Ext.create('Ext.data.Store', {
         model: 'Admin',
-        pageSize:5,
+       	pageSize:5,
+        autoLoad:true,
         proxy: {
             type: 'ajax',
-            url: './grid.json',
+            url: '/manage/admins.json',
             reader: {
                 type: 'json',
                 root: 'admins',
@@ -39,35 +40,23 @@ Ext.onReady(function() {
     });
     //读取总数据完毕
 
-    var role_data = [
-        {
-            "value": "1",
-            "role": "role1"
-        },
-        {
-            "value": "2",
-            "role": "role2"
-        },
-        {
-            "value": "3",
-            "role": "role3"
-        }
-    ];
+    console.log(store);
 
-    store.load({params:{start:0,limit:5}});//一次读取5条记录
-
+    //store.load({params:{start:0,limit:5}});//一次读取5条记录
+	//store.loadPage(1);
     var role_store = Ext.create('Ext.data.Store', {
-        fields: ['value','role'],
+        fields: ['id','name','is_enabled','remark','url'],
         autoLoad: true,
-        data: role_data
-//        proxy: {
-//            type: 'ajax',
-//            url: 'role.json',
-//            reader: {
-//                type: 'json',
-//                totalProperty: 'totalCount'
-//            }
-//        }
+       // data: role_data
+        proxy: {
+            type: 'ajax',
+            url: '/manage/roles.json',
+            reader: {
+                type: 'json',
+                root: 'roles',
+                totalProperty: 'totalCount'
+            }
+        }
     });
     //角色信息读取完毕
 
@@ -84,13 +73,18 @@ Ext.onReady(function() {
 
     var multiCombo = Ext.create('Ext.form.field.ComboBox', {
         multiSelect: true,
-        displayField: 'role',
-        valueField: 'value',
+        displayField: 'name',
+        valueField: 'id',
         id: 'multiCombo',
         store: role_store,
         editable: false,
         emptyText: '请选择职位',
         queryMode: 'local',
+        listeners:{
+         	'select': function(){
+         		console.log(multiCombo.value);
+         	}
+    	}
     });
     //多选combobox
 
@@ -100,7 +94,7 @@ Ext.onReady(function() {
         displayInfo:true,
         displayMsg:"显示从{0}条数据到{1}条数据，共{2}条数据",
         store:store,
-        pageSize:5
+        //pageSize:5
     });
     //工具栏
 
@@ -169,7 +163,7 @@ Ext.onReady(function() {
     var win = new Ext.Window({
         layout: 'fit',
         width: 400,
-        height: 300,
+        height: 400,
         closeAction: 'hide',
         title: '查看详情',
         constrain: 'true',
@@ -219,16 +213,14 @@ Ext.onReady(function() {
             dataIndex: 'roles',
             editor:multiCombo,
             renderer: function(value){
-                var roles = "";
-                for(var k in value){
-                    var index = role_store.find("value",value[k]);
-                    var record =  role_store.getAt(index);
-                    if(k != 0)
-                        roles += "," + record.get("role");
-                    else
-                        roles += record.get("role");
-                }
-                return roles;
+            	var role_str = "";
+            	for(var k in value){
+            		if(k == 0)
+            			role_str += value[k].name;
+            		else 
+            			role_str += ',' + value[k].name;
+            	}
+            	return role_str;
             }
         },{
             header: "邮箱",
@@ -246,7 +238,7 @@ Ext.onReady(function() {
             }            
         },{
             header: "是否启用",
-            dataIndex: 'active',
+            dataIndex: 'is_enabled',
             editor: {
                 xtype: 'checkbox',
                 allowBlank: false
@@ -325,9 +317,9 @@ Ext.onReady(function() {
                     jsonArray.push(item.data);
                 });
                 console.log(jsonArray);
-                Ext.Ajax.request({
+           /*     Ext.Ajax.request({
                     method: 'POST',
-                    url: 'grid.json',
+                    url: '/manage/admins.json',
                     success: function(response){
                         Ext.Msg.alert('信息','保存成功',function(){
                             console.log(response.responseText);
@@ -338,7 +330,9 @@ Ext.onReady(function() {
                         Ext.Msg.alert('错误','与后台联系时出错');
                     },
                     params:'data='+encodeURIComponent(Ext.encode(jsonArray))
-                });
+                });*/
+				var m = $("meta[name='csrf-token']");
+				console.log(m.content);    
             }
         },{
             text: '查看详情',
