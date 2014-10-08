@@ -20,7 +20,7 @@ Ext.onReady(function() {
             'email',
             'desc',
             'roles',
-            { name: 'active', type: 'bool' }
+            { name: 'is_enabled', type: 'bool' }
         ]
     });
 
@@ -29,7 +29,7 @@ Ext.onReady(function() {
         pageSize:5,
         proxy: {
             type: 'ajax',
-            url: './grid.json',
+            url: '/manage/admins.json',
             reader: {
                 type: 'json',
                 root: 'admins',
@@ -169,7 +169,7 @@ Ext.onReady(function() {
     var win = new Ext.Window({
         layout: 'fit',
         width: 400,
-        height: 300,
+        height: 400,
         closeAction: 'hide',
         title: '查看详情',
         constrain: 'true',
@@ -246,7 +246,7 @@ Ext.onReady(function() {
             }            
         },{
             header: "是否启用",
-            dataIndex: 'active',
+            dataIndex: 'is_enabled',
             editor: {
                 xtype: 'checkbox',
                 allowBlank: false
@@ -327,7 +327,7 @@ Ext.onReady(function() {
                 console.log(jsonArray);
                 Ext.Ajax.request({
                     method: 'POST',
-                    url: 'grid.json',
+                    url: '/manage/admins.json',
                     success: function(response){
                         Ext.Msg.alert('信息','保存成功',function(){
                             console.log(response.responseText);
