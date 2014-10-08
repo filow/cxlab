@@ -39,13 +39,10 @@ Ext.onReady(function() {
         }
     });
     //读取总数据完毕
+    store.load({params:{start:0,limit:5}});//一次读取5条记录
 
-    console.log(store);
-
-    //store.load({params:{start:0,limit:5}});//一次读取5条记录
-	//store.loadPage(1);
     var role_store = Ext.create('Ext.data.Store', {
-        fields: ['id','name','is_enabled','remark','url'],
+        fields: ['id','name','is_enabled','remark','url','value'],
         autoLoad: true,
        // data: role_data
         proxy: {
@@ -60,6 +57,8 @@ Ext.onReady(function() {
     });
     //角色信息读取完毕
 
+    console.log(role_store);
+    console.log(store);
     var rowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
         clicksToMoveEditor: 2,
         autoCancel: false
@@ -74,17 +73,12 @@ Ext.onReady(function() {
     var multiCombo = Ext.create('Ext.form.field.ComboBox', {
         multiSelect: true,
         displayField: 'name',
-        valueField: 'id',
+        valueField: 'value',
         id: 'multiCombo',
         store: role_store,
         editable: false,
         emptyText: '请选择职位',
         queryMode: 'local',
-        listeners:{
-         	'select': function(){
-         		console.log(multiCombo.value);
-         	}
-    	}
     });
     //多选combobox
 
@@ -94,7 +88,6 @@ Ext.onReady(function() {
         displayInfo:true,
         displayMsg:"显示从{0}条数据到{1}条数据，共{2}条数据",
         store:store,
-        //pageSize:5
     });
     //工具栏
 
@@ -180,8 +173,6 @@ Ext.onReady(function() {
         ]
     });
     //模态窗口
-
-
 
     var grid = Ext.create('Ext.grid.Panel', {
         id: 'grid',
@@ -317,7 +308,7 @@ Ext.onReady(function() {
                     jsonArray.push(item.data);
                 });
                 console.log(jsonArray);
-           /*     Ext.Ajax.request({
+                Ext.Ajax.request({
                     method: 'POST',
                     url: '/manage/admins.json',
                     success: function(response){
@@ -330,7 +321,7 @@ Ext.onReady(function() {
                         Ext.Msg.alert('错误','与后台联系时出错');
                     },
                     params:'data='+encodeURIComponent(Ext.encode(jsonArray))
-                });*/
+                });
 				var m = $("meta[name='csrf-token']");
 				console.log(m.content);    
             }
