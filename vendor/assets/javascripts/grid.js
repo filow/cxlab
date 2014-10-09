@@ -20,6 +20,7 @@ Ext.onReady(function() {
             'email',
             'desc',
             'roles',
+            'pwd',
             { name: 'is_enabled', type: 'bool' }
         ]
     });
@@ -57,8 +58,6 @@ Ext.onReady(function() {
     });
     //角色信息读取完毕
 
-    console.log(role_store);
-    console.log(store);
     var rowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
         clicksToMoveEditor: 2,
         autoCancel: false
@@ -79,6 +78,11 @@ Ext.onReady(function() {
         editable: false,
         emptyText: '请选择职位',
         queryMode: 'local',
+        listeners: {
+        	'select': function(){
+       // 		console.log(multiCombo.value);
+        	}
+        }
     });
     //多选combobox
 
@@ -200,6 +204,16 @@ Ext.onReady(function() {
                 allowBlank: false
             }            
         },{
+        	header: "密码",
+        	dataIndex: 'pwd',
+            editor: {
+                xtype: 'textfield',
+                //allowBlank: false
+            },
+            renderer: function(){
+            	return '*****';
+            }       	
+        },{
             header: "角色",
             dataIndex: 'roles',
             editor:multiCombo,
@@ -217,7 +231,7 @@ Ext.onReady(function() {
             header: "邮箱",
             dataIndex: 'email',
             editor: {
-                allowBlank: false,
+              //  allowBlank: false,
                 vtype: 'email'
             }
         },{
@@ -225,7 +239,7 @@ Ext.onReady(function() {
             dataIndex: 'desc',
             editor: {
                 xtype: 'textfield',
-                allowBlank: false
+               // allowBlank: false
             }            
         },{
             header: "是否启用",
@@ -257,7 +271,7 @@ Ext.onReady(function() {
             itemId:'insertBtn',
             //iconCls: 'admin-add',
             handler : function() {
-                rowEditing.cancelEdit();
+                //rowEditing.cancelEdit();
                 // Create a model instance
                 var r = Ext.create('Admin', {
                     uid: '此处填写用户名',
@@ -268,7 +282,10 @@ Ext.onReady(function() {
                     active: true
                 });
                 store.insert(0, r);
-                //rowEditing.startEdit(0, 0);
+                rowEditing.startEdit(0, 0);
+                grid.on('edit', function(editor, e) {  
+                	console.log(e.record.data);
+                });
             }
         }, {
             itemId: 'removeBtn',
@@ -302,28 +319,9 @@ Ext.onReady(function() {
             text: '保存修改',
             itemId: 'saveBtn',
             handler: function(){
-                var m = store.getModifiedRecords().slice(0);
-                var jsonArray = [];
-                Ext.each(m, function(item){
-                    jsonArray.push(item.data);
-                });
-                console.log(jsonArray);
-                Ext.Ajax.request({
-                    method: 'POST',
-                    url: '/manage/admins.json',
-                    success: function(response){
-                        Ext.Msg.alert('信息','保存成功',function(){
-                            console.log(response.responseText);
-                            store.reload();
-                        });
-                    },
-                    failure: function(){
-                        Ext.Msg.alert('错误','与后台联系时出错');
-                    },
-                    params:'data='+encodeURIComponent(Ext.encode(jsonArray))
-                });
-				var m = $("meta[name='csrf-token']");
-				console.log(m.content);    
+
+
+  
             }
         },{
             text: '查看详情',
@@ -344,7 +342,7 @@ Ext.onReady(function() {
     }],
         bbar:pagingToolbar,
         plugins: [
-            cellEditing,
+            rowEditing,
         ],
 //
         listeners: {
@@ -358,4 +356,63 @@ Ext.onReady(function() {
         e.preventDefault();
         contextmenu.showAt(e.getXY());
     });
+
+    grid.on('validateedit', function(editor, e) {
+    	e.record.data[e.field] = multiCombo.value;
+    	e.record.commit();
+	});
+
+    // 编辑完成后，提交更改
+	grid.on('edit', function(editor, e) {  
+    	var post_data = e.record.data;
+    	var c = $("meta[name='csrf-token']");
+		var csrf_token = c[0].content;
+		var params = [];
+		var admins_id = post_data.id;
+		params["_method"] = 'patch';
+		params["authenticity_token"] = csrf_token;
+        params["manage_admin[uid]"] = post_data.uid; 
+        params["manage_admin[nickname]"] = post_data.nickname; 
+        params["manage_admin[email]"] = post_data.email; 
+        params["manage_admin[desc]"] = post_data.desc; 
+        params["manage_admin[pwd]"] = post_data.pwd; 
+        params["manage_admin[is_enabled]"] = post_data.is_enabled? 1:0; 
+        params["commit"] = "更新管理员信息";
+
+        var params_post = '';
+        for(var s in params){
+        	params_post += s + '=' + encodeURIComponent(params[s]) + '&';
+        }
+        for(var k in post_data.roles){
+        	if(k == 0)
+        		params_post += 'roles[]=' + post_data.roles[k].id;
+        	else
+        		params_post += '&' + 'roles[]=' + post_data.roles[k].id; 
+    		console.log(post_data.roles[k]);    	
+        }
+
+        console.log(params_post);
+
+        Ext.Ajax.request({
+	        method: 'POST',
+            url: '/manage/admins/' + admins_id ,
+            success: function(response){
+                Ext.Msg.alert('信息','保存成功',function(){
+                    console.log(response.responseText);
+                    store.reload();
+                });
+            },
+            failure: function(){
+                Ext.Msg.alert('错误','与后台联系时出错');
+                console.log(params);
+                store.reload();
+            },
+            params: params_post
+        });
+    });
+
+	//取消操作时重新加载数据
+	grid.on('cancelEdit',function(editor,e){
+		store.reload();
+	});
 });

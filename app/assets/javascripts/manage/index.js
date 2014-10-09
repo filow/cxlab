@@ -157,6 +157,4 @@ $(document).ready(function(){
 	//	module_set();
 		console.log(location.href);
 	});
-
-	console.log(123);
 });

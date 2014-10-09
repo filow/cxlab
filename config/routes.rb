@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'manage/index#index'
   namespace :manage do
     resources :admins 
@@ -12,6 +13,10 @@ Rails.application.routes.draw do
 
     get 'index/index'
     get 'index/dashboard'
+
+    # 个人信息设置
+    get 'self/index'
+    get 'self/update'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
