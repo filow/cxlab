@@ -3,10 +3,11 @@ class Manage::IndexController < ManageController
     @navs={
         "快捷导航"=> [
             {text: "系统概览",icon: "dashboard",options:{controller: "index",action: "dashboard"}},
+            {text: "个人信息设置",icon: "user",options:{controller: "self",action: "index"}}
         ],
         "管理员管理"=> [
             {text: "管理员列表",icon: "list",options:{controller: "admins",action: "index"}},
-            {text: "角色管理",icon: "user",options:{controller: "roles",action: "index"}},
+            {text: "角色管理",icon: "users",options:{controller: "roles",action: "index"}},
             {text: "权限管理",icon: "key",options:{controller: "nodes",action: "index"}}
         ],
         "系统管理"=> [
