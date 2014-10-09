@@ -1,5 +1,7 @@
 class Manage::SessionController < ApplicationController
+
   def index
+    render layout: false
   end
 
   def create

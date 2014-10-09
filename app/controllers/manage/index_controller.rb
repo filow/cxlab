@@ -24,6 +24,19 @@ class Manage::IndexController < ManageController
   end
 
   def dashboard
+    # 从系统中获取版本库提交信息
+    commit_log = `git log --pretty=format:"%h|%an|%ad|%s"`
+    # 取前10条输出
+    @commit_log = []
+    commit_log.split(/\n/)[0,10].each do |log|
+        info = log.split(/\|/)
+        info_in_hash = {id: info[0],
+                        author: info[1], 
+                        date: Time.parse(info[2]),
+                        message: info[3]}
+        @commit_log << info_in_hash
+    end
 
+    @tasks = YAML.load(File.read("config/task_board.yml"))
   end
 end

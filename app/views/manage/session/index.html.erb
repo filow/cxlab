@@ -1,14 +1,27 @@
-<%= flash[:alert] %>
-<%= form_tag manage_login_path,name: "form" do %>
-		<div >
-  			<span >用户名</span>
- 			 <%= text_field_tag :name,params[:name],class: "form-control",placeholder: "请输入用户名","data-toggle"=> "popover",autofocus: true,title:"","data-content"=>"用户名不能为空" %>
-		</div>
-		<div >
-  			<span >密码</span>
- 			<%= password_field_tag :password,params[:password],class: "form-control",placeholder: "请输入密码","data-toggle"=> "popover",title:"","data-content"=>"密码不能为空" %>
-		</div>
-		<center>
-			<%= submit_tag "登录"%>
-		</center>
-   <% end %>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>后台登陆</title>
+<meta charset="UTF-8" >
+<%= stylesheet_link_tag    "bootstrap_ball", media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag    params[:controller], media: 'all', 'data-turbolinks-track' => true %>
+</head>
+<body>
+    <div id="container">
+        
+        <div class="login-box">
+            <%= form_tag manage_login_path,name: "form",class:"form-inline" do %>
+                    <% if flash[:alert] %>
+                    <div class="alert alert-danger"><%= flash[:alert] %></div>
+                    <% end %>
+                    <%= text_field_tag :name,params[:name],class: "form-control login-input",placeholder: "请输入用户名","data-toggle"=> "popover",autofocus: true,title:"","data-content"=>"用户名不能为空" %>
+                    <%= password_field_tag :password,params[:password],class: "form-control login-input",placeholder: "请输入密码","data-toggle"=> "popover",title:"","data-content"=>"密码不能为空" %>
+                    <%= submit_tag "登录",class: "btn btn-primary login-submit" %>
+            <% end %>  
+        </div>
+    </div>
+</body>
+</html>
+
+
+

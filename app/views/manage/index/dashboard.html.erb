@@ -1,1 +1,42 @@
-<h1>系统概览</h1>
+<br> 
+<div class="page-header">
+    <h1>欢迎使用创新实验室管理系统！</h1>
+</div>
+
+<!-- <h3>系统概况</h3> -->
+<h3>Task Board</h3>
+<table class="table">
+    <thead>
+        <th>任务信息</th>
+        <th>状态</th>
+        <th>任务执行人</th>
+    </thead>
+    <% @tasks.each do |key,task| %>
+    <tr class="<%= task_color(task['status']) %>">
+        <td><%= task["name"] %></td>
+        <td><%= task["status"] %></td>
+        <td><%= task["developer"] %></td>
+    </tr>
+    <% end %>
+</table>
+
+<h3>版本库最新提交情况</h3>
+<table class="table">
+    <thead>
+        <th>id</th>
+        <th>作者</th>
+        <th>时间</th>
+        <th>提交信息</th>
+    </thead>
+    <% @commit_log.each do |log| %>
+    <tr>
+        <td><%= log[:id] %></td>
+        <td><%= log[:author] %></td>
+        <td><%= log[:date].strftime("%m-%d %H:%M") %></td>
+        <td><%= log[:message] %></td>
+    </tr>
+    <% end %>
+</table>
+
+    
+
