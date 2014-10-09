@@ -27,7 +27,7 @@ Ext.onReady(function() {
 
     var store= Ext.create('Ext.data.Store', {
         model: 'Admin',
-       	pageSize:5,
+       	pageSize:10,
         autoLoad:true,
         proxy: {
             type: 'ajax',
@@ -86,14 +86,44 @@ Ext.onReady(function() {
     });
     //多选combobox
 
-    var pagingToolbar = new Ext.PagingToolbar
-    ({
+    
+    var pageSizeStore = new Ext.data.SimpleStore({  
+        fields: ['pageSizeValue','pageSizeItem'],  
+        data : [[5,5],[10,10],[15,15],[20,20],[50,50]]  
+    });  
+	//自定义分页显示的数据
+
+   var cmPageSize = new Ext.form.ComboBox({  
+        store: pageSizeStore,  
+        displayField:'pageSizeItem',  
+        valueField:'pageSizeValue',  
+        typeAhead: true,  
+        mode: 'local',  
+        triggerAction: 'all',  
+        emptyText:'10',  
+        width:40,  
+        selectOnFocus:true  
+    });  
+	//创建选择每页数目的combox  
+
+    var pagingToolbar = new Ext.PagingToolbar({
         emptyMsg:"没有数据",
+        pageSize: 10, 
         displayInfo:true,
         displayMsg:"显示从{0}条数据到{1}条数据，共{2}条数据",
         store:store,
     });
     //工具栏
+
+    pagingToolbar.add('-','每页',cmPageSize,'条记录');  
+
+	cmPageSize.on('change',function(e){  
+	    var myPageSize = e.getValue();  
+	    pagingToolbar.pageSize = myPageSize;  
+	    store.pageSize = myPageSize;
+	    store.load({params:{start:0,limit:myPageSize}}); 
+    });  
+	//监听选择显示页数的事件
 
     var contextmenu = new Ext.menu.Menu({
         id: 'gridMenu',
