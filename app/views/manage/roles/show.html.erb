@@ -2,8 +2,24 @@
   <h1><%= @manage_role.name %> <small>remark:<%= @manage_role.remark %></small></h1>
 </div>
 <table class="table">
-    <td><%= tm('role.is_enabled') %></td>
-    <td><%= switch @manage_role.is_enabled,bs_label_tag('启用','success'),bs_label_tag('停用','default') %></td>
+	<tr>
+	    <td><%= tm('role.is_enabled') %></td>
+	    <td><%= switch @manage_role.is_enabled,bs_label_tag('启用','success'),bs_label_tag('停用','default') %></td>
+	</tr>
+	<tr>
+	    <td>角色节点</td>
+	    <td>
+	    	<% @manage_nodes.each do |manage_node| %>
+	          	<h3><%= manage_node.title %>(<%= manage_node.name %>)</h3>
+	          	<% manage_node.child.each do |cnode| %> 
+	            	<% if @role_nodes %>  
+	            		<% if @role_nodes.include?(cnode)%>
+							<%= cnode.title %>(<%= cnode.name %>) <br> 
+		            	<% end %> 
+		            <% end %>
+	          	<% end %>
+	        <% end %>
+	    </td>
   </tr>
 </table>
 

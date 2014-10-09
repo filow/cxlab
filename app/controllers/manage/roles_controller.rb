@@ -1,5 +1,6 @@
 class Manage::RolesController < ManageController
   before_action :set_manage_role, only: [:show, :edit, :update, :destroy]
+  before_action :set_nodes, only: [:new, :edit, :update, :show, :create]
 
   # GET /manage/roles
   # GET /manage/roles.json
@@ -10,6 +11,7 @@ class Manage::RolesController < ManageController
   # GET /manage/roles/1
   # GET /manage/roles/1.json
   def show
+    @role_nodes= Manage::Role.find(params[:id]).nodes
   end
 
   # GET /manage/roles/new
@@ -19,6 +21,7 @@ class Manage::RolesController < ManageController
 
   # GET /manage/roles/1/edit
   def edit
+    @role_nodes= Manage::Role.find(params[:id]).nodes
   end
 
   # POST /manage/roles
@@ -28,6 +31,11 @@ class Manage::RolesController < ManageController
 
     respond_to do |format|
       if @manage_role.save
+
+        # 保存角色信息
+        nodes_id=params[:nodes]
+        @manage_role.nodes_in_id=nodes_id  
+
         format.html { redirect_to @manage_role, notice: "成功创建角色#{@manage_role.name}" }
         format.json { render :show, status: :created, location: @manage_role }
       else
@@ -42,8 +50,14 @@ class Manage::RolesController < ManageController
   def update
     respond_to do |format|
       if @manage_role.update(manage_role_params)
-        format.html { redirect_to manage_roles_url, notice: "成功修改角色#{@manage_role.name}" }
-        format.json { render :show, status: :ok, location: @manage_role }
+
+        # 保存角色信息
+        nodes_id=params[:nodes]
+        @manage_role.nodes_in_id=nodes_id
+
+        format.html { redirect_to @manage_role, notice: "成功修改角色#{@manage_role.name}" }
+        format.json { render :show, status: :created, location: @manage_role }
+
       else
         format.html { render :edit }
         format.json { render json: @manage_role.errors, status: :unprocessable_entity }
@@ -65,6 +79,10 @@ class Manage::RolesController < ManageController
     # Use callbacks to share common setup or constraints between actions.
     def set_manage_role
       @manage_role = Manage::Role.find(params[:id])
+    end
+
+    def set_nodes
+      @manage_nodes = Manage::Node.tree_view
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

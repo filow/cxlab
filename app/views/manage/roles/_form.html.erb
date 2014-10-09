@@ -17,7 +17,18 @@
     <td>权限列表</td>
     <td>
       <!-- 这里要把权限按照父-子结构排列出来，通过checkbox筛选。选中父级别的权限会将子级别全选或取消全选。最后通过id发送到服务器 -->
-    </td>
+       <% @manage_nodes.each do |manage_node| %>
+          <h3><%= manage_node.title %>(<%= manage_node.name %>)</h3>
+          <% manage_node.child.each do |cnode| %> 
+            <% if @role_nodes %>  
+              <%= check_box_tag 'nodes[]',cnode.id,@role_nodes.include?(cnode)%>
+            <% else %>
+              <%= check_box_tag 'nodes[]',cnode.id,false %>
+            <% end %>
+            <%= cnode.title %>(<%= cnode.name %>) <br>     
+          <% end %>
+        <% end %>
+      </td>
   </tr>
 </table>
   <div class="actions">

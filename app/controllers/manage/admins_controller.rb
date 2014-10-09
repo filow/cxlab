@@ -20,7 +20,6 @@ class Manage::AdminsController < ManageController
   # GET /manage/admins/new
   def new
     @manage_admin = Manage::Admin.new
-    @admin_roles= @manage_admin.roles
   end
 
   # GET /manage/admins/1/edit
