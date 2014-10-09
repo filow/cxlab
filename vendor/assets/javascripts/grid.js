@@ -178,6 +178,8 @@ Ext.onReady(function() {
     });
     //模态窗口
 
+    var createAdmin = false;//创建管理员标签
+
     var grid = Ext.create('Ext.grid.Panel', {
         id: 'grid',
         store: store,
@@ -283,11 +285,9 @@ Ext.onReady(function() {
                 });
                 store.insert(0, r);
                 rowEditing.startEdit(0, 0);
-                grid.on('edit', function(editor, e) {  
-                	console.log(e.record.data);
-                });
+                createAdmin = true;
             }
-        }, {
+        },{
             itemId: 'removeBtn',
             text: '删除管理员',
             //iconCls: 'employee-remove',
@@ -315,14 +315,6 @@ Ext.onReady(function() {
                 });
             },
             disabled: true
-        },{
-            text: '保存修改',
-            itemId: 'saveBtn',
-            handler: function(){
-
-
-  
-            }
         },{
             text: '查看详情',
             itemId: 'viewBtn',
@@ -362,14 +354,11 @@ Ext.onReady(function() {
     	e.record.commit();
 	});
 
-    // 编辑完成后，提交更改
-	grid.on('edit', function(editor, e) {  
-    	var post_data = e.record.data;
+    function jsonPost(post_data)
+    {
+		var params = [];
     	var c = $("meta[name='csrf-token']");
 		var csrf_token = c[0].content;
-		var params = [];
-		var admins_id = post_data.id;
-		params["_method"] = 'patch';
 		params["authenticity_token"] = csrf_token;
         params["manage_admin[uid]"] = post_data.uid; 
         params["manage_admin[nickname]"] = post_data.nickname; 
@@ -378,7 +367,6 @@ Ext.onReady(function() {
         params["manage_admin[pwd]"] = post_data.pwd; 
         params["manage_admin[is_enabled]"] = post_data.is_enabled? 1:0; 
         params["commit"] = "更新管理员信息";
-
         var params_post = '';
         for(var s in params){
         	params_post += s + '=' + encodeURIComponent(params[s]) + '&';
@@ -388,27 +376,51 @@ Ext.onReady(function() {
         		params_post += 'roles[]=' + post_data.roles[k].id;
         	else
         		params_post += '&' + 'roles[]=' + post_data.roles[k].id; 
-    		console.log(post_data.roles[k]);    	
-        }
+        }    	
 
-        console.log(params_post);
+        return params_post;
+    }
 
-        Ext.Ajax.request({
-	        method: 'POST',
-            url: '/manage/admins/' + admins_id ,
-            success: function(response){
-                Ext.Msg.alert('信息','保存成功',function(){
-                    console.log(response.responseText);
-                    store.reload();
-                });
-            },
-            failure: function(){
-                Ext.Msg.alert('错误','与后台联系时出错');
-                console.log(params);
-                store.reload();
-            },
-            params: params_post
-        });
+    // 编辑完成后，提交更改
+	grid.on('edit', function(editor, e) {  
+    	var post_data = e.record.data;
+		var admins_id = post_data.id;
+		params_post = jsonPost(post_data);
+		if(createAdmin){
+	        Ext.Ajax.request({
+		        method: 'POST',
+	            url: '/manage/admins.json',
+	            success: function(response){
+	                Ext.Msg.alert('信息','保存成功',function(){
+	                    console.log(response.responseText);
+	                    store.reload();
+	                });
+	            },
+	            failure: function(){
+	                Ext.Msg.alert('错误','与后台联系时出错');
+	                store.reload();
+	            },
+	            params: params_post
+	        });
+		}else{
+	        Ext.Ajax.request({
+		        method: 'PATCH',
+	            url: '/manage/admins/' + admins_id + '.json',
+	            success: function(response){
+	                Ext.Msg.alert('信息','保存成功',function(){
+	                    console.log(response.responseText);
+	                    store.reload();
+	                });
+	            },
+	            failure: function(){
+	                Ext.Msg.alert('错误','与后台联系时出错');
+	               // console.log(params);
+	                store.reload();
+	            },
+	            params: params_post
+	        });			
+		}
+		createAdmin = false;
     });
 
 	//取消操作时重新加载数据
