@@ -12,11 +12,7 @@
         <th>任务执行人</th>
     </thead>
     <% @tasks.each do |key,task| %>
-    <% if task["status"] == "正在进行" %>
-    <tr class="success">
-    <% else %>
-    <tr>
-    <% end %>
+    <tr class="<%= task_color(task['status']) %>">
         <td><%= task["name"] %></td>
         <td><%= task["status"] %></td>
         <td><%= task["developer"] %></td>
