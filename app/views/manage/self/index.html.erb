@@ -1,2 +1,10 @@
-<h1>Manage::Self#index</h1>
-<p>Find me in app/views/manage/self/index.html.erb</p>
+<div>
+	<%= form_tag manage_self_update_path,name: "form",class:"form-inline" do %>
+		<%= text_field_tag :name,params[:uid],class: "form-control login-input",placeholder: @manage_admin.uid,"data-toggle"=> "popover",autofocus: true,title:"","data-content"=>"登录名不能为空" %>
+		<%= text_field_tag :name,params[:nickname],class: "form-control login-input",placeholder: @manage_admin.nickname,"data-toggle"=> "popover",autofocus: true,title:"","data-content"=>"用户名不能为空" %>
+		<%= password_field_tag :password,params[:password],class: "form-control login-input",placeholder: @manage_admin.pwd,"data-toggle"=> "popover",title:"","data-content"=>"密码不能为空" %>
+		<%= text_field_tag :name,params[:email],class: "form-control login-input",placeholder: @manage_admin.email,"data-toggle"=> "popover",autofocus: true,title:"" %>
+		<%= text_field_tag :name,params[:desc],class: "form-control login-input",placeholder: @manage_admin.desc,"data-toggle"=> "popover",autofocus: true,title:"" %>
+		<%= submit_tag "登录",class: "btn btn-primary login-submit" %>
+	<% end %>
+</div>
