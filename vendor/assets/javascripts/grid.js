@@ -125,12 +125,10 @@ Ext.onReady(function() {
         source.账号 = row_data.uid;
         source.昵称 = row_data.nickname;
         for(var k in row_data.roles){
-            var index = role_store.find("value",row_data.roles[k]);
-            var record =  role_store.getAt(index);
             if(k != 0)
-                source.角色 += "," + record.get("role");
+                source.角色 += "," + row_data.roles[k].name;
             else
-                source.角色 += record.get("role");
+                source.角色 += row_data.roles[k].name;
         }
         source.邮箱 = row_data.email;
         source.描述 = row_data.desc;
@@ -179,6 +177,8 @@ Ext.onReady(function() {
     //模态窗口
 
     var createAdmin = false;//创建管理员标签
+    var c = $("meta[name='csrf-token']");
+	var csrf_token = c[0].content;
 
     var grid = Ext.create('Ext.grid.Panel', {
         id: 'grid',
@@ -210,7 +210,7 @@ Ext.onReady(function() {
         	dataIndex: 'pwd',
             editor: {
                 xtype: 'textfield',
-                //allowBlank: false
+                allowBlank: false
             },
             renderer: function(){
             	return '*****';
@@ -273,13 +273,12 @@ Ext.onReady(function() {
             itemId:'insertBtn',
             //iconCls: 'admin-add',
             handler : function() {
-                //rowEditing.cancelEdit();
-                // Create a model instance
                 var r = Ext.create('Admin', {
-                    uid: '此处填写用户名',
-                    nickname: '此处填写昵称',
-                    email: 'example@example.com',
-                    desc: '此处添加新描述',
+                    uid: '',
+                    nickname: '',
+                    pwd: '',
+                    email: '',
+                    desc: '',
                     role: '',
                     active: true
                 });
@@ -305,12 +304,12 @@ Ext.onReady(function() {
                 rowEditing.cancelEdit();
                 Ext.Msg.confirm('信息',ConfirmMessage,function(btn){
                    if(btn == 'yes'){
-
-                       store.remove(sm.getSelection());
-                       grid.view.refresh();
-                       if (store.getCount() > 0) {
-                           sm.select(0);
-                       }
+                   		console.log(sm.getSelection());
+                   		var records = sm.getSelection();
+                   		for(var k in records){
+                   			console.log(records[k].get('id'));
+                   			delteAdmin(records[k].get('id'));
+                   		}
                    }
                 });
             },
@@ -336,7 +335,6 @@ Ext.onReady(function() {
         plugins: [
             rowEditing,
         ],
-//
         listeners: {
             'selectionchange': function(view, records) {
                 grid.down('#removeBtn').setDisabled(!records.length);
@@ -357,8 +355,7 @@ Ext.onReady(function() {
     function jsonPost(post_data)
     {
 		var params = [];
-    	var c = $("meta[name='csrf-token']");
-		var csrf_token = c[0].content;
+
 		params["authenticity_token"] = csrf_token;
         params["manage_admin[uid]"] = post_data.uid; 
         params["manage_admin[nickname]"] = post_data.nickname; 
@@ -427,4 +424,23 @@ Ext.onReady(function() {
 	grid.on('cancelEdit',function(editor,e){
 		store.reload();
 	});
+
+	function delteAdmin(admins_id){
+ 		var params_delete = [];
+ 		Ext.Ajax.request({
+	        method: 'DELETE',
+            params: "authenticity_token=" + encodeURIComponent(csrf_token),
+            url: '/manage/admins/' + admins_id + '.json',
+            success: function(response){
+                Ext.Msg.alert('信息','删除成功',function(){
+                    store.reload();
+                });
+            },
+            failure: function(){
+                Ext.Msg.alert('错误','与后台联系时出错');
+                store.reload();
+            },
+	    });				
+	}
+
 });
