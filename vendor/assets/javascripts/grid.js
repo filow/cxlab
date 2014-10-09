@@ -240,7 +240,7 @@ Ext.onReady(function() {
         	dataIndex: 'pwd',
             editor: {
                 xtype: 'textfield',
-                allowBlank: false
+              //  allowBlank: false
             },
             renderer: function(){
             	return '*****';
