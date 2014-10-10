@@ -10,6 +10,52 @@ Ext.require([
 ]);
 //构建数据集
 
+Ext.override(Ext.grid.RowEditor,
+    {
+      addFieldsForColumn : function(column, initial) {
+	  var me = this, i, length, field;
+	  if (Ext.isArray(column)) {
+	      for (i = 0, length = column.length; i < length; i++) {
+		   me.addFieldsForColumn(column[i], initial);
+	      }
+	      return;
+	   }
+	if (column.getEditor) {
+	      field = column.getEditor(null, {
+		                        xtype : 'displayfield',
+					getModelData : function() {
+							return null;
+					}
+		       });
+	   if (column.align === 'right') {
+	      field.fieldStyle = 'text-align:right';
+	   }
+	   if (column.xtype === 'actioncolumn') {
+	    field.fieldCls += ' ' + Ext.baseCSSPrefix+ 'form-action-col-field';
+	   }
+	   if (me.isVisible() && me.context) {
+	      if (field.is('displayfield')) {
+		  me.renderColumnData(field, me.context.record,column);
+		} else {
+		  field.suspendEvents();
+		  field.setValue(me.context.record.get(column.dataIndex));
+		  field.resumeEvents();
+		}
+	    }
+            if (column.hidden) {
+	        me.onColumnHide(column);
+	    } else if (column.rendered && !initial) {
+	        me.onColumnShow(column);
+	    }
+
+	    // -- start edit
+	    me.mon(field, 'change', me.onFieldChange, me);
+	    // -- end edit
+         }
+   }
+});
+//重写RowEditor
+
 Ext.onReady(function() {
     Ext.define('Admin', {
         extend: 'Ext.data.Model',
@@ -27,7 +73,7 @@ Ext.onReady(function() {
 
     var store= Ext.create('Ext.data.Store', {
         model: 'Admin',
-       	pageSize:5,
+       	pageSize:10,
         autoLoad:true,
         proxy: {
             type: 'ajax',
@@ -60,7 +106,11 @@ Ext.onReady(function() {
 
     var rowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
         clicksToMoveEditor: 2,
-        autoCancel: false
+        autoCancel: false,
+        errorSummary: false,
+	    saveBtnText: '保存',
+        cancelBtnText: '取消',
+        errorsText: '错误',
     });
     //行编辑器
 
@@ -86,14 +136,44 @@ Ext.onReady(function() {
     });
     //多选combobox
 
-    var pagingToolbar = new Ext.PagingToolbar
-    ({
+    
+    var pageSizeStore = new Ext.data.SimpleStore({  
+        fields: ['pageSizeValue','pageSizeItem'],  
+        data : [[5,5],[10,10],[15,15],[20,20],[50,50]]  
+    });  
+	//自定义分页显示的数据
+
+   var cmPageSize = new Ext.form.ComboBox({  
+        store: pageSizeStore,  
+        displayField:'pageSizeItem',  
+        valueField:'pageSizeValue',  
+        typeAhead: true,  
+        mode: 'local',  
+        triggerAction: 'all',  
+        emptyText:'10',  
+        width:40,  
+        selectOnFocus:true  
+    });  
+	//创建选择每页数目的combox  
+
+    var pagingToolbar = new Ext.PagingToolbar({
         emptyMsg:"没有数据",
+        pageSize: 10, 
         displayInfo:true,
         displayMsg:"显示从{0}条数据到{1}条数据，共{2}条数据",
         store:store,
     });
     //工具栏
+
+    pagingToolbar.add('-','每页',cmPageSize,'条记录');  
+
+	cmPageSize.on('change',function(e){  
+	    var myPageSize = e.getValue();  
+	    pagingToolbar.pageSize = myPageSize;  
+	    store.pageSize = myPageSize;
+	    store.load({params:{start:0,limit:myPageSize}}); 
+    });  
+	//监听选择显示页数的事件
 
     var contextmenu = new Ext.menu.Menu({
         id: 'gridMenu',
@@ -125,12 +205,10 @@ Ext.onReady(function() {
         source.账号 = row_data.uid;
         source.昵称 = row_data.nickname;
         for(var k in row_data.roles){
-            var index = role_store.find("value",row_data.roles[k]);
-            var record =  role_store.getAt(index);
             if(k != 0)
-                source.角色 += "," + record.get("role");
+                source.角色 += "," + row_data.roles[k].name;
             else
-                source.角色 += record.get("role");
+                source.角色 += row_data.roles[k].name;
         }
         source.邮箱 = row_data.email;
         source.描述 = row_data.desc;
@@ -179,6 +257,8 @@ Ext.onReady(function() {
     //模态窗口
 
     var createAdmin = false;//创建管理员标签
+    var c = $("meta[name='csrf-token']");
+	var csrf_token = c[0].content;
 
     var grid = Ext.create('Ext.grid.Panel', {
         id: 'grid',
@@ -196,21 +276,26 @@ Ext.onReady(function() {
             dataIndex: 'uid',
             editor: {
                 xtype: 'textfield',
-                allowBlank: false
+                allowBlank: false,
+                blankText: '请输入帐号'
             }            
         },{
             header: "昵称",
             dataIndex: 'nickname',
             editor: {
                 xtype: 'textfield',
-                allowBlank: false
+                allowBlank: false,
+                blankText: '请输入昵称'
             }            
         },{
         	header: "密码",
         	dataIndex: 'pwd',
             editor: {
                 xtype: 'textfield',
-                //allowBlank: false
+            //    allowBlank: false
+            	blankText: '请输入密码',
+            	minLength: '8',
+            	minLengthText: '密码长度不能小于8'
             },
             renderer: function(){
             	return '*****';
@@ -273,19 +358,19 @@ Ext.onReady(function() {
             itemId:'insertBtn',
             //iconCls: 'admin-add',
             handler : function() {
-                //rowEditing.cancelEdit();
-                // Create a model instance
                 var r = Ext.create('Admin', {
-                    uid: '此处填写用户名',
-                    nickname: '此处填写昵称',
-                    email: 'example@example.com',
-                    desc: '此处添加新描述',
+                    uid: '',
+                    nickname: '',
+                    pwd: '',
+                    email: '',
+                    desc: '',
                     role: '',
                     active: true
                 });
                 store.insert(0, r);
                 rowEditing.startEdit(0, 0);
                 createAdmin = true;
+				grid.columns[3].field.allowBlank = false;
             }
         },{
             itemId: 'removeBtn',
@@ -305,12 +390,11 @@ Ext.onReady(function() {
                 rowEditing.cancelEdit();
                 Ext.Msg.confirm('信息',ConfirmMessage,function(btn){
                    if(btn == 'yes'){
-
-                       store.remove(sm.getSelection());
-                       grid.view.refresh();
-                       if (store.getCount() > 0) {
-                           sm.select(0);
-                       }
+                   		var records = sm.getSelection();
+                   		for(var k in records){
+                   			console.log(records[k].get('id'));
+                   			delteAdmin(records[k].get('id'));
+                   		}
                    }
                 });
             },
@@ -336,7 +420,6 @@ Ext.onReady(function() {
         plugins: [
             rowEditing,
         ],
-//
         listeners: {
             'selectionchange': function(view, records) {
                 grid.down('#removeBtn').setDisabled(!records.length);
@@ -357,8 +440,7 @@ Ext.onReady(function() {
     function jsonPost(post_data)
     {
 		var params = [];
-    	var c = $("meta[name='csrf-token']");
-		var csrf_token = c[0].content;
+
 		params["authenticity_token"] = csrf_token;
         params["manage_admin[uid]"] = post_data.uid; 
         params["manage_admin[nickname]"] = post_data.nickname; 
@@ -391,8 +473,7 @@ Ext.onReady(function() {
 		        method: 'POST',
 	            url: '/manage/admins.json',
 	            success: function(response){
-	                Ext.Msg.alert('信息','保存成功',function(){
-	                    console.log(response.responseText);
+	                Ext.Msg.alert('信息','新建成功',function(){
 	                    store.reload();
 	                });
 	            },
@@ -408,23 +489,41 @@ Ext.onReady(function() {
 	            url: '/manage/admins/' + admins_id + '.json',
 	            success: function(response){
 	                Ext.Msg.alert('信息','保存成功',function(){
-	                    console.log(response.responseText);
 	                    store.reload();
 	                });
 	            },
 	            failure: function(){
 	                Ext.Msg.alert('错误','与后台联系时出错');
-	               // console.log(params);
 	                store.reload();
 	            },
 	            params: params_post
 	        });			
 		}
 		createAdmin = false;
+		grid.columns[3].field.allowBlank = true;
     });
 
 	//取消操作时重新加载数据
 	grid.on('cancelEdit',function(editor,e){
 		store.reload();
 	});
+
+	function delteAdmin(admins_id){
+ 		var params_delete = [];
+ 		Ext.Ajax.request({
+	        method: 'DELETE',
+            params: "authenticity_token=" + encodeURIComponent(csrf_token),
+            url: '/manage/admins/' + admins_id + '.json',
+            success: function(response){
+                Ext.Msg.alert('信息','删除成功',function(){
+                    store.reload();
+                });
+            },
+            failure: function(){
+                Ext.Msg.alert('错误','与后台联系时出错');
+                store.reload();
+            },
+	    });				
+	}
+
 });
