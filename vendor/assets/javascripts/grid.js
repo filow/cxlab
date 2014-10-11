@@ -111,6 +111,16 @@ Ext.onReady(function() {
 	    saveBtnText: '保存',
         cancelBtnText: '取消',
         errorsText: '错误',
+        listeners: {
+        	'beforeedit': function(){
+        		var row = grid.getSelectionModel().getSelection();
+        		multiCombo.setValue(row[0].data.roles);
+        		multiCombo.lastSelection = row[0].data.roles;
+        		multiCombo.lastValue = row[0].data.roles;
+        		multiCombo.setRawValue(roleRender(row[0].data.roles));
+        		console.log(multiCombo);
+        	},
+        }
     });
     //行编辑器
 
@@ -128,14 +138,8 @@ Ext.onReady(function() {
         editable: false,
         emptyText: '请选择职位',
         queryMode: 'local',
-        listeners: {
-        	'select': function(){
-       // 		console.log(multiCombo.value);
-        	}
-        }
     });
     //多选combobox
-
     
     var pageSizeStore = new Ext.data.SimpleStore({  
         fields: ['pageSizeValue','pageSizeItem'],  
@@ -260,6 +264,18 @@ Ext.onReady(function() {
     var c = $("meta[name='csrf-token']");
 	var csrf_token = c[0].content;
 
+	function roleRender(value){
+        var role_str = "";
+    	for(var k in value){
+    		if(k == 0)
+    			role_str += value[k].name;
+    		else 
+    			role_str += ',' + value[k].name;
+    	}
+    	return role_str;
+	}
+	//角色渲染方法
+
     var grid = Ext.create('Ext.grid.Panel', {
         id: 'grid',
         store: store,
@@ -305,14 +321,7 @@ Ext.onReady(function() {
             dataIndex: 'roles',
             editor:multiCombo,
             renderer: function(value){
-            	var role_str = "";
-            	for(var k in value){
-            		if(k == 0)
-            			role_str += value[k].name;
-            		else 
-            			role_str += ',' + value[k].name;
-            	}
-            	return role_str;
+            	return roleRender(value);
             }
         },{
             header: "邮箱",
@@ -392,7 +401,6 @@ Ext.onReady(function() {
                    if(btn == 'yes'){
                    		var records = sm.getSelection();
                    		for(var k in records){
-                   			console.log(records[k].get('id'));
                    			delteAdmin(records[k].get('id'));
                    		}
                    }
@@ -504,9 +512,9 @@ Ext.onReady(function() {
     });
 
 	//取消操作时重新加载数据
-	grid.on('cancelEdit',function(editor,e){
+/*	grid.on('cancelEdit',function(editor,e){
 		store.reload();
-	});
+	});*/
 
 	function delteAdmin(admins_id){
  		var params_delete = [];
