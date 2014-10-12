@@ -15,7 +15,7 @@ class Manage::Student < ActiveRecord::Base
     validate :password_must_be_present
 
 
-    has_and_belongs_to_many :roles
+    belongs_to :profession
     attr_reader :pwd
     # pwd赋值方法，当使用user.pwd=的时候会触发这个方法
     def pwd=(new_pw)
