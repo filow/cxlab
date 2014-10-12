@@ -10,10 +10,15 @@ class Manage::IndexController < ManageController
             {text: "角色管理",icon: "users",options:{controller: "roles",action: "index"}},
             {text: "权限管理",icon: "key",options:{controller: "nodes",action: "index"}}
         ],
+        "学生管理"=> [
+            {text: "学生名单",icon: "list",options:{controller:"students",action:"index"}},
+            {text: "学院专业设置",icon: "graduation-cap",options:{controller:"professions",action:"index"}},
+        ],
         "系统管理"=> [
             {text: "系统设置",icon: "cog",options:{controller: "configs",action: "index"}},
 
         ],
+
         "测试子目录"=>[
             {text:"父目录",icon: "list",children:[
                 {text: "子目录",icon: "list",options:{controller: "index",action: "dashboard"}}

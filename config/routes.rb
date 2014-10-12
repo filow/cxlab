@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :manage do
+    resources :professions
+  end
+
+  namespace :manage do
+    resources :students
+  end
+
   root 'manage/index#index'
   namespace :manage do
     resources :admins 
