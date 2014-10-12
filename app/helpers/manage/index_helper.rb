@@ -5,8 +5,7 @@ module Manage::IndexHelper
             "success"
         when "需要改进"
             "warning"
-        when "等待"
-            "active"
+
         end
     end
 end

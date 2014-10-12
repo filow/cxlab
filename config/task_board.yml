@@ -2,7 +2,7 @@
 
 task1:
     name: 后台登陆首页页面的制作
-    status: 需要改进
+    status: 完成
     developer: 宋小萌
 task2:
     name: 角色管理界面中分配角色权限的功能

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004045526) do
+ActiveRecord::Schema.define(version: 20141010142440) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -61,10 +61,29 @@ ActiveRecord::Schema.define(version: 20141004045526) do
 
   add_index "nodes_roles", ["role_id", "node_id"], name: "index_nodes_roles_on_role_id_and_node_id", using: :btree
 
+  create_table "professions", force: true do |t|
+    t.string  "name"
+    t.integer "pid",  default: 0
+  end
+
   create_table "roles", force: true do |t|
     t.string  "name",                      null: false
     t.boolean "is_enabled", default: true
     t.string  "remark"
+  end
+
+  create_table "students", force: true do |t|
+    t.string   "stuid",            limit: 20
+    t.string   "name",                                        null: false
+    t.string   "password",         limit: 64,                 null: false
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "profession_id"
+    t.integer  "grade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "is_email_checked",            default: false
+    t.boolean  "is_phone_checked",            default: false
   end
 
 end
