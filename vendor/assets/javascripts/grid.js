@@ -98,7 +98,6 @@ Ext.onReady(function() {
     });
     //角色信息读取完毕
 
-    console.log(role_store);
     var rowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
         clicksToMoveEditor: 2,
         autoCancel: false,
