@@ -14,7 +14,7 @@ class Manage::AdminsController < ManageController
   # GET /manage/admins/1
   # GET /manage/admins/1.json
   def show
-      @admin_roles= Manage::Admin.find(params[:id]).roles
+    @admin_roles= Manage::Admin.find(params[:id]).roles
   end
 
   # GET /manage/admins/new
@@ -24,12 +24,13 @@ class Manage::AdminsController < ManageController
 
   # GET /manage/admins/1/edit
   def edit
-      @admin_roles= Manage::Admin.find(params[:id]).roles
+    @admin_roles= Manage::Admin.find(params[:id]).roles
   end
   # POST /manage/admins
   # POST /manage/admins.json
   def create
     @manage_admin = Manage::Admin.new(manage_admin_params)
+    @admin_roles= @manage_admin.roles
     respond_to do |format|
       if @manage_admin.save
 
@@ -38,6 +39,7 @@ class Manage::AdminsController < ManageController
         @manage_admin.roles_in_id=roles_id
 
         format.html { redirect_to @manage_admin, notice: "成功创建管理员#{@manage_admin.nickname}." }
+
         format.json { render :show, status: :created, location: @manage_admin }
       else
         format.html { render :new }
@@ -49,8 +51,6 @@ class Manage::AdminsController < ManageController
   # PATCH/PUT /manage/admins/1
   # PATCH/PUT /manage/admins/1.json
   def update
-    @manage_roles=Manage::Role.all
-    
     respond_to do |format|
       if @manage_admin.update(manage_admin_params)
 
@@ -59,9 +59,10 @@ class Manage::AdminsController < ManageController
         @manage_admin.roles_in_id=roles_id
 
         format.html { redirect_to @manage_admin, notice: '管理员信息更新成功.' }
+
         format.json { render :show, status: :ok, location: @manage_admin }
       else
-        format.html { render :edit }
+        format.html { render :edit,notice:'修改失败'}
         format.json { render json: @manage_admin.errors, status: :unprocessable_entity }
       end
     end
@@ -72,7 +73,9 @@ class Manage::AdminsController < ManageController
   def destroy
     @manage_admin.destroy
     respond_to do |format|
+
       format.html { redirect_to manage_admins_url, notice: '此管理员账户已被删除.' }
+
       format.json { head :no_content }
     end
   end

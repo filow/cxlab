@@ -1,4 +1,4 @@
-class Manage::StudentsController < ApplicationController
+class Manage::StudentsController < ManageController
   before_action :set_manage_student, only: [:show, :edit, :update, :destroy]
 
   # GET /manage/students
@@ -69,6 +69,6 @@ class Manage::StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def manage_student_params
-      params.require(:manage_student).permit(:stuid, :name, :email, :phone, :grade)
+      params.require(:manage_student).permit(:stuid, :name, :pwd,:email, :phone, :grade)
     end
 end

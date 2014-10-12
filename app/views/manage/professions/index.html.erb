@@ -1,25 +1,58 @@
-<h1>Listing manage_professions</h1>
+<div class="page-header">
+  <h1>学院专业列表</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @manage_professions.each do |manage_profession| %>
-      <tr>
-        <td><%= manage_profession.name %></td>
-        <td><%= link_to 'Show', manage_profession %></td>
-        <td><%= link_to 'Edit', edit_manage_profession_path(manage_profession) %></td>
-        <td><%= link_to 'Destroy', manage_profession, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="panel-group" id="accordion">
+<% i=0 %>
+<% @manage_professions.each do |manage_profession| %>
+  <div class="panel panel-default">
+    <div class="panel-heading node-block">
+      <h3 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= manage_profession.name %>">
+          <%= manage_profession.name %>
+        </a>
+      </h3>
+    </div>
+    <div id="collapse<%= manage_profession.name %>" class="panel-collapse collapse <% if i==0 %>in<% end %>">
+        <table class="table table-hover">
+          <thead>
+            <th><%= tm 'profession.name'  %></th>
+            <th></th>
+            <th></th>
+            <th><%= link_to '编辑', edit_manage_profession_path(manage_profession,:pid=>0),class:"btn btn-warning" %>
+                <%= link_to '删除', manage_profession, method: :delete,
+                  data: { confirm: t('confirm_delete') },class:"btn btn-danger" %></th>
+          </thead>
+          
+          <% manage_profession.child.each do |cprofession| %>
+            <tr>
+              <td><%= cprofession.name %></td>
+              <td></td>
+              <td></td>
+              <td>
+                <%= link_to '编辑', edit_manage_profession_path(cprofession,:pid=>manage_profession),class:"btn btn-warning" %>
+                <%= link_to '删除', manage_profession_path(cprofession), method: :delete,
+                  data: { confirm: t('confirm_delete') },class:"btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+          <tr><td><%= link_to fa_icon('plus',text:'添加专业'), new_manage_profession_path(:pid=>manage_profession),class:"btn btn-success" %></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          </table>
+    </div>
+  </div>
+  <% i+=1 %>
+<% end %>
+</div>
 
 <br>
 
-<%= link_to 'New Profession', new_manage_profession_path %>
+<%= link_to fa_icon('plus',text:'添加学院'), new_manage_profession_path(:pid=>0),class:"btn btn-success" %>
+
+
+
+
+
