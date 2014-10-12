@@ -1,5 +1,6 @@
+# require "#{Rails.root}/app/uploaders/avatar_uploader.rb"
 class Manage::Student < ActiveRecord::Base
-        # uid（登陆账号）不允许重复
+    # stuid（学号）不允许重复
     validates_uniqueness_of :stuid
     # 提交表单时必须包含uid以及nickname
     validates_presence_of :stuid
@@ -14,28 +15,33 @@ class Manage::Student < ActiveRecord::Base
     # 检查是否成功为password赋值
     validate :password_must_be_present
 
-
+    # 学院/专业
     belongs_to :profession
+
+    # 用户头像
+    mount_uploader :avatar, AvatarUploader
+
+
     attr_reader :pwd
     # pwd赋值方法，当使用user.pwd=的时候会触发这个方法
     def pwd=(new_pw)
         # 当新的密码非空时，设置数据库password字段为加密后的字符串
         unless new_pw.blank?
             @pwd=new_pw
-            self.password=self.class.encrypt_password(self.uid,new_pw)
+            self.password=self.class.encrypt_password(self.stuid,new_pw)
         end
     end
 
-    def self.auth(uid,password)
-        if user=find_by_uid(uid)
-            if user.password == encrypt_password(user.uid,password)
+    def self.auth(stuid,password)
+        if user=find_by_stuid(stuid)
+            if user.password == encrypt_password(user.stuid,password)
                 user
             end
         end
     end
 
-    def self.encrypt_password(uid,pw)
-        Digest::SHA2.hexdigest(uid+"_ADMIN_"+pw)
+    def self.encrypt_password(stuid,pw)
+        Digest::SHA2.hexdigest(stuid+"_ADMIN_"+pw)
     end
 
     

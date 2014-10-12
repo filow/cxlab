@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Stuid</th>
       <th>Name</th>
       <th>Email</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @manage_students.each do |manage_student| %>
       <tr>
+        <td><%= image_tag manage_student.avatar_url(:thumb_mini) %></td>
         <td><%= manage_student.stuid %></td>
         <td><%= manage_student.name %></td>
         <td><%= manage_student.email %></td>
