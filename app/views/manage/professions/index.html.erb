@@ -21,7 +21,7 @@
             <th></th>
             <th><%= link_to '编辑', edit_manage_profession_path(manage_profession,:pid=>0),class:"btn btn-warning" %>
                 <%= link_to '删除', manage_profession, method: :delete,
-                  data: { confirm: t('confirm_delete') },class:"btn btn-danger" %></th>
+                  data: { confirm: t('confirm_delete') },class:"btn btn-danger",disabled:!manage_profession.child.empty?%></th>
           </thead>
           
           <% manage_profession.child.each do |cprofession| %>

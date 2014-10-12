@@ -54,11 +54,7 @@ class Manage::ProfessionsController < ManageController
   # DELETE /manage/professions/1
   # DELETE /manage/professions/1.json
   def destroy
-    #如果删除学院，则需要将学院下的所有专业删除
-    if @manage_profession.pid==0
-      Manage::Profession.delete_all(pid:@manage_profession.id)
-    end
-      @manage_profession.destroy
+    @manage_profession.destroy
     respond_to do |format|
       format.html { redirect_to manage_professions_url, notice: '学院/专业已被删除' }
       format.json { head :no_content }
