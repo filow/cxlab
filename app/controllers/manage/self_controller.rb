@@ -8,6 +8,7 @@ class Manage::SelfController < ManageController
   	@manage_admin.update(manage_admin_params)
   	redirect_to manage_self_index_path
   end
+  #传递参数
   def manage_admin_params
       params.permit(:uid, :nickname, :pwd, :email, :desc)
   end
