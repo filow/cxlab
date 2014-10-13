@@ -8,7 +8,8 @@ class Manage::AdminsController < ManageController
   	@total_count = Manage::Admin.count()
   	offset = params[:start]
   	limit = params[:limit]
-    @manage_admins = Manage::Admin.limit(limit).offset(offset)
+    query = '%' + params[:query].to_s + '%'
+    @manage_admins = Manage::Admin.where("uid like ? or nickname like ?",query,query).limit(limit).offset(offset)
   end
 
   # GET /manage/admins/1
