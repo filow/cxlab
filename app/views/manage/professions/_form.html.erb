@@ -1,21 +1,15 @@
 <%= form_for(@manage_profession) do |f| %>
-  <% if @manage_profession.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@manage_profession.errors.count, "error") %> prohibited this manage_profession from being saved:</h2>
+  <%= form_errors(@manage_profession) %>
+<table class="table">
+  <tr>
+    <td><%= f.label :name %></td>
+    <td><%= f.text_field :name,class:"form-control" %></td>
+  </tr>
+  <%= f.hidden_field :pid,value: params[:pid] %>
+  
+</table>
 
-      <ul>
-      <% @manage_profession.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit nil,class:"btn btn-lg btn-primary" %>
   </div>
 <% end %>

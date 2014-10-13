@@ -1,5 +1,4 @@
 <h1>Listing manage_students</h1>
-
 <table>
   <thead>
     <tr>
@@ -12,7 +11,7 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
+  
   <tbody>
     <% @manage_students.each do |manage_student| %>
       <tr>
@@ -29,7 +28,10 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
+<div id="grid" style="margin:10px 10px"></div>
 <%= link_to 'New Student', new_manage_student_path %>
+<%= javascript_include_tag "ext-all.js", 'data-turbolinks-track' => true %>
+<%= javascript_include_tag "admins_grid.js", 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag    "theme-all.css", media: 'all', 'data-turbolinks-track' => true %>
+

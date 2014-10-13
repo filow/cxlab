@@ -103,42 +103,43 @@
                 <li><%= link_to "退出登录",manage_logout_path,method: :delete,:class=>"logout" %></li>
             </ul>
         </div>
-
+        
         <div class="main">
-	        <div class="sidebar">
-	            <div class="sidebar-container">
-	                <% @navs.each do |key,val| %>
-	                <div class="container-fluid">
-	                    <div class="sidebar-row">
-	                        <div class="sidebar-header"><%= key %></div>
-	                        <div class="sidebar-nav-container">
-	                            <ul class="sidebar-nav">
-				    <% val.each do |nav| %>
-				        <% if nav[:children].nil? %>
-				            <li><%= link_to fa_icon(nav[:icon],text:nav[:text]),nav[:options],target: "main_frame",data:{mod: nav[:options][:controller]+'_'+nav[:options][:action],url:url_for(nav[:options])} %></li>
-				        <% else %>
-				            <li class="sidebar-subnav-list">
-				                <a class="sidebar-subnav-button" >
-				                    <%= fa_icon(nav[:icon]) %>
-				                    <%= nav[:text] %>
-				                    <i class="fa fa-chevron-left toggle-button"></i>
-				                </a>
-				                <ul class="sidebar-subnav">
-				                    <% nav[:children].each do |child| %>
-				                        <li><%= link_to fa_icon(child[:icon],text:child[:text]),child[:options],target: "main_frame",data:{mod: child[:options][:controller]+'_'+child[:options][:action],url:url_for(nav[:options])} %></li>
-				                    <% end %>
-				                </ul>
-				            </li>
-				        <% end %>
-				    <% end %>
-	                            </ul>
-	                        </div>
-	                    </div>
-	                </div>
-	                <% end %>
-	            </div>
-	        </div>
-            <div class="body" >
+            <div class="sidebar">
+                        <div class="sidebar-container">
+                            <ul class="sidebar-row">
+                                <% @navs.each do |key,val| %>
+                                    <li class="sidebar-group">
+                                        <a class="sidebar-header-button">
+                                            <%= key %>
+                                            <i class="fa fa-caret-right toggle-button"></i>
+                                        </a>
+                                        <ul class="sidebar-nav">
+                                            <% val.each do |nav| %>
+                                                <% if nav[:children].nil? %>
+                                                    <li class="sidebar-nav-list"><%= link_to fa_icon(nav[:icon],text:nav[:text]),nav[:options],target: "main_frame",class:"sidebar-nav-button",data:{mod: nav[:options][:controller]+'_'+nav[:options][:action],url:url_for(nav[:options])} %></li>
+                                                <% else %>
+                                                    <li class="sidebar-nav">
+                                                        <a class="sidebar-nav-button" >
+                                                            <%= fa_icon(nav[:icon]) %>
+                                                            <%= nav[:text] %>
+                                                            <i class="fa fa-chevron-left toggle-button"></i>
+                                                        </a>
+                                                        <ul class="sidebar-subnav">
+                                                            <% nav[:children].each do |child| %>
+                                                                <li><%= link_to fa_icon(child[:icon],text:child[:text]),child[:options],target: "main_frame",data:{mod: child[:options][:controller]+'_'+child[:options][:action],url:url_for(nav[:options])} %></li>
+                                                            <% end %>
+                                                        </ul>
+                                                    </li>
+                                                <% end %>
+                                            <% end %>
+                                        </ul>
+                                    </li>
+                                <% end %>
+                            </ul>
+                        </div>            
+            </div>
+              <div class="body" >
             	<iframe src="<%= manage_index_dashboard_path %>" class="iframe" frameborder="0" id="main_frame" name="main_frame"></iframe>
             	<div id="message"></div>
             </div>

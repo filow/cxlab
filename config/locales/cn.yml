@@ -59,7 +59,8 @@ cn:
         name: 真实姓名
         email: 电子邮箱
         phone: 手机号
-        grade: 年纪
+        grade: 年级
+        pwd: 密码
         profession: 专业
         created_at: 注册时间
         updated_at: 资料更新时间

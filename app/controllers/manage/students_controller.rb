@@ -1,4 +1,4 @@
-class Manage::StudentsController < ApplicationController
+class Manage::StudentsController < ManageController
   before_action :set_manage_student, only: [:show, :edit, :update, :destroy]
 
   # GET /manage/students
