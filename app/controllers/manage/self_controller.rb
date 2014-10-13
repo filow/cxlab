@@ -5,7 +5,10 @@ class Manage::SelfController < ManageController
   #更新管理员数据
   def update
   	@manage_admin = Manage::Admin.find(logged_admin_id)
-  	Manage::Admin.update(@manage_admin.id,:uid => params[:uid],:nickname=> params[:nickname],:pwd=> params[:pwd],:email=> params[:email],:desc=> params[:desc])
+  	@manage_admin.update(manage_admin_params)
   	redirect_to manage_self_index_path
+  end
+  def manage_admin_params
+      params.permit(:uid, :nickname, :pwd, :email, :desc)
   end
 end

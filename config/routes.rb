@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
     # 个人信息设置
     get 'self/index'
-    get 'self/update'
     post 'self/update'
   end
 
