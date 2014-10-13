@@ -54,9 +54,13 @@ class Manage::ProfessionsController < ManageController
   # DELETE /manage/professions/1
   # DELETE /manage/professions/1.json
   def destroy
-    @manage_profession.destroy
+    if @manage_profession.destroy
+      notice='学院/专业已被删除'
+    else
+      notice='删除失败，专业不为空'
+    end
     respond_to do |format|
-      format.html { redirect_to manage_professions_url, notice: '学院/专业已被删除' }
+      format.html { redirect_to manage_professions_url, notice: notice }
       format.json { head :no_content }
     end
   end
