@@ -69,6 +69,6 @@ class Manage::StudentsController < ManageController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def manage_student_params
-      params.require(:manage_student).permit(:stuid, :name, :pwd,:email, :phone, :grade)
+      params.require(:manage_student).permit(:stuid, :name, :pwd, :email, :phone, :grade, :avatar)
     end
 end

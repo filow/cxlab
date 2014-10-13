@@ -1,15 +1,5 @@
-<%= form_for(@manage_student) do |f| %>
-  <% if @manage_student.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@manage_student.errors.count, "error") %> prohibited this manage_student from being saved:</h2>
-
-      <ul>
-      <% @manage_student.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(@manage_student,html: { multipart: true }) do |f| %>
+  <%= form_errors(@manage_student) %>
 
   <div class="field">
     <%= f.label :stuid %><br>
@@ -34,6 +24,10 @@
   <div class="field">
     <%= f.label :grade %><br>
     <%= f.number_field :grade %>
+  </div>
+  <div class="field">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
   </div>
   <div class="actions">
     <%= f.submit %>

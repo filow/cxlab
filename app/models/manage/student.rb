@@ -1,5 +1,6 @@
+# require "#{Rails.root}/app/uploaders/avatar_uploader.rb"
 class Manage::Student < ActiveRecord::Base
-        # stuid（登陆账号）不允许重复
+    # stuid（学号）不允许重复
     validates_uniqueness_of :stuid
     # 提交表单时必须包含uid以及nickname
     validates_presence_of :stuid
@@ -14,8 +15,13 @@ class Manage::Student < ActiveRecord::Base
     # 检查是否成功为password赋值
     validate :password_must_be_present
 
-
+    # 学院/专业
     belongs_to :profession
+
+    # 用户头像
+    mount_uploader :avatar, AvatarUploader
+
+
     attr_reader :pwd
     # pwd赋值方法，当使用user.pwd=的时候会触发这个方法
     def pwd=(new_pw)
