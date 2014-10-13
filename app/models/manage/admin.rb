@@ -40,6 +40,7 @@ class Manage::Admin < ActiveRecord::Base
 		Digest::SHA2.hexdigest(uid+"_ADMIN_"+pw)
 	end
 
+	#修改管理员的用户角色
 	def roles_in_id=(id_array=nil)
 		# 清空所有角色信息
 		roles.clear
@@ -57,6 +58,7 @@ class Manage::Admin < ActiveRecord::Base
 		# 返回角色信息
 		roles
 	end
+
 private
 	def password_must_be_present
 		errors.add(:pwd,"没有找到") unless password.present?

@@ -1,0 +1,15 @@
+<%= form_for(@manage_profession) do |f| %>
+  <%= form_errors(@manage_profession) %>
+<table class="table">
+  <tr>
+    <td><%= f.label :name %></td>
+    <td><%= f.text_field :name,class:"form-control" %></td>
+  </tr>
+  <%= f.hidden_field :pid,value: params[:pid] %>
+  
+</table>
+
+  <div class="actions">
+    <%= f.submit nil,class:"btn btn-lg btn-primary" %>
+  </div>
+<% end %>

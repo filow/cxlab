@@ -32,6 +32,8 @@ cn:
       manage/admin: 管理员
       manage/role: 角色
       manage/node: 权限节点
+      manage/student: 学生
+      manage/profession: 学院/专业
     attributes:
       manage/admin:
         uid: 登陆id
@@ -52,6 +54,19 @@ cn:
         field_type: 增强规则
         sort: 排序号
         pid: 父节点id
+      manage/student:
+        stuid: 学号
+        name: 真实姓名
+        email: 电子邮箱
+        phone: 手机号
+        grade: 年级
+        pwd: 密码
+        profession: 专业
+        created_at: 注册时间
+        updated_at: 资料更新时间
+      manage/profession:
+        name: 专业名称
+        parent: 学院
     errors:
       template:
         header:
