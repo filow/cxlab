@@ -1,13 +1,9 @@
 # 任务板描述文件
 
 task1:
-    name: 后台登陆首页页面的制作
-    status: 完成
-    developer: 宋小萌
-task2:
-    name: 角色管理界面中分配角色权限的功能
+    name: 制作学生管理界面中的Extjs表格
+    developer: 陈洁
     status: 正在进行
-    developer: 徐长栋
 task3:
     name: 系统设置中设置描述文件的制作以及seeds.rb文件中相应操作的编写
     status: 正在进行
@@ -26,8 +22,8 @@ task5:
     developer: 
 task6:
     name: 获取指定用户权限信息的功能
-    status: 等待
-    developer: 
+    status: 正在进行
+    developer: 徐长栋
 task7:
     name: 权限增强功能的实现
     status: 等待
