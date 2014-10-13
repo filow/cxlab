@@ -1,15 +1,2 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  stuid: MyString
-  name: MyString
-  email: MyString
-  phone: MyString
-  grade: 1
-
-two:
-  stuid: MyString
-  name: MyString
-  email: MyString
-  phone: MyString
-  grade: 1
