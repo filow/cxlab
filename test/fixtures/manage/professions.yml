@@ -1,0 +1,19 @@
+#计算机学院(有两个专业)
+computer_colleage:
+  id: 1
+  name: 计算机学院
+  pid: 0
+computer:
+  id: 2
+  name: 计算机
+  pid: 1
+communication:
+  id: 3
+  name: 通信
+  pid: 1
+
+#外语学院(专业为空)
+foreign_colleage:
+  id: 4
+  name: 外语学院
+  pid: 0
