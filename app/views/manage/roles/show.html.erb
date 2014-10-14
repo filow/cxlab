@@ -26,7 +26,6 @@
                   <th><%= tm 'node.name'  %></th>
                   <th><%= tm 'node.title'  %></th>
                   <th><%= tm 'node.remark' %></th>
-                  <th><%= tm 'node.field_type' %></th>
                 </thead>
                 
               <% manage_node.child.each do |cnode| %>
@@ -35,7 +34,6 @@
                       <td><%= cnode.name %></td>
 		                  <td><%= cnode.title %></td>
 		                  <td><%= cnode.remark %></td>
-		                  <td><%= cnode.field_type %></td>
                     <% end %>                  
                 </tr>
               <% end %>
