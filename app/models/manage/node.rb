@@ -7,10 +7,13 @@ class Manage::Node < ActiveRecord::Base
     has_and_belongs_to_many :roles
     belongs_to :parent, class_name: "Manage::Node",foreign_key: "pid"
 
-
-    def self.tree_view
+    def self.tree_view(child_val=nil)
+        if child_val==nil
+            child_nodes=where('pid != 0').all
+        else
+            child_nodes=child_val
+        end
         parent_nodes=where(pid: 0).order(sort: :asc).all
-        child_nodes=where('pid != 0').all
         result=[]
         parent_nodes.each do |pnode|
             temp_node=pnode
