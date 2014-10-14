@@ -161,12 +161,15 @@ a,button{
 							}
 							&.notify-ctrl{
 								width:$dropdown-notify-width/2+10;
+								float: left;
 							}
 							&.user-ctrl{
 								width:$dropdown-user-width/2+10;
+								float: left;
 							}
 							&.mails-ctrl{
 								width:$dropdown-mails-width/2+25;
+								float: left;
 							}
 						}
 						.ctrl-left{
@@ -175,7 +178,6 @@ a,button{
 						}
 						.ctrl-right{
 							border-bottom-right-radius:5px;
-							margin-left:-5px;
 						}
 					}
 					//dropdown menu - user control
