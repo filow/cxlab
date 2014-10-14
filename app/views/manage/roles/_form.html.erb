@@ -31,7 +31,7 @@
             <div id="collapse<%= manage_node.name %>" class="panel-collapse collapse <% if i==0 %>in<% end %>">
                 <table class="table table-hover">
                   <thead>
-                    <th><input type="checkbox"></th>
+                    <th><input type="checkbox" data-name="nodes[]" id="check_all"></th>
                     <th><%= tm 'node.name'  %></th>
                     <th><%= tm 'node.title'  %></th>
                     <th><%= tm 'node.remark' %></th>
