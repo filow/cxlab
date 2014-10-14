@@ -2,7 +2,7 @@
 	<%= form_tag manage_self_update_path,name: "form",class:"form-inline" do %>
 		<%= text_field_tag :uid,@manage_admin.uid,class: "form-control",placeholder: "登录名" %>
 		<%= text_field_tag :nickname,@manage_admin.nickname,class: "form-control",placeholder: "用户名" %>
-		<%= password_field_tag :pwd,@manage_admin.password,class: "form-control",placeholder: "密码" %>
+		<%= password_field_tag :pwd,nil,class: "form-control",placeholder: "密码" %>
 		<%= text_field_tag :email,@manage_admin.email,class: "form-control",placeholder: "电子邮箱" %>
 		<%= text_field_tag :desc,@manage_admin.desc,class: "form-control login-input",placeholder:"个人描述" %>
 		<%= submit_tag "修改",class: "btn btn-primary login-submit" %>
