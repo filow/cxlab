@@ -53,7 +53,7 @@ Ext.override(Ext.grid.RowEditor, {
 Ext.onReady(function() {
     Ext.define('Admin', {
         extend: 'Ext.data.Model',
-        fields: ['id', 'stuid', 'name', 'email', 'phone', 'grade', 'url','pwd']
+        fields: ['id', 'stuid', 'name', 'email', 'phone', 'grade', 'url','pwd','avatar']
     });
 
     var store = Ext.create('Ext.data.Store', {
@@ -160,7 +160,8 @@ Ext.onReady(function() {
             '邮箱': '',
             '年级': '',
             '电话': '',
-            '密码': ''
+            '密码': '',
+            // '头像': ''
         };
         source.id = row_data.id;
         source.学号 = row_data.stuid;
@@ -169,6 +170,7 @@ Ext.onReady(function() {
         source.年级 = row_data.grade;
         source.电话 = row_data.phone;
         source.密码 = "******";
+        // source.头像 = "<img width='50px' src='" + row_data.avatar + "'>";
         return source;
     }
     //获取属性表格source，键名映射
@@ -275,6 +277,12 @@ Ext.onReady(function() {
         }]
     });
     //顶部工具栏
+
+    var fileInput = new Ext.form.TextField({
+              inputType:'file'
+    });
+    //上传input
+
     var createAdmin = false; //创建管理员标签
     var c = $("meta[name='csrf-token']");
     var csrf_token = c[0].content;
@@ -297,6 +305,18 @@ Ext.onReady(function() {
             header: "ID",
             dataIndex: 'id'
 
+        },
+        {
+            header:"头像",
+            dataIndex: 'avatar',
+            // align: 'center',
+            renderer: function(value){
+                    if(value)
+                        return "<img width='30px' src='" + value + "'/>"; 
+                    else
+                        return "<img width='30px' src='/assets/user-thumb.png'>";
+            },
+               editor: fileInput
         },
         {
             header: "学号",
@@ -348,7 +368,7 @@ Ext.onReady(function() {
             header: "年级",
             dataIndex: 'grade',
             editor: {
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 // allowBlank: false
             }
         }],
@@ -363,11 +383,11 @@ Ext.onReady(function() {
         }
     });
 
-    grid.on("itemcontextmenu",
-    function(view, record, item, index, e) {
-        e.preventDefault();
-        contextmenu.showAt(e.getXY());
-    });
+    // grid.on("itemcontextmenu",
+    // function(view, record, item, index, e) {
+    //     e.preventDefault();
+    //     contextmenu.showAt(e.getXY());
+    // });
 
     function jsonPost(post_data) {
         var params = [];
@@ -391,6 +411,7 @@ Ext.onReady(function() {
     grid.on('edit',
     function(editor, e) {
         var post_data = e.record.data;
+        console.log(fileInput.value);
         var students_id = post_data.id;
         params_post = jsonPost(post_data);
         if (createAdmin) {
