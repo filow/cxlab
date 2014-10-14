@@ -55,9 +55,9 @@ $(document).ready(function(){
  	});
 
     	//sidebar 滚动条初始化
-    	$(".sidebar-container").mCustomScrollbar({
-        		scrollInertia:150
-    	});
+    	// $(".sidebar-container").mCustomScrollbar({
+     //    		scrollInertia:150
+    	// });
 
     	//滚动条scroller dragger 显示处理
     	$(".sidebar-container").hover(function () {
@@ -70,20 +70,37 @@ $(document).ready(function(){
     	var nav = $(".sidebar-nav");
     	var sidebar_group = $(" .sidebar-group");
     	$(".sidebar-group > .sidebar-header-button").each(function (i) {
-        		$(this).click(function () {
-            			if ($(nav[i]).css("display") == "block") {
-                			$(nav[i]).slideUp(300);
-                			$(this).parent().removeClass('open')
-            			} else {
-	                		for (var j = 0; j < nav.length; j++) {
+        		if(i != 0){
+	         		$(this).click(function () {
+	            			if ($(nav[i]).css("display") == "block") {
+	                			$(nav[i]).slideUp(300);
+	                			$(this).parent().removeClass('open')
+	            			} else {
+		                		for (var j = 1; j < nav.length; j++) {
+		                    			$(nav[j]).slideUp(200);
+		                    			$(sidebar_group[j]).removeClass('open')
+		                		}
+		                		$(nav[i]).slideDown(200);
+		                		$(this).parent().addClass('open')
+	 	           		}
+	        		});       			
+        		}//普通菜单
+        		else{
+        			$(this).click(function () {
+	                		for (var j = 1; j < nav.length; j++) {
 	                    			$(nav[j]).slideUp(200);
 	                    			$(sidebar_group[j]).removeClass('open')
-	                		}
-	                		$(nav[i]).slideDown(200);
-	                		$(this).parent().addClass('open')
- 	           		}
-        		});
+	                		}       				
+	        		});       			
+        		}//快捷菜单
     	});	
+    	$(".sidebar-group:first-child  .sidebar-nav-button").click(function(){
+            		for (var j = 1; j < nav.length; j++) {
+                			$(nav[j]).slideUp(200);
+                			$(sidebar_group[j]).removeClass('open')
+            		}       				
+    	});
+    	//点击快捷菜单关闭其他菜单
 
     	var OldHref,NewHrefBase,BaseHref,Module;
 	//解析URL分析module
@@ -131,7 +148,8 @@ $(document).ready(function(){
 		    		if(thisModule == Module)
 		    		{
 		    			$(this).parents(".sidebar-group").addClass("active");
-			    		$(this).parents(".sidebar-nav").css("display","block");
+		    			$(this).parents(".sidebar-nav").addClass("open");
+			    		// $(this).parents(".sidebar-nav").css("display","block");
 		    		}
 		    	});
 		}		
