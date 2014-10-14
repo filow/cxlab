@@ -23,7 +23,7 @@ body{
         width: 602px;
         float: right;
         margin-right: 81px;
-        margin-top: 41px;
+        padding-top: 41px;
     }
     #login_form{
         float: left;
@@ -47,4 +47,24 @@ body{
             margin-bottom: 10px;
         }
     }
+}
+@media screen and (max-width: 1230px){
+#top_frame{
+    #computer{
+        display: none;
+    }
+    #logo{
+        float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #login_form{
+        float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 523px;
+    }
+}
 }
