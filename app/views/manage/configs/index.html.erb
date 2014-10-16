@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Listing manage_configs</h1>
+  <h1>系统设置</h1>
 </div>
 
 <table class="table">
@@ -29,9 +29,53 @@
 </table>
 
 
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+
+
+
+
+<div class="panel-group" id="accordion">
+<% i=0 %>
+<% @manage_configs.each do |manage_config| %>
+  <div class="panel panel-default">
+    <div class="panel-heading node-block">
+      <h3 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= manage_config.name %>">
+          <%= manage_config.title %>(<%= manage_config.name %>) 
+        </a>
+      </h3>
+    </div>
+    <div id="collapse<%= manage_config.name %>" class="panel-collapse collapse <% if i==0 %>in<% end %>">
+        <table class="table table-hover">
+          <thead>
+            <th><%= tm 'config.name'  %></th>
+            <th><%= tm 'config.title'  %></th>
+            <th><%= tm 'config.remark' %></th>
+            <th><%= tm 'config.field_type' %></th>
+          </thead>
+          
+        <% manage_config.child.each do |cconfig| %>
+          <tr>
+            <td><%= cconfig.name %></td>
+            <td><%= cconfig.title %></td>
+            <td><%= cconfig.remark %></td>
+            <td><%= cconfig.field_type %></td>
+          </tr>
+        <% end %>
+        </table>
+    </div>
+  </div>
+  <% i+=1 %>
+<% end %>
+</div>
+
+
 <br>
-
-
 <%= link_to fa_icon('plus',text:'New Config'), new_manage_config_path,class:"btn btn-success" %>
 
 
