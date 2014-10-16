@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141012121205) do
+ActiveRecord::Schema.define(version: 20141014134110) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -48,23 +48,20 @@ ActiveRecord::Schema.define(version: 20141012121205) do
   add_index "configs", ["key"], name: "index_configs_on_key", unique: true, using: :btree
 
   create_table "nodes", force: true do |t|
-    t.string  "name",       limit: 30,                 null: false
-    t.string  "title",                                 null: false
+    t.string  "name",      limit: 30,                 null: false
+    t.string  "title",                                null: false
     t.string  "remark"
-    t.text    "extra_data"
-    t.integer "sort",                  default: 0
-    t.integer "pid",                   default: 0
-    t.string  "field_type"
-    t.boolean "edit_flag",             default: false
+    t.integer "sort",                 default: 0
+    t.integer "pid",                  default: 0
+    t.boolean "edit_flag",            default: false
   end
 
   add_index "nodes", ["name"], name: "index_nodes_on_name", unique: true, using: :btree
   add_index "nodes", ["sort"], name: "index_nodes_on_sort", using: :btree
 
   create_table "nodes_roles", id: false, force: true do |t|
-    t.integer "role_id",    null: false
-    t.integer "node_id",    null: false
-    t.text    "extra_data"
+    t.integer "role_id", null: false
+    t.integer "node_id", null: false
   end
 
   add_index "nodes_roles", ["role_id", "node_id"], name: "index_nodes_roles_on_role_id_and_node_id", using: :btree

@@ -1,38 +1,43 @@
 # 任务板描述文件
+# 陈洁
+# 安纪存
+# 蒋悦达
+# 宋小萌
+# 徐长栋
 
 task1:
-    name: 后台登陆首页页面的制作
-    status: 完成
-    developer: 宋小萌
-task2:
-    name: 角色管理界面中分配角色权限的功能
+    name: 制作学生管理界面中的Extjs表格
+    developer: 陈洁
     status: 正在进行
+task2:
+    name: 角色详情页面（role/show）权限显示优化
     developer: 徐长栋
+    status: 正在进行
 task3:
     name: 系统设置中设置描述文件的制作以及seeds.rb文件中相应操作的编写
     status: 正在进行
     developer: 蒋悦达
 task4:
-    name: 用户登陆模块的测试编写
-    status: 正在进行
-    developer: 安纪存
-task4_1:
-    name: 用户个人信息管理模块的编写
-    status: 正在进行
-    developer: 安纪存
-task5:
-    name: 角色权限页面分配角色时处理高级属性的功能
+    name: 左侧导航栏的当前项目高亮
+    developer: 陈洁
     status: 等待
-    developer: 
+task5: 
+    name: 学生信息导出功能的制作
+    developer: 安纪存
+    status: 正在进行
 task6:
-    name: 获取指定用户权限信息的功能
+    name: 管理员列表页面管理员权限信息的显示
+    developer: 陈洁
     status: 等待
-    developer: 
 task7:
-    name: 权限增强功能的实现
-    status: 等待
+    name: 学生信息导入功能的制作
     developer: 
+    status: 等待
 task8:
     name: 系统设置的编辑页面中对增强功能的支持
     status: 等待
     developer: 
+task9: 
+    name: 学院专业设置中，应当把添加学院/专业的表单直接放到index中，去掉new与edit以及show
+    status: 正在进行
+    developer: 徐长栋

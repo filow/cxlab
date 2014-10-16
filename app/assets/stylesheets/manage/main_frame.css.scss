@@ -161,12 +161,15 @@ a,button{
 							}
 							&.notify-ctrl{
 								width:$dropdown-notify-width/2+10;
+								float: left;
 							}
 							&.user-ctrl{
 								width:$dropdown-user-width/2+10;
+								float: left;
 							}
 							&.mails-ctrl{
 								width:$dropdown-mails-width/2+25;
+								float: left;
 							}
 						}
 						.ctrl-left{
@@ -175,7 +178,6 @@ a,button{
 						}
 						.ctrl-right{
 							border-bottom-right-radius:5px;
-							margin-left:-5px;
 						}
 					}
 					//dropdown menu - user control
@@ -275,90 +277,6 @@ a,button{
 	}
 }//.navbar end
 
-// .sidebar{
-// 	float:left;
-// 	width: $sidebar-width;
-// 	background: $sidebar-background;
-// 	overflow: hidden;
-// 	position:fixed;
-// 	@include box-sizing(border-box);
-// 	@include transition(all .3s ease);
-// 	.sidebar-container{
-// 		height: 610px;
-// 		border-right:1px solid #D7D7D7;
-// 		.container-fluid{
-// 			padding-left: 25px;
-// 			padding-right: 25px;
-// 			.sidebar-row{
-// 				.sidebar-header{
-// 					color: $sidebar-header-color;
-// 					font-size: 15px;
-// 					padding-top: 25px;
-// 					font-weight: 700;
-// 					padding-bottom: 12px;
-// 				}	
-// 			}		
-// 			.toggle-button{
-// 				float: right;
-// 				margin-right: 10px;
-// 			}		
-// 		}
-// 	}
-
-// 	ul.sidebar-nav{
-// 		li{
-// 			margin-left: -25px;
-// 			margin-right: -25px;
-// 			a{
-// 				line-height: 16px;
-// 				padding: 10px 25px;
-// 				color: $sidebar-text-color;
-// 				font-size: 14px;
-// 				display: block;
-// 				//font-weight: bold;
-// 				@include transition(all 0.2s ease-in-out); 
-// 				&:hover{
-// 					background: $sidebar-nav-hover;
-// 					color:$sidebar-text-hover;
-// 				}
-// 				i{
-// 					margin-right: 10px;
-// 				}
-// 			}
-// 			&.active{
-// 				background: $sidebar-active-background;
-// 				a{
-// 					color:#fff;
-// 					&:hover{
-// 						background: $sidebar-active-background !important;
-// 					}				
-// 				}
-// 			}			
-// 			&.open{
-// 				background: $sidebar-nav-hover;
-// 			}
-// 			ul.sidebar-subnav{
-// 				margin-left: 25px;
-// 				display: none;
-// 				li{
-// 					margin: 0;
-// 					border-left: 1px solid $sidebar-border-color;
-// 					position: relative;
-// 					&:before{
-// 						left: 0;
-// 						top: 15px;
-// 						width: 15px;
-// 						content: ' ';
-// 						position: absolute;
-// 						display: inline-block;
-// 						border: 1px solid rgba(59,70,72,.5);
-// 					}
-// 				}
-// 			}
-// 		}//li end
-// 	}//ul.sidebar-nav end
-// }//sidebar end
-
 .sidebar{
 	float:left;
 	width: $sidebar-width;
@@ -384,8 +302,6 @@ a,button{
 				.toggle-button{
 					float: right;
 				}
-
-
 			}
 			.sidebar-nav{
 				display: none;
@@ -395,6 +311,11 @@ a,button{
 						margin-right: 5px;
 					}
 				}
+			}
+			&:first-child{
+				.sidebar-nav{
+					display: block;
+				}	
 			}
 			&:hover{
 				background-color:$sidebar-nav-hover;

@@ -17,7 +17,7 @@
         <div id="login_form">
             <%= form_tag manage_login_path,name: "form",class:"form-inline" do %>
                     <% if flash[:alert] %>
-                        <div class="alert alert-danger">1232<%= flash[:alert] %></div>
+                        <div class="alert alert-danger"><%= flash[:alert] %></div>
                     <% else %>
                         <div class="alert_placeholder"></div>
                     <% end %>

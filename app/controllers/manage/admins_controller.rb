@@ -16,6 +16,7 @@ class Manage::AdminsController < ManageController
   # GET /manage/admins/1.json
   def show
     @admin_roles= Manage::Admin.find(params[:id]).roles
+    @manage_nodes = @manage_admin.tree_view_of_nodes
   end
 
   # GET /manage/admins/new
