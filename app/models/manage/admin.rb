@@ -91,6 +91,21 @@ class Manage::Admin < ActiveRecord::Base
     	# 删除缓存
     	@privileges_cache.delete(self.id)
     end
+
+    # 当用户拥有权限时的操作
+    def with_access(privilege_name)
+    	if block_given? && can_access?(privilege_name) 
+    		yield
+    	end
+    end
+
+    # 当用户没有权限时的操作
+    def without_access(privilege_name)
+		if block_given? && !can_access?(privilege_name) 
+    		yield
+    	end
+    end
+
 private
 	def password_must_be_present
 		errors.add(:pwd,"没有找到") unless password.present?
