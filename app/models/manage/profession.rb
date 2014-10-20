@@ -1,6 +1,8 @@
 class Manage::Profession < ActiveRecord::Base
     has_many :students
     before_destroy :ensure_profession_is_empty
+    validates_uniqueness_of :name
+
     def self.tree_view
         parent_professions=where(pid: 0).all
         child_professions=where('pid != 0').all

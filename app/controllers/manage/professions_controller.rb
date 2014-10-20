@@ -1,21 +1,13 @@
 class Manage::ProfessionsController < ManageController
   before_action :set_manage_profession, only: [:show, :edit, :update, :destroy]
+  before_action :set_profession_list, only: [:index, :create]
 
   # GET /manage/professions
   # GET /manage/professions.json
   def index
-    @manage_professions = Manage::Profession.tree_view
+    @new_college = Manage::Profession.new
   end
 
-  # GET /manage/professions/1
-  # GET /manage/professions/1.json
-  def show
-  end
-
-  # GET /manage/professions/new
-  def new
-    @manage_profession = Manage::Profession.new
-  end
 
   # GET /manage/professions/1/edit
   def edit
@@ -24,15 +16,15 @@ class Manage::ProfessionsController < ManageController
   # POST /manage/professions
   # POST /manage/professions.json
   def create
-    @manage_profession = Manage::Profession.new(manage_profession_params)
+    @new_college = Manage::Profession.new(manage_profession_params)
 
     respond_to do |format|
-      if @manage_profession.save
+      if @new_college.save
         format.html { redirect_to manage_professions_url, notice: '创建成功' }
-        format.json { render :show, status: :created, location: @manage_profession }
+        format.json { render :show, status: :created, location: @new_college }
       else
-        format.html { render :new }
-        format.json { render json: @manage_profession.errors, status: :unprocessable_entity }
+        format.html { render :index }
+        format.json { render json: @new_college.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -71,6 +63,9 @@ class Manage::ProfessionsController < ManageController
       @manage_profession = Manage::Profession.find(params[:id])
     end
 
+    def set_profession_list
+      @manage_professions = Manage::Profession.tree_view
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def manage_profession_params
       params.require(:manage_profession).permit(:name, :pid)
