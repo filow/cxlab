@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :manage do
-    resources :professions
+    resources :professions,except: [:new,:show]
   end
 
   namespace :manage do

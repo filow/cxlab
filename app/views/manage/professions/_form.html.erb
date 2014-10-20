@@ -1,11 +1,12 @@
 <%= form_for(@manage_profession) do |f| %>
   <%= form_errors(@manage_profession) %>
+  <% pid=(@pid) ? @pid : params[:pid] %>
 <table class="table">
   <tr>
     <td><%= f.label :name %></td>
     <td><%= f.text_field :name,class:"form-control" %></td>
   </tr>
-  <%= f.hidden_field :pid,value: params[:pid] %>
+  <%= f.hidden_field :pid,value: pid %>
   
 </table>
 

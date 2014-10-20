@@ -17,6 +17,7 @@ class Manage::Admin < ActiveRecord::Base
 
 	has_and_belongs_to_many :roles
 
+
 	attr_reader :pwd
 
 	# pwd赋值方法，当使用user.pwd=的时候会触发这个方法
@@ -58,7 +59,6 @@ class Manage::Admin < ActiveRecord::Base
 		# 返回角色信息
 		roles
 	end
-
 	# 返回以树形（2层）形式表示的权限列表信息
 	def tree_view_of_nodes
         Manage::Node.tree_view(child_nodes)

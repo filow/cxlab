@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>学院专业列表</h1>
 </div>
-
+<%= form_errors(@manage_profession) %>
 <div class="panel-group" id="accordion">
 <% i=0 %>
 <% @manage_professions.each do |manage_profession| %>
@@ -11,6 +11,7 @@
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= manage_profession.name %>">
           <%= manage_profession.name %>
         </a>
+        
       </h3>
     </div>
     <div id="collapse<%= manage_profession.name %>" class="panel-collapse collapse <% if i==0 %>in<% end %>">
@@ -19,14 +20,18 @@
             <th><%= tm 'profession.name'  %></th>
             <th></th>
             <th></th>
-            <th><%= link_to '编辑', edit_manage_profession_path(manage_profession,:pid=>0),class:"btn btn-warning" %>
-                <%= link_to '删除', manage_profession, method: :delete,
-                  data: { confirm: t('confirm_delete') },class:"btn btn-danger",disabled:!manage_profession.child.empty?%></th>
+            <th></th>
+            <th>
+            <%= link_to '编辑', edit_manage_profession_path(manage_profession,:pid=>0),class:"btn btn-warning" %>
+            <%= link_to '删除', manage_profession, method: :delete,
+              data: { confirm: t('confirm_delete') },class:"btn btn-danger",disabled:!manage_profession.child.empty?%>
+            </th>
           </thead>
           
           <% manage_profession.child.each do |cprofession| %>
             <tr>
               <td><%= cprofession.name %></td>
+              <td></td>
               <td></td>
               <td></td>
               <td>
@@ -36,11 +41,21 @@
               </td>
             </tr>
           <% end %>
-          <tr><td><%= link_to fa_icon('plus',text:'添加专业'), new_manage_profession_path(:pid=>manage_profession),class:"btn btn-success" %></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+            <tr>
+              <%= form_for(@manage_profession) do |f| %>
+
+                <%= f.hidden_field :pid,value: manage_profession.id %>
+              <td>
+                <%= f.submit "增加专业",class:"btn btn-success" %>
+              </td>
+              <td>
+                <%= f.text_field :name,class:"form-control" %>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <% end %>
+            </tr>
           </table>
     </div>
   </div>
@@ -49,8 +64,15 @@
 </div>
 
 <br>
-
-<%= link_to fa_icon('plus',text:'添加学院'), new_manage_profession_path(:pid=>0),class:"btn btn-success" %>
+<table class="table">
+<%= form_for(@manage_profession) do |f| %>
+  <tr>
+    <td><%= f.submit "增加学院",class:"btn btn-success" %></td>
+    <td><%= f.text_field :name,class:"form-control" %></td>
+  </tr>
+  <%= f.hidden_field :pid,value: 0 %>
+</table>
+<% end %>
 
 
 
