@@ -51,13 +51,13 @@ Ext.override(Ext.grid.RowEditor, {
 });
 //重写RowEditor
 Ext.onReady(function() {
-    Ext.define('Admin', {
+    Ext.define('Student', {
         extend: 'Ext.data.Model',
         fields: ['id', 'stuid', 'name', 'email', 'phone', 'grade', 'url','pwd','avatar']
     });
 
     var store = Ext.create('Ext.data.Store', {
-        model: 'Admin',
+        model: 'Student',
         pageSize: 10,
         autoLoad: true,
         proxy: {
@@ -65,7 +65,7 @@ Ext.onReady(function() {
             url: '/manage/students.json',
             reader: {
                 type: 'json',
-                root: 'admins',
+                root: 'students',
                 totalProperty: 'totalCount'
             }
         }

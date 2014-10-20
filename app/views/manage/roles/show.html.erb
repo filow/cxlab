@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1><%= @manage_role.name %> <small>remark:<%= @manage_role.remark %></small></h1>
+  <h1><%= @manage_role.remark %> <small><%= @manage_role.name %></small></h1>
 </div>
 <table class="table">
 	<tr>
@@ -7,8 +7,9 @@
     <td><%= switch @manage_role.is_enabled,bs_label_tag('启用','success'),bs_label_tag('停用','default') %></td>
 	</tr>
 	<tr>
-    <td>角色节点</td>
+    <td>角色权限</td>
     <td>
+      <!-- TODO: 在这里直接输出所有角色的权限，然后再把该角色拥有的权限高亮，高亮方法是在tr标签上加success类 -->
     	<div class="panel-group" id="accordion">
         <% i=0 %>
         <% @manage_nodes.each do |manage_node| %>

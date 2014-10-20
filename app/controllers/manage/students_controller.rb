@@ -4,7 +4,12 @@ class Manage::StudentsController < ManageController
   # GET /manage/students
   # GET /manage/students.json
   def index
-    @manage_students = Manage::Student.all
+    @total_count = Manage::Student.count()
+    puts @total_count
+    offset = params[:start]
+    limit = params[:limit]
+    query = '%' + params[:query].to_s + '%'
+    @manage_students = Manage::Student.where("stuid like ? or name like ?",query,query).limit(limit).offset(offset)
   end
 
   # GET /manage/students/1
