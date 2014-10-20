@@ -34,6 +34,7 @@ cn:
       manage/node: 权限节点
       manage/student: 学生
       manage/profession: 学院/专业
+      manage/contest: 比赛大类
     attributes:
       manage/admin:
         uid: 登陆id
@@ -65,6 +66,13 @@ cn:
       manage/profession:
         name: 专业名称
         parent: 学院
+      manage/contest:
+        name: 比赛名称
+        description: 比赛介绍
+        summary: 简介
+        level: 比赛等级
+        organizer: 主办单位
+        admin: 创建人
     errors:
       template:
         header:

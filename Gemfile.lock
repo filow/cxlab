@@ -91,6 +91,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.4)
       sprockets-rails (~> 2.0)
+    rails_kindeditor (0.4.5)
+      carrierwave
+      mini_magick
     railties (4.1.4)
       actionpack (= 4.1.4)
       activesupport (= 4.1.4)
@@ -151,6 +154,7 @@ DEPENDENCIES
   mini_magick
   mysql2
   rails (= 4.1.4)
+  rails_kindeditor
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring

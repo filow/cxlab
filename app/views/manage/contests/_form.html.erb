@@ -1,0 +1,29 @@
+<%= form_for(@manage_contest) do |f| %>
+  <%= form_errors(@manage_contest) %>
+  <table class="table">
+    <tr>
+      <td><%= f.label :name %></td>
+      <td><%= f.text_field :name,class:"form-control" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :summary %></td>
+      <td><%= f.text_area :summary,class:"form-control" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :level %></td>
+      <td><%= f.text_field :level %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :organizer %></td>
+      <td><%= f.text_field :organizer,class:"form-control" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :description %></td>
+      <td><%= f.kindeditor :description, :window_onload => true,simple_mode: true %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit nil,class:"btn btn-primary" %></td>
+    </tr>
+  </table>
+<% end %>

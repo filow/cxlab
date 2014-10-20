@@ -1,19 +1,15 @@
 Rails.application.routes.draw do
 
-  namespace :manage do
-    resources :professions
-  end
-
-  namespace :manage do
-    resources :students
-  end
-
   root 'manage/index#index'
+  
   namespace :manage do
     resources :admins 
     resources :roles
     resources :nodes,only: [:index]
     resources :configs
+    resources :contests
+    resources :professions
+    resources :students
     get '/'=> 'index#index'
     get  '/login'=>'session#index',as:'login'
     post '/login'=>'session#create'

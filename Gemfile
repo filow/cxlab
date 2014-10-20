@@ -61,3 +61,6 @@ gem 'font-awesome-rails'
 gem 'carrierwave'
 # mini_magick 是 ImageMagic的ruby接口，在图片上传时可以处理图片
 gem 'mini_magick'
+
+# bootstrap-wysihtml5
+gem 'rails_kindeditor'

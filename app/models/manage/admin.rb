@@ -17,6 +17,10 @@ class Manage::Admin < ActiveRecord::Base
 
 	has_and_belongs_to_many :roles
 
+    # 一个管理员可以建立多个竞赛
+    has_many :contests
+
+
 	attr_reader :pwd
 
 	# pwd赋值方法，当使用user.pwd=的时候会触发这个方法
