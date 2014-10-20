@@ -62,7 +62,6 @@ class Manage::Admin < ActiveRecord::Base
 		# 返回角色信息
 		roles
 	end
-
 	# 返回以树形（2层）形式表示的权限列表信息
 	def tree_view_of_nodes
         Manage::Node.tree_view(child_nodes)

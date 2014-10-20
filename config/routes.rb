@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :nodes,only: [:index]
     resources :configs
     resources :contests
-    resources :professions
+    resources :professions,except: [:new,:show]
     resources :students
     get '/'=> 'index#index'
     get  '/login'=>'session#index',as:'login'

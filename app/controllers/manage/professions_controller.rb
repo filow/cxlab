@@ -37,6 +37,7 @@ class Manage::ProfessionsController < ManageController
         format.html { redirect_to manage_professions_url, notice: '更新成功' }
         format.json { render :show, status: :ok, location: @manage_profession }
       else
+        @pid=manage_profession_params[:pid]
         format.html { render :edit }
         format.json { render json: @manage_profession.errors, status: :unprocessable_entity }
       end
