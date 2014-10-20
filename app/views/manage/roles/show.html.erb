@@ -31,12 +31,10 @@
                   </thead>
                   
                 <% manage_node.child.each do |cnode| %>
-                  <tr>
-                      <% if @role_nodes && @role_nodes.include?(cnode)%>  
+                  <tr<% if @role_nodes && @role_nodes.include?(cnode)%>  class="success"<% end %>>   
                         <td><%= cnode.name %></td>
   		                  <td><%= cnode.title %></td>
-  		                  <td><%= cnode.remark %></td>
-                      <% end %>                  
+  		                  <td><%= cnode.remark %></td>         
                   </tr>
                 <% end %>
                 </table>

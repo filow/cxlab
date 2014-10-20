@@ -4,6 +4,7 @@ class Manage::ProfessionsController < ManageController
   # GET /manage/professions
   # GET /manage/professions.json
   def index
+    @manage_profession = Manage::Profession.new
     @manage_professions = Manage::Profession.tree_view
   end
 
@@ -31,7 +32,8 @@ class Manage::ProfessionsController < ManageController
         format.html { redirect_to manage_professions_url, notice: '创建成功' }
         format.json { render :show, status: :created, location: @manage_profession }
       else
-        format.html { render :new }
+        @manage_professions = Manage::Profession.tree_view
+        format.html { render :index}
         format.json { render json: @manage_profession.errors, status: :unprocessable_entity }
       end
     end
@@ -45,6 +47,7 @@ class Manage::ProfessionsController < ManageController
         format.html { redirect_to manage_professions_url, notice: '更新成功' }
         format.json { render :show, status: :ok, location: @manage_profession }
       else
+        @pid=manage_profession_params[:pid]
         format.html { render :edit }
         format.json { render json: @manage_profession.errors, status: :unprocessable_entity }
       end
