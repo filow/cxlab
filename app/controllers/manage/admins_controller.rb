@@ -1,5 +1,5 @@
 class Manage::AdminsController < ManageController
-  before_action :set_manage_admin, only: [:edit, :update, :destroy]
+  before_action :set_manage_admin, only: [:show, :edit, :update, :destroy]
   before_action :set_roles, only: [:edit, :update, :create]
 
   # GET /manage/admins
@@ -12,6 +12,11 @@ class Manage::AdminsController < ManageController
     @manage_admins = Manage::Admin.where("uid like ? or nickname like ?",query,query).limit(limit).offset(offset)
   end
 
+  def show
+    @manage_nodes= Manage::Node.tree_view
+    @admin_privileges_names = @manage_admin.child_nodes.collect{|x| x.name}
+    @admin_privileges_tree = @manage_admin.tree_view_of_nodes
+  end
 
   # GET /manage/admins/1/edit
   def edit

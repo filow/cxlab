@@ -17,7 +17,7 @@
   <tr>
     <td>用户角色</td>
     <td>
-      <% @admin_roles.each do |admin_role| %>
+      <% @manage_admin.roles.each do |admin_role| %>
          <%= admin_role.name %>  
          <%= admin_role.remark %>  <br>
       <% end %>   
@@ -47,9 +47,14 @@
                   </thead>
                   
                 <% manage_node.child.each do |cnode| %>
-                  <tr>
+                  <% if @admin_privileges_names.include?(cnode.name) %>
+                    <tr class="success" %>
+                  <% else %>
+                    <tr>
+                  <% end %>
                         <td><%= cnode.name %></td>
                         <td><%= cnode.title %></td>
+                        <td><%= cnode.remark %></td>
                   </tr>
                 <% end %>
                 </table>
@@ -62,5 +67,4 @@
     </td>
   </tr>
 </table>
-
 <%= link_to '编辑', edit_manage_admin_path(@manage_admin),class:"btn btn-warning" %>
