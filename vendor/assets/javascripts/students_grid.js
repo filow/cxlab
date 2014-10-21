@@ -50,6 +50,7 @@ Ext.override(Ext.grid.RowEditor, {
     }
 });
 //重写RowEditor
+
 Ext.onReady(function() {
     Ext.define('Admin', {
         extend: 'Ext.data.Model',
@@ -144,8 +145,13 @@ Ext.onReady(function() {
             handler: function() {
                 var source = propSource();
                 propGrid.setSource(source);
-                win.show();
+                propWin.show();
             }
+        },{
+                text:'修改头像',
+                handler:function(){
+                    avatarWin.show();
+                }
         }]
     });
     //右键菜单
@@ -191,7 +197,7 @@ Ext.onReady(function() {
     });
     //关闭属性表格的编辑功能
 
-    var win = new Ext.Window({
+    var propWin = new Ext.Window({
         layout: 'fit',
         width: 400,
         height: 400,
@@ -204,11 +210,40 @@ Ext.onReady(function() {
         buttons: [{
             text: '关闭',
             handler: function() {
-                win.hide();
+                propWin.hide();
             }
         }]
     });
-    //模态窗口
+    //模态属性窗口
+
+    var avatarWin = new Ext.Window({
+        layout: 'fit',
+        width: 400,
+        height: 400,
+        title: '修改头像',
+        modal: true,
+        items: [formUpload],
+        buttons: [{  
+            text: 'Close',  
+            handler:function(){avatarWin.hide();}  
+        }] 
+    });
+
+var formUpload = new Ext.form.FormPanel({   
+        labelWidth: 80,   
+        fileUpload:true,   
+        defaultType: 'textfield',   
+        items: [{   
+            xtype: 'textfield',   
+            fieldLabel: '文 件',   
+            name: 'upload',   
+            inputType: 'file',   
+            allowBlank: false,   
+            blankText: '请上传文件',   
+            anchor: '90%'  
+    }]   
+});   
+
     var tbar = new Ext.Toolbar({ 
         height: 50,
         items:  [{
@@ -316,7 +351,7 @@ Ext.onReady(function() {
                     else
                         return "<img width='30px' src='/assets/user-thumb.png'>";
             },
-               editor: fileInput
+               editor:  fileInput
         },
         {
             header: "学号",
@@ -383,11 +418,11 @@ Ext.onReady(function() {
         }
     });
 
-    // grid.on("itemcontextmenu",
-    // function(view, record, item, index, e) {
-    //     e.preventDefault();
-    //     contextmenu.showAt(e.getXY());
-    // });
+    grid.on("itemcontextmenu",
+    function(view, record, item, index, e) {
+        e.preventDefault();
+        contextmenu.showAt(e.getXY());
+    });
 
     function jsonPost(post_data) {
         var params = [];
