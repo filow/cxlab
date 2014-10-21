@@ -69,7 +69,7 @@ class Manage::Admin < ActiveRecord::Base
 
     # 返回用户所拥有权限的节点数据（原始数据）
     def child_nodes
-    	Manage::Node.joins(:roles).where("roles.id"=>self.role_ids).uniq
+    	Manage::Node.joins(:roles).where("roles.id"=>self.role_ids,"roles.is_enabled"=>true).uniq
     end
 
     # 查看用户是否拥有指定的权限
