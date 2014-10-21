@@ -303,7 +303,7 @@ Ext.onReady(function() {
                 store.insert(0, r);
                 rowEditing.startEdit(0, 0);
                 createStudent = true;
-                grid.columns[3].field.allowBlank = false;
+                grid.columns[4].field.allowBlank = false;
             }
         },
         {
@@ -418,7 +418,9 @@ Ext.onReady(function() {
             editor: {
                 xtype: 'textfield',
                 allowBlank: true,
-                blankText: '请输入密码'
+                blankText: '请输入密码',
+                minLength: '8',
+                minLengthText: '密码长度不能小于8'
             },
             renderer: function(){
                     return '******';
