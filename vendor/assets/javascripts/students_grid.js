@@ -50,6 +50,7 @@ Ext.override(Ext.grid.RowEditor, {
     }
 });
 //重写RowEditor
+
 Ext.onReady(function() {
     Ext.define('Student', {
         extend: 'Ext.data.Model',
@@ -144,8 +145,13 @@ Ext.onReady(function() {
             handler: function() {
                 var source = propSource();
                 propGrid.setSource(source);
-                win.show();
+                propWin.show();
             }
+        },{
+                text:'修改头像',
+                handler:function(){
+                    avatarWin.show();
+                }
         }]
     });
     //右键菜单
@@ -191,7 +197,7 @@ Ext.onReady(function() {
     });
     //关闭属性表格的编辑功能
 
-    var win = new Ext.Window({
+    var propWin = new Ext.Window({
         layout: 'fit',
         width: 400,
         height: 400,
@@ -203,31 +209,100 @@ Ext.onReady(function() {
 
         buttons: [{
             text: '关闭',
-            handler: function() {
-                win.hide();
-            }
+            handler: function() {propWin.hide();}
         }]
     });
-    //模态窗口
+    //模态属性窗口
+
+    var formUpload = new Ext.form.FormPanel({   
+            width: 400,
+            bodyPadding: 10,
+            method: 'patch',
+            frame: true,
+            items: [{
+                xtype: 'filefield',
+                name: 'manage_student[avatar]',
+                fieldLabel: '头像路径',
+                labelWidth: 60,
+                msgTarget: 'side',
+                allowBlank: false,
+                anchor: '100%',
+                buttonText: '打开文件'
+            }],
+    });  
+    //头像上传form
+
+    var avatarWin = new Ext.Window({
+        layout: 'fit',
+        width: 400,
+        height: 200,
+        title: '修改头像',
+        modal: true,
+        items: [formUpload],
+        buttons: [
+            {
+                text: '上传',
+                handler: function() {
+                    if(formUpload.isValid()){
+                          var row = grid.getSelectionModel().getSelection(); //获取选择列
+                          var row_data = row[0].data;
+                          var students_id = row_data.id;
+                          formUpload.submit({
+                            url: '/manage/students/' + students_id + '.json',
+                            method : 'patch',  
+                            params : {
+                                '_method': 'PATCH',
+                                'authenticity_token': csrf_token,
+                                'manage_student[stuid]': row_data.stuid,
+                                'manage_student[name]':row_data.name,
+                                'manage_student[pwd]':'',
+                                'manage_student[email]':'',
+                                'manage_student[grade]':'',
+                                'manage_student[phone]':'',
+                                'commit': '更新学生信息'
+                            },
+                            waitMsg: '正在上传...',
+                            success: function() {
+                                avatarWin.hide();
+                                // Ext.Msg.alert('Success', 'Your file has been uploaded.');
+                                store.reload();
+                            },
+                            failure: function() {
+                                avatarWin.hide();
+                               // Ext.Msg.alert('错误', '与后台联系时出错');
+                                store.reload();
+                            }
+                        });
+                    }
+                }
+             },
+             {  
+                text: '取消',  
+                handler:function(){avatarWin.hide();}  
+        }] 
+    });
+
     var tbar = new Ext.Toolbar({ 
         height: 50,
         items:  [{
             text: '添加学生',
             itemId: 'insertBtn',
-            //iconCls: 'admin-add',
+            //iconCls: 'Student-add',
+             //fields: ['id', 'stuid', 'name', 'email', 'phone', 'grade', 'url','pwd','avatar']
             handler: function() {
-                var r = Ext.create('Admin', {
-                    uid: '',
-                    nickname: '',
-                    pwd: '',
+                var r = Ext.create('Student', {
+                    id: '',
+                    stuid: '',
+                    name: '',
                     email: '',
-                    desc: '',
-                    role: '',
-                    active: true
+                    phone: '',
+                    grade: '',
+                    pwd: '',
+                    avatar: ''
                 });
                 store.insert(0, r);
                 rowEditing.startEdit(0, 0);
-                createAdmin = true;
+                createStudent = true;
                 grid.columns[3].field.allowBlank = false;
             }
         },
@@ -250,7 +325,7 @@ Ext.onReady(function() {
                     if (btn == 'yes') {
                         var records = sm.getSelection();
                         for (var k in records) {
-                            delteAdmin(records[k].get('id'));
+                            delteStudent(records[k].get('id'));
                         }
                     }
                 });
@@ -263,7 +338,14 @@ Ext.onReady(function() {
             handler: function() {
                 var source = propSource();
                 propGrid.setSource(source);
-                win.show();
+                propWin.show();
+            }
+        },
+        {
+            text: '修改头像',
+            itemId: 'avatarBtn',
+            handler:function(){
+                avatarWin.show();
             }
         },
         {
@@ -278,12 +360,7 @@ Ext.onReady(function() {
     });
     //顶部工具栏
 
-    var fileInput = new Ext.form.TextField({
-              inputType:'file'
-    });
-    //上传input
-
-    var createAdmin = false; //创建管理员标签
+    var createStudent = false; //创建管理员标签
     var c = $("meta[name='csrf-token']");
     var csrf_token = c[0].content;
 
@@ -316,7 +393,6 @@ Ext.onReady(function() {
                     else
                         return "<img width='30px' src='/assets/user-thumb.png'>";
             },
-               editor: fileInput
         },
         {
             header: "学号",
@@ -383,11 +459,11 @@ Ext.onReady(function() {
         }
     });
 
-    // grid.on("itemcontextmenu",
-    // function(view, record, item, index, e) {
-    //     e.preventDefault();
-    //     contextmenu.showAt(e.getXY());
-    // });
+    grid.on("itemcontextmenu",
+    function(view, record, item, index, e) {
+        e.preventDefault();
+        contextmenu.showAt(e.getXY());
+    });
 
     function jsonPost(post_data) {
         var params = [];
@@ -411,10 +487,9 @@ Ext.onReady(function() {
     grid.on('edit',
     function(editor, e) {
         var post_data = e.record.data;
-        console.log(fileInput.value);
         var students_id = post_data.id;
         params_post = jsonPost(post_data);
-        if (createAdmin) {
+        if (createStudent) {
             Ext.Ajax.request({
                 method: 'POST',
                 url: '/manage/students.json',
@@ -447,7 +522,7 @@ Ext.onReady(function() {
                 params: params_post
             });
         }
-        createAdmin = false;
+        createStudent = false;
         grid.columns[3].field.allowBlank = true;
     });
 
@@ -456,7 +531,7 @@ Ext.onReady(function() {
         store.reload();
     });
       
-    function delteAdmin(students_id) {
+    function delteStudent(students_id) {
         var params_delete = [];
         Ext.Ajax.request({
             method: 'DELETE',
