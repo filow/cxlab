@@ -7,6 +7,7 @@ class Manage::Node < ActiveRecord::Base
     has_and_belongs_to_many :roles
     belongs_to :parent, class_name: "Manage::Node",foreign_key: "pid"
 
+
     def self.tree_view(child_val=nil)
         if child_val==nil
             child_nodes=where('pid != 0').all

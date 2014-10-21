@@ -1,36 +1,4 @@
-<h1>Listing manage_students</h1>
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Stuid</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Grade</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  
-  <tbody>
-    <% @manage_students.each do |manage_student| %>
-      <tr>
-        <td><%= image_tag manage_student.avatar_url(:thumb_mini) %></td>
-        <td><%= manage_student.stuid %></td>
-        <td><%= manage_student.name %></td>
-        <td><%= manage_student.email %></td>
-        <td><%= manage_student.phone %></td>
-        <td><%= manage_student.grade %></td>
-        <td><%= link_to 'Show', manage_student %></td>
-        <td><%= link_to 'Edit', edit_manage_student_path(manage_student) %></td>
-        <td><%= link_to 'Destroy', manage_student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
 <div id="grid" style="margin:10px 10px"></div>
-<%= link_to 'New Student', new_manage_student_path %>
 <%= javascript_include_tag "ext-all.js", 'data-turbolinks-track' => true %>
 <%= javascript_include_tag "students_grid.js", 'data-turbolinks-track' => true %>
 <%= stylesheet_link_tag    "theme-all.css", media: 'all', 'data-turbolinks-track' => true %>

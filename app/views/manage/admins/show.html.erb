@@ -44,17 +44,12 @@
                     <th><%= tm 'node.name'  %></th>
                     <th><%= tm 'node.title'  %></th>
                     <th><%= tm 'node.remark' %></th>
-                    <th><%= tm 'node.field_type' %></th>
-                    <th><%= tm 'node.extra_data' %></th>
                   </thead>
                   
                 <% manage_node.child.each do |cnode| %>
                   <tr>
                         <td><%= cnode.name %></td>
                         <td><%= cnode.title %></td>
-                        <td><%= cnode.remark %></td>
-                        <td><%= cnode.field_type %></td>
-                        <td><%= cnode.extra_data %></td>                
                   </tr>
                 <% end %>
                 </table>

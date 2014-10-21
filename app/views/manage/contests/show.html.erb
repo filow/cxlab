@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @manage_contest.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @manage_contest.description %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @manage_contest.summary %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @manage_contest.level %>
+</p>
+
+<p>
+  <strong>Organizer:</strong>
+  <%= @manage_contest.organizer %>
+</p>
+
+<%= link_to 'Edit', edit_manage_contest_path(@manage_contest) %> |
+<%= link_to 'Back', manage_contests_path %>

@@ -14,6 +14,10 @@ class Manage::IndexController < ManageController
             {text: "学生名单",icon: "list",options:{controller:"students",action:"index"}},
             {text: "学院专业设置",icon: "graduation-cap",options:{controller:"professions",action:"index"}},
         ],
+        "比赛管理"=> [
+            {text: "比赛大类管理",icon: "list",options:{controller: "contests",action: "index"}},
+
+        ],
         "系统管理"=> [
             {text: "系统设置",icon: "cog",options:{controller: "configs",action: "index"}},
 

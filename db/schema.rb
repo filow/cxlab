@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014134110) do
+ActiveRecord::Schema.define(version: 20141019135113) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(version: 20141014134110) do
 
   add_index "configs", ["config_type_id"], name: "index_configs_on_config_type_id", using: :btree
   add_index "configs", ["key"], name: "index_configs_on_key", unique: true, using: :btree
+
+  create_table "contests", force: true do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.string   "summary"
+    t.string   "level"
+    t.string   "organizer"
+    t.integer  "admin_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "nodes", force: true do |t|
     t.string  "name",      limit: 30,                 null: false
