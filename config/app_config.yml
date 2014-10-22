@@ -1,32 +1,12 @@
 # 权限节点描述文件，请不要输入pid和sort字段，程序会自动处理.属于某个节点的子节点的，请在children里面定义，sort会根据顺序定义
 # 格式：
-# name:
-#   title:
-#   remark:
-#   extra_data:
-#   field_type:
-#     chidren:
-#       title:
-#         remark:
-#         extra_data:
+
 # 注意： 子节点在调用时请使用"父节点_子节点"，例如config_list
 
-config:
-    title: 系统设置管理
-    remark: 这里控制所有的有关“系统设置管理”有关的权限。例如添加、编辑、删除系统设置，编辑系统设置等等。
-    children:
-        list:
-            title: 查看系统设置列表
-            remark: 列出系统设置，查看系统设置的大致信息
-        add:
-            title: 添加系统设置
-        edit:
-            title: 编辑系统设置信息
-            field_type: array
-            extra_data:
-                method: id_array
-                model: Manage::Config
-        show:
-            title: 查看系统设置详细信息
-        delete:
-            title: 删除系统设置
+test_config:
+    login_fail_times:
+        value: 5
+        field_type: number
+    login_fail_wait:
+        value: 30
+        field_type: number
