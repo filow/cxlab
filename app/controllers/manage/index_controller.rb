@@ -21,13 +21,6 @@ class Manage::IndexController < ManageController
         "系统管理"=> [
             {text: "系统设置",icon: "cog",options:{controller: "configs",action: "index"}},
 
-        ],
-
-        "测试子目录"=>[
-            {text:"父目录",icon: "list",children:[
-                {text: "子目录",icon: "list",options:{controller: "index",action: "dashboard"}}
-                ]}
-                
         ]
     }
     render layout: false
