@@ -34,7 +34,8 @@ ActiveRecord::Schema.define(version: 20141023065310) do
   add_index "admins_roles", ["admin_id", "role_id"], name: "index_admins_roles_on_admin_id_and_role_id", using: :btree
 
   create_table "config_types", force: true do |t|
-    t.string "name"
+    t.string  "name"
+    t.boolean "edit_flag", default: false
   end
 
   create_table "configs", force: true do |t|
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(version: 20141023065310) do
     t.text    "value"
     t.integer "config_type_id"
     t.string  "field_type"
+    t.boolean "edit_flag",      default: false
   end
 
   add_index "configs", ["config_type_id"], name: "index_configs_on_config_type_id", using: :btree
