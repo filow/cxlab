@@ -4,7 +4,7 @@ class Manage::ContestsController < ManageController
   # GET /manage/contests
   # GET /manage/contests.json
   def index
-    @manage_contests = Manage::Contest.all
+    @manage_contests = Manage::Contest.order(is_deleted: :desc,id: :desc)
   end
 
   # GET /manage/contests/1
@@ -54,12 +54,26 @@ class Manage::ContestsController < ManageController
   # DELETE /manage/contests/1
   # DELETE /manage/contests/1.json
   def destroy
-    @manage_contest.destroy
+    @manage_contest.is_deleted = true
+    @manage_contest.save
     respond_to do |format|
-      format.html { redirect_to manage_contests_url, notice: 'Contest was successfully destroyed.' }
+      format.html { redirect_to manage_contests_url, notice: '比赛类别已被放入回收箱.' }
       format.json { head :no_content }
     end
   end
+
+  # DELETE /manage/contests/1/recover
+  # DELETE /manage/contests/1/recover.json
+  def recover
+    @manage_contest = Manage::Contest.find(params[:contest_id])
+    @manage_contest.is_deleted = false
+    @manage_contest.save
+    respond_to do |format|
+      format.html { redirect_to manage_contests_url, notice: "#{@manage_contest.name}已恢复." }
+      format.json { head :no_content }
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -69,6 +83,8 @@ class Manage::ContestsController < ManageController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def manage_contest_params
-      params.require(:manage_contest).permit(:name, :description, :summary, :level, :organizer)
+      param = params.require(:manage_contest).permit(:name, :fullname, :description, :summary, :level, :organizer, :website_url)
+      param[:admin_id] = @admin.id
+      param
     end
 end

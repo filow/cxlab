@@ -68,11 +68,13 @@ cn:
         parent: 学院
       manage/contest:
         name: 比赛名称
+        fullname: 全称
         description: 比赛介绍
         summary: 简介
         level: 比赛等级
         organizer: 主办单位
         admin: 创建人
+        website_url: 官方网站
     errors:
       template:
         header:
@@ -81,13 +83,14 @@ cn:
         body:    "以下是发生错误的表单项"
       messages:
         blank: "不能为空"
-        too_short: "长度不够"
-        too_long: "内容过长"
+        too_short: "长度不足%{count}字"
+        too_long: "长度不能大于%{count}字"
         taken: "已经被使用过"
         invalid: "格式不正确"
         not_a_number: "不是一个数字"
         less_than_or_equal_to: "应当小于或等于%{count}"
         greater_than_or_equal_to: "应当大于或等于%{count}"
+        inclusion: "不是一个有效的值"
   views:
     pagination:
       first: "首页"

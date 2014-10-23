@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resources :roles
     resources :nodes,only: [:index]
     resources :configs
-    resources :contests
+    resources :contests do 
+      delete 'recover' => 'contests#recover'
+    end
     resources :professions,except: [:new,:show]
     resources :students
     get '/'=> 'index#index'

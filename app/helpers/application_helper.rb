@@ -1,11 +1,4 @@
 module ApplicationHelper
-    def bs_alert_box(message,type="info")
-        content_tag :div,message,:class=>"alert alert-#{type}"
-    end
-
-    def bs_label_tag(message,type="info")
-        content_tag :span,message,:class=>"label label-#{type}"
-    end
 
     def switch(condition,case1,case2)
         if condition
