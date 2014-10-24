@@ -1,29 +1,47 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h2><%= @manage_contest.name %> <small><%= @manage_contest.fullname %></small> </h2>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @manage_contest.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @manage_contest.description %>
-</p>
+<table class="table table-bordered">
+  <tr>
+    <td>当前状态</td>
+    <td><%= switch !@manage_contest.is_deleted?,bs_label_tag('启用','success'),bs_label_tag('停用','default') %></td>
+    <td>操作</td>
+    <td>
+      <%= link_to '编辑', edit_manage_contest_path(@manage_contest),class:"btn btn-warning" %>
+      <% if @manage_contest.is_deleted? %>
+        <%= link_to '还原', manage_contest_recover_url(@manage_contest), method: :delete,class:"btn btn-success" %>
+      <% else %>
+        <%= link_to '放入回收箱', @manage_contest, method: :delete, data: { confirm: '是否确认将这个比赛放入回收箱，这会导致与其相关的所有功能都失效?' },class:"btn btn-danger" %>
+      <% end %>
+    </td> 
+  </tr>
+  <tr>
+    <td width="20%"><%= tmc 'level' %></td>
+    <td><%= @manage_contest.level %></td>
+    <td><%= tmc 'organizer' %></td>
+    <td><%= raw @manage_contest.organizer.split(" ").join("<br>") %></td>
+  </tr>
+  <tr>
+    <td><%= tmc 'website_url' %></td>
+    <td><%= link_to @manage_contest.website_url,@manage_contest.website_url %></td>
+    <td><%= tmc 'admin' %></td>
+    <td><%= @manage_contest.admin.nickname if @manage_contest.admin %></td>
+  </tr>
+  <tr>
+    <td><%= tmc 'created_at' %></td>
+    <td><%= @manage_contest.created_at %></td>
+    <td><%= tmc 'updated_at' %></td>
+    <td><%= @manage_contest.updated_at %></td>
+  </tr>
+  <tr>
+    <td><%= tmc 'summary' %></td>
+    <td colspan="3"><%= @manage_contest.summary %></td>
+  </tr>
+  <tr>
+    <td><%= tmc 'description' %></td>
+    <td colspan="3"><%= raw @manage_contest.description %></td>
+  </tr>
 
-<p>
-  <strong>Summary:</strong>
-  <%= @manage_contest.summary %>
-</p>
-
-<p>
-  <strong>Level:</strong>
-  <%= @manage_contest.level %>
-</p>
-
-<p>
-  <strong>Organizer:</strong>
-  <%= @manage_contest.organizer %>
-</p>
-
-<%= link_to 'Edit', edit_manage_contest_path(@manage_contest) %> |
-<%= link_to 'Back', manage_contests_path %>
+</table>

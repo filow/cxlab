@@ -30,12 +30,12 @@
       <tr>
         <td>操作</td>
         <td>
-          <%= link_to '详情', manage_contest %>
-          <%= link_to '编辑', edit_manage_contest_path(manage_contest) %>
+          <%= link_to '详情', manage_contest,class:"btn btn-info" %>
+          <%= link_to '编辑', edit_manage_contest_path(manage_contest),class:"btn btn-warning" %>
           <% if manage_contest.is_deleted? %>
-            <%= link_to '还原', manage_contest_recover_url(manage_contest), method: :delete %>
+            <%= link_to '还原', manage_contest_recover_url(manage_contest), method: :delete,class:"btn btn-success" %>
           <% else %>
-            <%= link_to '放入回收箱', manage_contest, method: :delete, data: { confirm: '是否确认将这个比赛放入回收箱，这会导致与其相关的所有功能都失效?' } %>
+            <%= link_to '放入回收箱', manage_contest, method: :delete, data: { confirm: '是否确认将这个比赛放入回收箱，这会导致与其相关的所有功能都失效?' },class:"btn btn-danger" %>
           <% end %>
         </td> 
       </tr>

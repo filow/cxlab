@@ -75,6 +75,8 @@ cn:
         organizer: 主办单位
         admin: 创建人
         website_url: 官方网站
+        created_at: 信息录入日期
+        updated_at: 信息更新日期
     errors:
       template:
         header:
