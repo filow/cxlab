@@ -1,0 +1,2 @@
+module Index::IndexHelper
+end
