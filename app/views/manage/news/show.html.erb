@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @manage_news.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @manage_news.author %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @manage_news.content %>
+</p>
+
+<p>
+  <strong>Pure content:</strong>
+  <%= @manage_news.pure_content %>
+</p>
+
+<p>
+  <strong>Is draft:</strong>
+  <%= @manage_news.is_draft %>
+</p>
+
+<p>
+  <strong>Publish at:</strong>
+  <%= @manage_news.publish_at %>
+</p>
+
+<%= link_to 'Edit', edit_manage_news_path(@manage_news) %> |
+<%= link_to 'Back', manage_news_index_path %>

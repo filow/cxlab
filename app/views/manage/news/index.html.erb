@@ -1,0 +1,60 @@
+<h1>Listing manage_news</h1>
+
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#">草稿箱</a></li>
+  <li><a href="#">已经发布的资讯</a></li>
+  <li><a href="#">回收箱</a></li>
+</ul>
+<pre>
+  注意：
+    草稿箱放置is_draft为true的所有文章，回收箱放置is_deleted为true的文章
+    另外，草稿箱里面，文章的现实格式应当是与比赛管理类似的，要能预览一部分信息
+    其他两个就直接用表格好了。
+    
+    字段中，pure_content不需要用户输入，在内容提交时需要自动清除所有tag，清除的方法是：
+    str.gsub(/<\/?.*?>/,"").gsub(/&\w+;/," ").gsub(/\s+/," ")
+    content字段请使用 f.kindeditor  来生成编辑器，可以参考比赛管理中的表单。
+
+    contest需要你从contest表中读出所有contest的名字（只选择name和id字段，不要把其他信息读出来），然后生成一个列表框。传送的参数只有id。默认值是“系统公告”，id值为空
+
+    admin_id请在读取param时默认赋值，详情参见contest_controller。
+
+    做完基础的事情之后，添加一个搜索框，可以搜索匹配的文章，内容在  author/title/pure_content中寻找
+
+</pre>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Content</th>
+      <th>Pure content</th>
+      <th>Is draft</th>
+      <th>Publish at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @manage_news.each do |manage_news| %>
+      <tr>
+        <td><%= manage_news.title %></td>
+        <td><%= manage_news.author %></td>
+        <td><%= manage_news.content %></td>
+        <td><%= manage_news.pure_content %></td>
+        <td><%= manage_news.is_draft %></td>
+        <td><%= manage_news.publish_at %></td>
+        <td><%= link_to 'Show', manage_news %></td>
+        <td><%= link_to 'Edit', edit_manage_news_path(manage_news) %></td>
+        <td><%= link_to 'Destroy', manage_news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New News', new_manage_news_path %>

@@ -3,6 +3,7 @@ class Manage::IndexController < ManageController
     @navs={
         "快捷导航"=> [
             {text: "系统概览",icon: "dashboard",options:{controller: "index",action: "dashboard"}},
+            {text: "发布资讯",icon: "newspaper-o",options:{controller: "news",action: "index"}},
             {text: "个人信息设置",icon: "user",options:{controller: "self",action: "index"}}
         ],
         "管理员管理"=> [

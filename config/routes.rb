@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :manage do
+    
+  end
+
   namespace :index do
   get 'index/index'
   end
@@ -14,6 +18,7 @@ Rails.application.routes.draw do
     resources :contests do 
       delete 'recover' => 'contests#recover'
     end
+    resources :news
     resources :professions,except: [:new,:show]
     resources :students
     get '/'=> 'index#index'

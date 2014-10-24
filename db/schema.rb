@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023065310) do
+ActiveRecord::Schema.define(version: 20141024111758) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -61,6 +61,20 @@ ActiveRecord::Schema.define(version: 20141023065310) do
     t.string   "fullname"
     t.string   "website_url"
     t.boolean  "is_deleted",  default: false
+  end
+
+  create_table "news", force: true do |t|
+    t.string   "title",                        null: false
+    t.string   "author"
+    t.text     "content"
+    t.text     "pure_content"
+    t.boolean  "is_draft",     default: true
+    t.boolean  "is_deleted",   default: false
+    t.datetime "publish_at"
+    t.integer  "contest_id"
+    t.integer  "admin_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "nodes", force: true do |t|
