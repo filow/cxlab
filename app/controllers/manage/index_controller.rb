@@ -17,6 +17,7 @@ class Manage::IndexController < ManageController
         ],
         "比赛管理"=> [
             {text: "比赛大类管理",icon: "list",options:{controller: "contests",action: "index"}},
+            {text: "举办比赛",icon: "star",options:{controller: "competes",action: "index"}},
 
         ],
         "系统管理"=> [

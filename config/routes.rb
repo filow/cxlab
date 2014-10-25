@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :manage do
+    resources :competes
+  end
+
+  namespace :manage do
     
   end
 

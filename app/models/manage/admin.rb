@@ -19,6 +19,7 @@ class Manage::Admin < ActiveRecord::Base
 
     # 一个管理员可以建立多个竞赛
     has_many :contests
+    has_many :competes
 
 
 	attr_reader :pwd

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024111758) do
+ActiveRecord::Schema.define(version: 20141024124123) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 20141024111758) do
   end
 
   add_index "admins_roles", ["admin_id", "role_id"], name: "index_admins_roles_on_admin_id_and_role_id", using: :btree
+
+  create_table "competes", force: true do |t|
+    t.date    "start_time",                 null: false
+    t.date    "end_time",                   null: false
+    t.integer "admin_id",                   null: false
+    t.integer "contest_id",                 null: false
+    t.boolean "is_deleted", default: false
+  end
 
   create_table "config_types", force: true do |t|
     t.string  "name"
