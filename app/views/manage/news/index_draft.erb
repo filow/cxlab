@@ -2,12 +2,11 @@
   <h1>资讯管理</h1>
 </div>
 <ul class="nav nav-tabs" role="tablist">
-  <li><%= link_to '草稿箱', manage_news_index_draft_path %></li>
-  <li class="active"><%= link_to '已经发布的资讯', manage_news_index_path%></li>
+  <li  class="active"><%= link_to '草稿箱', manage_news_index_draft_path %></li>
+  <li><%= link_to '已经发布的资讯', manage_news_index_path %></li>
   <li><%= link_to '回收箱', manage_news_index_deleted_path %></li>
 </ul>
 <br>
-
 <% @manage_news.each do |manage_news| %>
   <% panel_style = "primary"  %>
   <%= bs_panel title: manage_news.title ,style:panel_style,footer:"发布人：#{manage_news.author if manage_news.admin}" do %>
@@ -25,10 +24,9 @@
         <td>操作</td>
         <td>
           <!-- 发布与放入回收箱功能还未实现 -->
-         <%= link_to '发布', manage_news_publish_url(manage_news), method: :delete,class:"btn btn-success" %>
+          <%= link_to '发布', manage_news_publish_url(manage_news), method: :delete,class:"btn btn-success" %>
           <%= link_to '详情', manage_news,class:"btn btn-info" %>
           <%= link_to '编辑', edit_manage_news_path(manage_news),class:"btn btn-warning" %>
-          <%= link_to '放入草稿箱', manage_news_draft_url(manage_news), method: :delete,class:"btn btn-warning" %>
           <%= link_to '放入回收箱', manage_news_recycle_url(manage_news), method: :delete,data: { confirm: '是否确认将这条资讯放入回收箱?' },class:"btn btn-danger" %>
         </td> 
       </tr>
@@ -52,5 +50,4 @@
 
     做完基础的事情之后，添加一个搜索框，可以搜索匹配的文章，内容在  author/title/pure_content中寻找
 </pre>
-<br>
 <%= link_to '添加新资讯', new_manage_news_path,class:"btn btn-success" %>

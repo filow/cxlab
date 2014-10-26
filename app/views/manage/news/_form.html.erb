@@ -1,41 +1,41 @@
 <%= form_for(@manage_news) do |f| %>
-  <% if @manage_news.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@manage_news.errors.count, "error") %> prohibited this manage_news from being saved:</h2>
+  <%= form_errors(@manage_news) %>
 
-      <ul>
-      <% @manage_news.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :pure_content %><br>
-    <%= f.text_area :pure_content %>
-  </div>
-  <div class="field">
-    <%= f.label :is_draft %><br>
-    <%= f.check_box :is_draft %>
-  </div>
-  <div class="field">
-    <%= f.label :publish_at %><br>
-    <%= f.datetime_select :publish_at %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table class="table">
+    <tr>
+      <td><%= f.label :title %></td>
+      <td><%= f.text_field :title,class:"form-control" %></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><%= f.label :author %></td>
+      <td><%= f.text_field :author,class:"form-control" %></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><%= f.label :content %></td>
+      <td><%= f.kindeditor :content, :window_onload => true,simple_mode: true %></td>
+      <td>资讯的详细内容</td>
+    </tr>
+    <tr>
+      <td><%= f.label :contest_id %></td>
+      <td><%= f.select :contest_id,options_for_select(Manage::News.all_contests,@manage_news.contest_id)%></td>
+      <td>竞赛的级别</td> 
+    </tr>
+    <tr>
+      <td><%= f.label :publish_at %></td>
+      <td><%= f.datetime_local_field :publish_at %></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><%= f.label :is_draft %></td>
+      <td><%= f.check_box :is_draft,class:"form-control" %></td>
+      <td>选择后信息将不会发布，而是放到草稿箱中</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit nil,class:"btn btn-primary" %></td>
+      <td></td>
+    </tr>
+  </table>
 <% end %>

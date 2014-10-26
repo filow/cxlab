@@ -22,7 +22,13 @@ Rails.application.routes.draw do
     resources :contests do 
       delete 'recover' => 'contests#recover'
     end
-    resources :news
+    resources :news do
+      delete 'draft' => 'news#draft'
+      delete 'publish' => 'news#publish'
+      delete 'recycle' => 'news#recycle'
+    end
+    get '/news_index_deleted'=>'news#index_deleted'
+    get '/news_index_draft'=>'news#index_draft'
     resources :professions,except: [:new,:show]
     resources :students
     get '/'=> 'index#index'
