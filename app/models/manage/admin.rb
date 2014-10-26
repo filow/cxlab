@@ -21,6 +21,8 @@ class Manage::Admin < ActiveRecord::Base
     has_many :contests
     has_many :competes
 
+    has_many :news
+
 
 	attr_reader :pwd
 

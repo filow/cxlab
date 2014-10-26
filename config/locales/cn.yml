@@ -82,6 +82,13 @@ cn:
         end_time: 终止时间
         admin: 创建人
         contest: 比赛大类
+      manage/news:
+        title: 主题
+        author: 发布人
+        content: 内容
+        publish_at: 发布时间
+        contest_id: 所属项目
+        is_draft: 放入草稿箱
     errors:
       template:
         header:
