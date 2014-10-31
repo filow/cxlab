@@ -23,9 +23,9 @@ Rails.application.routes.draw do
       delete 'recover' => 'contests#recover'
     end
     resources :news do
-      delete 'draft' => 'news#draft'
-      delete 'publish' => 'news#publish'
-      delete 'recycle' => 'news#recycle'
+      patch 'draft' => 'news#draft'
+      patch 'publish' => 'news#publish'
+      patch 'recycle' => 'news#recycle'
     end
     get '/news_index_deleted'=>'news#index_deleted'
     get '/news_index_draft'=>'news#index_draft'

@@ -20,7 +20,7 @@
     <tr>
       <td><%= f.label :contest_id %></td>
       <td><%= f.select :contest_id,options_for_select(Manage::News.all_contests,@manage_news.contest_id)%></td>
-      <td>竞赛的级别</td> 
+      <td>所属的比赛项目，如蓝桥杯</td> 
     </tr>
     <tr>
       <td><%= f.label :publish_at %></td>

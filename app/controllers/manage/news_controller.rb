@@ -1,21 +1,37 @@
 class Manage::NewsController < ManageController
   before_action :set_manage_news, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_mange_contests,only:[:index,:index_draft,:index_deleted]
+  before_action :get_mange_contest_id,only:[:index,:index_draft,:index_deleted]
   # GET /manage/news
   # GET /manage/news.json
   # 显示已发布的资讯
   def index
-    @manage_news = Manage::News.where(is_draft: false,is_deleted: false).order(id: :desc).all
+    if @find
+      @manage_news = 
+            Manage::News.where(is_draft: false,is_deleted: false,contest_id: @contest_id).order(id: :desc).all
+    else 
+      @manage_news = Manage::News.where(is_draft: false,is_deleted: false).order(id: :desc).all
+    end
   end
   # GET /manage/news/index_draft
   # 显示草稿箱中的资讯
   def index_draft
-    @manage_news = Manage::News.where(is_draft: true).order(id: :desc).all
+    if @find
+      @manage_news = 
+            Manage::News.where(is_draft: true,contest_id: @contest_id).order(id: :desc).all
+    else 
+      @manage_news = Manage::News.where(is_draft: true).order(id: :desc).all
+    end
   end
   # GET /manage/news/index_delete
   # 显示回收箱中的资讯
   def index_deleted
-    @manage_news = Manage::News.where(is_deleted: true).order(id: :desc).all
+    if @find
+      @manage_news = 
+            Manage::News.where(is_deleted: true,contest_id: @contest_id).order(id: :desc).all
+    else 
+      @manage_news = Manage::News.where(is_deleted: true).order(id: :desc).all
+    end
   end
   def 
   # GET /manage/news/1
@@ -112,6 +128,21 @@ class Manage::NewsController < ManageController
     # Use callbacks to share common setup or constraints between actions.
     def set_manage_news
       @manage_news = Manage::News.find(params[:id])
+    end
+
+    def set_mange_contests
+      @manage_contests=Manage::Contest.all
+    end
+    def get_mange_contest_id
+      @contest_id=params[:contest_id]
+      if @contest_id
+        @contest_id=@contest_id.to_i
+        @contest_id=nil if @contest_id==-1
+        #@find判断显示的咨询是全部还是某项赛事,true表示某项赛事,false表示全部
+        @find=true
+      else
+        @find=false
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

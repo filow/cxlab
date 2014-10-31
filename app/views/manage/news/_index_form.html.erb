@@ -1,0 +1,75 @@
+<div class="page-header">
+  <h1>资讯管理</h1>
+</div>
+  <!-- 链接提示暂时用link_to_unless_current，后期li标签的active属性请用JS实现 -->
+<ul class="nav nav-tabs" role="tablist">
+  <!-- <li class="active"><%= link_to '草稿箱', manage_news_index_draft_path %></li> -->
+  <li ><%= link_to_unless_current '草稿箱', manage_news_index_draft_path %></li>
+  <li ><%= link_to_unless_current '已经发布的资讯', manage_news_index_path%></li>
+  <li><%= link_to_unless_current '回收箱', manage_news_index_deleted_path %></li>
+   <li ><h3>赛事</h3></li>
+   <% if @type==1 %>
+       <li><%= link_to '全部',manage_news_index_path %></li>
+       <li><%= link_to_unless_current '系统公告',manage_news_index_path(:contest_id =>-1) %></li>
+      <% @manage_contests.each do |manage_contest| %>
+        <li><%= link_to_unless_current manage_contest.name,manage_news_index_path(:contest_id =>manage_contest.id) %></li>
+      <% end %>
+    <% elsif @type==2 %>
+       <li><%= link_to '全部',manage_news_index_draft_path %></li>
+       <li><%= link_to_unless_current '系统公告',manage_news_index_draft_path(:contest_id =>-1) %></li>
+      <% @manage_contests.each do |manage_contest| %>
+        <li><%= link_to_unless_current manage_contest.name,manage_news_index_draft_path(:contest_id =>manage_contest.id) %></li>
+      <% end %>
+    <% elsif @type==3 %>
+      <li><%= link_to '全部',manage_news_index_deleted_path%></li>
+      <li><%= link_to_unless_current '系统公告',manage_news_index_deleted_path(:contest_id =>-1) %></li>
+       <% @manage_contests.each do |manage_contest| %>
+        <li><%= link_to_unless_current manage_contest.name,manage_news_index_deleted_path(:contest_id =>manage_contest.id) %></li>
+      <% end %>
+      <% end %>
+     <td></td>
+</ul>
+<br>
+
+<% @manage_news.each do |manage_news| %>
+    <% panel_style = "primary"  %>
+    <%= bs_panel title: manage_news.title ,style:panel_style,footer:"发布人：#{manage_news.author if manage_news.admin}" do %>
+      <br>
+      <table class="table">
+      <tr>
+        <td><%= tmc 'contest_id' %></td>
+        <td><%= manage_news.contest %></td>
+      </tr>
+      <tr>
+        <td><%= tmc 'publish_at' %></td>
+        <td><%= manage_news.publish_at %></td>
+      </tr>
+      <tr>
+        <td>操作</td>
+        <td>
+        <% if @type==1 %>
+          <!-- 发布与放入回收箱功能还未实现 -->
+            <%= link_to '详情', manage_news,class:"btn btn-info" %>
+            <%= link_to '编辑', edit_manage_news_path(manage_news),class:"btn btn-warning" %>
+            <%= link_to '放入草稿箱', manage_news_draft_url(manage_news), method: :patch,class:"btn btn-warning" %>
+            <%= link_to '放入回收箱', manage_news_recycle_url(manage_news), method: :patch,class:"btn btn-danger" %>
+          <% elsif @type==2 %>
+              <%= link_to '发布', manage_news_publish_url(manage_news), method: :patch,class:"btn btn-success" %>
+            <%= link_to '详情', manage_news,class:"btn btn-info" %>
+            <%= link_to '编辑', edit_manage_news_path(manage_news),class:"btn btn-warning" %>
+            <%= link_to '放入回收箱', manage_news_recycle_url(manage_news), method: :patch,class:"btn btn-danger" %>
+          <% elsif @type==3 %>
+            <%= link_to '发布', manage_news_publish_url(manage_news), method: :patch,class:"btn btn-success" %>
+            <%= link_to '详情', manage_news,class:"btn btn-info" %>
+            <%= link_to '编辑', edit_manage_news_path(manage_news),class:"btn btn-warning" %>
+            <%= link_to '放入草稿箱', manage_news_draft_url(manage_news), method: :patch,class:"btn btn-warning" %>
+            <%= link_to '删除', manage_news, method: :delete, data: { confirm: t('confirm_delete') },class:"btn btn-danger" %>
+          <% end %>
+          </td> 
+      </tr>
+    </table>
+  <% end %>
+<% end %>
+<br>
+<br>
+<%= link_to '添加新资讯', new_manage_news_path,class:"btn btn-success" %>
