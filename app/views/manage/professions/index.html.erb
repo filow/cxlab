@@ -1,0 +1,58 @@
+<div class="page-header">
+  <h1>学院专业列表</h1>
+</div>
+<%= form_errors(@new_college) %>
+<div class="panel-group" id="accordion">
+<% i=0 %>
+<% @manage_professions.each do |manage_profession| %>
+  <div class="panel panel-default">
+    <div class="panel-heading node-block">
+      <h3 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= manage_profession.name %>">
+          <%= manage_profession.name %>
+        </a>
+
+      </h3>
+      <%= link_to '编辑', edit_manage_profession_path(manage_profession,:pid=>0),class:"btn btn-warning btn-sm" %>
+      <%= link_to '删除', manage_profession, method: :delete,
+                  data: { confirm: t('confirm_delete') },class:"btn btn-danger btn-sm",disabled:!manage_profession.child.empty?%></th>
+    </div>
+    <div id="collapse<%= manage_profession.name %>" class="panel-collapse collapse <% if i==0 %>in<% end %>">
+        <table class="table table-hover">
+          <tr>
+          <% k=1 %>
+          <% manage_profession.child.each do |cprofession| %>
+              <td width="30%"><%= cprofession.name %></td>
+              <td>
+                <%= link_to '编辑', edit_manage_profession_path(cprofession,:pid=>manage_profession),class:"btn btn-warning btn-sm" %>
+                <%= link_to '删除', manage_profession_path(cprofession), method: :delete,
+                  data: { confirm: t('confirm_delete') },class:"btn btn-danger btn-sm" %>
+              </td>
+              <% if k%2 == 0 %>
+                </tr><tr>
+              <% end %>
+              <% k+=1 %>
+          <% end %>
+
+            <%= form_for(@new_college) do |f| %>
+            <td><%= f.text_field :name,class:"form-control" %></td>
+            <td>
+              <%= f.hidden_field :pid,value: manage_profession.id,class:"form-control" %>
+              <%= f.submit "添加专业",class:"btn btn-success" %>
+            </td>
+            <% end %>
+          </tr>
+          </table>
+    </div>
+  </div>
+  <% i+=1 %>
+<% end %>
+</div>
+
+<br>
+
+<%= form_for(@new_college,html:{class:"form-inline"}) do |f| %>
+  添加一个新学院：
+  <%= f.text_field :name,class:"form-control" %>
+  <%= f.submit "添加学院",class:"btn btn-success" %>
+<% end %>

@@ -1,0 +1,51 @@
+<%= form_for(@manage_contest) do |f| %>
+  <%= form_errors(@manage_contest) %>
+
+  <!-- 
+    TODO:
+      将来这里要做成动态表单检查的形式，td:nth-child(3)的内容为检查的内容
+
+   -->
+  <table class="table">
+    <tr>
+      <td width="20%"><%= f.label :name %></td>
+      <td><%= f.text_field :name,size: 20,style:"width:20%",class:"form-control" %></td>
+      <td width="20%">少于15字</td>
+    </tr>
+    <tr>
+      <td><%= f.label :fullname %></td>
+      <td><%= f.text_field :fullname,class:"form-control" %></td>
+      <td>比赛的全称，例如  “蓝桥杯”全国软件和信息技术专业人才大赛</td>
+
+    </tr>
+    <tr>
+      <td><%= f.label :summary %></td>
+      <td><%= f.text_area :summary,class:"form-control",rows:6 %></td>
+      <td>赛事的简要介绍，少于200字</td>
+    </tr>
+    <tr>
+      <td><%= f.label :level %></td>
+      <td><%= f.select :level,options_for_select([""]+Contest.contest_levels,@manage_contest.level) %></td>
+      <td>竞赛的级别</td> 
+    </tr>
+    <tr>
+      <td><%= f.label :organizer %></td>
+      <td><%= f.text_field :organizer,class:"form-control" %></td>
+      <td>竞赛组织者，多个主办单位请以空格分隔</td>
+    </tr>
+    <tr>
+      <td><%= f.label :website_url %></td>
+      <td><%= f.text_field :website_url,class:"form-control" %></td>
+      <td>竞赛官方网站</td>
+    </tr>
+    <tr>
+      <td><%= f.label :description %></td>
+      <td><%= f.kindeditor :description, :window_onload => true,simple_mode: true %></td>
+      <td>比赛的详细介绍</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit nil,class:"btn btn-primary" %></td>
+    </tr>
+  </table>
+<% end %>

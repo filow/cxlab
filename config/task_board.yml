@@ -1,0 +1,31 @@
+# 任务板描述文件
+# 陈洁
+# 安纪存
+# 蒋悦达
+# 宋小萌
+# 徐长栋
+
+task1:
+    name: 首页页面设计
+    status: 正在进行
+    developer: 陈洁
+task3:
+    name: 系统设置中设置描述文件的制作以及seeds.rb文件中相应操作的编写
+    status: 正在进行
+    developer: 蒋悦达
+task4:
+    name: 左侧导航栏的当前项目高亮
+    developer: 陈洁
+    status: 等待
+task5: 
+    name: 学生信息导出功能的制作
+    developer: 安纪存
+    status: 正在进行
+task7:
+    name: 学生信息导入功能的制作
+    developer: 
+    status: 等待
+task8:
+    name: 系统设置的编辑页面中对增强功能的支持
+    status: 等待
+    developer: 

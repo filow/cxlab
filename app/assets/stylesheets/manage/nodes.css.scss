@@ -1,0 +1,12 @@
+// Place all the styles related to the Manage::Nodes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.node-block{
+    height: 50px;
+    h3{
+        line-height: 25px;
+    }
+    span{
+        padding-left: 10px;
+    }
+}

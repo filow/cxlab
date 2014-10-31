@@ -1,0 +1,78 @@
+@import 'mixins.scss';
+.x-grid-with-row-lines .x-grid-td:last-child {
+	border-right-width: 0;
+}
+
+.x-column-header-trigger{
+	background-image: none !important;
+}
+
+.x-column-header{
+	font-weight: bold !important;
+	border-right: 1px solid #d0d0d0 !important;
+}
+
+.x-toolbar-default{
+	border-color: #e9e9e9 !important;
+}
+
+.x-panel-header-default-top{
+	border-top-left-radius: 4px !important;
+	border-top-right-radius: 4px !important;
+}
+
+.x-btn-default-toolbar-small .x-btn-inner{
+	font-size: 14px !important;
+	color:#767676 !important;
+}
+
+.x-field-toolbar .x-form-text#searchfield-1048-inputEl{
+	height: 30px !important;
+	line-height: 16px !important;
+	border-radius: 4px;	
+}
+
+.x-form-search-trigger{
+	display: none;
+}
+
+.x-toolbar-item .x-form-item-label{
+	font: normal 14px  $font-family !important;
+	margin-top: 8px !important;
+	color:#767676;
+}
+
+.x-border-box, .x-border-box *{
+	font-family: Lato, 'Helvetica Neue','Micorsoft Yahei',Arial, sans-serif;
+}	
+
+.x-grid-row-alt .x-grid-td {
+	background-color: #f9f9f9 !important;
+}
+
+.x-grid-row-over .x-grid-td {
+	background-color: #efefef !important;
+}
+
+.x-grid-row-selected .x-grid-td {
+	background-color: #dfe8f6 !important;
+}
+
+.x-btn-default-toolbar-small{
+	top:6px !important;
+	padding: 8px 10px !important;
+}
+
+.x-btn-default-toolbar-small-over{
+	background-image: none !important;
+}
+
+.x-toolbar-default#pagingtoolbar-1010{
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.x-window-body-default{
+	overflow: auto !important;
+	background-color: #fff !important;
+
+}

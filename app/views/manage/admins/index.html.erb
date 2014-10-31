@@ -1,0 +1,12 @@
+<%= content_for :css do %>
+<%= stylesheet_link_tag    "theme-all.css", media: 'all', 'data-turbolinks-track' => true %>
+<% end %>
+
+
+<div id="grid" style="margin:10px 10px"></div>
+
+
+<%= content_for :js do %>
+<%= javascript_include_tag "ext-all.js", 'data-turbolinks-track' => true %>
+<%= javascript_include_tag "admins_grid.js", 'data-turbolinks-track' => true %>
+<% end %>

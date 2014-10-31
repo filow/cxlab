@@ -12,5 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+var data_name = $("#check_all").attr('data-name');
+$("#check_all").click(function() {
+	var checked = this.checked;
+          	$("input[name='" + data_name + "']").each(function(){
+  		this.checked = checked;
+  	});
+});
+var $sub_checkbox = $("input[name='" + data_name + "']");
+        	$sub_checkbox.click(function(){
+            	$("#check_all").attr("checked",$sub_checkbox.length == $("input[name='" + data_name + "']:checked").length ? true : false);
+});

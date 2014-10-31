@@ -1,0 +1,67 @@
+  <h1><%= @manage_admin.nickname %> <small>uid:<%= @manage_admin.uid %></small></h1>
+<table class="table">
+  <tr>
+    <td><%= tm('admin.email') %></td>
+    <td><%= @manage_admin.email %></td>
+  </tr>
+  <tr>
+    <td><%= tm('admin.desc') %></td>
+    <td><%= @manage_admin.desc %></td>
+  </tr>
+  <tr>
+    <td><%= tm('admin.is_enabled') %></td>
+    <td><%= switch @manage_admin.is_enabled,bs_label_tag('启用','success'),bs_label_tag('停用','default') %></td>
+  </tr>
+  <tr>
+    <td>用户角色</td>
+    <td>
+      <% @manage_admin.roles.each do |admin_role| %>
+         <%= admin_role.name %>  
+         <%= admin_role.remark %>  <br>
+      <% end %>   
+    </td>
+  </tr>
+  <tr>
+    <td>角色权限</td>
+    <td>
+      <div class="panel-group" id="accordion">
+        <% i=0 %>
+        <% @manage_nodes.each do |manage_node| %>
+          <% if !manage_node.child.empty? %>
+            <div class="panel panel-default">
+              <div class="panel-heading node-block">
+                <h3 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= manage_node.name %>">
+                    <%= manage_node.title %>(<%= manage_node.name %>)  
+                  </a>
+                </h3>
+              </div>
+              <div id="collapse<%= manage_node.name %>" class="panel-collapse collapse <% if i==0 %>in<% end %>">
+                <table class="table table-hover">
+                  <thead>
+                    <th><%= tm 'node.name'  %></th>
+                    <th><%= tm 'node.title'  %></th>
+                    <th><%= tm 'node.remark' %></th>
+                  </thead>
+                  
+                <% manage_node.child.each do |cnode| %>
+                  <% if @admin_privileges_names.include?(cnode.name) %>
+                    <tr class="success" %>
+                  <% else %>
+                    <tr>
+                  <% end %>
+                        <td><%= cnode.name %></td>
+                        <td><%= cnode.title %></td>
+                        <td><%= cnode.remark %></td>
+                  </tr>
+                <% end %>
+                </table>
+              </div>
+            <% end %>
+          </div>
+          <% i+=1 %>
+        <% end %>
+      </div>
+    </td>
+  </tr>
+</table>

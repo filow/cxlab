@@ -1,0 +1,216 @@
+// Place all the styles related to the Index::Index controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+    color:#666;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: "Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei";
+}
+a{
+    color:#666;
+}
+a:hover{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+.header{
+    background: #0385BC;
+    color:#fff;
+    height: 100px;
+}
+.logo{
+    margin-top: 30px;
+    padding-left: 10px;
+    font-size: 30px;
+}
+.nav-ul{
+    margin-top: 30px;
+}
+.nav-ul li a{
+    color: #fff;
+      -webkit-transition: all .3s ease;
+         -moz-transition: all .3s ease;
+           -o-transition: all .3s ease;
+              transition: all .3s ease;     
+}
+.nav-ul li a:hover{
+    color: #2A6496;
+}
+.content{
+    margin-top: 20px;
+}
+.main-content{
+    margin: 30px 0; 
+}
+.news-header{
+    color:#111;
+}
+.news-items{
+    margin-top: 10px;
+}
+.news-button{
+    margin-left: 8px;
+}
+.news-time{
+    margin-left: 8px;
+    color:#bbb;
+    float: right;
+}
+
+.divider{
+    border-left: 1px solid #ddd;
+}   
+.competition-header{
+    text-align: center;
+}
+.competition-header h1{
+    padding-top: 30px;
+    padding-bottom: 24px;
+    background-color: #f5f5f5;
+    margin: 0;
+}
+.competition-list > .nav-control{
+    background-color: #f5f5f5;
+    margin-bottom: 20px;
+}
+.competition-list .nav-control li {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    font-size:16px;
+}
+.competition-list .nav-control li a{
+      -webkit-transition: all .3s ease;
+         -moz-transition: all .3s ease;
+           -o-transition: all .3s ease;
+              transition: all .3s ease; 
+}
+.competition-list .nav-control li.flex-active a{
+    border-bottom: 4px solid #f7a947;
+    font-weight: bold;
+    color:#222; 
+}
+.competition-list .nav-control li a:hover{
+    background: #f5f5f5;
+    border-bottom: 4px solid #CDCDCD;
+}
+.competition-list .nav-control a {
+    padding: 20px  10px;
+    border-radius: 0;
+    color: #5d6266;
+    margin-bottom: 0;
+    border-bottom: 4px solid transparent;
+}
+.competition-desc{
+    margin-bottom: 20px;
+    padding: 30px 0;
+}
+.competition-desc-content{
+    margin: 30px 0;
+}
+.competition-psg{
+    margin-bottom: 20px;
+    padding: 40px 0;
+}
+.competition-pic{
+    height: 230px;
+}
+.divider-line img{
+    width: 100%;
+    max-width: 1247px;
+    height: 1px;
+}
+.divider-line p{
+    position: absolute;
+    left: 50%;
+    width: 230px;
+    height: 40px;
+    margin-left: -115px;
+    margin-top: -30px;
+    background-color: #FFF;
+    text-align: center;
+    font-size: 30px;
+}
+.info-time,.post-time{
+    float: right;
+    color: #bbb;
+}
+.info-items,.post-items{
+    margin-top: 10px;
+}
+.competition .label{
+    margin-right: 5px;
+}
+.competition-info{
+    /*border-right: 1px solid #ddd;*/
+}
+.competition-info h4{
+    color:#222;
+}
+.competition-post h4{
+    color: #222;
+}
+.competition-progress{
+    margin-top: 20px;
+    padding: 20px 0;
+}
+.competition-progress-bar{
+    padding-top: 8px;
+    position: relative;
+}
+.competition-progress-tag{
+    position: absolute;
+    bottom: -5px;
+}
+.countdown-number{
+    color:#963F1F;
+    font-size: 38px;
+    margin: 0 5px;
+}
+.competition-countdown{
+    text-align: center;
+    margin-bottom: 20px;
+}
+#acm .competition-desc-title h2{
+    color:#184079;
+}
+#acm .competition-desc-btn {
+    background-color: #184079;
+    color:#fff;
+    padding: 8px 16px;
+}
+#softwarecup .competition-desc-title h2{
+    color:#D30000;
+}
+#softwarecup .competition-desc-btn{
+    color:#fff;
+    padding: 8px 16px;
+    background-color: #D30000;
+}
+#bluebrigecup .competition-desc-title h2{
+    color: #8DA1C3;
+}
+#bluebrigecup .competition-desc-btn{
+    color:#fff;
+    padding: 8px 16px;
+    background-color: #8DA1C3;  
+}
+.footer{
+    border-top: 1px solid #ddd;
+    text-align: center;
+    padding: 20px 0 ;
+    background-color: #333;
+    margin-top: 20px;
+    min-height: 100px;
+}
+.clear{
+    clear:both;
+}

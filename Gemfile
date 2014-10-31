@@ -1,10 +1,10 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org/'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# 使用sqlite3作为本地测试用数据库
+gem 'sqlite3',group: :test
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -37,4 +37,30 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'bootstrap-sass'
 
+# mysql驱动
+gem 'mysql2'
+
+# 更友好地显示错误信息
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
+
+# 分页插件
+gem 'kaminari'
+
+# memcache插件，用于缓存
+gem 'dalli'
+
+# font-awesome图标字体库
+gem 'font-awesome-rails'
+
+# 处理文件上传的插件
+gem 'carrierwave'
+# mini_magick 是 ImageMagic的ruby接口，在图片上传时可以处理图片
+gem 'mini_magick'
+
+# bootstrap-wysihtml5
+gem 'rails_kindeditor'

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+node_admin:
+  name: admin
+  title: 管理员管理
+  sort: 0
+  pid: 0
+
+node_admin_child:
+  name: admin_list
+  title: 管理员列表
+  sort: 0
+  pid: 1

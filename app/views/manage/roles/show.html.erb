@@ -1,0 +1,51 @@
+<div class="page-header">
+  <h1><%= @manage_role.remark %> <small><%= @manage_role.name %></small></h1>
+</div>
+<table class="table">
+	<tr>
+    <td><%= tm('role.is_enabled') %></td>
+    <td><%= switch @manage_role.is_enabled,bs_label_tag('启用','success'),bs_label_tag('停用','default') %></td>
+	</tr>
+	<tr>
+    <td>角色权限</td>
+    <td>
+      <!-- TODO: 在这里直接输出所有角色的权限，然后再把该角色拥有的权限高亮，高亮方法是在tr标签上加success类 -->
+    	<div class="panel-group" id="accordion">
+        <% i=0 %>
+        <% @manage_nodes.each do |manage_node| %>
+          <% if !manage_node.child.empty? %>
+            <div class="panel panel-default">
+              <div class="panel-heading node-block">
+                <h3 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= manage_node.name %>">
+                    <%= manage_node.title %>(<%= manage_node.name %>)  
+                  </a>
+                </h3>
+              </div>
+              <div id="collapse<%= manage_node.name %>" class="panel-collapse collapse <% if i==0 %>in<% end %>">
+                <table class="table table-hover">
+                  <thead>
+                    <th><%= tm 'node.name'  %></th>
+                    <th><%= tm 'node.title'  %></th>
+                    <th><%= tm 'node.remark' %></th>
+                  </thead>
+                  
+                <% manage_node.child.each do |cnode| %>
+                  <tr<% if @role_nodes && @role_nodes.include?(cnode)%>  class="success"<% end %>>   
+                        <td><%= cnode.name %></td>
+  		                  <td><%= cnode.title %></td>
+  		                  <td><%= cnode.remark %></td>         
+                  </tr>
+                <% end %>
+                </table>
+              </div>
+            <% end %>
+          </div>
+          <% i+=1 %>
+        <% end %>
+	    </div>
+    </td>
+  </tr>
+</table>
+
+<%= link_to '编辑', edit_manage_role_path(@manage_role),class:"btn btn-warning" %>

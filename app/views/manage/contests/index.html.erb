@@ -1,0 +1,48 @@
+<div class="page-header">
+<h1>比赛大类管理</h1>
+  
+</div>
+
+<% @manage_contests.each do |manage_contest| %>
+  <% panel_style = "primary" unless manage_contest.is_deleted? %>
+  <%= bs_panel title: manage_contest.name ,style:panel_style,footer:"创建人：#{manage_contest.admin.nickname if manage_contest.admin}" do %>
+    <p>
+      <%= manage_contest.summary %>
+    </p>
+    <br>
+    <table class="table">
+      <tr>
+        <td><%= tmc 'fullname' %></td>
+        <td><%= manage_contest.fullname %></td>
+      </tr>
+      <tr>
+        <td><%= tmc 'level' %></td>
+        <td><%= manage_contest.level %></td>
+      </tr>
+      <tr>
+        <td><%= tmc 'organizer' %></td> 
+        <td><%= manage_contest.organizer %></td>
+      </tr>
+      <tr>
+        <td><%= tmc 'website_url' %></td> 
+        <td><%= link_to manage_contest.website_url,manage_contest.website_url if manage_contest.website_url %></td>
+      </tr>
+      <tr>
+        <td>操作</td>
+        <td>
+          <%= link_to '详情', manage_contest,class:"btn btn-info" %>
+          <%= link_to '编辑', edit_manage_contest_path(manage_contest),class:"btn btn-warning" %>
+          <% if manage_contest.is_deleted? %>
+            <%= link_to '还原', manage_contest_recover_url(manage_contest), method: :delete,class:"btn btn-success" %>
+          <% else %>
+            <%= link_to '放入回收箱', manage_contest, method: :delete, data: { confirm: '是否确认将这个比赛放入回收箱，这会导致与其相关的所有功能都失效?' },class:"btn btn-danger" %>
+          <% end %>
+        </td> 
+      </tr>
+    </table>
+  <% end %>
+<% end %>
+
+<br>
+
+<%= link_to '添加新比赛', new_manage_contest_path,class:"btn btn-success" %>

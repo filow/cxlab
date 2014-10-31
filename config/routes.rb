@@ -1,4 +1,49 @@
 Rails.application.routes.draw do
+
+  namespace :manage do
+    resources :competes
+  end
+
+  namespace :manage do
+    
+  end
+
+  namespace :index do
+  get 'index/index'
+  end
+
+  root 'index/index#index'
+  
+  namespace :manage do
+    resources :admins 
+    resources :roles
+    resources :nodes,only: [:index]
+    resources :configs
+    resources :contests do 
+      delete 'recover' => 'contests#recover'
+    end
+    resources :news do
+      patch 'draft' => 'news#draft'
+      patch 'publish' => 'news#publish'
+      patch 'recycle' => 'news#recycle'
+    end
+    get '/news_index_deleted'=>'news#index_deleted'
+    get '/news_index_draft'=>'news#index_draft'
+    resources :professions,except: [:new,:show]
+    resources :students
+    get '/'=> 'index#index'
+    get  '/login'=>'session#index',as:'login'
+    post '/login'=>'session#create'
+    delete '/logout'=>'session#logout',as:'logout'
+
+    get 'index/index'
+    get 'index/dashboard'
+
+    # 个人信息设置
+    get 'self/index'
+    post 'self/update'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,33 @@
+<div class="page-header">
+  <h2><%= @manage_news.title %> </h2>
+</div>
+
+<table class="table table-bordered">
+  <tr>
+    <td>当前状态</td>
+    <td><%= switch !@manage_news.is_deleted?&&!@manage_news.is_draft,bs_label_tag('发布','success'),bs_label_tag('未发布','default') %></td>
+    <td>操作</td>
+    <td>
+      <%= link_to '编辑', edit_manage_news_path(@manage_news),class:"btn btn-warning" %>
+    </td> 
+  </tr>
+  <tr>
+    <td ><%= tmc 'contest_id' %></td>
+    <td><%= @manage_news.contest %></td>
+    <td><%= tmc 'author' %></td>
+    <td><%= @manage_news.author %></td>
+  </tr>
+  <tr>
+    <td><%= tmc 'created_at' %></td>
+    <td><%= @manage_news.created_at %></td>
+    <td><%= tmc 'updated_at' %></td>
+    <td><%= @manage_news.updated_at %></td>
+  </tr>
+  <tr>
+    <td><%= tmc 'publish_at' %></td>
+    <td colspan="3"><%= @manage_news.publish_at %></td><tr>
+    <td><%= tmc 'content' %></td>
+    <td colspan="3"><%= raw @manage_news.content %></td>
+  </tr>
+
+</table>

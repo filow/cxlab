@@ -1,0 +1,41 @@
+<%= form_for(@manage_news) do |f| %>
+  <%= form_errors(@manage_news) %>
+
+  <table class="table">
+    <tr>
+      <td><%= f.label :title %></td>
+      <td><%= f.text_field :title,class:"form-control" %></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><%= f.label :author %></td>
+      <td><%= f.text_field :author,class:"form-control" %></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><%= f.label :content %></td>
+      <td><%= f.kindeditor :content, :window_onload => true,simple_mode: true %></td>
+      <td>资讯的详细内容</td>
+    </tr>
+    <tr>
+      <td><%= f.label :contest_id %></td>
+      <td><%= f.select :contest_id,options_for_select(Manage::News.all_contests,@manage_news.contest_id)%></td>
+      <td>所属的比赛项目，如蓝桥杯</td> 
+    </tr>
+    <tr>
+      <td><%= f.label :publish_at %></td>
+      <td><%= f.datetime_local_field :publish_at %></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><%= f.label :is_draft %></td>
+      <td><%= f.check_box :is_draft,class:"form-control" %></td>
+      <td>选择后信息将不会发布，而是放到草稿箱中</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit nil,class:"btn btn-primary" %></td>
+      <td></td>
+    </tr>
+  </table>
+<% end %>

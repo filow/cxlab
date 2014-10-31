@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>后台管理</title>
+  <%= stylesheet_link_tag    "bootstrap_ball", media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    "manage/common", media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    params[:controller], media: 'all', 'data-turbolinks-track' => true %>
+  <%= yield :css %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container-fluid">
+    <% unless notice.nil? %>
+        <div class="alert alert-info">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= notice %>
+        </div>
+    <% end %>
+
+    <%= yield %>
+</div>
+
+</body>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag  "manage/common",'data-turbolinks-track' => true %>
+<%= javascript_include_tag params[:controller], 'data-turbolinks-track' => true %>
+<%= yield :js %>
+</html>

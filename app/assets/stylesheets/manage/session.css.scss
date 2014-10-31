@@ -1,0 +1,70 @@
+// Place all the styles related to the Manage::Session controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "mixins.scss";
+
+body{
+    background:$black-10;
+}
+
+#top_frame{
+    height: 400px;
+    background-color: #2b72a0;
+    @include gradient_vertical(lighten(#2b72a0,5%),#2b72a0);
+    @include box-shadow(0px 2px 5px #777);
+    #computer{
+        float: left;
+        margin-top: 35px;
+        margin-left: 40px;
+
+    }
+    #logo{
+        width: 602px;
+        float: right;
+        margin-right: 81px;
+        padding-top: 41px;
+    }
+    #login_form{
+        float: left;
+        margin: 25px auto auto 147px; 
+        .login-input{
+            width: 220px;
+            height: 38px;
+            font-size: 18px;
+        }
+        .login-submit{
+            width: 72px;
+            height: 38px;
+            font-size: 16px;
+        }
+        .alert{
+            margin-bottom: 10px;
+            padding: 10px 15px;
+        }
+        .alert_placeholder{
+            height: 42px;
+            margin-bottom: 10px;
+        }
+    }
+}
+@media screen and (max-width: 1230px){
+#top_frame{
+    #computer{
+        display: none;
+    }
+    #logo{
+        float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #login_form{
+        float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 523px;
+    }
+}
+}

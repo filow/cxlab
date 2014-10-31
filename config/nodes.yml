@@ -1,0 +1,25 @@
+# 权限节点描述文件，请不要输入pid和sort字段，程序会自动处理.属于某个节点的子节点的，请在children里面定义，sort会根据顺序定义
+# 格式：
+# name:
+#   title:
+#   remark:
+#     chidren:
+#       title:
+#         remark:
+# 注意： 子节点在调用时请使用"父节点_子节点"，例如admin_list
+
+admin:
+    title: 管理员管理
+    remark: 这里控制所有的有关“管理员管理”有关的权限。例如添加、编辑、删除管理员，编辑管理员权限等等。
+    children:
+        list:
+            title: 查看管理员列表
+            remark: 列出管理员，查看管理员的大致信息
+        add:
+            title: 添加管理员
+        edit:
+            title: 编辑管理员信息
+        show:
+            title: 查看管理员详细信息
+        delete:
+            title: 删除管理员
