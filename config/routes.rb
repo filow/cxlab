@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
 
-
-  namespace :manage do
-    resources :sections
-  end
-
   namespace :index do
-  get 'index/index'
+    get 'index/index'
   end
 
   root 'index/index#index'
@@ -20,7 +15,7 @@ Rails.application.routes.draw do
       delete 'recover' => 'contests#recover'
     end
     resources :competes do
-      resources :sections 
+      resources :sections, except:[:index]
     end
     resources :news do
       patch 'draft' => 'news#draft'
