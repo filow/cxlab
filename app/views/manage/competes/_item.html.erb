@@ -1,0 +1,49 @@
+<% panel_style = "primary" unless compete.is_deleted? %>
+<% operaters = true if operaters.nil? %>
+<div class="panel panel-<%= panel_style %>">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= compete.name_with_annual %>
+    </h3>
+  </div>
+
+  <div class="panel-body">
+    <table style="width:100%">
+      <tr>
+        <td width="80px">时间进度</td>
+        <td width="80px"><%= compete.start_time %></td>
+        <td>
+          <div class="progress" id="timeline">
+            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <%=  100.0*compete.passed_days/compete.during_days %>%;">
+              <%= Time.now.strftime("%m-%d") %>
+            </div>
+          </div>
+        </td>
+        <td width="80px" style="text-align:center;"><%= compete.end_time %></td>
+      </tr>
+    </table>
+    <h4>比赛阶段</h4>
+    <table class="table">
+      <tr>
+        <td>12</td>
+      </tr>
+      <% if operaters %>
+      <tr>
+        <td colspan="2">
+          <%= link_to fa_icon('plus',text:'添加新阶段'),new_manage_compete_section_url(compete),class:"btn btn-success" %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="panel-footer">
+    <%= "创建人：#{compete.admin.nickname if compete.admin}" %>
+    <% if operaters %>
+
+      <%= link_to fa_icon('info',text:'详情'), compete,class:"btn btn-info btn-sm" %>
+      <%= link_to fa_icon('pencil',text:'编辑'), edit_manage_compete_path(compete),class:"btn btn-warning btn-sm" %>
+      <%= link_to fa_icon('close',text:'删除'), compete, method: :delete, data: { confirm: '确认删除吗?' },class:"btn btn-danger btn-sm" %>
+    <% end %>
+  </div>
+</div>
