@@ -1,0 +1,8 @@
+<div class="page-header">
+    <h2>为“<%= @compete.name_with_annual %>”创建比赛阶段</h2>
+</div>
+  <%= render partial:'manage/competes/item',locals:{compete: @compete,operaters: false} %>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', manage_sections_path %>

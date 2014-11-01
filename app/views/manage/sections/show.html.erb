@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @manage_section.name %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @manage_section.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @manage_section.end_time %>
+</p>
+
+<%= link_to 'Edit', edit_manage_section_path(@manage_section) %> |
+<%= link_to 'Back', manage_sections_path %>

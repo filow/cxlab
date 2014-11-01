@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024124123) do
+ActiveRecord::Schema.define(version: 20141031141332) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -113,6 +113,14 @@ ActiveRecord::Schema.define(version: 20141024124123) do
     t.string  "name",                      null: false
     t.boolean "is_enabled", default: true
     t.string  "remark"
+  end
+
+  create_table "sections", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "xform_id"
+    t.integer  "compete_id"
   end
 
   create_table "students", force: true do |t|

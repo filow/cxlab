@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
 
-  namespace :manage do
-    resources :competes
-  end
 
   namespace :manage do
-    
+    resources :sections
   end
 
   namespace :index do
@@ -21,6 +18,9 @@ Rails.application.routes.draw do
     resources :configs
     resources :contests do 
       delete 'recover' => 'contests#recover'
+    end
+    resources :competes do
+      resources :sections 
     end
     resources :news do
       delete 'draft' => 'news#draft'

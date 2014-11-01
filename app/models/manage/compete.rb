@@ -1,7 +1,8 @@
 class Manage::Compete < ActiveRecord::Base
     belongs_to :contest
     belongs_to :admin
-
+    has_many :sections
+    
     def during_days
         (end_time-start_time).to_i
     end
