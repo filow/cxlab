@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   namespace :index do
     get 'index/index'
+    get 'session/index'
+    get 'session/create'
+    get 'session/logout'
   end
 
   root 'index/index#index'
