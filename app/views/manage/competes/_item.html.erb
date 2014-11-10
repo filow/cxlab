@@ -24,7 +24,7 @@
     </table>
     <h4>比赛阶段</h4>
     <table class="table">
-      <% compete.sections.each do |section| %>
+      <% compete.sections.order(start_time: :asc,end_time: :asc).each do |section| %>
       <tr>
         <td width="80px"><%= section.name %></td>
         <td width="100px"><%= section.start_time.strftime("%Y-%m-%d") %></td>

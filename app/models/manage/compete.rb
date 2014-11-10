@@ -18,4 +18,5 @@ class Manage::Compete < ActiveRecord::Base
     def name_with_annual
         "#{annual}年度#{contest.name if contest}比赛"
     end
+
 end
