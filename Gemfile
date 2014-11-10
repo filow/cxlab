@@ -42,6 +42,9 @@ gem 'bootstrap-sass'
 # mysql驱动
 gem 'mysql2'
 
+# 为数据库迁移添加对外键的支持
+gem 'foreigner'
+
 # 更友好地显示错误信息
 group :development do
   gem "better_errors"
