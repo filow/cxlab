@@ -1,6 +1,6 @@
 class Manage::SectionsController < ManageController
   before_action :set_manage_section, only: [:show, :edit, :update, :destroy]
-  before_action :set_compete_id
+  before_action :set_compete_id,except: [:xform_render]
 
   # GET /manage/sections/1
   # GET /manage/sections/1.json
@@ -37,6 +37,10 @@ class Manage::SectionsController < ManageController
   # PATCH/PUT /manage/sections/1
   # PATCH/PUT /manage/sections/1.json
   def update
+    render json:params
+    return 
+
+
     respond_to do |format|
       if @manage_section.update(manage_section_params)
         format.html { redirect_to manage_compete_url(@compete), notice: 'Section was successfully updated.' }
@@ -56,6 +60,13 @@ class Manage::SectionsController < ManageController
       format.html { redirect_to manage_compete_url(@compete), notice: 'Section was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+
+  def xform_render
+    type = params[:type]
+    field_index = params[:field_index]
+    render partial: "manage/xform/#{type}",locals:{field_id: field_index}
   end
 
   private

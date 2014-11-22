@@ -66,4 +66,5 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 # bootstrap-wysihtml5
+gem 'bootstrap-wysihtml5-rails'
 gem 'rails_kindeditor'

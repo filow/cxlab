@@ -36,6 +36,8 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
+    bootstrap-wysihtml5-rails (0.3.3.1)
+      railties (>= 3.0)
     builder (3.2.2)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
@@ -146,6 +148,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  bootstrap-wysihtml5-rails
   carrierwave
   coffee-rails (~> 4.0.0)
   dalli

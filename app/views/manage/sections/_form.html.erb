@@ -15,7 +15,69 @@
       <td><%= f.datetime_local_field :end_time %></td>
     </tr>
   </table>
+
+
+<h3>填表信息</h3>
+<table class="table table-bordered" id="xform-table">
+<% Xform.field_types.each_with_index do |type,index| %>
+  <% @field_index=index+1 %>
+  <input type="hidden" name="xform[field_type][]" value="<%= type %>">
+  <tr class="xform-row">
+    <td class="order"><%= @field_index %></td>
+    <td class="icon"><div class="form-icon icon-<%= type %>"></div></td>
+    <td>
+      <table class="table">
+        <%= render partial: "manage/xform/#{type}",locals:{field_id: @field_index} %>
+        <tr>
+          <td><label for="xform_message_<%= @field_index %>">介绍</label></td>
+          <td colspan="5">
+            <textarea type="text" name="xform[message][]" id="xform_message_<%= @field_index %>" class="form-control xform_message"></textarea>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <button class="btn btn-danger btn-sm"><%= fa_icon "close" %></button>
+    </td>
+  </tr>
+<% end %>
+</table>
+<div class="alert alert-success">
+  <h4>添加新的填表项</h4>
+  <div class="icons">
+    <% Xform.field_types.each do |type| %>
+    <div class="form-icon icon-<%= type %>" data-type="<%= type %>"></div>
+    <% end %>
+    <div class="clear"></div>
+  </div>
+</div>
+
+
   <div class="actions">
     <%= f.submit nil,class:"btn btn-primary" %>
   </div>
+<% end %>
+<%= content_for :js  do %>
+<script>
+var field_index = <%= @field_index %>;
+var base_url = "<%= manage_xform_render_url %>";
+$('.xform_message').wysihtml5({
+  locale: "zh-CN",
+  toolbar: {
+    image: false,
+    blockquote: false,
+  }
+});
+$('.form-icon').click(function(){
+  var type = $(this).data("type");
+
+  field_index++;
+  var url = base_url + "?type="+type+"&field_index=" + field_index;
+  $.get(url,function(data){
+    console.log(data);
+  });
+  console.log(url);
+  console.log(field_index);
+});
+</script>
 <% end %>
