@@ -4,26 +4,32 @@
 
 <div class="panel-group" id="accordion">
 <% i=0 %>
-<% @manage_configs.each do |manage_config| %>
+<% @config_types.each do |config_type| %>
 
   <div class="panel panel-default">
     <div class="panel-heading node-block">
       <h3 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= manage_config.key %>">
-          <%= manage_config.key %>
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= config_type.name %>">
+          <%= config_type.name %>
         </a>
       </h3>
     </div>
-    <div id="collapse<%= manage_config.key %>" class="panel-collapse collapse <% if i==0 %>in<% end %>">
+    <div class="panel-collapse collapse <% if i==0 %>in<% end %>">
         <table class="table table-hover">
           <thead>
-            <th><%= tm 'manage_config.key'  %></th>
-            <th><%= tm 'manage_config.value'  %></th>
+            <th><%= tmc 'key' %></th>
+            <th><%= tmc 'name' %></th>
+            <th><%= tmc 'value' %></th>
+            <th></th>
           </thead>
+          <% config_type.configs.each do |config| %>
           <tr>
-            <td><%= manage_config.key %></td>
-            <td><%= manage_config.value %></td>
+            <td><%= config.key %></td>
+            <td><%= config.name %></td>
+            <td><%= config.value %></td>
+            <td><%= link_to '编辑',edit_manage_config_path(config),remote: true,class:"btn btn-success" %></td>
           </tr>
+          <% end %>
         </table>
     </div>
   </div>
@@ -32,10 +38,21 @@
 </div>
 
 
-
-
-<br>
-<%= link_to fa_icon('plus',text:'New Config'), new_manage_config_path,class:"btn btn-success" %>
-
-
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
 

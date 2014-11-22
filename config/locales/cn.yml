@@ -36,6 +36,7 @@ cn:
       manage/profession: 学院/专业
       manage/contest: 比赛大类
       manage/section: 比赛阶段
+      manage/config: 设置
     attributes:
       manage/admin:
         uid: 登陆id
@@ -94,7 +95,10 @@ cn:
         publish_at: 发布时间
         contest_id: 所属项目
         is_draft: 放入草稿箱
-
+      manage/config:
+        key: "设置键"
+        value: "值"
+        name: "说明"
     errors:
       template:
         header:

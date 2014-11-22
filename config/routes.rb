@@ -13,10 +13,12 @@ Rails.application.routes.draw do
     resources :admins 
     resources :roles
     resources :nodes,only: [:index]
-    resources :configs
+    resources :configs,only: [:index,:edit,:update]
     resources :contests do 
       delete 'recover' => 'contests#recover'
     end
+
+    get 'xform_render'=> 'sections#xform_render'  
     resources :competes do
       resources :sections, except:[:index]
     end

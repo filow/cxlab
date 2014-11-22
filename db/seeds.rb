@@ -113,7 +113,7 @@ def update_config(parent,key,val)
     if db_item
         print "\033[1m[更新]\033[0m  记录#{db_item.key}.."
         
-        result=db_item.update field_type: val["field_type"],edit_flag: false
+        result=db_item.update field_type: val["field_type"],name: val["name"],description: val["description"],edit_flag: false
         if result
             puts "成功"
         else

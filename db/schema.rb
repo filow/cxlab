@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141110113151) do
+ActiveRecord::Schema.define(version: 20141122111224) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 20141110113151) do
     t.integer "config_type_id"
     t.string  "field_type"
     t.boolean "edit_flag",      default: false
+    t.text    "description"
+    t.string  "name"
   end
 
   add_index "configs", ["config_type_id"], name: "index_configs_on_config_type_id", using: :btree
