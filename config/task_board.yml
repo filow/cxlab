@@ -5,14 +5,7 @@
 # 宋小萌
 # 徐长栋
 
-task1:
-    name: 首页页面设计
-    status: 正在进行
-    developer: 陈洁
-task3:
-    name: 系统设置中设置描述文件的制作以及seeds.rb文件中相应操作的编写
-    status: 正在进行
-    developer: 蒋悦达
+
 task4:
     name: 左侧导航栏的当前项目高亮
     developer: 陈洁
@@ -29,3 +22,16 @@ task8:
     name: 系统设置的编辑页面中对增强功能的支持
     status: 等待
     developer: 
+task9:
+    name: 为比赛添加主题图片
+    status: 等待
+    developer:
+task10:
+    name: 资讯管理界面的界面设计
+    status: 正在进行
+    developer: 李仁海
+task11:
+    name: 用户登录的制作
+    status: 正在进行
+    developer: 徐长栋
+    

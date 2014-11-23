@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
+
   namespace :index do
     get 'index/index'
-    get 'session/index'
-    get 'session/create'
-    get 'session/logout'
+    get 'login/' => 'session#index'
+    post 'login/' => 'session#create'
+    delete 'logout' => 'session#logout'
+    get 'login/forgot' => 'session#forgot'
+    get 'login/regist' => 'session#regist'
+    post 'login/regist' => 'session#regist_handler'
+
+    get 'user/index'
   end
 
   root 'index/index#index'
