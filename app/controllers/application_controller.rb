@@ -19,7 +19,21 @@ private
     session[:admin_user_uid]=nil
   end
 
+  def student_login(student)
+    session[:student_user_id] = student.id
+    session[:student_user_uid] = student.stuid
+  end
+
+  def student_logout
+    session[:student_user_id] = nil
+    session[:student_user_uid] = nil
+  end
+
   def logged_admin_id
     session[:admin_user_id]
+  end
+
+  def logged_student_id
+    session[:student_user_id]
   end
 end

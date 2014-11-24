@@ -9,7 +9,7 @@ class Manage::SessionController < ApplicationController
   	if manage_admin = Manage::Admin.auth(params[:name],params[:password])
       if manage_admin.is_enabled?
         admin_login(manage_admin)
-  		  redirect_to manage_index_index_path
+  	  redirect_to manage_index_index_path
       else
         redirect_to manage_login_url,:alert => "您的账户已被禁用"
       end

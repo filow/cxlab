@@ -1,2 +1,27 @@
-<h1>Index::Session#index</h1>
-<p>Find me in app/views/index/session/index.html.erb</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>用户登陆</title>
+<meta charset="UTF-8" >
+<%= stylesheet_link_tag    "bootstrap_ball", media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag    params[:controller], media: 'all', 'data-turbolinks-track' => true %>
+</head>
+<body>
+    <% %>
+    <div id="top_frame">
+        <div id="login_form">
+            <%= form_tag index_login_path,name: "form",class:"form-inline" do %>
+                    <% if flash[:alert] %>
+                        <div class="alert alert-danger"><%= flash[:alert] %></div>
+                    <% else %>
+                        <div class="alert_placeholder"></div>
+                    <% end %>
+                    <%= text_field_tag :stuid,params[:stuid],class: "form-control login-input",placeholder: "请输入用户名","data-toggle"=> "popover",autofocus: true,title:"","data-content"=>"用户名不能为空" %>
+                    <%= password_field_tag :password,params[:password],class: "form-control login-input",placeholder: "请输入密码","data-toggle"=> "popover",title:"","data-content"=>"密码不能为空" %>
+                    <%= submit_tag "登录",class: "btn btn-success login-submit" %>
+                    
+            <% end %> 
+        </div>
+    </div>
+</body>
+</html>
