@@ -3,13 +3,13 @@
 
 # 注意： 子节点在调用时请使用"父节点_子节点"，例如config_list
 
-test_config:
-    login_fail_times:
+login:
+    fail_times:
         value: 5
         field_type: number
         name: 最大登录失败次数
         description: "当用户登录时，在连续输入{{value}}次错误密码后，系统会让用户等待一定的时间，在等待时间过后才能重试"
-    login_fail_wait:
+    fail_wait:
         value: 30
         field_type: number
-        name: 登录失败后的重试等待时间
+        name: 登录失败后的重试等待时间(秒)

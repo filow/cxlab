@@ -1,4 +1,4 @@
-class Index::SessionController < ApplicationController
+class Index::SessionController < IndexController
   '''
     index控制器用于显示用户登录失败后的页面，会给用户失败的错误信息，以及登陆框、忘记密码等按钮。
   '''
@@ -13,10 +13,10 @@ class Index::SessionController < ApplicationController
     #判断用户名密码是否在数据库中存在
     if index_student = Manage::Student.auth(params[:stuid],params[:password])
         student_login(index_student)
-        redirect_to index_user_index_path
+        redirect_to user_index_path
     else
       #密码不正确或用户名不存在
-      redirect_to index_login_url,:alert => "不正确的用户名/密码"
+      redirect_to login_url,:alert => "不正确的用户名/密码"
     end
   end
 
@@ -25,7 +25,7 @@ class Index::SessionController < ApplicationController
   '''
   def logout
     student_logout
-    redirect_to index_index_index_path
+    redirect_to index_index_path
   end
 
   '''

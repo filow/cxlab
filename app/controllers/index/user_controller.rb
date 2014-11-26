@@ -6,12 +6,7 @@ class Index::UserController < IndexController
 
   private
       def check_login
-          if logged_student_id
-              # 从数据库中读取用户信息
-            @student=Manage::Student.find(logged_student_id)
-          else
-            redirect_to index_login_url
-          end
+          redirect_to login_url unless logged_student_id
       end
   
 end

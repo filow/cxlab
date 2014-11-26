@@ -3,9 +3,14 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :set_cache
+  before_action :set_config
 
   def set_cache
     @cache=Cache.new
+  end
+
+  def set_config
+    @config=Cfg.new
   end
   
 private

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  namespace :index do
+  scope module: 'index' do
     get 'index/index'
     get 'login/' => 'session#index'
     post 'login/' => 'session#create'

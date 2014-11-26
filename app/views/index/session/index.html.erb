@@ -10,7 +10,7 @@
     <% %>
     <div id="top_frame">
         <div id="login_form">
-            <%= form_tag index_login_path,name: "form",class:"form-inline" do %>
+            <%= form_tag login_path,name: "form",class:"form-inline" do %>
                     <% if flash[:alert] %>
                         <div class="alert alert-danger"><%= flash[:alert] %></div>
                     <% else %>

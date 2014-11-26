@@ -32,12 +32,22 @@
                             </div>
                         </div>
                         <div class="col-md-1 divider"></div>
+
+                        <% if @student %>
+                        <div class="col-md-3 login" >
+                            <div class="login-header">
+                                <h4><%= @student.name %></h4>
+                            </div>
+                            <%= link_to "用户中心",user_index_path,class:"btn btn-primary" %>
+                            <%= link_to "退出",logout_path,method: :delete,class:"btn btn-danger" %>
+                        </div>
+                        <% else %>
                         <div class="col-md-3 login" >
                             <div class="login-header">
                                 <h4>登录</h4>
                             </div>
                             <div class="login-form">
-                                <%= form_tag index_login_url,class:"form-horizontal",role: "form" do %>
+                                <%= form_tag login_url,class:"form-horizontal",role: "form" do %>
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             <input type="text" class="form-control" placeholder="学号"  name="stuid" required>
@@ -66,6 +76,8 @@
                                 <% end %>
                             </div>
                         </div>
+                        <% end %>
+
                     </div>                  
                 </div>
 
