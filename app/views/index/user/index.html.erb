@@ -1,3 +1,76 @@
-<h1>用户首页</h1>
 
-<%= @config.login_fail_times %>
+<!--%= @config.login_fail_times %-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 navbar">
+            <div class="pinfo">
+                <div class="pinfo-header">
+                    <h4>个人信息</h4>
+                </div>
+                
+                <div class="pinfo-info">
+                    <table class="table table-hover">
+                       <tr>
+                           <td colspan="2">
+                               <%= image_tag @student.avatar.thumb,class:"pinfo-avatar     block-center" %>
+                            </td>
+                       </tr>
+                        <tr>
+                            <td>
+                                学号: 
+                            </td>
+                            <td>
+                                <%= @student.stuid %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                姓名: 
+                            </td>
+                            <td>
+                                <%= @student.name %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                邮箱: 
+                            </td>
+                            <td>
+                                <%= @student.email %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                电话: 
+                            </td>
+                            <td>
+                                <%= @student.phone %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                年级: 
+                            </td>
+                            <td>
+                                <%= @student.grade %>
+                            </td>
+                        </tr>
+                    </table>                          
+                </div>
+                <div class="nav">
+                    <div class="list-group">
+                        <%= link_to '个人设置', "#",class:"list-group-item" %>
+                        <%= link_to '正在参加的比赛', "#",class:"list-group-item" %>
+                        <%= link_to '我是导航', "#",class:"list-group-item" %>
+                        <%= link_to '我也是导航', "#",class:"list-group-item" %>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        <div class="col-md-9">
+            Logo
+        </div>
+    </div>
+</div>
+

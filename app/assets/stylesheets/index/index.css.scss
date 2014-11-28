@@ -1,49 +1,8 @@
 // Place all the styles related to the Index::Index controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body{
-    color:#666;
-}
-h1,h2,h3,h4,h5,h6{
-    font-family: "Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei";
-}
-a{
-    color:#666;
-}
-a:hover{
-    text-decoration: none;
-}
 
-li{
-    list-style: none;
-}
-ul{
-    margin: 0;
-    padding: 0;
-}
-.header{
-    background: #0385BC;
-    color:#fff;
-    height: 100px;
-}
-.logo{
-    margin-top: 30px;
-    padding-left: 10px;
-    font-size: 30px;
-}
-.nav-ul{
-    margin-top: 30px;
-}
-.nav-ul li a{
-    color: #fff;
-      -webkit-transition: all .3s ease;
-         -moz-transition: all .3s ease;
-           -o-transition: all .3s ease;
-              transition: all .3s ease;     
-}
-.nav-ul li a:hover{
-    color: #2A6496;
-}
+
 .content{
     margin-top: 20px;
 }
