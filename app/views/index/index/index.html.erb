@@ -1,4 +1,4 @@
-    <div class="header">
+<!--     <div class="header">
         <div class="container">
             <div class="col-md-4 logo">Logo</div>
             <div class="col-md-6 col-md-offset-2 nav">
@@ -13,15 +13,48 @@
             </div>
             <div class="clear"></div>           
         </div>
-    </div>
+    </div> -->
+    <header class="header animated headroom--top">
+      <div class="container">
+        <nav class="navbar" role="navigation">
+          <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">创新实验室</a>
+          </div>
+         <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/?p=index&amp;s=">首页</a></li>
+              <li><a href="/tour?p=index&amp;s=">比赛列表</a></li>
+              <li><a href="/business?p=index&amp;s=">帮助中心</a></li>
+              <li><a href="/research?p=index&amp;s=">导航一</a></li>
+              <li><a href="/developer?p=index&amp;s=">导航二</a></li>
+              <li><%= link_to "后台管理",manage_url %></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
         <div class="content">
             <div class="container-fluid">
+<!--                 <div class="banner">
+                    <img src="img/banner-big.jpg" alt="">
+                </div> -->
                 <div class="main-content">
                     <div class="row">
                         <div class="col-md-4 col-md-offset-2 news">
-                            <div class="news-header"><h4>最新资讯</h4></div>
+                            <div class="news-header">
+                                <span class="news-icon"></span>
+                                <h4>最新资讯</h4>
+                            </div>
+                            <div class="clear"></div>
                             <div class="news-body">
                                 <ul class="news-ul">
+                                    <li class="news-items"><span class="label label-success">蓝桥杯</span><a href="" class="news-button">这是一条测试新闻啦啦啦啦</a><span class="news-time">2014-10-20</span></li>
                                     <li class="news-items"><span class="label label-success">蓝桥杯</span><a href="" class="news-button">这是一条测试新闻啦啦啦啦</a><span class="news-time">2014-10-20</span></li>
                                     <li class="news-items"><span class="label label-success">蓝桥杯</span><a href="" class="news-button">这是一条测试新闻啦啦啦啦</a><span class="news-time">2014-10-20</span></li>
                                     <li class="news-items"><span class="label label-success">蓝桥杯</span><a href="" class="news-button">这是一条测试新闻啦啦啦啦</a><span class="news-time">2014-10-20</span></li>
@@ -44,8 +77,10 @@
                         <% else %>
                         <div class="col-md-3 login" >
                             <div class="login-header">
-                                <h4>登录</h4>
+                                <span class="login-icon"></span>
+                                <h4>用户登录</h4>
                             </div>
+                            <div class="clear"></div>
                             <div class="login-form">
                                 <%= form_tag login_url,class:"form-horizontal",role: "form" do %>
                                     <div class="form-group">
@@ -87,7 +122,7 @@
                             <h1>赛事介绍</h1>
                         </div>
                         <div class="competition-list">
-                            <div class="nav-control">
+                            <div class="nav-control competition-nav">
                                 <div class="container">
                                     <ul class="nav nav-pills tab-control col-md-8 col-md-offset-2">
                                         <div class="row">
@@ -108,7 +143,7 @@
         <div class="competition-desc">
             <div class="row">
                 <div class="competition-pic col-md-6">
-                    <img src="img/bluebridgecup.png" width="200" alt="" style="margin-top:0;margin-left:150px">
+                    <img src="/assets/index/bluebridgecup.png" width="200" alt="" style="margin-top:0;margin-left:150px">
                 </div>
                 <div class="col-md-6">
                     <div class="competition-desc-title">
@@ -123,12 +158,16 @@
                         
         </div>  
         <div class="divider-line">
-            <img src="img/line.png" alt="">
+            <img src="/assets/index/line.png" alt="">
             <p class="divider-content">比赛信息</p>
         </div>
         <div class="row competition-psg">
             <div class="col-md-5 col-md-offset-1  competition-info">
-                <h4>论坛新帖</h4>
+                <div class="competition-psg-header">
+                    <span class="competition-icon-bbs"></span>
+                    <h4>论坛新帖</h4>  
+                </div>
+                <div class="clear"></div>
                 <ul>
                     <li class="info-items"><span class="label label-success">蓝桥杯</span><a href="">这是一条测试新闻哈哈哈哈<span class="info-time">2014-10-20</span></a></li>
                     <li class="info-items"><span class="label label-success">蓝桥杯</span><a href="">这是一条测试新闻哈哈哈哈<span class="info-time">2014-10-20</span></a></li>
@@ -138,7 +177,11 @@
                 </ul>
             </div>
             <div class="col-md-5 competition-post">
-                <h4>最新资讯</h4>
+                <div class="competition-post-header">
+                    <span class="competition-icon-notify"></span>
+                    <h4>论坛新帖</h4>  
+                </div>
+                <div class="clear"></div>
                 <ul>
                     <li class="post-items"><span class="label label-success">蓝桥杯</span><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
                     <li class="post-items"><span class="label label-success">蓝桥杯</span><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
@@ -149,7 +192,7 @@
             </div>                          
         </div>      
         <div class="divider-line">
-            <img src="img/line.png" alt="">
+            <img src="/assets/index/line.png" alt="">
             <p class="divider-content">赛事进度</p>
         </div>
         <div class="row competition-progress">
@@ -159,17 +202,33 @@
                         <span class="sr-only">60% Complete</span>
                     </div>
                 </div>  
-                <span class="competition-progress-tag" style="left:5%">
-                    10.23 比赛开始
-                </span>
-                <span class="competition-progress-tag" style="left:30%">
-                    11. 15 预赛
-                </span>
-                <span class="competition-progress-tag" style="left:90%">
-                    2.1 决赛
-                </span>             
+                <div class="competition-progress-tag">
+                     <div class="tooltip bottom" role="tooltip" style="left:5%;">
+                         <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            <span>10.23 比赛开始</span>
+                        </div>                       
+                    </div>  
+                </div>
+                <div class="competition-progress-tag" >
+                     <div class="tooltip bottom" role="tooltip" style="left:45%">
+                         <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            11. 15 预赛
+                        </div>                       
+                    </div>  
+                </div>
+                <div class="competition-progress-tag" >
+                     <div class="tooltip bottom" role="tooltip" style="left:90%;">
+                         <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            2.1 决赛
+                        </div>                       
+                    </div>  
+                </div>             
             </div>
         </div>
+        <div class="clear"></div>
         <div class="competition-countdown">
             <h2>
                 距离决赛还有<span class="countdown-number">36</span>天<span class="countdown-number">12</span>小时
@@ -182,7 +241,7 @@
         <div class="competition-desc">
             <div class="row">
                 <div class="competition-pic col-md-6">
-                    <img src="img/acm.png" alt="" style="margin-top:60px">
+                    <img src="/assets/index/acm.png" alt="" style="margin-top:60px">
                 </div>
                 <div class="col-md-6">
                     <div class="competition-desc-title">
@@ -197,12 +256,16 @@
                         
         </div>  
         <div class="divider-line">
-            <img src="img/line.png" alt="">
+            <img src="/assets/index/line.png" alt="">
             <p class="divider-content">比赛信息</p>
         </div>
         <div class="row competition-psg">
             <div class="col-md-5 col-md-offset-1 competition-info">
-                <h4>论坛新帖</h4>
+                <div class="competition-psg-header">
+                    <span class="competition-icon-bbs"></span>
+                    <h4>论坛新帖</h4>  
+                </div>
+                <div class="clear"></div>
                 <ul>
                     <li class="info-items"><span class="label label-success">蓝桥杯</span><a href="">这是一条测试新闻哈哈哈哈<span class="info-time">2014-10-20</span></a></li>
                     <li class="info-items"><span class="label label-success">蓝桥杯</span><a href="">这是一条测试新闻哈哈哈哈<span class="info-time">2014-10-20</span></a></li>
@@ -212,7 +275,11 @@
                 </ul>
             </div>
             <div class="col-md-5 competition-post">
-                <h4>最新资讯</h4>
+                <div class="competition-post-header">
+                    <span class="competition-icon-notify"></span>
+                    <h4>论坛新帖</h4>  
+                </div>
+                <div class="clear"></div>
                 <ul>
                     <li class="post-items"><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
                     <li class="post-items"><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
@@ -223,7 +290,7 @@
             </div>                          
         </div>      
         <div class="divider-line">
-            <img src="img/line.png" alt="">
+            <img src="/assets/index/line.png" alt="">
             <p class="divider-content">赛事进度</p>
         </div>
         <div class="row competition-progress">
@@ -233,17 +300,33 @@
                         <span class="sr-only">60% Complete</span>
                     </div>
                 </div>  
-                <span class="competition-progress-tag" style="left:5%">
-                    10.23 比赛开始
-                </span>
-                <span class="competition-progress-tag" style="left:30%">
-                    11. 15 预赛
-                </span>
-                <span class="competition-progress-tag" style="left:90%">
-                    2.1 决赛
-                </span>             
+                <div class="competition-progress-tag">
+                     <div class="tooltip bottom" role="tooltip" style="left:5%;">
+                         <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            10.23 比赛开始
+                        </div>                       
+                    </div>  
+                </div>
+                <div class="competition-progress-tag" >
+                     <div class="tooltip bottom" role="tooltip" style="left:45%">
+                         <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            11. 15 预赛
+                        </div>                       
+                    </div>  
+                </div>
+                <div class="competition-progress-tag" >
+                     <div class="tooltip bottom" role="tooltip" style="left:90%;">
+                         <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            2.1 决赛
+                        </div>                       
+                    </div>  
+                </div>             
             </div>
         </div>
+        <div class="clear"></div>
         <div class="competition-countdown">
             <h2>
                 距离决赛还有<span class="countdown-number">36</span>天<span class="countdown-number">12</span>小时
@@ -256,7 +339,7 @@
         <div class="competition-desc">
             <div class="row">
                 <div class="competition-pic col-md-6">
-                    <img src="img/softwarecup.gif"  width="400" alt="" style="margin-top:30px">
+                    <img src="/assets/index/softwarecup.gif"  width="400" alt="" style="margin-top:30px">
                 </div>
                 <div class="col-md-6">
                     <div class="competition-desc-title">
@@ -271,12 +354,16 @@
                         
         </div>  
         <div class="divider-line">
-            <img src="img/line.png" alt="">
+            <img src="/assets/index/line.png" alt="">
             <p class="divider-content">比赛信息</p>
         </div>
         <div class="row competition-psg">
             <div class="col-md-5 col-md-offset-1 competition-info">
-                <h4>论坛新帖</h4>
+                <div class="competition-psg-header">
+                    <span class="competition-icon-bbs"></span>
+                    <h4>论坛新帖</h4>  
+                </div>
+                <div class="clear"></div>
                 <ul>
                     <li class="info-items"><span class="label label-success">蓝桥杯</span><a href="">这是一条测试新闻哈哈哈哈<span class="info-time">2014-10-20</span></a></li>
                     <li class="info-items"><span class="label label-success">蓝桥杯</span><a href="">这是一条测试新闻哈哈哈哈<span class="info-time">2014-10-20</span></a></li>
@@ -286,7 +373,11 @@
                 </ul>
             </div>
             <div class="col-md-5 competition-post">
-                <h4>最新资讯</h4>
+                <div class="competition-post-header">
+                    <span class="competition-icon-notify"></span>
+                    <h4>论坛新帖</h4>  
+                </div>
+                <div class="clear"></div>
                 <ul>
                     <li class="post-items"><span class="label label-success">蓝桥杯</span><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
                     <li class="post-items"><span class="label label-success">蓝桥杯</span><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
@@ -297,7 +388,7 @@
             </div>                          
         </div>      
         <div class="divider-line">
-            <img src="img/line.png" alt="">
+            <img src="/assets/index/line.png" alt="">
             <p class="divider-content">赛事进度</p>
         </div>
         <div class="row competition-progress">
@@ -307,17 +398,33 @@
                         <span class="sr-only">60% Complete</span>
                     </div>
                 </div>  
-                <span class="competition-progress-tag" style="left:5%">
-                    10.23 比赛开始
-                </span>
-                <span class="competition-progress-tag" style="left:30%">
-                    11. 15 预赛
-                </span>
-                <span class="competition-progress-tag" style="left:90%">
-                    2.1 决赛
-                </span>             
+                <div class="competition-progress-tag">
+                     <div class="tooltip bottom" role="tooltip" style="left:5%;">
+                         <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            10.23 比赛开始
+                        </div>                       
+                    </div>  
+                </div>
+                <div class="competition-progress-tag" >
+                     <div class="tooltip bottom" role="tooltip" style="left:45%">
+                         <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            11. 15 预赛
+                        </div>                       
+                    </div>  
+                </div>
+                <div class="competition-progress-tag" >
+                     <div class="tooltip bottom" role="tooltip" style="left:90%;">
+                         <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            2.1 决赛
+                        </div>                       
+                    </div>  
+                </div>             
             </div>
         </div>
+        <div class="clear"></div>
         <div class="competition-countdown">
             <h2>
                 距离决赛还有<span class="countdown-number">36</span>天<span class="countdown-number">12</span>小时
@@ -329,7 +436,7 @@
         <div class="competition-desc">
             <div class="row">
                 <div class="competition-pic col-md-6">
-                    <img src="img/acm.png" alt="" style="margin-top:60px">
+                    <img src="/assets/index/acm.png" alt="" style="margin-top:60px">
                 </div>
                 <div class="col-md-6">
                     <div class="competition-desc-title">
@@ -344,12 +451,16 @@
                         
         </div>  
         <div class="divider-line">
-            <img src="img/line.png" alt="">
+            <img src="/assets/index/line.png" alt="">
             <p class="divider-content">比赛信息</p>
         </div>
         <div class="row competition-psg">
             <div class="col-md-5 col-md-offset-1 competition-info">
-                <h4>论坛新帖</h4>
+                <div class="competition-psg-header">
+                    <span class="competition-icon-bbs"></span>
+                    <h4>论坛新帖</h4>  
+                </div>
+                <div class="clear"></div>
                 <ul>
                     <li class="info-items"><span class="label label-success">蓝桥杯</span><a href="">这是一条测试新闻哈哈哈哈<span class="info-time">2014-10-20</span></a></li>
                     <li class="info-items"><span class="label label-success">蓝桥杯</span><a href="">这是一条测试新闻哈哈哈哈<span class="info-time">2014-10-20</span></a></li>
@@ -359,7 +470,11 @@
                 </ul>
             </div>
             <div class="col-md-5 competition-post">
-                <h4>最新资讯</h4>
+                <div class="competition-post-header">
+                    <span class="competition-icon-notify"></span>
+                    <h4>论坛新帖</h4>  
+                </div>
+                <div class="clear"></div>
                 <ul>
                     <li class="post-items"><span class="label label-success">蓝桥杯</span><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
                     <li class="post-items"><span class="label label-success">蓝桥杯</span><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
@@ -370,7 +485,7 @@
             </div>                          
         </div>      
         <div class="divider-line">
-            <img src="img/line.png" alt="">
+            <img src="/assets/index/line.png" alt="">
             <p class="divider-content">赛事进度</p>
         </div>
         <div class="row competition-progress">
@@ -380,17 +495,33 @@
                         <span class="sr-only">60% Complete</span>
                     </div>
                 </div>  
-                <span class="competition-progress-tag" style="left:5%">
-                    10.23 比赛开始
-                </span>
-                <span class="competition-progress-tag" style="left:30%">
-                    11. 15 预赛
-                </span>
-                <span class="competition-progress-tag" style="left:90%">
-                    2.1 决赛
-                </span>             
+                <div class="competition-progress-tag">
+                     <div class="tooltip bottom" role="tooltip" style="left:5%;">
+                         <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            10.23 比赛开始
+                        </div>                       
+                    </div>  
+                </div>
+                <div class="competition-progress-tag" >
+                     <div class="tooltip bottom" role="tooltip" style="left:45%">
+                         <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            11. 15 预赛
+                        </div>                       
+                    </div>                   
+                </div>
+                <div class="competition-progress-tag" >
+                    <div class="tooltip bottom" role="tooltip" style="left:90%;">
+                         <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            2.1 决赛
+                        </div>                       
+                    </div>
+                </div>             
             </div>
         </div>
+        <div class="clear"></div>
         <div class="competition-countdown">
             <h2>
                 距离决赛还有<span class="countdown-number">36</span>天<span class="countdown-number">12</span>小时
@@ -406,11 +537,38 @@
                 </div>
             </div>
         </div>
-        <div class="footer">
-            <div>
-                版权信息
+<footer>
+    <div class="footer-link">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 clearfix row">
+                    <ul class="nav-group col-md-3 col-md-offset-2">
+                        <h4>友情链接</h4>
+                        <li><a href="">河海大学</a></li>
+                        <li><a href="">河海大学</a></li>
+                        <li><a href="">河海大学</a></li>
+                    </ul>
+                    <ul class="nav-group col-md-3">
+                        <h4>标签组</h4>
+                        <li><a href="">河海大学</a></li>
+                        <li><a href="">河海大学</a></li>
+                        <li><a href="">河海大学</a></li>
+                    </ul>
+                    <ul class="nav-group col-md-3">
+                        <h4>标签组</h4>
+                        <li><a href="">河海大学</a></li>
+                        <li><a href="">河海大学</a></li>
+                        <li><a href="">河海大学</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>      
+        </div>
+    </div>
+    <div class="copyright text-center">
+        <div class="footer-logo">创新实验室</div>
+        <p class="text">Copyright © 2013-4ever cxlab<span>・</span><a href="/en/" class="setlocale" data-locale="en"><span class="country en"></span>HHU</a></p>
+    </div>  
+</footer>   
 <%= content_for :js do %>
 <%= javascript_include_tag  "jquery.flexslider-min.js",'data-turbolinks-track' => true %>
 
