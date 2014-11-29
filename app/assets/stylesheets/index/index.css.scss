@@ -64,7 +64,12 @@ ul{
     color:#bbb;
     float: right;
 }
-
+.login-form input,.login-form button{
+    height: 40px;
+}
+.login-form button{
+    font-size: 16px;
+}
 .divider{
     border-left: 1px solid #ddd;
 }   
@@ -167,8 +172,21 @@ ul{
     position: relative;
 }
 .competition-progress-tag{
-    position: absolute;
     bottom: -5px;
+}
+.competition-progress-tag .tooltip{
+    opacity: 1;
+    font-size: 13px;
+}
+.competition-progress-tag .tooltip .tooltip-inner{
+    background-color: #E0E0E0;
+    color:#565656;
+}
+.competition-progress-tag .tooltip .tooltip-arrow{
+    border-bottom-color:  #E0E0E0;
+}
+.progress{
+    margin-bottom: 0;
 }
 .countdown-number{
     color:#963F1F;
@@ -178,6 +196,7 @@ ul{
 .competition-countdown{
     text-align: center;
     margin-bottom: 20px;
+    padding-top: 15px;
 }
 #acm .competition-desc-title h2{
     color:#184079;
