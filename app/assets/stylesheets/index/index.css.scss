@@ -1,6 +1,7 @@
 // Place all the styles related to the Index::Index controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'mixins.scss';
 body{
     color:#666;
 }
@@ -21,37 +22,81 @@ ul{
     margin: 0;
     padding: 0;
 }
+.animated.slideDown {
+    -webkit-animation-name: slideDown;
+    -moz-animation-name: slideDown;
+    -o-animation-name: slideDown;
+    animation-name: slideDown;
+}
 .header{
-    background: #0385BC;
-    color:#fff;
-    height: 100px;
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+    min-height: 70px;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+    opacity: .95;
+    // @include transition(all .3s ease);
+    .navbar{
+        margin-bottom: 0;
+        padding: 7px 0;
+        .navbar-nav{
+            li{
+                a{
+                    color: #383838;
+                    font-size: 16px;
+                    margin-left: 25px;
+                    &:hover{
+                        background: none;
+                        color: #03a9f4;
+                    }
+                }
+                &.active{
+                    a{
+                        color: #03a9f4;
+                    }
+                }
+            }
+        }
+    }
+    .navbar-brand {
+        float: left;
+        padding: 15px;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 20px;
+        height: 50px;
+        color: #424242;
+        &:hover{
+            color: #424242;
+        }
+    }
 }
-.logo{
-    margin-top: 30px;
-    padding-left: 10px;
-    font-size: 30px;
-}
-.nav-ul{
-    margin-top: 30px;
-}
-.nav-ul li a{
-    color: #fff;
-      -webkit-transition: all .3s ease;
-         -moz-transition: all .3s ease;
-           -o-transition: all .3s ease;
-              transition: all .3s ease;     
-}
-.nav-ul li a:hover{
-    color: #2A6496;
-}
+
 .content{
-    margin-top: 20px;
+    margin-top: 60px;
 }
 .main-content{
     margin: 30px 0; 
 }
 .news-header{
     color:#111;
+    .news-icon{
+        float: left;
+        height: 50px;
+        width: 50px;
+        background-image: url("/assets/index/icons.png");
+        background-position: 0 0;
+    }
+    h4{
+        margin-left: 60px;
+        padding-top: 20px;
+        color: #666
+    }
+}
+.news-body{
+    margin-top: 20px;
 }
 .news-items{
     margin-top: 10px;
@@ -64,6 +109,24 @@ ul{
     color:#bbb;
     float: right;
 }
+.login-header{
+    margin-bottom: 10px;
+    .login-icon{
+        float: left;
+        height: 50px;
+        width: 50px;
+        background-image: url("/assets/index/icons.png");
+        background-position: 100px 0;
+    }
+    h4{
+        margin-left: 60px;
+        padding-top: 20px;
+        color: #666       
+    }
+}
+.login-form{
+    margin-top: 20px;
+}
 .login-form input,.login-form button{
     height: 40px;
 }
@@ -73,6 +136,15 @@ ul{
 .divider{
     border-left: 1px solid #ddd;
 }   
+.fixed-competition-nav{
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    a{
+        padding: 10px 10px !important;
+    }
+}
 .competition-header{
     text-align: center;
 }
@@ -124,6 +196,21 @@ ul{
 .competition-psg{
     margin-bottom: 20px;
     padding: 40px 0;
+    .competition-psg-header{
+        margin-bottom: 30px;
+        .competition-icon-bbs{
+            float: left;
+            height: 50px;
+            width: 50px;
+            background-image: url("/assets/index/icons.png");
+            background-position: 50px 0;       
+        }
+        h4{
+            margin-left: 60px;
+            padding-top: 20px;
+            color: #666       
+        }        
+    }
 }
 .competition-pic{
     height: 230px;
@@ -143,6 +230,7 @@ ul{
     background-color: #FFF;
     text-align: center;
     font-size: 30px;
+    color:#383838;
 }
 .info-time,.post-time{
     float: right;
@@ -156,15 +244,31 @@ ul{
 }
 .competition-info{
     /*border-right: 1px solid #ddd;*/
+
+}
+.competition-post{
+    .competition-post-header{
+        margin-bottom: 30px;
+         .competition-icon-notify{
+            float: left;
+            height: 50px;
+            width: 50px;
+            background-image: url("/assets/index/icons.png");
+            background-position: 150px 0;
+        }
+        h4{
+            margin-left: 60px;
+            padding-top: 20px;
+            color: #666       
+        }       
+    }
+
 }
 .competition-info h4{
-    color:#222;
-}
-.competition-post h4{
-    color: #222;
+    // color:#222;
 }
 .competition-progress{
-    margin-top: 20px;
+    margin-top: 30px;
     padding: 20px 0;
 }
 .competition-progress-bar{
@@ -196,7 +300,7 @@ ul{
 .competition-countdown{
     text-align: center;
     margin-bottom: 20px;
-    padding-top: 15px;
+    padding-top: 35px;
 }
 #acm .competition-desc-title h2{
     color:#184079;
@@ -222,13 +326,43 @@ ul{
     padding: 8px 16px;
     background-color: #8DA1C3;  
 }
-.footer{
-    border-top: 1px solid #ddd;
-    text-align: center;
-    padding: 20px 0 ;
-    background-color: #333;
-    margin-top: 20px;
-    min-height: 100px;
+footer{
+    margin-top: 50px;
+    .footer-link{
+        padding: 30px 0 10px;
+        background-color: #333;
+        color: #fff;  
+        .nav-group{
+            padding-left: 20px;
+            h4{
+                color: #A6A6A6;
+                margin-bottom: 20px;
+            }
+            li{
+                margin-bottom: 20px;
+                a{
+                    &:hover{
+                        color: #fff;
+                    }
+                }
+            }            
+        }
+    }
+    .copyright{
+        .footer-logo{
+            font-weight: bold;
+            font-size: 22px;
+            color: #A6A6A6;
+            margin-bottom: 10px;
+        }
+        .text{
+            color: #A6A6A6;
+            font-size: 18px;
+        }
+        background-color: #000;
+        height: 180px;
+        padding-top: 45px;
+    }
 }
 .clear{
     clear:both;
