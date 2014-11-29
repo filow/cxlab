@@ -1,3 +1,112 @@
-<!-- type=1表示已发布咨询的页面 -->
-<% @type=1 %>
-<%= render 'index_form' %>
+<div class="page-header">
+  <h2>资讯管理</h2>
+<%= link_to '添加新资讯', new_manage_news_path,class:"btn btn-success" %>
+</div>
+
+
+<div ng-app="newsList">
+<div ng-controller="listController">
+<div class="filter_box">
+    <h4>筛选</h4>
+    <div>
+        发布状态：
+        <label class="option"><input type="radio" value="published" ng-model="flt.status" name="status"> 已发布</label>
+        <label class="option"><input type="radio" value="draft" ng-model="flt.status" name="status" > 草稿</label>
+        <label class="option"><input type="radio" value="deleted" ng-model="flt.status" name="status"> 已删除</label>
+    </div>
+    <div ng-init="select_all()">
+        <form name="haha">
+        选择发布类别：
+        <button class="btn btn-default" ng-click="select_all()">全选</button>
+        <% @news_cates.each do |cate| %>
+        <label class="option"><input type="checkbox" ng-model="flt.cate_id[<%= cate[1] || 0 %>]" name="cate"> <%= cate[0] %></label>
+        <% end %>
+        </form>
+    </div>
+        {{flt}}
+    
+</div>
+<table class="table table-condensed">
+    <thead>
+        <th>标题</th>
+        <th width="50%">摘要</th>
+        <th>发布日期</th>
+        <th>作者</th>
+        <th>状态</th>
+        <th width="80px"></th>
+    </thead>
+    <tbody ng-init="getData()">
+        <tr ng-repeat="item in dataset">
+            <td>{{item.title}}</td>
+            <td>
+                <div class="summary_box">
+                    {{item.summary}}
+                    
+                </div>
+            </td>
+            <td>{{item.publish_at | date:'yy-mm-dd'}}</td>
+            <td>{{item.author}}</td>
+            <td>{{item.stats}}</td>
+            <td>
+                <a ng-href="{{item.url}}" class="btn btn-info btn-sm"><%= fa_icon "info" %></a>
+                <a ng-href="{{item.url}}/edit" class="btn btn-warning btn-sm"><%= fa_icon "pencil" %></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+
+
+<%= content_for :before_js do %>
+<script>
+var news_list = angular.module('newsList',[]);
+news_list.controller('listController', function ($scope,$http){
+    $scope.flt = {
+        cate_id:{},
+        status:"draft"
+    };
+
+    $scope.select_all = function () {
+        for(key in haha.cate){
+            if(parseInt(key)!= NaN && parseInt(key)<1000){
+                $scope.flt.cate_id[key] = true;
+            }
+
+        }
+    };
+
+    $scope.getData = function (){
+        var data = $http.get('<%= manage_news_news_list_path(format: :json) %>',{cache: true});
+        data.success(function (data){
+            var time_now = new Date();
+            for(key in data){
+                data[key]["publish_at"] = new Date(data[key]["publish_at"]);
+                if(data[key].is_deleted){
+                    data[key]["stats"]="已删除";
+                }else if(data[key].is_draft){
+                    data[key]["stats"]="草稿";
+                }else if(data[key]["publish_at"]<time_now){
+                    data[key]["stats"]="已发布";
+                }else if(data[key]["publish_at"]>time_now){
+                    data[key]["stats"]="未发布";
+                }
+            }
+
+            $scope.dataset = data;
+        });
+        data.error(function (data){
+            alert("数据加载错误！");
+        });
+    };
+});
+</script>
+<% end %>
+<%= content_for :js do %>
+<script>
+var jq = jQuery.noConflict();
+jq(document).on( "click", "div.summary_box", function() {
+    jq(this).removeClass("summary_box");
+});
+</script>
+<% end %>

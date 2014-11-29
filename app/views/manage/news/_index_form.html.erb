@@ -1,35 +1,4 @@
-<div class="page-header">
-  <h1>资讯管理</h1>
-</div>
-  <!-- 链接提示暂时用link_to_unless_current，后期li标签的active属性请用JS实现 -->
-<ul class="nav nav-tabs" role="tablist">
-  <!-- <li class="active"><%= link_to '草稿箱', manage_news_index_draft_path %></li> -->
-  <li ><%= link_to_unless_current '草稿箱', manage_news_index_draft_path %></li>
-  <li ><%= link_to_unless_current '已经发布的资讯', manage_news_index_path%></li>
-  <li><%= link_to_unless_current '回收箱', manage_news_index_deleted_path %></li>
-   <li ><h3>赛事</h3></li>
-   <% if @type==1 %>
-       <li><%= link_to '全部',manage_news_index_path %></li>
-       <li><%= link_to_unless_current '系统公告',manage_news_index_path(:contest_id =>-1) %></li>
-      <% @manage_contests.each do |manage_contest| %>
-        <li><%= link_to_unless_current manage_contest.name,manage_news_index_path(:contest_id =>manage_contest.id) %></li>
-      <% end %>
-    <% elsif @type==2 %>
-       <li><%= link_to '全部',manage_news_index_draft_path %></li>
-       <li><%= link_to_unless_current '系统公告',manage_news_index_draft_path(:contest_id =>-1) %></li>
-      <% @manage_contests.each do |manage_contest| %>
-        <li><%= link_to_unless_current manage_contest.name,manage_news_index_draft_path(:contest_id =>manage_contest.id) %></li>
-      <% end %>
-    <% elsif @type==3 %>
-      <li><%= link_to '全部',manage_news_index_deleted_path%></li>
-      <li><%= link_to_unless_current '系统公告',manage_news_index_deleted_path(:contest_id =>-1) %></li>
-       <% @manage_contests.each do |manage_contest| %>
-        <li><%= link_to_unless_current manage_contest.name,manage_news_index_deleted_path(:contest_id =>manage_contest.id) %></li>
-      <% end %>
-      <% end %>
-     <td></td>
-</ul>
-<br>
+
 
 <% @manage_news.each do |manage_news| %>
     <% panel_style = "primary"  %>
@@ -72,4 +41,3 @@
 <% end %>
 <br>
 <br>
-<%= link_to '添加新资讯', new_manage_news_path,class:"btn btn-success" %>

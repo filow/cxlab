@@ -1,3 +1,24 @@
 // Place all the styles related to the Manage::news controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.filter_box{
+    background-color: #fefefe;
+    padding: 5px;
+    border: 1px solid #eAeAeA;
+    border-radius: 5px;
+
+    label.option{
+        border: 1px solid #ccc;
+        padding: 6px 12px;
+        border-radius: 3px;
+        background-color: white;
+        &:hover{
+            background-color: #eee;
+        }
+    }
+}
+div.summary_box{
+    height: 20px;
+    overflow: hidden;
+    cursor: pointer;
+}

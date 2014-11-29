@@ -6,34 +6,15 @@ class Manage::NewsController < ManageController
   # GET /manage/news.json
   # 显示已发布的资讯
   def index
-    if @find
-      @manage_news = 
-            Manage::News.where(is_draft: false,is_deleted: false,contest_id: @contest_id).order(id: :desc).all
-    else 
-      @manage_news = Manage::News.where(is_draft: false,is_deleted: false).order(id: :desc).all
-    end
+      @news_cates = Manage::News.all_contests
   end
-  # GET /manage/news/index_draft
-  # 显示草稿箱中的资讯
-  def index_draft
-    if @find
-      @manage_news = 
-            Manage::News.where(is_draft: true,contest_id: @contest_id).order(id: :desc).all
-    else 
-      @manage_news = Manage::News.where(is_draft: true).order(id: :desc).all
-    end
+
+  def news_list
+    @manage_news = Manage::News.order(id: :desc).select(:id,:title,:author,:summary,:is_draft,:is_deleted,:publish_at,:contest_id).all
+    puts "111"
+    puts @manage_news
   end
-  # GET /manage/news/index_delete
-  # 显示回收箱中的资讯
-  def index_deleted
-    if @find
-      @manage_news = 
-            Manage::News.where(is_deleted: true,contest_id: @contest_id).order(id: :desc).all
-    else 
-      @manage_news = Manage::News.where(is_deleted: true).order(id: :desc).all
-    end
-  end
-  def 
+
   # GET /manage/news/1
   # GET /manage/news/1.json
   def show
@@ -42,6 +23,7 @@ class Manage::NewsController < ManageController
   # GET /manage/news/new
   def new
     @manage_news = Manage::News.new
+    @manage_news.publish_at = Time.now
     #发布者默认为管理员
     @manage_news.author=@admin.nickname
   end

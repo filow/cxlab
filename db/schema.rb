@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122111224) do
+ActiveRecord::Schema.define(version: 20141128122216) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20141122111224) do
     t.integer  "admin_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "summary"
   end
 
   add_index "news", ["contest_id"], name: "index_news_on_contest_id", using: :btree

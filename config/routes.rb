@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     resources :competes do
       resources :sections, except:[:index]
     end
+
+    get 'news/news_list'
     resources :news do
       patch 'draft' => 'news#draft'
       patch 'publish' => 'news#publish'
