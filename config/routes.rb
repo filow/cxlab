@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
 
-  namespace :manage do
-    resources :competes
-  end
 
-  namespace :manage do
-    
-  end
+  scope module: 'index' do
+    get 'index/index'
+    get 'login/' => 'session#index'
+    post 'login/' => 'session#create'
+    delete 'logout' => 'session#logout'
+    get 'login/forgot' => 'session#forgot'
+    get 'login/regist' => 'session#regist'
+    post 'login/regist' => 'session#regist_handler'
 
-  namespace :index do
-  get 'index/index'
+    get 'user/index'
   end
 
   root 'index/index#index'
@@ -18,14 +19,19 @@ Rails.application.routes.draw do
     resources :admins 
     resources :roles
     resources :nodes,only: [:index]
-    resources :configs
+    resources :configs,only: [:index,:edit,:update]
     resources :contests do 
       delete 'recover' => 'contests#recover'
     end
+
+    get 'xform_render'=> 'sections#xform_render'  
+    resources :competes do
+      resources :sections, except:[:index]
+    end
     resources :news do
-      delete 'draft' => 'news#draft'
-      delete 'publish' => 'news#publish'
-      delete 'recycle' => 'news#recycle'
+      patch 'draft' => 'news#draft'
+      patch 'publish' => 'news#publish'
+      patch 'recycle' => 'news#recycle'
     end
     get '/news_index_deleted'=>'news#index_deleted'
     get '/news_index_draft'=>'news#index_draft'

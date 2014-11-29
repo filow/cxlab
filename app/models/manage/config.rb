@@ -2,6 +2,14 @@ class Manage::Config < ActiveRecord::Base
     belongs_to :config_type
     validates_inclusion_of :field_type,in: %w(text textarea rich_text datetime_picker email url number array select multiple_select),allow_nil:true,allow_empty:true
     
+
+    def desc
+        if self.description
+            self.description.gsub(/\n/,"<br>").gsub(/ /,"&nbsp;")
+        else
+            "没有说明信息"
+        end
+    end
     def self.field_reflection
         {
             text: "text_field",

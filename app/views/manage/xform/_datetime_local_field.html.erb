@@ -1,0 +1,15 @@
+
+  <tr>
+    <td><label for="xform_name_<%= field_id %>">字段名称</label></td>
+    <td><input type="text" name="xform[name][]" id="xform_name_<%= field_id %>" class="form-control"></td>
+    <td><label for="xform_default_val_<%= field_id %>">默认值</label></td>
+    <td>
+      <input id="xform_default_val_<%= field_id %>" name="xform[default_val][]" type="datetime-local">
+    </td>
+  </tr>
+  <tr>
+    <td><label for="xform_value_range_from_<%= field_id %>">最早时间</label></td>
+    <td><input id="xform_value_range_from_<%= field_id %>" name="xform[value_range_from][]" type="datetime-local"></td>
+    <td><label for="xform_value_range_to_<%= field_id %>">最晚时间</label></td>
+    <td><input id="xform_value_range_to_<%= field_id %>" name="xform[value_range_to][]" type="datetime-local"></td>
+  </tr>

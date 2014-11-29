@@ -35,6 +35,8 @@ cn:
       manage/student: 学生
       manage/profession: 学院/专业
       manage/contest: 比赛大类
+      manage/section: 比赛阶段
+      manage/config: 设置
     attributes:
       manage/admin:
         uid: 登陆id
@@ -82,6 +84,10 @@ cn:
         end_time: 终止时间
         admin: 创建人
         contest: 比赛大类
+      manage/section:
+        name: 名称
+        start_time: 起始时间
+        end_time: 终止时间
       manage/news:
         title: 主题
         author: 发布人
@@ -89,6 +95,10 @@ cn:
         publish_at: 发布时间
         contest_id: 所属项目
         is_draft: 放入草稿箱
+      manage/config:
+        key: "设置键"
+        value: "值"
+        name: "说明"
     errors:
       template:
         header:

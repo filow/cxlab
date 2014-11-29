@@ -1,0 +1,4 @@
+var node = $('#myModal');
+node.find('#myModalLabel').html("<%= @manage_config.name %>(<%= @manage_config.key %>)");
+node.find('.modal-body').html("<%= escape_javascript(render 'form') %>");
+node.modal();

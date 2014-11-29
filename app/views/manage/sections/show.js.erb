@@ -1,0 +1,5 @@
+var node = $('#myModal')
+node.find('#myModalLabel').html("<%= @manage_section.name %>)")
+node.find('.modal-body').html("<%= escape_javascript(render partial:'detail',locals:{section: @manage_section}) %>")
+node.find("#edit_link").attr("href","<%= edit_manage_compete_section_path(@compete,@manage_section) %>")
+node.modal();

@@ -1,0 +1,2 @@
+module Index::UserHelper
+end

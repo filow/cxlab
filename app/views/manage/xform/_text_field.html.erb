@@ -1,0 +1,18 @@
+<tr>
+  <td><label for="xform_name_<%= field_id %>">字段名称</label></td>
+  <td><input type="text" name="xform[name][]" id="xform_name_<%= field_id %>" class="form-control"></td>
+  <td><label for="xform_default_val_<%= field_id %>">默认值</label></td>
+  <td>
+    <input type="text" name="xform[default_val][]"  list="url_list" id="xform_default_val_<%= field_id %>" class="form-control" />
+    <datalist id="url_list">
+      <option label="学生学号" value="{stu.stuid}" />
+      <option label="学生姓名" value="{stu.name}" />
+      <option label="email" value="{stu.email}" />
+      <option label="手机号码" value="{stu.phone}" />
+      <option label="专业" value="{stu.profession}" />
+      <option label="年级" value="{stu.grade}" />
+    </datalist>
+  </td>
+  <td><label for="xform_number_1">最大长度(0为不限制)</label></td>
+  <td><input type="number" name="xform[number][]" id="xform_number_<%= field_id %>" class="form-control"></td>
+</tr>

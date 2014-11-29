@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024124123) do
+ActiveRecord::Schema.define(version: 20141122111224) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -41,6 +41,10 @@ ActiveRecord::Schema.define(version: 20141024124123) do
     t.boolean "is_deleted", default: false
   end
 
+  add_index "competes", ["contest_id"], name: "competes_contest_id_fk", using: :btree
+  add_index "competes", ["end_time"], name: "index_competes_on_end_time", using: :btree
+  add_index "competes", ["start_time"], name: "index_competes_on_start_time", using: :btree
+
   create_table "config_types", force: true do |t|
     t.string  "name"
     t.boolean "edit_flag", default: false
@@ -52,6 +56,8 @@ ActiveRecord::Schema.define(version: 20141024124123) do
     t.integer "config_type_id"
     t.string  "field_type"
     t.boolean "edit_flag",      default: false
+    t.text    "description"
+    t.string  "name"
   end
 
   add_index "configs", ["config_type_id"], name: "index_configs_on_config_type_id", using: :btree
@@ -71,6 +77,8 @@ ActiveRecord::Schema.define(version: 20141024124123) do
     t.boolean  "is_deleted",  default: false
   end
 
+  add_index "contests", ["is_deleted"], name: "index_contests_on_is_deleted", using: :btree
+
   create_table "news", force: true do |t|
     t.string   "title",                        null: false
     t.string   "author"
@@ -84,6 +92,11 @@ ActiveRecord::Schema.define(version: 20141024124123) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "news", ["contest_id"], name: "index_news_on_contest_id", using: :btree
+  add_index "news", ["is_deleted"], name: "index_news_on_is_deleted", using: :btree
+  add_index "news", ["is_draft"], name: "index_news_on_is_draft", using: :btree
+  add_index "news", ["publish_at"], name: "index_news_on_publish_at", using: :btree
 
   create_table "nodes", force: true do |t|
     t.string  "name",      limit: 30,                 null: false
@@ -109,11 +122,24 @@ ActiveRecord::Schema.define(version: 20141024124123) do
     t.integer "pid",  default: 0
   end
 
+  add_index "professions", ["pid"], name: "index_professions_on_pid", using: :btree
+
   create_table "roles", force: true do |t|
     t.string  "name",                      null: false
     t.boolean "is_enabled", default: true
     t.string  "remark"
   end
+
+  create_table "sections", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "compete_id"
+  end
+
+  add_index "sections", ["compete_id"], name: "sections_compete_id_fk", using: :btree
+  add_index "sections", ["end_time"], name: "index_sections_on_end_time", using: :btree
+  add_index "sections", ["start_time"], name: "index_sections_on_start_time", using: :btree
 
   create_table "students", force: true do |t|
     t.string   "stuid",            limit: 20
@@ -132,5 +158,28 @@ ActiveRecord::Schema.define(version: 20141024124123) do
 
   add_index "students", ["name"], name: "index_students_on_name", using: :btree
   add_index "students", ["stuid"], name: "index_students_on_stuid", unique: true, using: :btree
+
+  create_table "xforms", force: true do |t|
+    t.string  "name",                     null: false
+    t.string  "field_type",               null: false
+    t.string  "default_val"
+    t.integer "length_limit"
+    t.string  "data"
+    t.text    "message"
+    t.string  "value_range"
+    t.integer "sort",         default: 1
+    t.integer "section_id"
+  end
+
+  add_index "xforms", ["section_id"], name: "xforms_section_id_fk", using: :btree
+  add_index "xforms", ["sort"], name: "index_xforms_on_sort", using: :btree
+
+  add_foreign_key "competes", "contests", name: "competes_contest_id_fk", dependent: :delete
+
+  add_foreign_key "configs", "config_types", name: "configs_config_type_id_fk", dependent: :delete
+
+  add_foreign_key "sections", "competes", name: "sections_compete_id_fk", dependent: :delete
+
+  add_foreign_key "xforms", "sections", name: "xforms_section_id_fk", dependent: :delete
 
 end
