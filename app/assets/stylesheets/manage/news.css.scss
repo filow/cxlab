@@ -17,6 +17,11 @@ div.filter_box{
         }
     }
 }
+input.rounded_input{
+    padding: 6px 12px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
 div.summary_box{
     height: 20px;
     overflow: hidden;
