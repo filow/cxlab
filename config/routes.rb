@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     post 'login/regist' => 'session#regist_handler'
 
     get 'user/index'
+    get 'user/email_checked' => 'user#email_checked'
+    get 'user/email_checked_handler' => 'user#email_checked_handler'
+
   end
 
   root 'index/index#index'
