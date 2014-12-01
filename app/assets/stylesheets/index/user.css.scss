@@ -1,3 +1,27 @@
 // Place all the styles related to the Index::User controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.pinfo{
+
+}
+.pinfo-header{
+    color:#111;
+}
+.pinfo-info{
+    border:1px solid #eee;
+    border-radius:5px;
+    -moz-border-radius:5px; /* Old Firefox */
+}
+.pinfo-avatar{
+    border-radius:100px;
+    height: 60%;
+}
+.navs{
+    margin-top: 10%;
+}
+.infomation{
+    font-family: MonoSpace;
+}
