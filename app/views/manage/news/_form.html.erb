@@ -1,3 +1,6 @@
+<%= content_for :js do %>
+<%= javascript_include_tag 'ckeditor/init' %>
+<% end %>
 <%= form_for(@manage_news) do |f| %>
   <%= form_errors(@manage_news) %>
 
@@ -14,7 +17,7 @@
     </tr>
     <tr>
       <td><%= f.label :content %></td>
-      <td><%= f.kindeditor :content, :window_onload => true,simple_mode: true %></td>
+      <td><%= f.cktext_area :content, :window_onload => true,simple_mode: true %></td>
       <td>资讯的详细内容</td>
     </tr>
     <tr>

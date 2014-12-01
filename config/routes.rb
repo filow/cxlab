@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  mount Ckeditor::Engine => '/ckeditor'
   scope module: 'index' do
     get 'index/index'
     get 'login/' => 'session#index'
