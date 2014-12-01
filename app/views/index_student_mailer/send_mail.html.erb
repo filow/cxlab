@@ -1,0 +1,6 @@
+<h1><%=@user.name%>,你好，欢迎使用创新室报名系统</h1>
+<p>请点击下面链接完成验证</p>
+<%#= link_to  "邮箱验证" ,user_email_checked_handler_path(:key =>@params[:message])%>
+<% url="http://localhost:3000/user/email_checked_handler?key="+@params[:message] %>
+<a  href="<%=url %>">邮箱验证</a>
+<p>如果您并未申请此账号，可能是其他用户误输入了您的邮箱地址。请忽略此邮件，或与我们联系。</p>
