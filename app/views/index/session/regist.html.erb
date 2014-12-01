@@ -1,35 +1,81 @@
-<%= form_for(@index_student, url: login_regist_path) do |f| %>
-  <%= form_errors(@index_student) %>
+<div class="container">
 
-  <div class="field">
-    <%= f.label :stuid %><br>
-    <%= f.text_field :stuid %>
+  <div class="row">
+
+    <%= form_for(@index_student,:html => {:class=>'form-horizontal regist-form col-md-5 col-md-offset-1'} , url: login_regist_path)  do |f| %>
+      <%= form_errors(@index_student) %>
+    <div class="regist-header col-md-12">
+      <h3 class="col-md-offset-2">注册</h3>
+    </div>    	
+    	<div class="form-group">
+        <div class="field">
+          <%= f.label :stuid ,class:"control-label col-sm-5"%>
+          <div class="col-sm-7">
+            <%= f.text_field :stuid, class:"form-control"%>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="field">
+          <%= f.label :name ,class:"control-label col-sm-5"%>
+          <div class="col-sm-7">
+            <%= f.text_field :name , class:"form-control" %>
+          </div>
+        </div>
+      </div>  
+      <div class="form-group">
+        <div class="field">
+          <%= f.label :pwd ,class:"control-label col-sm-5"%>
+          <div class="col-sm-7">
+            <%= f.text_field :pwd , class:"form-control" %>
+          </div>
+        </div>
+      </div>  
+      <div class="form-group">
+        <div class="field">
+          <%= f.label :email,class:"control-label col-sm-5" %>
+          <div class="col-sm-7">
+            <%= f.text_field :email , class:"form-control"%>
+          </div>
+        </div>
+      </div>  
+      <div class="form-group">
+        <div class="field">
+          <%= f.label :phone ,class:"control-label col-sm-5"%>
+          <div class="col-sm-7">
+            <%= f.text_field :phone , class:"form-control" %>
+          </div>
+        </div>
+      </div>  
+      <div class="form-group">
+        <div class="field">
+          <%= f.label :grade ,class:"control-label col-sm-5"%>
+          <div class="col-sm-7">
+            <%= f.number_field :grade , class:"form-control" %>
+          </div>
+        </div>
+      </div>  
+      <div class="form-group">
+        <div class="field">
+          <%= f.label :avatar,class:"control-label col-sm-5" %>
+          <div class="col-sm-7">
+            <%= f.file_field :avatar%>
+          </div>
+        </div>
+      </div>  
+      <div class="form-group">
+        <div class="actions">
+          <%= f.submit class:"btn btn-primary col-sm-offset-5 col-sm-7 regist-button" %>
+        </div>
+      </div>  
+      <% end %>
+    <div class="regist-help col-md-3 col-md-offset-1">
+      <div class="regist-header">
+        <h3>帮助</h3>        
+      </div>
+      <h4>注册FAQ</h4>
+
+      <a href="/index/index" class="btn btn-info">已有帐号？返回登录</a>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :pwd %><br>
-    <%= f.text_field :pwd %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :grade %><br>
-    <%= f.number_field :grade %>
-  </div>
-  <div class="field">
-    <%= f.label :avatar %><br>
-    <%= f.file_field :avatar %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
