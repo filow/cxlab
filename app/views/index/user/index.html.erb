@@ -1,3 +1,7 @@
 <h1>用户首页</h1>
-
-<%= @config.login_fail_times %>
+<%#= @config.login_fail_times %>
+<%=alert%><br>
+<% unless @index_student.is_email_checked %>
+  你的邮箱还没验证，是否进行验证?<br>
+  <%= link_to  "邮箱验证" ,user_email_checked_path%>
+<% end %>

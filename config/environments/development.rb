@@ -37,4 +37,17 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  #邮件发送设置
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {  
+    :address => "smtp.qq.com",
+    :port => 25,
+    :domain => "qq.com",
+    :authentication => :plain,
+    :user_name => "1420646999@qq.com",
+    :password => "weiai007ai"
+    # :user_name => "cxlab123@qq.com",
+    # :password => "test1234"
+  }
 end

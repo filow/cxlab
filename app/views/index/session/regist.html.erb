@@ -1,2 +1,35 @@
-<h1>Index::Session#regist</h1>
-<p>Find me in app/views/index/session/create.html.erb</p>
+<%= form_for(@index_student, url: login_regist_path) do |f| %>
+  <%= form_errors(@index_student) %>
+
+  <div class="field">
+    <%= f.label :stuid %><br>
+    <%= f.text_field :stuid %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :pwd %><br>
+    <%= f.text_field :pwd %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :grade %><br>
+    <%= f.number_field :grade %>
+  </div>
+  <div class="field">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
