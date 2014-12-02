@@ -2,10 +2,11 @@ class Manage::News < ActiveRecord::Base
   # 管理员发布资讯
   belongs_to :admin
 
-  before_save :set_summary
+  before_save :set_summary_and_pure_content
   
-  def set_summary
-    self.summary=self.content.gsub(/<\/?.*?>/,"").gsub(/&\w+;/," ").gsub(/\s+/," ")[0,255]
+  def set_summary_and_pure_content
+    self.pure_content=self.content.gsub(/<\/?.*?>/,"").gsub(/&\w+;/," ").gsub(/\s+/," ")
+    self.summary=self.pure_content[0,255]
   end
 
     #获得所有比赛项目

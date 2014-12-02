@@ -131,7 +131,11 @@ class Manage::NewsController < ManageController
     def manage_news_params
       param=params.require(:manage_news).permit(:title, :author, :content, :is_draft, :publish_at,:contest_id)
       param[:admin_id] = @admin.id
-      param[:pure_content]=param[:content].gsub(/<\/?.*?>/,"").gsub(/&\w+;/," ").gsub(/\s+/," ")
+      if params[:commit] == "存为草稿"
+        param[:is_draft] = true
+      else
+        param[:is_draft] = false
+      end
       param
     end
 end

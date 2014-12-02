@@ -1,44 +1,48 @@
 <%= content_for :js do %>
 <%= javascript_include_tag 'ckeditor/init' %>
-<% end %>
-<%= form_for(@manage_news) do |f| %>
-  <%= form_errors(@manage_news) %>
+<script>
+  $('#manage_news_publish_at').change(function (){
+    var time = Date.parse(this.value);
+    time -= 8*3600*1000;
+    var d = (time-Date.now())/1000;
+    var result = "";
+    if(d<=0){
+      result="立即发布";
+    }else{
+      // 输出  于12月01日 11:11 发布
+      result = "于"+this.value.slice(5,16).replace(/-/,"月").replace(/T/,"日 ")+"发布";
+    }
+    publish_button.value = result;
+  });
+</script>
 
+<% end %>
+
+<%= form_for(@manage_news,html:{class:"form-inline edit_form"}) do |f| %>
+  <%= form_errors(@manage_news) %>
   <table class="table">
     <tr>
-      <td><%= f.label :title %></td>
-      <td><%= f.text_field :title,class:"form-control" %></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><%= f.label :author %></td>
-      <td><%= f.text_field :author,class:"form-control" %></td>
-      <td></td>
+      <td width="15%"><%= f.label :title %></td>
+      <td><%= f.select :contest_id,options_for_select(Manage::News.all_contests,@manage_news.contest_id)%><%= f.text_field :title %></td>
     </tr>
     <tr>
       <td><%= f.label :content %></td>
-      <td><%= f.cktext_area :content, :window_onload => true,simple_mode: true %></td>
-      <td>资讯的详细内容</td>
+      <td><%= f.cktext_area :content,:ckeditor => {:uiColor => '#efefef', :toolbar => 'mini'} %></td>
     </tr>
     <tr>
-      <td><%= f.label :contest_id %></td>
-      <td><%= f.select :contest_id,options_for_select(Manage::News.all_contests,@manage_news.contest_id)%></td>
-      <td>所属的比赛项目，如蓝桥杯</td> 
+      <td><%= f.label :author %></td>
+      <td><%= f.text_field :author %></td>
     </tr>
     <tr>
       <td><%= f.label :publish_at %></td>
-      <td><%= f.datetime_local_field :publish_at %></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><%= f.label :is_draft %></td>
-      <td><%= f.check_box :is_draft,class:"form-control" %></td>
-      <td>选择后信息将不会发布，而是放到草稿箱中</td>
+      <td colspan="3"><%= f.datetime_local_field :publish_at %></td>
     </tr>
     <tr>
       <td></td>
-      <td><%= f.submit nil,class:"btn btn-primary" %></td>
-      <td></td>
+      <td colspan="3">
+        <%= f.submit "立即发布",class:"btn btn-success",id:"publish_button" %>
+        <%= f.submit "存为草稿",class:"btn btn-primary" %>
+      </td>
     </tr>
   </table>
 <% end %>
