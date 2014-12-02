@@ -54,7 +54,7 @@ class Index::SessionController < IndexController
         format.html { redirect_to user_index_path, notice: '用户创建成功' }
         format.json { render :show, status: :created, location: @index_student }
       else
-        format.html { render :new }
+        format.html { render :regist }
         format.json { render json: @index_student.errors, status: :unprocessable_entity }
       end
     end

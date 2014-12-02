@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stuid: MyString
+  mail_key: MyString
+
+two:
+  stuid: MyString
+  mail_key: MyString
