@@ -44,18 +44,7 @@ class Manage::Student < ActiveRecord::Base
         Digest::SHA2.hexdigest(stuid+"_ADMIN_"+pw)
     end
 
-    #邮箱验证,采用学号和邮箱组合的hash方式验证
-    def self.encrypt_email(stuid,email)
-        Digest::SHA2.hexdigest(stuid+"_ADMIN_"+email)
-    end
 
-    def self.auth_email(stuid,message)
-        if user=find_by_stuid(stuid)
-            if message == encrypt_email(user.stuid,user.email)
-                user
-            end
-        end
-    end
 
     
 private
