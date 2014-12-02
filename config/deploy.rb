@@ -6,6 +6,7 @@ set :repo_url, 'rails@filowlee.com:~/git/cxlab.git'
 set :rails_env, "production"
 
 # Default branch is :master
+set :branch, "dev"
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app

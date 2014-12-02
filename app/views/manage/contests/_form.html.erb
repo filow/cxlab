@@ -1,3 +1,6 @@
+<%= content_for :js do %>
+<%= javascript_include_tag 'ckeditor/init' %>
+<% end %>
 <%= form_for(@manage_contest) do |f| %>
   <%= form_errors(@manage_contest) %>
 
@@ -40,7 +43,7 @@
     </tr>
     <tr>
       <td><%= f.label :description %></td>
-      <td><%= f.kindeditor :description, :window_onload => true,simple_mode: true %></td>
+      <td><%= f.cktext_area :description,:ckeditor => {:uiColor => '#efefef', :toolbar => 'mini'} %></td>
       <td>比赛的详细介绍</td>
     </tr>
     <tr>
