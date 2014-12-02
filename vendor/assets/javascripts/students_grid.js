@@ -170,12 +170,12 @@ Ext.onReady(function() {
             // '头像': ''
         };
         source.id = row_data.id;
-        source.学号 = row_data.stuid;
-        source.姓名 = row_data.name;
-        source.邮箱 = row_data.email;
-        source.年级 = row_data.grade;
-        source.电话 = row_data.phone;
-        source.密码 = "******";
+        source["学号"] = row_data.stuid;
+        source["姓名"] = row_data.name;
+        source["邮箱"] = row_data.email;
+        source["年级"] = row_data.grade;
+        source["电话"] = row_data.phone;
+        source["密码"] = "******";
         // source.头像 = "<img width='50px' src='" + row_data.avatar + "'>";
         return source;
     }
