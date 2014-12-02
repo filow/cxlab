@@ -5,10 +5,16 @@
 <table class="table table-bordered">
   <tr>
     <td>当前状态</td>
-    <td><%= switch !@manage_news.is_deleted?&&!@manage_news.is_draft,bs_label_tag('发布','success'),bs_label_tag('未发布','default') %></td>
+    <td><%= news_statues_label @manage_news %></td>
     <td>操作</td>
     <td>
       <%= link_to '编辑', edit_manage_news_path(@manage_news),class:"btn btn-warning" %>
+      <% unless @manage_news.is_deleted? %>
+        <%= link_to '放入回收站', manage_news_path(@manage_news),method: :delete,class:"btn btn-danger" %>
+      <% else %>
+        <%= link_to '恢复', manage_news_recover_path(@manage_news),method: :delete,class:"btn btn-success" %>
+        <%= link_to '彻底删除', manage_news_hard_delete_path(@manage_news),method: :delete,data:{confirm: "彻底删除资讯是一个无法恢复的操作，确认执行吗？"},class:"btn btn-danger" %>
+      <% end %>
     </td> 
   </tr>
   <tr>

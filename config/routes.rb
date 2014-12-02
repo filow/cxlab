@@ -35,12 +35,9 @@ Rails.application.routes.draw do
 
     get 'news/news_list'
     resources :news do
-      patch 'draft' => 'news#draft'
-      patch 'publish' => 'news#publish'
-      patch 'recycle' => 'news#recycle'
+      delete 'recover'
+      delete 'hard_delete'
     end
-    get '/news_index_deleted'=>'news#index_deleted'
-    get '/news_index_draft'=>'news#index_draft'
     resources :professions,except: [:new,:show]
     resources :students
     get '/'=> 'index#index'
