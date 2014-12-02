@@ -1,6 +1,8 @@
 class Manage::News < ActiveRecord::Base
   # 管理员发布资讯
   belongs_to :admin
+  validates_length_of :title,minimum: 5
+  validates_length_of :content,minimum: 20
 
   before_save :set_summary_and_pure_content
   
