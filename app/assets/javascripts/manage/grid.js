@@ -205,16 +205,16 @@ Ext.onReady(function() {
             '启用状态': ''
         };
         source.id = row_data.id;
-        source.账号 = row_data.uid;
-        source.昵称 = row_data.nickname;
+        source["账号"] = row_data.uid;
+        source["昵称"] = row_data.nickname;
         for (var k in row_data.roles) {
-            if (k != 0) source.角色 += "," + row_data.roles[k].name;
-            else source.角色 += row_data.roles[k].name;
+            if (k != 0) source["角色"] += "," + row_data.roles[k].name;
+            else source["角色"] += row_data.roles[k].name;
         }
-        source.邮箱 = row_data.email;
-        source.描述 = row_data.desc;
-        if (row_data.active) source.启用状态 = "启用";
-        else source.启用状态 = "禁用";
+        source["邮箱"] = row_data.email;
+        source["描述"] = row_data.desc;
+        if (row_data.active) source["启用状态"] = "启用";
+        else source["启用状态"] = "禁用";
         return source;
     }
     //获取属性表格source，键名映射
