@@ -95,6 +95,13 @@ ActiveRecord::Schema.define(version: 20141201225840) do
 
   add_index "contests", ["is_deleted"], name: "index_contests_on_is_deleted", using: :btree
 
+  create_table "mails", force: true do |t|
+    t.string   "sid"
+    t.string   "mail_key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "news", force: true do |t|
     t.string   "title",                        null: false
     t.string   "author"

@@ -4,7 +4,7 @@ $(document).ready(function(){
     $(window).scroll(function() {
         var currenttop = $(window).scrollTop();
         // console.log(currenttop);
-        var hideHeaderHeight = 318;
+        var hideHeaderHeight = 350;
         var fixedHeaderHeight = 520;
         if(currenttop < hideHeaderHeight) {
             $("header").addClass("slideDown").removeClass("slideUp");

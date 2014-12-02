@@ -1,246 +1,251 @@
-.news-header{
-    color:#111;
-    .news-icon{
-        float: left;
-        height: 50px;
-        width: 50px;
-        background-image: url("/assets/index/icons.png");
-        background-position: 0 0;
-    }
-    h4{
-        margin-left: 60px;
-        padding-top: 20px;
-        color: #666
-    }
-}
-.news-body{
-    margin-top: 20px;
-}
-.news-items{
-    margin-top: 10px;
-}
-.news-button{
-    margin-left: 8px;
-}
-.news-time{
-    margin-left: 8px;
-    color:#bbb;
-    float: right;
-}
-.login-header{
-    margin-bottom: 10px;
-    .login-icon{
-        float: left;
-        height: 50px;
-        width: 50px;
-        background-image: url("/assets/index/icons.png");
-        background-position: 100px 0;
-    }
-    h4{
-        margin-left: 60px;
-        padding-top: 20px;
-        color: #666       
-    }
-}
-.login-form{
-    margin-top: 20px;
-}
-.login-form input,.login-form button{
-    height: 40px;
-}
-.login-form button{
-    font-size: 16px;
-}
-.divider{
-    border-left: 1px solid #ddd;
-}   
-.fixed-competition-nav{
-    position: fixed;
-    top: 0;
-    z-index: 100;
-    width: 100%;
-    a{
-        padding: 10px 10px !important;
-    }
-}
-.competition-header{
-    text-align: center;
-}
-.competition-header h1{
-    padding-top: 30px;
-    padding-bottom: 24px;
-    background-color: #f5f5f5;
-    margin: 0;
-}
-.competition-list > .nav-control{
-    background-color: #f5f5f5;
+.section-one{
     margin-bottom: 20px;
-}
-.competition-list .nav-control li {
-    padding-left: 10px;
-    padding-right: 10px;
-    text-align: center;
-    font-size:16px;
-}
-.competition-list .nav-control li a{
-      -webkit-transition: all .3s ease;
-         -moz-transition: all .3s ease;
-           -o-transition: all .3s ease;
-              transition: all .3s ease; 
-}
-.competition-list .nav-control li.flex-active a{
-    border-bottom: 4px solid #f7a947;
-    font-weight: bold;
-    color:#222; 
-}
-.competition-list .nav-control li a:hover{
-    background: #f5f5f5;
-    border-bottom: 4px solid #CDCDCD;
-}
-.competition-list .nav-control a {
-    padding: 20px  10px;
-    border-radius: 0;
-    color: #5d6266;
-    margin-bottom: 0;
-    border-bottom: 4px solid transparent;
-}
-.competition-desc{
-    margin-bottom: 20px;
-    padding: 30px 0;
-}
-.competition-desc-content{
-    margin: 30px 0;
-}
-.competition-psg{
-    margin-bottom: 20px;
-    padding: 40px 0;
-    .competition-psg-header{
-        margin-bottom: 30px;
-        .competition-icon-bbs{
+    .news-header{
+        color:#111;
+        .news-icon{
             float: left;
             height: 50px;
             width: 50px;
             background-image: url("/assets/index/icons.png");
-            background-position: 50px 0;       
+            background-position: 0 0;
+        }
+        h4{
+            margin-left: 60px;
+            padding-top: 20px;
+            color: #666
+        }
+    }
+    .news-body{
+        margin-top: 20px;
+    }
+    .news-items{
+        margin-top: 10px;
+    }
+    .news-button{
+        margin-left: 8px;
+    }
+    .news-time{
+        margin-left: 8px;
+        color:#bbb;
+        float: right;
+    }
+    .login-header{
+        margin-bottom: 10px;
+        .login-icon{
+            float: left;
+            height: 50px;
+            width: 50px;
+            background-image: url("/assets/index/icons.png");
+            background-position: 200px 0;
         }
         h4{
             margin-left: 60px;
             padding-top: 20px;
             color: #666       
-        }        
-    }
-}
-.competition-pic{
-    height: 230px;
-}
-.divider-line img{
-    width: 100%;
-    max-width: 1247px;
-    height: 1px;
-}
-.divider-line p{
-    position: absolute;
-    left: 50%;
-    width: 230px;
-    height: 40px;
-    margin-left: -115px;
-    margin-top: -30px;
-    background-color: #FFF;
-    text-align: center;
-    font-size: 30px;
-    color:#383838;
-}
-.info-time,.post-time{
-    float: right;
-    color: #bbb;
-}
-.info-items,.post-items{
-    margin-top: 10px;
-}
-.competition .label{
-    margin-right: 5px;
-}
-.competition-info{
-    /*border-right: 1px solid #ddd;*/
-
-}
-.competition-post{
-    .competition-post-header{
-        margin-bottom: 30px;
-         .competition-icon-notify{
-            float: left;
-            height: 50px;
-            width: 50px;
-            background-image: url("/assets/index/icons.png");
-            background-position: 150px 0;
         }
-        h4{
-            margin-left: 60px;
-            padding-top: 20px;
-            color: #666       
-        }       
     }
+    .login-form{
+        margin-top: 20px;
+        input,button{
+            height: 40px;
+        }
+        .login-form button{
+            font-size: 16px;
+        }
+    }
+}
 
+.section-two{
+    .divider{
+        border-left: 1px solid #ddd;
+    }   
+    .fixed-competition-nav{
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        a{
+            padding: 10px 10px !important;
+        }
+    }
+    .competition-header{
+        text-align: center;
+        h1{
+            padding-top: 30px;
+            padding-bottom: 24px;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+    }
+    .competition-list{
+        .nav-control{
+            background-color: #f5f5f5;
+            margin-bottom: 20px;
+            li {
+                padding-left: 10px;
+                padding-right: 10px;
+                text-align: center;
+                font-size:16px;
+                a{
+                    -webkit-transition: all .3s ease;
+                    -moz-transition: all .3s ease;
+                    -o-transition: all .3s ease;
+                    transition: all .3s ease; 
+                    &:hover{
+                        background: #f5f5f5;
+                        border-bottom: 4px solid #CDCDCD;
+                    }
+                }
+                &.flex-active a{
+                    border-bottom: 4px solid #f7a947;
+                    font-weight: bold;
+                    color:#222; 
+                }
+
+            }
+            a {
+                padding: 20px  10px;
+                border-radius: 0;
+                color: #5d6266;
+                margin-bottom: 0;
+                border-bottom: 4px solid transparent;
+            }
+        }
+    }
+    .competition-desc{
+        margin-bottom: 20px;
+        padding: 30px 0;
+    }
+    .competition-desc-content{
+        margin: 30px 0;
+    }
+    .competition-psg{
+        margin-bottom: 20px;
+        padding: 40px 0;
+        .competition-psg-header{
+            margin-bottom: 30px;
+            .competition-icon-bbs{
+                float: left;
+                height: 50px;
+                width: 50px;
+                background-image: url("/assets/index/icons.png");
+                background-position: 100px 0;       
+            }
+            h4{
+                margin-left: 60px;
+                padding-top: 20px;
+                color: #666       
+            }        
+        }
+    }
+    .competition-pic{
+        height: 230px;
+    }
+    .divider-line{
+        img{
+            width: 100%;
+            max-width: 1247px;
+            height: 1px;
+        }  
+        p{
+            position: absolute;
+            left: 50%;
+            width: 230px;
+            height: 40px;
+            margin-left: -115px;
+            margin-top: -30px;
+            background-color: #FFF;
+            text-align: center;
+            font-size: 30px;
+            color:#383838;
+        }
+    }
+    .info-time,.post-time{
+        float: right;
+        color: #bbb;
+    }
+    .info-items,.post-items{
+        margin-top: 10px;
+    }
+    .competition .label{
+        margin-right: 5px;
+    }
+    .competition-post{
+        .competition-post-header{
+            margin-bottom: 30px;
+             .competition-icon-notify{
+                float: left;
+                height: 50px;
+                width: 50px;
+                background-image: url("/assets/index/icons.png");
+                background-position: 250px 0;
+            }
+            h4{
+                margin-left: 60px;
+                padding-top: 20px;
+                color: #666       
+            }       
+        }
+
+    }
+    .competition-progress{
+        margin-top: 30px;
+        padding: 20px 0;
+    }
+    .competition-progress-bar{
+        padding-top: 8px;
+        position: relative;
+    }
+    .competition-progress-tag{
+        bottom: -5px;
+        .tooltip{
+            opacity: 1;
+            font-size: 13px;
+            .tooltip-inner{
+                background-color: #E0E0E0;
+                color:#565656;
+            }
+            .tooltip-arrow{
+                border-bottom-color:  #E0E0E0;
+            }
+        }
+    }
+    .progress{
+        margin-bottom: 0;
+    }
+    .countdown-number{
+        color:#963F1F;
+        font-size: 38px;
+        margin: 0 5px;
+    }
+    .competition-countdown{
+        text-align: center;
+        margin-bottom: 20px;
+        padding-top: 35px;
+    }
+    #acm .competition-desc-title h2{
+        color:#184079;
+    }
+    #acm .competition-desc-btn {
+        background-color: #184079;
+        color:#fff;
+        padding: 8px 16px;
+    }
+    #softwarecup .competition-desc-title h2{
+        color:#D30000;
+    }
+    #softwarecup .competition-desc-btn{
+        color:#fff;
+        padding: 8px 16px;
+        background-color: #D30000;
+    }
+    #bluebrigecup .competition-desc-title h2{
+        color: #8DA1C3;
+    }
+    #bluebrigecup .competition-desc-btn{
+        color:#fff;
+        padding: 8px 16px;
+        background-color: #8DA1C3;  
+    }
 }
-.competition-info h4{
-    // color:#222;
-}
-.competition-progress{
-    margin-top: 30px;
-    padding: 20px 0;
-}
-.competition-progress-bar{
-    padding-top: 8px;
-    position: relative;
-}
-.competition-progress-tag{
-    bottom: -5px;
-}
-.competition-progress-tag .tooltip{
-    opacity: 1;
-    font-size: 13px;
-}
-.competition-progress-tag .tooltip .tooltip-inner{
-    background-color: #E0E0E0;
-    color:#565656;
-}
-.competition-progress-tag .tooltip .tooltip-arrow{
-    border-bottom-color:  #E0E0E0;
-}
-.progress{
-    margin-bottom: 0;
-}
-.countdown-number{
-    color:#963F1F;
-    font-size: 38px;
-    margin: 0 5px;
-}
-.competition-countdown{
-    text-align: center;
-    margin-bottom: 20px;
-    padding-top: 35px;
-}
-#acm .competition-desc-title h2{
-    color:#184079;
-}
-#acm .competition-desc-btn {
-    background-color: #184079;
-    color:#fff;
-    padding: 8px 16px;
-}
-#softwarecup .competition-desc-title h2{
-    color:#D30000;
-}
-#softwarecup .competition-desc-btn{
-    color:#fff;
-    padding: 8px 16px;
-    background-color: #D30000;
-}
-#bluebrigecup .competition-desc-title h2{
-    color: #8DA1C3;
-}
-#bluebrigecup .competition-desc-btn{
-    color:#fff;
-    padding: 8px 16px;
-    background-color: #8DA1C3;  
-}
+

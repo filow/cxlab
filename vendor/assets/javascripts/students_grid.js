@@ -232,6 +232,7 @@ Ext.onReady(function() {
     });  
     //头像上传form
 
+    var avatar_data;
     var avatarWin = new Ext.Window({
         layout: 'fit',
         width: 400,
@@ -243,33 +244,32 @@ Ext.onReady(function() {
             {
                 text: '上传',
                 handler: function() {
+                    var row = grid.getSelectionModel().getSelection(); //获取选择列
+                    var avatar_data = row[0].data;
+                    // console.log(avatar_data);
+                    var students_id = avatar_data.id;
                     if(formUpload.isValid()){
-                          var row = grid.getSelectionModel().getSelection(); //获取选择列
-                          var row_data = row[0].data;
-                          var students_id = row_data.id;
-                          formUpload.submit({
+                        formUpload.submit({
                             url: '/manage/students/' + students_id + '.json',
                             method : 'patch',  
                             params : {
                                 '_method': 'PATCH',
                                 'authenticity_token': csrf_token,
-                                'manage_student[stuid]': row_data.stuid,
-                                'manage_student[name]':row_data.name,
+                                'manage_student[stuid]': avatar_data.stuid,
+                                'manage_student[name]':avatar_data.name,
                                 'manage_student[pwd]':'',
-                                'manage_student[email]':'',
-                                'manage_student[grade]':'',
-                                'manage_student[phone]':'',
+                                'manage_student[email]':avatar_data.email,
+                                'manage_student[grade]':avatar_data.grade,
+                                'manage_student[phone]':avatar_data.phone,
                                 'commit': '更新学生信息'
                             },
                             waitMsg: '正在上传...',
                             success: function() {
                                 avatarWin.hide();
-                                // Ext.Msg.alert('Success', 'Your file has been uploaded.');
                                 store.reload();
                             },
                             failure: function() {
                                 avatarWin.hide();
-                               // Ext.Msg.alert('错误', '与后台联系时出错');
                                 store.reload();
                             }
                         });
