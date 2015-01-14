@@ -12,13 +12,9 @@
                 <div class="clear"></div>
                 <div class="news-body">
                     <ul class="news-ul">
-                        <li class="news-items"><span class="label label-success">蓝桥杯</span><a href="" class="news-button">这是一条测试新闻啦啦啦啦</a><span class="news-time">2014-10-20</span></li>
-                        <li class="news-items"><span class="label label-success">蓝桥杯</span><a href="" class="news-button">这是一条测试新闻啦啦啦啦</a><span class="news-time">2014-10-20</span></li>
-                        <li class="news-items"><span class="label label-success">蓝桥杯</span><a href="" class="news-button">这是一条测试新闻啦啦啦啦</a><span class="news-time">2014-10-20</span></li>
-                        <li class="news-items"><span class="label label-success">蓝桥杯</span><a href="" class="news-button">这是一条测试新闻啦啦啦啦</a><span class="news-time">2014-10-20</span></li>
-                        <li class="news-items"><span class="label label-success">蓝桥杯</span><a href="" class="news-button">这是一条测试新闻啦啦啦啦</a><span class="news-time">2014-10-20</span></li>
-                        <li class="news-items"><span class="label label-success">蓝桥杯</span><a href="" class="news-button">这是一条测试新闻啦啦啦啦</a><span class="news-time">2014-10-20</span></li>
-                        <li class="news-items"><span class="label label-success">蓝桥杯</span><a href="" class="news-button">这是一条测试新闻啦啦啦啦</a><span class="news-time">2014-10-20</span></li>
+                    <% @news.each do |item| %>
+                        <li class="news-items"><span class="label label-<%= item.contest_color %>"><%= item.contest %></span><a href="" class="news-button"><%= item.title %></a><span class="news-time"><%= date_from_now item.publish_at %></span></li>
+                    <% end %>
                     </ul>
                 </div>
             </div>
