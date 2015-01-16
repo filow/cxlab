@@ -6,7 +6,7 @@
   <%= stylesheet_link_tag    "manage/common", media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    params[:controller], media: 'all', 'data-turbolinks-track' => true %>
   <%= yield :css %>
-  <%= javascript_include_tag 'angular.min' %>
+  <%= javascript_include_tag 'angular.min.js' %>
   <%= yield :before_js %>
 
   <%= csrf_meta_tags %>

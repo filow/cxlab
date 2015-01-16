@@ -17,6 +17,7 @@
 
 # 忽略public/upload上传文件夹
 /public/uploads
+/public/assets
 
 # 忽略.idea文件
 /.idea
