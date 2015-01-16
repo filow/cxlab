@@ -14,6 +14,7 @@
         <div id="logo">
             <%= image_tag "manage/cxsys.png" %>
         </div>
+        <%= image_tag manage_vcode_url(format: :png),id:"vcode",onclick:"this.src=\"#{manage_vcode_url(format: :png)}?rand=\"+Math.random()" %>
         <div id="login_form">
             <%= form_tag manage_login_path,name: "form",class:"form-inline" do %>
                     <% if flash[:alert] %>

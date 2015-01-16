@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   root 'index/index#index'
   
   namespace :manage do
+    get '/vcode' => 'session#vcode',format: :png
     resources :admins 
     resources :roles
     resources :nodes,only: [:index]

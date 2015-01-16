@@ -23,4 +23,13 @@ class Manage::SessionController < ApplicationController
     admin_logout
     redirect_to manage_login_url
   end
+
+  def vcode
+    response.headers['Cache-Control'] = "private, max-age=0, no-store, no-cache, must-revalidate"
+    response.headers['Pragma'] = "no-cache"
+    response.headers['content-type'] = "image/png"
+    image = VerifyCode.build()
+    session[:manage_vcode] = image[:code]
+    render text: image[:blob]
+  end
 end

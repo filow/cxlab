@@ -16,12 +16,29 @@ class Manage::News < ActiveRecord::Base
       [["系统公告", nil]]+Manage::Contest.select("name,id").collect{|r|[r.name,r.id]}
    end
    #找到对应的比赛项目
-   def contest
-      if contest_id
-          contest_name=Manage::Contest.find(contest_id).name
-      else
-          contest_name="系统公告"
-      end
-          contest_name
+  def contest
+    if contest_id
+        contest_name=get_contest_obj().name
+    else
+        contest_name="系统公告"
     end
+    contest_name
+  end
+
+  def contest_color
+    if contest_id
+      return 'info'
+    else
+      return 'warning'
+    end
+  end
+
+  def self.published
+    self.where('publish_at < ?',Time.now).where(is_draft: false,is_deleted: false).order(publish_at: :desc)
+  end
+private
+  def get_contest_obj
+    @cached_contest ||= Manage::Contest.find(contest_id)
+    @cached_contest
+  end
 end
