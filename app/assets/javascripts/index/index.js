@@ -1,24 +1,19 @@
 $(document).ready(function(){
 
-    //Header slide
-    $(window).scroll(function() {
-        var currenttop = $(window).scrollTop();
-        // console.log(currenttop);
-        var hideHeaderHeight = 350;
-        var fixedHeaderHeight = 520;
-        if(currenttop < hideHeaderHeight) {
-            $("header").addClass("slideDown").removeClass("slideUp");
-        } else {
-            $("header").addClass("slideUp").removeClass("slideDown");
-        }
-        if(currenttop < fixedHeaderHeight){
-            $(".competition-nav").removeClass("fixed-competition-nav");
-        } else {
-            $(".competition-nav").addClass("fixed-competition-nav");
-        }
-
+    //视频背景高度自适应
+    function bgheight(){
+        var height = $(window).height();
+        var vheight = $('video').height();
+        var bgheight = height > vheight ? vheight : height;
+        $(".bgvideo").height(bgheight);
+    }
+    bgheight();
+    $(window).resize(function(data){
+        bgheight();
     });
 
+    $('[data-typer-targets]').typer();
+    
     $(".competition-list > .flexslider").flexslider({
                 animation: "slide",
                 animationSpeed: 1e3,

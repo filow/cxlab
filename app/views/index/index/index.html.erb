@@ -1,7 +1,25 @@
-<!-- 
-                <div class="banner">
-        <img src="img/banner-big.jpg" alt="">
-    </div> -->
+<div class="bgvideo">
+    <div class="bgvideo-wrap">
+    </div>
+    <div class="bgvideo-news">
+        <div class="bgvideo-slogen">
+            <h1>最新比赛资讯</h1>
+            <div class="typer">
+                <span data-typer-targets="第三届蓝桥杯软件设计比赛开始报名了,第二届中国软件杯进入复赛阶段,ACM-ICPC亚洲邀请赛西安赛区将于周五进行" id="typer-text"></span>
+                <span id="typed-cursor">|</span>                
+            </div>
+        </div>
+        <a href="" class="bgvideo-button btn">查看更多</a>
+    </div>
+    <div class="scroll">
+        <span class="scroll-down"></span>
+        <span class="scroll-text">Scroll</span>
+    </div>
+    <video autoplay loop preload="auto" style="width:100%;">
+        <source src="<%= asset_path "hero-home.mp4" %>" type="video/mp4">
+    </video>
+</div>
+<div class="container-fluid">
     <div class="main-content">
         <div class="row section-one">
             <div class="col-md-4 col-md-offset-2 news">
@@ -490,11 +508,12 @@
             </div>
         </div>              
     </div>
-
+</div>
  
         
  
 <%= content_for :js do %>
 <%= javascript_include_tag  "jquery.flexslider-min.js",'data-turbolinks-track' => true %>
+<%= javascript_include_tag  "jquery.typer.js",'data-turbolinks-track' => true %>
 
 <% end %>

@@ -7,6 +7,7 @@ h1,h2,h3,h4,h5,h6{
 }
 a{
     color:#666;
+    font-family: "Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei";
 }
 a:hover{
     text-decoration: none;
@@ -24,62 +25,87 @@ ul{
     clear:both;
 }
 
-
 .animated.slideDown {
     -webkit-animation-name: slideDown;
     -moz-animation-name: slideDown;
     -o-animation-name: slideDown;
     animation-name: slideDown;
 }
+
 .header{
     position: fixed;
     top: 0;
     z-index: 3;
     width: 100%;
     min-height: 70px;
-    border-bottom: 1px solid #ddd;
-    background: #fff;
-    opacity: .95;
     // @include transition(all .3s ease);
+    color: #fff;
+    font-family: "Microsoft YaHei";
     .navbar{
         margin-bottom: 0;
         padding: 7px 0;
         .navbar-nav{
             li{
                 a{
-                    color: #383838;
-                    font-size: 16px;
-                    margin-left: 25px;
+                    display: block;
+                    padding: 15px 20px 15px 20px;
+                    border: none;
+                    font-size: 15px;
+                    -webkit-transition: all 0.3s;
+                    -moz-transition: all 0.3s;
+                    -o-transition: all 0.3s;
+                    -ms-transition: all 0.3s;
+                    transition: all 0.3s;
+                    color: #fff;
                     &:hover{
-                        background: none;
-                        color: #03a9f4;
+                        background: rgba(0,0,0,0.5);
+                        color: #fff;
+                    }
+                    &:visited{
+                        background: rgba(0,0,0,0.5);
                     }
                 }
-                &.active{
-                    a{
-                        color: #03a9f4;
+            }
+        }
+        .login-nav{
+            li{
+                float: left;
+                a{
+                    display: block;
+                    padding: 15px 20px 15px 20px;
+                    border: none;
+                    font-size: 15px;
+                    -webkit-transition: all 0.3s;
+                    -moz-transition: all 0.3s;
+                    -o-transition: all 0.3s;
+                    -ms-transition: all 0.3s;
+                    transition: all 0.3s;
+                    color: #fff;
+                    &:hover{
+                        background: rgba(0,0,0,0.5);
+                        color: #fff;
                     }
-                }
+                }                
             }
         }
     }
     .navbar-brand {
         float: left;
+        padding: 0 20px;
         padding: 15px;
+        line-height: 70px;
         font-size: 24px;
         font-weight: bold;
         line-height: 20px;
         height: 50px;
-        color: #424242;
+        color: #fff;
         &:hover{
-            color: #424242;
+            color: #fff;
         }
     }
 }
 
 .content{
-    margin-top: 60px;
-    padding-top: 30px;
 }
 
 .main-content{
@@ -123,4 +149,24 @@ footer{
         height: 180px;
         padding-top: 45px;
     }
+}
+
+
+//button
+.button{
+    padding: 12px 20px;
+    display: inline-block;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: normal;
+    cursor: pointer;
+    -webkit-transition: 0.25s background-color;
+    -moz-transition: 0.25s background-color;
+    -o-transition: 0.25s background-color;
+    -ms-transition: 0.25s background-color;
+    transition: 0.25s background-color;
+    white-space: nowrap;
+    border: none;
+    outline: none;
 }
