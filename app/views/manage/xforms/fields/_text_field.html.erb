@@ -1,0 +1,19 @@
+
+<tr>
+  <td>字段名称</td>
+  <td><%= form_obj.text_field :name,class:"form-control" %></td>
+  <td>默认值</td>
+  <td>
+    <%= form_obj.text_field :default_val,class:"form-control",list:"url_list" %>
+    <datalist id="url_list">
+      <option label="学生学号" value="{stu.stuid}" />
+      <option label="学生姓名" value="{stu.name}" />
+      <option label="email" value="{stu.email}" />
+      <option label="手机号码" value="{stu.phone}" />
+      <option label="专业" value="{stu.profession}" />
+      <option label="年级" value="{stu.grade}" />
+    </datalist>
+  </td>
+  <td>最大长度(0为不限制)</td>
+  <td><%= form_obj.number_field :length_limit,class:"form-control" %></td>
+</tr>

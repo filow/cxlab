@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   mount Ckeditor::Engine => '/ckeditor'
   scope module: 'index' do
     get 'index/index'
@@ -29,9 +30,10 @@ Rails.application.routes.draw do
       delete 'recover' => 'contests#recover'
     end
 
-    get 'xform_render'=> 'sections#xform_render'  
     resources :competes do
-      resources :sections, except:[:index]
+      resources :sections, except:[:index] do
+        resources :xforms,except:[:index]
+      end
     end
 
     get 'news/news_list'

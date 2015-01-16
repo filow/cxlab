@@ -7,6 +7,7 @@ class Manage::Section < ActiveRecord::Base
     validate :end_time_should_earlier_than_its_parent
 
     belongs_to :compete
+    has_many :xforms
 
 
     def progress_bar_time

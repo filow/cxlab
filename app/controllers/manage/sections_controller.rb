@@ -16,6 +16,7 @@ class Manage::SectionsController < ManageController
 
   # GET /manage/sections/1/edit
   def edit
+    @xforms = @manage_section.xforms
   end
 
   # POST /manage/sections
@@ -37,8 +38,8 @@ class Manage::SectionsController < ManageController
   # PATCH/PUT /manage/sections/1
   # PATCH/PUT /manage/sections/1.json
   def update
-    render json:params
-    return 
+    # render json:params
+    # return 
 
 
     respond_to do |format|
@@ -63,11 +64,6 @@ class Manage::SectionsController < ManageController
   end
 
 
-  def xform_render
-    type = params[:type]
-    field_index = params[:field_index]
-    render partial: "manage/xform/#{type}",locals:{field_id: field_index}
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

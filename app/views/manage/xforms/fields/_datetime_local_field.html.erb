@@ -1,0 +1,15 @@
+
+  <tr>
+    <td>字段名称</td>
+    <td><%= form_obj.text_field :name,class:"form-control" %></td>
+    <td>默认值</td>
+    <td>
+      <%= form_obj.datetime_local_field :default_val %>
+    </td>
+  </tr>
+  <tr>
+    <td>最早时间</td>
+    <td><%= form_obj.datetime_local_field :value_range_from %></td>
+    <td>最晚时间</td>
+    <td><%= form_obj.datetime_local_field :value_range_to %></td>
+  </tr>

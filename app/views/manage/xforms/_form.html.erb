@@ -1,0 +1,26 @@
+<%= xform_form_for(@manage_xform,@compete,@section,html:{id:"xform"}) do |f| %>
+  <%= f.hidden_field :field_type,value:params[:field_type] %>
+<table class="table">
+  <%= render partial: "manage/xforms/fields/#{params[:field_type]}",locals:{field_id: @field_index,form_obj: f} %>
+  <tr>
+    <td><label for="xform_message">介绍</label></td>
+    <td colspan="5">
+      <%= f.cktext_area :message,:ckeditor => {:uiColor => '#efefef', :toolbar => 'mini'} %>
+    </td>
+  </tr>
+</table>
+
+  
+  <% if @manage_xform.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manage_xform.errors.count, "error") %> prohibited this manage_xform from being saved:</h2>
+
+      <ul>
+      <% @manage_xform.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<% end %>

@@ -1,0 +1,6 @@
+var node = $('#myModal')
+node.find('#myModalLabel').html("添加新填表项目");
+node.find('.modal-body').html("<%= escape_javascript(render 'form') %>")
+
+
+node.modal({keyboard:false,backdrop:'static'});

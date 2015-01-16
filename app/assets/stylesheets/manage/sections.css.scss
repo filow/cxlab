@@ -1,7 +1,6 @@
 // Place all the styles related to the Manage::Sections controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-//=require bootstrap-wysihtml5
 
 @mixin icon-position($x,$y){
     background-position: 80px*$x - 2px 80px*$y;

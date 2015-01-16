@@ -27,6 +27,10 @@ cn:
       - year
       - month
       - day
+  ckeditor:
+    buttons:
+      upload: 上传
+    confirm_delete: 确认删除吗？
   activerecord:
     models:
       manage/admin: 管理员
@@ -88,6 +92,8 @@ cn:
         name: 名称
         start_time: 起始时间
         end_time: 终止时间
+      manage/xform:
+        name: 字段名称
       manage/news:
         title: 主题
         author: 发布人
@@ -99,6 +105,7 @@ cn:
         key: "设置键"
         value: "值"
         name: "说明"
+
     errors:
       template:
         header:
