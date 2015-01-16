@@ -12,8 +12,25 @@ $(document).ready(function(){
         bgheight();
     });
 
+
+    $('.scroll').click(function(){
+        $("html,body").animate({scrollTop:$(".section-one").offset().top - 40},700);
+        $('header').addClass('header-fix').removeClass('header-home');
+    });
+    $(window).scroll(function(){
+        scheight = $(window).scrollTop();
+        var vheight = $(".section-one").offset().top - 50;
+        if(scheight > vheight){
+            $('header').addClass('header-fix').removeClass('header-home');
+        }
+        else{
+            $('header').addClass('header-home').removeClass('header-fix');
+        }    
+    });
+
+
     $('[data-typer-targets]').typer();
-    
+        
     $(".competition-list > .flexslider").flexslider({
                 animation: "slide",
                 animationSpeed: 1e3,
