@@ -27,7 +27,7 @@ class VerifyCode
                 self.font = ttf
                 self.pointsize = option[:font_size]
                 self.fill = font_color
-                self.affine = AffineMatrix.new(1,rand(),0,1.9,0,0)
+                self.affine = AffineMatrix.new(1,rand(),rand(),1.9,0,0)
             end
         end
 
