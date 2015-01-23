@@ -17,7 +17,8 @@ $(document).ready(function(){
         $("html,body").animate({scrollTop:$(".section-one").offset().top - 40},700);
         $('header').addClass('header-fix').removeClass('header-home');
     });
-    $(window).scroll(function(){
+
+    var header_style_changer = function(){
         scheight = $(window).scrollTop();
         var vheight = $(".section-one").offset().top - 50;
         if(scheight > vheight){
@@ -26,8 +27,10 @@ $(document).ready(function(){
         else{
             $('header').addClass('header-home').removeClass('header-fix');
         }    
-    });
-
+    };
+    $(window).scroll(header_style_changer);
+    // 处理在非首屏刷新时header样式不正确的问题
+    header_style_changer();
 
     $('[data-typer-targets]').typer();
         

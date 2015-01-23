@@ -77,53 +77,7 @@
                 <div class="clear"></div>
             </div>
         </section>
-<!-- 
-         <% if @student %>
-            <div class="col-md-3 login" >
-                <div class="login-header">
-                    <h4><%= @student.name %></h4>
-                </div>
-                <%= link_to "用户中心",user_index_path,class:"btn btn-primary" %>
-                <%= link_to "退出",logout_path,method: :delete,class:"btn btn-danger" %>
-            </div>
-            <% else %>
-            <div class="col-md-3 login" >
-                <div class="login-header">
-                    <span class="login-icon"></span>
-                    <h4>用户登录</h4>
-                </div>
-                <div class="clear"></div>
-                <div class="login-form">
-                    <%= form_tag login_url,class:"form-horizontal",role: "form" do %>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" placeholder="学号"  name="stuid" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <input type="password" class="form-control" placeholder="密码" name="password" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <input type="submit" class="btn btn-success col-xs-12" value="立即登录">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-7">
-                                <%= link_to '新用户注册',login_regist_url,class:'btn btn-info col-xs-12' %>
-                            </div>
-                            <div class="col-xs-5">
-                                <%= link_to '忘记密码',login_forgot_url,class:'btn btn-default col-xs-12' %>
-                            </div>
-                        </div>
-                    <% end %>
-                </div>
-            </div>
-            <% end %> -->
-         
-       <div class="row section-four">
+        <div class="row section-four">
             <div class="competition">
                 <div class="competition-header">
                     <h1>赛事介绍</h1>

@@ -9,7 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <header class="header animated headroom--top header-home">
+    <header class="header animated headroom--top header-<%= @heaer_home? 'home' : 'fix' %>">
       <div class="container">
         <nav class="navbar " role="navigation">
           <div class="navbar-header">
@@ -28,16 +28,36 @@
               <li><a href="#">帮助中心</a></li>
               <li><%= link_to "后台管理",manage_url %></li>
             </ul>
+
+            <% if @student %>
+              <!-- TODO:调整一下这里的样式 -->
+              欢迎您，<%= @student.name %>
+              <%= link_to "用户中心",user_index_path,class:"btn btn-primary" %>
+              <%= link_to "退出",logout_path,method: :delete,class:"btn btn-danger" %>
+
+            <% else %>
+
             <ul class="nav login-nav pull-right">
-              <li><a href="#" class="login-button">登录</a></li>
-              <li><a href="#">注册</a></li>
+              <li><a href="<%= login_url %>" class="login-button">登录</a></li>
+              <li><a href="<%= login_regist_url %>">注册</a></li>
             </ul>
+
+            <% end %>
+
           </div>
         </nav>
       </div>
     </header>
 <div class="content">
-  <%= yield %>
+  <% unless @heaer_home %>
+    <div style="margin-bottom:120px"></div>
+    <div class="container">
+      <%= yield %>
+    </div>
+  <% else %>
+    <%= yield %>
+  <% end %>
+  
 
 </div>
 

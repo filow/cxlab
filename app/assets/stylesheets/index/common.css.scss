@@ -32,7 +32,7 @@ ul{
     animation-name: slideDown;
 }
 
-.header{
+header{
     position: fixed;
     top: 0;
     z-index: 3;
@@ -41,6 +41,7 @@ ul{
     // @include transition(all .3s ease);
     color: #fff;
     font-family: "Microsoft YaHei";
+
     .navbar-brand {
         float: left;
         padding: 0 20px;
@@ -117,19 +118,7 @@ ul{
     }
     &.header-fix{
         padding:0 !important;
-        &:after {
-            content: " ";
-            background: url("shadow.png") no-repeat;
-            -webkit-background-size: 100% 30px;
-            -moz-background-size: 100% 30px;
-            background-size: 100% 30px;
-            display: block;
-            position: absolute;
-            top: 100%;
-            width: 100%;
-            height: 50px;
-            pointer-events: none;
-        }
+        box-shadow: 0px -2px 11px rgba(0, 0, 0, 0.6);
         position: fixed;
         left: 0;
         width: 100%;
