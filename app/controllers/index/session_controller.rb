@@ -3,7 +3,7 @@ class Index::SessionController < IndexController
     index控制器用于显示用户登录失败后的页面，会给用户失败的错误信息，以及登陆框、忘记密码等按钮。
   '''
   def index
-    render layout: false
+    # render layout: false
   end
 
   '''
