@@ -3,7 +3,7 @@
 </div>
 
 <%= render 'form' %>
-
+<%= edit_manage_compete_section_xform_path(1,1,1) %>
 <h3>填表信息</h3>
 <table class="table table-bordered">
   
@@ -22,7 +22,7 @@
     <td><%= x.name %></td>
     <td><%= x.default_val %></td>
     <td><%= x.length_limit %></td>
-    <td><a class="btn btn-primary" disabled>编辑</a></td>
+    <td><%= link_to '编辑',edit_manage_compete_section_xform_url(section_id: params[:id],id:x.id,format: :js),remote:true,class:"btn btn-primary" %></td>
   </tr>
   <% end %>
 </table>

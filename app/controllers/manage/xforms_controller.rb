@@ -10,27 +10,25 @@ class Manage::XformsController < ManageController
   # GET /manage/xforms/new
   def new
     @manage_xform = Manage::Xform.new
+    @field_type = params[:field_type]
   end
 
   # GET /manage/xforms/1/edit
   def edit
+    @field_type = @manage_xform.field_type
   end
 
   # POST /manage/xforms
   # POST /manage/xforms.json
   def create
-
-    
     @manage_xform = Manage::Xform.new(manage_xform_params)
-  
 
     respond_to do |format|
       if @manage_xform.save
-        format.html { redirect_to edit_manage_compete_section_path(@compete,@section), notice: "已添加#{@manage_xform.field_type},#{@manage_xform.name}" }
+        format.html { redirect_to edit_manage_compete_section_path(@compete,@section) }
         format.json { render json:{code:"OK"}, status: :ok }
         flash[:notice]="已添加#{@manage_xform.name}字段，其类型为：#{@manage_xform.field_type}"
       else
-        puts @manage_xform.errors
         format.html { render :new }
         format.json { render json: @manage_xform.errors.full_messages, status: :unprocessable_entity }
       end
@@ -48,11 +46,12 @@ class Manage::XformsController < ManageController
   def update
     respond_to do |format|
       if @manage_xform.update(manage_xform_params)
-        format.html { redirect_to @manage_xform, notice: 'Xform was successfully updated.' }
-        format.json { render :show, status: :ok, location: @manage_xform }
+        format.html { redirect_to edit_manage_compete_section_path(@compete,@section) }
+        format.json { render json:{code:"OK"}, status: :ok }
+        flash[:notice]="已更改#{@manage_xform.name}字段"
       else
         format.html { render :edit }
-        format.json { render json: @manage_xform.errors, status: :unprocessable_entity }
+        format.json { render json: @manage_xform.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end

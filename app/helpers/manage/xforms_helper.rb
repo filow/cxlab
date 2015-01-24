@@ -3,7 +3,7 @@ module Manage::XformsHelper
         if obj.new_record?
             form_for(obj,{url: manage_compete_section_xforms_path(compete,section)}.merge(args),&block)
         else
-            form_for(obj,{url:manage_compete_section_xforms_path(compete,section, obj),html: {method: "patch"}}.merge(args),&block)
+            form_for(obj,{url:manage_compete_section_xform_path(compete,section, obj),html: {method: "patch"}}.merge(args),&block)
         end
     end
 end
