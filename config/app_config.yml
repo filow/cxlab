@@ -4,6 +4,11 @@
 # 注意： 子节点在调用时请使用"父节点_子节点"，例如config_list
 
 login:
+    fail_vcode:
+        value: 5
+        field_type: number
+        name: 失败几次后出现验证码
+        description: "在连续输入{{value}}次错误密码后，系统会出现验证码"
     fail_times:
         value: 5
         field_type: number
