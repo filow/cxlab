@@ -83,6 +83,7 @@ cn:
         website_url: 官方网站
         created_at: 信息录入日期
         updated_at: 信息更新日期
+        cover: 比赛LOGO
       manage/compete:
         start_time: 起始时间
         end_time: 终止时间

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201225840) do
+ActiveRecord::Schema.define(version: 20150128043712) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20141201225840) do
     t.string   "fullname"
     t.string   "website_url"
     t.boolean  "is_deleted",  default: false
+    t.string   "cover"
   end
 
   add_index "contests", ["is_deleted"], name: "index_contests_on_is_deleted", using: :btree

@@ -40,6 +40,10 @@
     <td colspan="3"><%= @manage_contest.summary %></td>
   </tr>
   <tr>
+    <td><%= tmc 'cover' %></td>
+    <td colspan="3"><%= image_tag @manage_contest.cover.url %></td>
+  </tr>
+  <tr>
     <td><%= tmc 'description' %></td>
     <td colspan="3"><%= raw @manage_contest.description %></td>
   </tr>

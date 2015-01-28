@@ -22,6 +22,14 @@
 
     </tr>
     <tr>
+      <td><%= f.label :cover %></td>
+      <td>
+        <%= image_tag @manage_contest.cover.url %> <br>
+        <%= f.file_field :cover %>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
       <td><%= f.label :summary %></td>
       <td><%= f.text_area :summary,class:"form-control",rows:6 %></td>
       <td>赛事的简要介绍，少于200字</td>

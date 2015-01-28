@@ -83,7 +83,7 @@ class Manage::ContestsController < ManageController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def manage_contest_params
-      param = params.require(:manage_contest).permit(:name, :fullname, :description, :summary, :level, :organizer, :website_url)
+      param = params.require(:manage_contest).permit(:name, :fullname, :description, :summary, :level, :organizer, :website_url,:cover)
       param[:admin_id] = @admin.id
       param
     end
