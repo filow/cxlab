@@ -3,12 +3,12 @@
 <table class="table">
   <tr>
     <td>字段名称</td>
-    <td colspan="5"><%= f.text_field :name,class:"form-control" %></td>
+    <td colspan="3"><%= f.text_field :name,class:"form-control" %></td>
   </tr>
   <%= render partial: "manage/xforms/fields/#{@field_type}",locals:{field_id: @field_index,form_obj: f} %>
   <tr>
     <td><label for="xform_message">介绍</label></td>
-    <td colspan="5">
+    <td colspan="3">
       <%= f.cktext_area :message,:ckeditor => {:uiColor => '#efefef', :toolbar => 'mini'} %>
     </td>
   </tr>

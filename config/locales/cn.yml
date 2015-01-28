@@ -94,6 +94,8 @@ cn:
         end_time: 终止时间
       manage/xform:
         name: 字段名称
+        length_limit: 长度限制
+        default_val: 默认值
       manage/news:
         title: 主题
         author: 发布人
