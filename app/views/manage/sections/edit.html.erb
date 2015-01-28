@@ -59,6 +59,7 @@
 <script>
 function submit_form(obj) {
   $(obj).attr("disabled",true).html("提交中...");
+  $('#manage_xform_message').html(CKEDITOR.instances["manage_xform_message"].getData());
   $.ajax({
       cache: false,
       type: $('#xform').attr('method'),
