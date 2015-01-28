@@ -12,4 +12,12 @@ class Manage::Contest < ActiveRecord::Base
     def self.contest_levels
         %w(校级 市级 省级 国家级 国际级 其他)
     end
+
+    def self.holdings
+        now = Date.today
+        valid_competes = Manage::Compete.holdings.select(:id,:contest_id)
+        self.where(id:valid_competes.collect{|x| x.id}).select(:id,:name,:summary,:cover)
+        # Manage::Compete.all
+        # self.where()
+    end
 end

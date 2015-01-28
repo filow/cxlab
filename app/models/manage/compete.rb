@@ -19,4 +19,8 @@ class Manage::Compete < ActiveRecord::Base
         "#{annual}年度#{contest.name if contest}比赛"
     end
 
+    def self.holdings
+        now = Date.today
+        self.where('start_time<=? and end_time>=? and is_deleted=0',now,now).order(:start_time)
+    end
 end
