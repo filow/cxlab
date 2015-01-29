@@ -16,8 +16,24 @@ class Manage::Contest < ActiveRecord::Base
     def self.holdings
         now = Date.today
         valid_competes = Manage::Compete.holdings.select(:id,:contest_id)
-        self.where(id:valid_competes.collect{|x| x.id}).select(:id,:name,:summary,:cover)
+        self.where(id:valid_competes.collect{|x| x.id}).select(:id,:name,:summary,:cover).limit(4)
         # Manage::Compete.all
         # self.where()
+    end
+
+    def holding_sections
+        valid_compete = Manage::Compete.holdings.find(id)
+        valid_compete.sections.order(:start_time)
+    end
+
+    def next_section_with_list(section_list)
+        ordered_list = section_list.sort_by{|sec| sec.start_time}
+        now = DateTime.now
+        ordered_list.each do |section|
+            if section.start_time >= now
+                return section
+            end
+        end
+        return nil
     end
 end

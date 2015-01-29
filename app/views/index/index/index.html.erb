@@ -149,49 +149,42 @@
         </ul>
     </div>                          
     </div>      
+<% if @contests_data[contest.id][:compete] %>
     <div class="divider-line">
     <img src="/assets/index/line.png" alt="">
     <p class="divider-content">赛事进度</p>
     </div>
+
     <div class="row competition-progress">
     <div class="col-md-10 col-md-offset-1 competition-progress-bar">
         <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                <span class="sr-only">60% Complete</span>
+            <div class="progress-bar" role="progressbar" aria-valuenow="<%= @contests_data[contest.id][:percent] %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @contests_data[contest.id][:percent] %>%;">
             </div>
-        </div>  
+        </div>
+        <% @contests_data[contest.id][:holdings].each do |section| %>
+        <!-- section.is_started?属性可以用来判断该阶段是否已经开始，并用不同颜色加以区分 -->
+        <!-- <%= section.is_started? %> -->
         <div class="competition-progress-tag">
-             <div class="tooltip bottom" role="tooltip" style="left:5%;">
+             <div class="tooltip bottom" role="tooltip" style="left:<%= section.percents_after_compete_start-4.5 %>%;">
                  <div class="tooltip-arrow"></div>
                 <div class="tooltip-inner">
-                    <span>10.23 比赛开始</span>
+                    <span><%= section.start_time.strftime("%m.%d")+" "+section.name %> </span>
                 </div>                       
             </div>  
         </div>
-        <div class="competition-progress-tag" >
-             <div class="tooltip bottom" role="tooltip" style="left:45%">
-                 <div class="tooltip-arrow"></div>
-                <div class="tooltip-inner">
-                    11. 15 预赛
-                </div>                       
-            </div>  
-        </div>
-        <div class="competition-progress-tag" >
-             <div class="tooltip bottom" role="tooltip" style="left:90%;">
-                 <div class="tooltip-arrow"></div>
-                <div class="tooltip-inner">
-                    2.1 决赛
-                </div>                       
-            </div>  
-        </div>             
+        <% end %>         
     </div>
     </div>
     <div class="clear"></div>
     <div class="competition-countdown">
     <h2>
-        距离决赛还有<span class="countdown-number">36</span>天<span class="countdown-number">12</span>小时
+        <% if @contests_data[contest.id][:next_section] %>
+        <% left = @contests_data[contest.id][:next_section].days_hours_left %>
+        距离<%= @contests_data[contest.id][:next_section].name %>还有<span class="countdown-number"><%= left[:days] %></span>天<span class="countdown-number"><%= left[:hours] %></span>小时
+        <% end %>
     </h2>
     </div>
+<% end %>
     </div>  
     </li>
 <% end %>
@@ -204,7 +197,7 @@
         </div>              
     </div>
 </div>
- 
+
         
  
 <%= content_for :js do %>

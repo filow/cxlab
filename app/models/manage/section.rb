@@ -23,6 +23,23 @@ class Manage::Section < ActiveRecord::Base
     def during_days
         (end_time.to_date - start_time.to_date).to_i
     end
+
+    def days_hours_left
+        secs = (start_time.to_i - DateTime.now.to_i)
+        {days: secs/(3600*24), hours: secs % (3600*24)/3600}
+    end
+
+    def percents_after_compete_start
+        100.0*secs_after_compete_start/compete.during_days
+    end
+
+    def secs_after_compete_start
+        (start_time.to_date-compete.start_time.to_date).to_i
+    end
+
+    def is_started?
+        return start_time.to_date < Date.today
+    end
 private
 
     def name_must_be_unique_in_one_compete

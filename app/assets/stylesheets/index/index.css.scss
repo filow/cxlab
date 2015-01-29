@@ -196,7 +196,7 @@ section{
             float: left;
             height: 50px;
             width: 50px;
-            background-image: asset_url("index/icons.png");
+            background-image: asset-url("index/icons.png");
             background-position: 0 0;
         }
         h4{
@@ -225,7 +225,7 @@ section{
             float: left;
             height: 50px;
             width: 50px;
-            background-image: url("/assets/index/icons.png");
+            background-image: asset-url("index/icons.png");
             background-position: 200px 0;
         }
         h4{
@@ -318,7 +318,7 @@ section{
                 float: left;
                 height: 50px;
                 width: 50px;
-                background-image: url("/assets/index/icons.png");
+                background-image: asset-url("index/icons.png");
                 background-position: 100px 0;       
             }
             h4{
@@ -367,7 +367,7 @@ section{
                 float: left;
                 height: 50px;
                 width: 50px;
-                background-image: url("/assets/index/icons.png");
+                background-image: asset-url("index/icons.png");
                 background-position: 250px 0;
             }
             h4{
