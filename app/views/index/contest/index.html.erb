@@ -1,0 +1,10 @@
+<% @contests.each do |contest| %>
+<div class="contest">
+    <h1><%= contest.name %></h1>
+    <p class="description">
+        <%= contest.summary %>
+    </p>
+</div>
+    
+
+<% end %>

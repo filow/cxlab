@@ -1,0 +1,14 @@
+@import 'mixins.scss';
+// Place all the styles related to the Index::Contest controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.contest{
+    h1{
+        font-size: 30px;
+        font-family: $font-family;
+        display: block;
+        border-left: 7px solid #123456;
+        padding:10px 15px;
+        color: #123456;
+    }
+}

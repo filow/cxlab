@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-
-
-
-  mount Ckeditor::Engine => '/ckeditor'
+  
   scope module: 'index' do
     get 'index/index'
     get 'login/' => 'session#index'
@@ -11,6 +8,8 @@ Rails.application.routes.draw do
     get 'login/forgot' => 'session#forgot'
     get 'login/regist' => 'session#regist'
     post 'login/regist' => 'session#regist_handler'
+
+    get 'contest' => 'contest#index'
 
     get 'user/index'
     get 'user/email_checked' => 'user#email_checked'
@@ -55,7 +54,7 @@ Rails.application.routes.draw do
     get 'self/index'
     post 'self/update'
   end
-
+  mount Ckeditor::Engine => '/ckeditor'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
