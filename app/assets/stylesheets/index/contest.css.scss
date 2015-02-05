@@ -11,4 +11,16 @@
         padding:10px 15px;
         color: #123456;
     }
+    p.description{
+        margin: 15px 25px;
+    }
+    table.detail{
+        border-bottom: 1px solid #ddd;
+        margin-left: 15px;
+    }
+    .contest-cover{
+        width: 100%;
+        max-width: 250px;
+        float: right;
+    }
 }
