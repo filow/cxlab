@@ -49,7 +49,8 @@
       </div>
     </header>
 <div class="content">
-  <% unless @heaer_home %>
+  <%= yield :before_container %>
+  <% unless @header_home %>
     <div style="margin-bottom:120px"></div>
     <div class="container">
       <%= yield %>

@@ -1,7 +1,7 @@
 class Index::IndexController < IndexController
   def index
     @news = News.published.limit(10)
-    @heaer_home = true
+    @header_home = true
 
     @contests = Contest.holdings
     @contests_data = Array.new
