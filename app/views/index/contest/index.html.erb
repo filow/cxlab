@@ -1,9 +1,39 @@
 <% @contests.each do |contest| %>
 <div class="contest">
     <h1><%= contest.name %></h1>
-    <p class="description">
-        <%= contest.summary %>
-    </p>
+    <div class="row">
+        <div class="col-md-9">
+            <p class="description">
+                <%= contest.summary %>
+            </p>
+            <table class="detail table">
+                <tr>
+                    <td>全称</td>
+                    <td><%= contest.fullname %></td>
+                </tr>
+                <tr>
+                    <td>等级</td>
+                    <td><%= contest.level %></td>
+                </tr>
+                <tr>
+                    <td>主办方</td>
+                    <td><%= contest.organizer %></td>
+                </tr>
+                <tr>
+                    <td>官方网站</td>
+                    <td><%= link_to contest.website_url %></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3">
+            <%= image_tag contest.cover.url,class:"contest-cover" %>
+        </div>
+    </div>
+    
+    
+
+    
+
 </div>
     
 

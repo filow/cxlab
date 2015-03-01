@@ -63,7 +63,7 @@ gem 'font-awesome-rails'
 # 处理文件上传的插件
 gem 'carrierwave'
 # mini_magick 是 ImageMagic的ruby接口，在图片上传时可以处理图片
-gem 'rmagick'
+gem 'rmagick', require: false
 gem 'mini_magick'
 
 

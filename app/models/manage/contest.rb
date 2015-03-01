@@ -21,6 +21,16 @@ class Manage::Contest < ActiveRecord::Base
         # self.where()
     end
 
+    def color
+        # 获取文件名
+        filename = cover.file.identifier
+        pos = filename.index('.')
+        from = pos-6
+        # 返回以#开头的6位颜色hex
+        '#'+filename[from..pos-1]
+    end
+
+
     def holding_sections
         valid_compete = Manage::Compete.holdings.find(id)
         valid_compete.sections.order(:start_time)
