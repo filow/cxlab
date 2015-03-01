@@ -28,13 +28,14 @@
               <li><a href="#">帮助中心</a></li>
               <li><%= link_to "后台管理",manage_url %></li>
             </ul>
-
+  
             <% if @student %>
               <!-- TODO:调整一下这里的样式 -->
-              欢迎您，<%= @student.name %>
-              <%= link_to "用户中心",user_index_path,class:"btn btn-primary" %>
-              <%= link_to "退出",logout_path,method: :delete,class:"btn btn-danger" %>
-
+              <div class="navbar-user">
+                <%= @student.name %>
+                <%= link_to "用户中心",user_index_path,class:"btn btn-primary" %>
+                <%= link_to "退出",logout_path,method: :delete,class:"btn btn-danger" %>
+              </div>
             <% else %>
 
             <ul class="nav login-nav pull-right">
