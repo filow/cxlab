@@ -35,17 +35,16 @@ ul{
 header{
     position: fixed;
     top: 0;
-    z-index: 3;
     width: 100%;
     min-height: 70px;
     // @include transition(all .3s ease);
     color: #fff;
     font-family: "Microsoft YaHei";
-
+    z-index: 14;
     .navbar-brand {
         float: left;
         padding: 0 20px;
-        padding: 15px;
+        padding: 24px 15px;
         line-height: 70px;
         font-size: 24px;
         font-weight: bold;
@@ -58,22 +57,18 @@ header{
     }  
     .navbar{
         margin-bottom: 0;
-        padding: 7px 0;
+        // padding: 7px 0;
         .navbar-nav{
             // border-bottom: rgba(255,255,255,0.7) 1px solid;
             margin-left: 10px;
             li{
                 a{
                     display: block;
-                    padding: 15px 20px 15px 20px;
+                    padding: 24px 20px 24px 20px;
                     border: none;
                     font-size: 15px;
                     font-weight: bold;
-                    -webkit-transition: all 0.3s;
-                    -moz-transition: all 0.3s;
-                    -o-transition: all 0.3s;
-                    -ms-transition: all 0.3s;
-                    transition: all 0.3s;
+                    @include transition(all 0.3s);
                 }
             }
         }
@@ -85,11 +80,7 @@ header{
                     padding: 15px 20px 15px 20px;
                     border: none;
                     font-size: 15px;
-                    -webkit-transition: all 0.3s;
-                    -moz-transition: all 0.3s;
-                    -o-transition: all 0.3s;
-                    -ms-transition: all 0.3s;
-                    transition: all 0.3s;
+                    @include transition(all 0.3s);
                     color: #fff;
                     &:hover{
                         background: rgba(0,0,0,0.5);
@@ -117,7 +108,60 @@ header{
         }
         .navbar-user{
             float: right;
-            padding: 15px 20px 15px 20px;
+            position:relative;
+            .user-avatar{
+                float: left;
+                padding:14px 0;
+                margin-right:5px;
+                img{
+                    border-radius:20px;
+                    border:1px solid #eee;
+                }
+            }
+            .user-name{
+                font-weight: bold;
+                float: left;
+                padding:24px 15px;
+                @include transition(background 0.3s);
+                cursor: pointer;
+            }
+            ul{
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                display: none;
+                z-index: 99;
+                width: 140px;
+                top: 75px;
+                left: 0;
+                padding-top: 10px;
+                li{
+                    a{
+                        padding: 14px 20px;
+                        width: 100%;
+                        color: #fff;
+                        font-size: 14px;
+                        text-decoration: none;
+                        display: inline-block;
+                        float: left;
+                        clear: both;
+                        box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        @include transition(all 0.2s linear);
+                    }
+                    &:first-child a:before {
+                        content: '';
+                        position: absolute;
+                        left: 45%;
+                        top:3px;
+                        width: 0;
+                        height: 0;
+                        border-left: 8px solid rgba(255, 255, 255, 0);
+                        border-right: 8px solid rgba(255, 255, 255, 0);
+                        border-bottom: 8px solid #8ECB8D;
+                    }
+                }
+            }
         }
     }
     &.header-fix{
@@ -130,12 +174,8 @@ header{
         margin-top: 0;
         padding-top: 10px;
         padding-bottom: 10px;
-        -webkit-transition: left 0.3s ease-out;
-        -moz-transition: left 0.3s ease-out;
-        -o-transition: left 0.3s ease-out;
-        -ms-transition: left 0.3s ease-out;
-        transition: left 0.3s ease-out;
-        z-index: 4;
+        @include transition(left 0.3s ease-out);
+        z-index: 14;
         .navbar{
             .navbar-nav{
                 li{
@@ -148,6 +188,27 @@ header{
                     }
                 }
             }     
+            .navbar-user{
+                .user-name{
+                    a{
+                        color: #000;
+                    }
+                    &:hover,&.active{
+                        background-color: #EBEBEB
+                    }
+                }
+                li:first-child a:before {
+                    border-bottom: 8px solid #EBEBEB;
+                }
+                ul li a{
+                        background: #EBEBEB;
+                        color: #999 !important;
+                        &:hover{
+                            background:#f0f0f0;
+                            color:#000 !important;
+                        }
+                }
+            }
             .login-nav{
                 li{
                     a{
@@ -176,7 +237,7 @@ header{
                 li{
                     a{
                         color: #fff;
-                        &:hover{
+                        &:hover,&.active{
                             background: rgba(0,0,0,0.5);
                             color: #fff;
                         }
@@ -203,7 +264,31 @@ header{
                         color: #fff;
                     }
                 }
-            }            
+            }   
+            .navbar-user{
+                .user-name{
+                    a{
+                        color: #fff;
+                        &:hover{
+                            background: rgba(0,0,0,0.3);
+                            color: #000;
+                        }
+                    }
+                    &:hover{
+                        background: rgba(0,0,0,0.5);
+                    }
+                }
+                .user-dropdown{
+                }
+                li:first-child a:before {
+                    border-bottom: 8px solid rgba(0,0,0,0.5);
+                }
+                ul li a{
+                        background: rgba(0,0,0,0.5);
+                        color: #fff !important;
+
+                }
+            }         
         }
         .navbar-brand {
             color: #fff;
@@ -213,6 +298,7 @@ header{
         }      
     }
 }
+
 #black-layer{
     z-index: 9989; 
     background-color: rgb(0, 0, 0); 
@@ -228,7 +314,6 @@ header{
 .dialog {
     width:35%;
     padding: 10px;
-    background: rgba(0,0,0,.2);
     position: absolute;
     z-index: 20000;
     &#login-pop{
@@ -237,10 +322,15 @@ header{
         position:fixed;
     }
     .dialog-box {
+        -webkit-box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        border-radius:3px;
         width: 100%;
         background: #fff;
         height: 100%;
         h3 {
+            border-top-left-radius:3px;
+            border-top-right-radius:3px;
             height: 40px;
             line-height: 40px;
             font-size: 16px;
@@ -408,6 +498,7 @@ footer{
     -o-transition: 0.25s background-color;
     -ms-transition: 0.25s background-color;
     transition: 0.25s background-color;
+    @include transition(0.25s background-color);
     white-space: nowrap;
     border: none;
     outline: none;

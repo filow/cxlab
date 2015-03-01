@@ -30,16 +30,24 @@
             </ul>
   
             <% if @student %>
-              <!-- TODO:调整一下这里的样式 -->
               <div class="navbar-user">
-                <%= @student.name %>
-                <%= link_to "用户中心",user_index_path,class:"btn btn-primary" %>
-                <%= link_to "退出",logout_path,method: :delete,class:"btn btn-danger" %>
+                <div class="user-avatar">
+                  <img src="/assets/user-thumb.png" width="40" alt="">
+                </div>
+                <div class="user-name" id="user-name">
+                  <div class="user-dropdown">
+                    <a><%= @student.name %></a>
+                    <ul >
+                      <li><%= link_to "用户中心",user_index_path,class:"" %></li>
+                      <li><%= link_to "退出",logout_path,method: :delete,class:" " %></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             <% else %>
 
             <ul class="nav login-nav pull-right">
-              <li><a href="#" id="login" class="login-button">登录</a></li>
+              <li><a href="javascript::" id="login" class="login-button">登录</a></li>
               <li><a href="<%= login_regist_url %>">注册</a></li>
             </ul>
 
@@ -115,11 +123,11 @@
                             <li><%= password_field_tag :password,params[:password],class: "input-item input-pwd",placeholder: "请输入密码","data-toggle"=> "popover",title:"","data-content"=>"密码不能为空" %>
                                 <p class="color-red pop-warning"></p>
                             </li>
-                            <li><input type="text" placeholder="验证码" class="input-item validate-code input-secure">
+<!--                             <li><input type="text" placeholder="验证码" class="input-item validate-code input-secure">
                                 <div class="validate-img"><img src="" alt=""></div>
                                 <span class="validate-word"> 看不清楚？<br/>换一张</span>
                                 <p class="color-red pop-warning"></p>
-                            </li>
+                            </li> -->
                             <li class="clear"></li>
                         </ul>
                         <div class="input-line">
