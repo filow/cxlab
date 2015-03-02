@@ -1,16 +1,18 @@
 @import 'mixins.scss';
+$cn-font:"Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei";
 body{
     color:#666;
 }
 h1,h2,h3,h4,h5,h6{
-    font-family: "Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei";
+    font-family: $cn-font;
 }
 a{
-    color:#666;
-    font-family: "Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei";
+    color:#ddd;
+    font-family: $cn-font;
 }
-a:hover{
+a:hover,a:active,a:visited{
     text-decoration: none;
+    color:#ddd;
 }
 
 li{
@@ -32,181 +34,55 @@ ul{
     animation-name: slideDown;
 }
 
+$header-bg: #203049;
 header{
-    position: fixed;
-    top: 0;
-    z-index: 3;
     width: 100%;
     min-height: 70px;
-    // @include transition(all .3s ease);
     color: #fff;
-    font-family: "Microsoft YaHei";
-
-    .navbar-brand {
+    font-family: $cn-font;
+    background: $header-bg;
+    margin-top: 0;
+    a:hover{
+        background-color: lighten($header-bg,10%);
+        color: #eee;
+    }
+    div.brand{
+        height: 70px;
         float: left;
-        padding: 0 20px;
-        padding: 15px;
-        line-height: 70px;
-        font-size: 24px;
-        font-weight: bold;
-        line-height: 20px;
-        height: 50px;
-        color: #fff;
-        &:hover{
-            color: #fff;
+        width: 20%;
+        text-align: center;
+        line-height: 70px;  // 文字垂直居中
+        a{
+            padding: 22px 20%;// (70-26)/2=22
+            font-size: 24px;
         }
-    }  
-    .navbar{
-        margin-bottom: 0;
-        padding: 7px 0;
-        .navbar-nav{
-            // border-bottom: rgba(255,255,255,0.7) 1px solid;
-            margin-left: 10px;
-            li{
-                a{
-                    display: block;
-                    padding: 15px 20px 15px 20px;
-                    border: none;
-                    font-size: 15px;
-                    font-weight: bold;
-                    -webkit-transition: all 0.3s;
-                    -moz-transition: all 0.3s;
-                    -o-transition: all 0.3s;
-                    -ms-transition: all 0.3s;
-                    transition: all 0.3s;
-                }
+    }
+    div.links{
+        ul li{
+            height: 70px;
+            line-height: 70px;
+            float: left;
+            a{
+                padding: 28px 26px;
+                transition: all 0.2s;
             }
-        }
-        .login-nav{
-            li{
-                float: left;
-                a{
-                    display: block;
-                    padding: 15px 20px 15px 20px;
-                    border: none;
-                    font-size: 15px;
-                    -webkit-transition: all 0.3s;
-                    -moz-transition: all 0.3s;
-                    -o-transition: all 0.3s;
-                    -ms-transition: all 0.3s;
-                    transition: all 0.3s;
-                    color: #fff;
-                    &:hover{
-                        background: rgba(0,0,0,0.5);
-                        color: #fff;
-                    }
-                }                
-            }
-            .login-button{
-                // background-color:rgba(0,0,0,0.5);
-                // border:1px solid #fff;
-                font-size: 15px;
-                float: right;
-                border-radius:5px;
-                padding:5px 25px;
-                margin-top: 5px;
-                background-color: #9DCE27;
-                line-height: 30px;
-                color:#fff;
-                &:hover{
-                    background-color: #BCEA4C;
-                    border:none;
-                    color: #fff;
-                }
+            &.active{
+                background-color: lighten($header-bg,10%);
+                color: #eee;
             }
         }
     }
-    &.header-fix{
-        padding:0 !important;
-        box-shadow: 0px -2px 11px rgba(0, 0, 0, 0.6);
-        position: fixed;
-        left: 0;
-        width: 100%;
-        background: #fff;
-        margin-top: 0;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        -webkit-transition: left 0.3s ease-out;
-        -moz-transition: left 0.3s ease-out;
-        -o-transition: left 0.3s ease-out;
-        -ms-transition: left 0.3s ease-out;
-        transition: left 0.3s ease-out;
-        z-index: 4;
-        .navbar{
-            .navbar-nav{
-                li{
-                    a{
-                        color: #999;
-                        &:hover{
-                            background: #EBEBEB;
-                            color: #000;
-                        }
-                    }
-                }
-            }     
-            .login-nav{
-                li{
-                    a{
-                        color: #999;
-                        &:hover{
-                            background: #EBEBEB;
-                            color: #000;
-                        }                        
-                    }
-                }
-                .login-button{
-                    color: #fff;
-                }
-            }
-            .navbar-brand {
-                color: #666;
-                &:hover{
-                    color: #666;
-                }
-            }                   
-        }        
-    }
-    &.header-home{
-        .navbar{
-            .navbar-nav{
-                li{
-                    a{
-                        color: #fff;
-                        &:hover{
-                            background: rgba(0,0,0,0.5);
-                            color: #fff;
-                        }
-                        &:visited{
-                            background: rgba(0,0,0,0.5);
-                        }
-                    }
-                }
-            }
-            .login-nav{
-                li{
-                    a{
-                        &:hover{
-                            background: rgba(0,0,0,0.5);
-                            color: #fff;
-                        }
-                    }                
-                }
-                .login-button{
-                    color:#fff;
-                    &:hover{
-                        background-color: #BCEA4C;
-                        border:none;
-                        color: #fff;
-                    }
-                }
-            }            
+    div.user{
+        float: right;
+        li.info{
+            background-color: #1F4C71;
         }
-        .navbar-brand {
-            color: #fff;
-            &:hover{
-                color: #fff;
-            }
-        }      
+        li.warning{
+            background-color: #712B1F;
+        }
+        li.success{
+            background-color: rgb(29, 108, 29);
+        }
     }
 }
 

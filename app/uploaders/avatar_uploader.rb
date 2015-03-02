@@ -1,11 +1,9 @@
 # encoding: utf-8
-require 'digest/sha2'
-
 class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  include CarrierWave::RMagick
+  # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -29,19 +27,20 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
+  process :resize_to_fill => [300, 300]
   # Process files as they are uploaded:
-  process :scale => [300, 300]
-  #
-  def scale(width, height)
-    manipulate! do |img|
-      img.resize "#{width}x#{height}"
-      img = yield(img) if block_given?
-      img
-    end
-  end
+  # process :scale => [300, 300]
+  # #
+  # def scale(width, height)
+  #   manipulate! do |img|
+  #     img.resize(width,height)
+  #     img = yield(img) if block_given?
+  #     img
+  #   end
+  # end
 
   # Create different versions of your uploaded files:
-  version :thumb,from_version: :original do
+  version :thumb do
     process :resize_to_fill => [200, 200]
   end
 
