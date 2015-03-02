@@ -7,7 +7,7 @@ $(document).ready(function(){
 
     //视频背景高度自适应
     function bgheight(){
-        var height = $(window).height();
+        var height = $(window).height()-70;
         var vheight = $('video').height();
         var bgheight = height > vheight ? vheight : height;
         $(".bgvideo").height(bgheight);

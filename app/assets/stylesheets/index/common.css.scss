@@ -95,7 +95,7 @@ header{
 #black-layer{
     z-index: 9989; 
     background-color: rgb(0, 0, 0); 
-    opacity: 0.4; 
+    opacity: 0.5; 
     position: absolute; 
     left: 0px; 
     top: 0px; 
@@ -231,6 +231,7 @@ header{
 }
 
 .content{
+    padding-top: 70px;
 }
 
 .main-content{
