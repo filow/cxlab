@@ -39,11 +39,10 @@ header{
 
     position: fixed;
     top: 0;
-    z-index: 5;
+    z-index: 15;
     width: 100%;
     min-height: 70px;
     color: #fff;
-    font-family: $cn-font;
     background: $header-bg;
     margin-top: 0;
     a:hover{
@@ -58,8 +57,9 @@ header{
         line-height: 70px;  // 文字垂直居中
         a{
             color: #ddd;
-            padding: 22px 20%;// (70-26)/2=22
+            padding: 20px 20%;// (70-26)/2=22
             font-size: 24px;
+            font-family: $cn-font;
         }
     }
     div.links{
@@ -69,8 +69,9 @@ header{
             float: left;
             a{
                 color: #ddd;
-                padding: 28px 26px;
+                padding: 26px 26px;
                 transition: all 0.2s;
+                font-size: 14px;
             }
             &.active{
                 background-color: lighten($header-bg,10%);
