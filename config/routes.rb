@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'api/professions'
+
   scope module: 'index' do
     get 'index/index'
     get 'login/' => 'session#index'

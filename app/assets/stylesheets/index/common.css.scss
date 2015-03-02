@@ -1,18 +1,18 @@
 @import 'mixins.scss';
-$cn-font:"Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei";
+
 body{
-    color:#666;
+    color:#333;
 }
 h1,h2,h3,h4,h5,h6{
     font-family: $cn-font;
 }
 a{
-    color:#ddd;
+    color:#333;
     font-family: $cn-font;
 }
 a:hover,a:active,a:visited{
     text-decoration: none;
-    color:#ddd;
+    color:#333;
 }
 
 li{
@@ -36,6 +36,7 @@ ul{
 
 $header-bg: #203049;
 header{
+
     position: fixed;
     top: 0;
     z-index: 5;
@@ -56,6 +57,7 @@ header{
         text-align: center;
         line-height: 70px;  // 文字垂直居中
         a{
+            color: #ddd;
             padding: 22px 20%;// (70-26)/2=22
             font-size: 24px;
         }
@@ -66,6 +68,7 @@ header{
             line-height: 70px;
             float: left;
             a{
+                color: #ddd;
                 padding: 28px 26px;
                 transition: all 0.2s;
             }
@@ -82,12 +85,21 @@ header{
         float: right;
         li.info{
             background-color: #1F4C71;
+            a:hover{
+                background-color:lighten(#1F4C71,10%);
+            }
         }
         li.warning{
             background-color: #712B1F;
+            a:hover{
+                background-color:#9B3624;
+            }
         }
         li.success{
             background-color: rgb(29, 108, 29);
+            a:hover{
+                background-color:lighten(rgb(29, 108, 29),10%);
+            }
         }
     }
 }
@@ -244,6 +256,9 @@ footer{
         padding: 30px 0 10px;
         background-color: #333;
         color: #fff;  
+        a{
+            color: #ddd;  
+        }
         .nav-group{
             padding-left: 20px;
             h4{

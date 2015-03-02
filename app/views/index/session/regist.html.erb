@@ -1,81 +1,70 @@
 <div class="container">
-
+  <div class="page-header">
+    <h2>注册账号</h2>
+  </div>
   <div class="row">
-
-    <%= form_for(@index_student,:html => {:class=>'form-horizontal regist-form col-md-5 col-md-offset-1'} , url: login_regist_path)  do |f| %>
-      <%= form_errors(@index_student) %>
-    <div class="regist-header col-md-12">
-      <h3 class="col-md-offset-2">注册</h3>
-    </div>      
-      <div class="form-group">
-        <div class="field">
-          <%= f.label :stuid ,class:"control-label col-sm-5"%>
-          <div class="col-sm-7">
-            <%= f.text_field :stuid, class:"form-control"%>
-          </div>
-        </div>
+    <div class="col-md-3">
+      <div class="flow current">
+        <div class="order">1</div><span>填写基本信息</span>
       </div>
-      <div class="form-group">
-        <div class="field">
-          <%= f.label :name ,class:"control-label col-sm-5"%>
-          <div class="col-sm-7">
-            <%= f.text_field :name , class:"form-control" %>
+      <div class="flow">
+        <div class="order">2</div><span>验证邮箱</span>
+      </div>
+      <div class="flow">
+        <div class="order">3</div><span>上传头像</span>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <%= form_for(@index_student,:html => {:class=>''} , url: login_regist_path)  do |f| %>
+        <%= form_errors(@index_student) %>
+        
+        <div class="col-md-5">
+          <div class="form-group">
+            <%= f.label :stuid %>
+            <%= f.text_field :stuid,data:{validator:'\d{10}',message:"学号必须为10位数字"},placeholder:"10位数字" %>
           </div>
-        </div>
-      </div>  
-      <div class="form-group">
-        <div class="field">
-          <%= f.label :pwd ,class:"control-label col-sm-5"%>
-          <div class="col-sm-7">
-            <%= f.text_field :pwd , class:"form-control" %>
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name,data:{validator:'\w{2,}',message:"长度至少为2位"} %>
           </div>
-        </div>
-      </div>  
-      <div class="form-group">
-        <div class="field">
-          <%= f.label :email,class:"control-label col-sm-5" %>
-          <div class="col-sm-7">
-            <%= f.text_field :email , class:"form-control"%>
+          <div class="form-group">
+            <%= f.label :pwd %>
+            <%= f.password_field :pwd,data:{validator:'\w{8,}',message:"长度至少为8位"},placeholder:"密码至少8位" %>
           </div>
-        </div>
-      </div>  
-      <div class="form-group">
-        <div class="field">
-          <%= f.label :phone ,class:"control-label col-sm-5"%>
-          <div class="col-sm-7">
-            <%= f.text_field :phone , class:"form-control" %>
+          <div class="form-group">
+            <label for="pwd_confirmation">密码确认</label>
+            <input id="pwd_confirmation" name="manage_student[pwd_confirmation]" type="password" placeholder="请再输一遍密码" data-message="密码不一致">
           </div>
-        </div>
-      </div>  
-      <div class="form-group">
-        <div class="field">
-          <%= f.label :grade ,class:"control-label col-sm-5"%>
-          <div class="col-sm-7">
-            <%= f.number_field :grade , class:"form-control" %>
+          <div class="form-group">
+            <%= f.label :profession %>
+            <%= f.select :profession,option_groups_from_collection_for_select(@professions,:child,:name, :id, :name),include_blank: true %>
           </div>
-        </div>
-      </div>  
-      <div class="form-group">
-        <div class="field">
-          <%= f.label :avatar,class:"control-label col-sm-5" %>
-          <div class="col-sm-7">
-            <%= f.file_field :avatar%>
+          <div class="form-group">
+            <%= f.label :grade %>
+            <%= f.text_field :grade,data:{validator:'\d{2}',message:"应当为2位数字"},placeholder:"2位数字" %>
           </div>
+          <div class="form-group">
+            <%= f.label :phone %>
+            <%= f.text_field :phone,data:{validator:'\d{11}',message:"应当为11位数字"},placeholder:"11位手机号码" %>
+          </div>
+          <%= f.submit '确认注册', class:"btn btn-primary btn-lg btn-block",onclick:"return checkform()" %>
         </div>
-      </div>  
-      <div class="form-group">
-        <div class="actions">
-          <%= f.submit class:"btn btn-primary col-sm-offset-5 col-sm-7 regist-button" %>
-        </div>
-      </div>  
+        
+
+<!--       <tr>
+              <td><%= f.label :email %></td>
+              <td><%= f.text_field :email,class:"form-control" %></td>
+              <td></td> 
+            </tr> -->
+            
+<!-- <tr>
+              <td><%= f.label :avatar %></td>
+              <td><%= f.file_field :avatar,class:"form-control" %></td>
+              <td></td> 
+            </tr> -->
+
       <% end %>
-    <div class="regist-help col-md-3 col-md-offset-1">
-      <div class="regist-header">
-        <h3>帮助</h3>        
-      </div>
-      <h4>注册FAQ</h4>
-
-      <a href="/index/index" class="btn btn-info">已有帐号？返回登录</a>
     </div>
   </div>
+    
 </div>

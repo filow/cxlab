@@ -40,6 +40,7 @@ class Index::SessionController < IndexController
   '''
   def regist
     @index_student = Manage::Student.new
+    @professions = Manage::Profession.tree_view
   end
 
   '''
@@ -47,6 +48,7 @@ class Index::SessionController < IndexController
   '''
   def regist_handler
     @index_student = Manage::Student.new(index_student_params)
+    @professions = Manage::Profession.tree_view
 
     respond_to do |format|
       if @index_student.save
@@ -59,6 +61,7 @@ class Index::SessionController < IndexController
       end
     end
   end
+
 
 private
   def index_student_params

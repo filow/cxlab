@@ -67,6 +67,7 @@ cn:
         grade: 年级
         pwd: 密码
         profession: 专业
+        avatar: 头像
         created_at: 注册时间
         updated_at: 资料更新时间
       manage/profession:
