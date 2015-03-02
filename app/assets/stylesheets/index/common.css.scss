@@ -8,7 +8,6 @@ h1,h2,h3,h4,h5,h6{
 }
 a{
     color:#ddd;
-    font-family: $cn-font;
 }
 a:hover,a:active,a:visited{
     text-decoration: none;
@@ -38,11 +37,10 @@ $header-bg: #203049;
 header{
     position: fixed;
     top: 0;
-    z-index: 5;
+    z-index: 15;
     width: 100%;
     min-height: 70px;
     color: #fff;
-    font-family: $cn-font;
     background: $header-bg;
     margin-top: 0;
     a:hover{
@@ -56,8 +54,9 @@ header{
         text-align: center;
         line-height: 70px;  // 文字垂直居中
         a{
-            padding: 22px 20%;// (70-26)/2=22
+            padding: 20px 20%;// (70-26)/2=22
             font-size: 24px;
+            font-family: $cn-font;
         }
     }
     div.links{
@@ -66,8 +65,9 @@ header{
             line-height: 70px;
             float: left;
             a{
-                padding: 28px 26px;
+                padding: 26px 26px;
                 transition: all 0.2s;
+                font-size: 14px;
             }
             &.active{
                 background-color: lighten($header-bg,10%);
