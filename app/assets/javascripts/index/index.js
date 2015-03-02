@@ -1,3 +1,8 @@
+// 关闭登录框
+var close_login_box= function (){
+    $('#black-layer').fadeOut();
+    $('#login-pop').fadeOut();
+};
 $(document).ready(function(){
 
     //视频背景高度自适应
@@ -28,7 +33,7 @@ $(document).ready(function(){
             $('header').addClass('header-home').removeClass('header-fix');
         }    
     };
-    $(window).scroll(header_style_changer);
+    // $(window).scroll(header_style_changer);
     // 处理在非首屏刷新时header样式不正确的问题
     header_style_changer();
 
@@ -47,4 +52,13 @@ $(document).ready(function(){
                     $(".competition-list .flexslider .container").append($(".competition-list .flex-viewport"));
                 },
     });
+
+    // 登录按钮点击事件
+    $('#login-btn').click(function(){
+        $('#black-layer').fadeIn();
+        $('#login-pop').fadeIn();
+        return false;
+    });
+    // 点击黑色区域直接关闭登陆框
+    $('#black-layer').click(close_login_box);
 });

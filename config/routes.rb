@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get 'index/index'
     get 'login/' => 'session#index'
     post 'login/' => 'session#create'
-    delete 'logout' => 'session#logout'
+    delete 'logout' => 'session#logout',as:"logout"
     get 'login/forgot' => 'session#forgot'
     get 'login/regist' => 'session#regist'
     post 'login/regist' => 'session#regist_handler'
