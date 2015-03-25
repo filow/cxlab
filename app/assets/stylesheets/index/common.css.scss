@@ -26,84 +26,82 @@ ul{
 .clear{
     clear:both;
 }
-
-.animated.slideDown {
-    -webkit-animation-name: slideDown;
-    -moz-animation-name: slideDown;
-    -o-animation-name: slideDown;
-    animation-name: slideDown;
-}
-
-$header-bg: #203049;
-header{
-
+$sidebar-bg: #203049;
+.sidebar{
+    width: 300px;
     position: fixed;
-    top: 0;
+    height: 100%;
+    background-color: $sidebar-bg;
     z-index: 15;
-    width: 100%;
-    min-height: 70px;
-    color: #fff;
-    background: $header-bg;
-    margin-top: 0;
-    a:hover{
-        background-color: lighten($header-bg,10%);
-        color: #eee;
-    }
     div.brand{
         height: 70px;
-        float: left;
-        width: 20%;
         text-align: center;
         line-height: 70px;  // 文字垂直居中
+        border-bottom: 1px solid #3C5174;
         a{
+            display: block;
             color: #ddd;
-            padding: 20px 20%;// (70-26)/2=22
+            padding: 0px;// (70-26)/2=22
             font-size: 24px;
             font-family: $cn-font;
         }
     }
-    div.links{
-        ul li{
-            height: 70px;
-            line-height: 70px;
-            float: left;
-            a{
-                color: #ddd;
-                padding: 26px 26px;
-                transition: all 0.2s;
-                font-size: 14px;
-            }
-            &.active{
-                background-color: lighten($header-bg,10%);
-                color: #eee;
-            }
+    hr {
+      margin: 5px 0px;
+      border-top: 1px solid #394F73;
+    }
+}
+nav ul.links{
+    li.active, li:hover{
+        border-left-width: 3px;
+        background-color: lighten($sidebar-bg,10%);
+    }
+    li{
+        border-left: 0px solid #59ACFF;
+        transition: all 0.2s ease 0;
+        a{
+            color: #ddd;
+            display: block;
+            padding: 20px;
+            font-size: 14px;
+            
+        }
+        
+    }
+
+
+}
+nav ul.user{
+    li.info{
+        border-left-color: lighten(#1F4C71,50%);
+        background-color: #1F4C71;
+        a:hover{
+            background-color:lighten(#1F4C71,10%);
         }
     }
-    div.user{
-        img#user-avatar{
-            border-radius: 5px;
+    li.warning{
+        border-left-color: lighten(#712B1F,50%);
+        background-color: #712B1F;
+        a:hover{
+            background-color:#9B3624;
         }
-        float: right;
-        li.info{
-            background-color: #1F4C71;
-            a:hover{
-                background-color:lighten(#1F4C71,10%);
-            }
-        }
-        li.warning{
-            background-color: #712B1F;
-            a:hover{
-                background-color:#9B3624;
-            }
-        }
-        li.success{
-            background-color: rgb(29, 108, 29);
-            a:hover{
-                background-color:lighten(rgb(29, 108, 29),10%);
-            }
+    }
+    li.success{
+        border-left-color: lighten(rgb(29, 108, 29),50%);
+        background-color: rgb(29, 108, 29);
+        a:hover{
+            background-color:lighten(rgb(29, 108, 29),10%);
         }
     }
 }
+
+div.main{
+    // overflow-x: hidden;
+    width: 100%;
+    position: absolute;
+    padding-left: 300px;
+}
+
 
 #black-layer{
     z-index: 15; 
@@ -243,52 +241,21 @@ header{
     }
 }
 
-.content{
-    padding-top: 70px;
-}
-
-.main-content{
-    // margin: 30px 0; 
-}
-
 footer{
-    margin-top: 50px;
-    .footer-link{
-        padding: 30px 0 10px;
-        background-color: #333;
-        color: #fff;  
-        a{
-            color: #ddd;  
-        }
-        .nav-group{
-            padding-left: 20px;
-            h4{
-                color: #A6A6A6;
-                margin-bottom: 20px;
-            }
-            li{
-                margin-bottom: 20px;
-                a{
-                    &:hover{
-                        color: #fff;
-                    }
-                }
-            }            
-        }
-    }
+    position: absolute;
+    width: 300px;
+    bottom: 0px;
     .copyright{
         .footer-logo{
-            font-weight: bold;
-            font-size: 22px;
-            color: #A6A6A6;
+            font-size: 18px;
+            color: #ccc;
             margin-bottom: 10px;
         }
         .text{
             color: #A6A6A6;
-            font-size: 18px;
+            font-size: 13px;
         }
-        background-color: #000;
-        height: 180px;
+        height: 120px;
         padding-top: 45px;
     }
 }

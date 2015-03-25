@@ -21,11 +21,11 @@
         <div class="col-md-5">
           <div class="form-group">
             <%= f.label :stuid %>
-            <%= f.text_field :stuid,data:{validator:'\d{10}',message:"学号必须为10位数字"},placeholder:"10位数字" %>
+            <%= f.text_field :stuid,data:{validator:'^\d{10}$',message:"学号必须为10位数字"},placeholder:"10位数字" %>
           </div>
           <div class="form-group">
             <%= f.label :name %>
-            <%= f.text_field :name,data:{validator:'\w{2,}',message:"长度至少为2位"} %>
+            <%= f.text_field :name,data:{validator:'^([\u4E00-\uFA29]|[\uE7C7-\uE7F3]){2,5}$',message:"2-5个中文字符"},placeholder:"2-5个中文字符" %>
           </div>
           <div class="form-group">
             <%= f.label :pwd %>
