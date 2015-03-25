@@ -22,7 +22,7 @@ var checkform = function(){
     });
     return true;
 }
-$('.form-group').focusout(function(){
+$('.regist-form .form-group').focusout(function(){
     var input = $(this).find('input');
     $(this).find('i').remove();
     $(this).find('div.message').remove();

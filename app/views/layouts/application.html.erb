@@ -51,44 +51,52 @@
 
 <!-- 用户登录浮动框 -->
 <div id="login-pop" class="dialog" style="display:none">
-    <div class="dialog-box">
-        <h3>登录<i class="popclose" onclick="close_login_box()"></i></h3>
-        <div id="top_frame">
-            <div id="login_form">
-                <%= form_tag login_path,name: "form",class:"form-inline" do %>
-                        <% if flash[:alert] %>
-                            <div class="alert alert-danger"><%= flash[:alert] %></div>
-                        <% else %>
-                            <div class="alert_placeholder"></div>
-                        <% end %>
-                        <ul>
-                        
-                            <li>
-                                <%= text_field_tag :stuid,params[:stuid],class: "input-item input-username",placeholder: "请输入用户名","data-toggle"=> "popover",autofocus: true,title:"","data-content"=>"用户名不能为空" %>
-                                <p class="color-red pop-warning"></p>
-                            </li>
-                            <li><%= password_field_tag :password,params[:password],class: "input-item input-pwd",placeholder: "请输入密码","data-toggle"=> "popover",title:"","data-content"=>"密码不能为空" %>
-                                <p class="color-red pop-warning"></p>
-                            </li>
-<!--                             <li><input type="text" placeholder="验证码" class="input-item validate-code input-secure">
-                                <div class="validate-img"><img src="" alt=""></div>
-                                <span class="validate-word"> 看不清楚？<br/>换一张</span>
-                                <p class="color-red pop-warning"></p>
-                            </li> -->
-                            <li class="clear"></li>
-                        </ul>
-                        <div class="input-line">
-                            <input type="checkbox">记住我
-                            <%= link_to '忘记密码',login_forgot_url,class:'forgot-pwd' %>
-                        </div> 
-                        <%= submit_tag "登录",class: "button  login-submit" %>
-                        
-                        
-                <% end %> 
-            </div>
+  <div class="dialog-box">
+    <h3>登录</h3>
+    <div class="dialog-close" onclick="close_login_box()">&times;</div>
+      <div id="top_frame">
+        <div id="login_form">
+          <%= form_tag login_path,name: "form" do %>
+            <% if flash[:alert] %>
+                <div class="alert alert-danger"><%= flash[:alert] %></div>
+            <% else %>
+                <div class="alert_placeholder"></div>
+            <% end %>
+            <ul>
+              <li>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
+                    <%= text_field_tag :stuid,params[:stuid],class: "input-item input-username",placeholder: "请输入用户名","data-toggle"=> "popover",autofocus: true,title:"","data-content"=>"用户名不能为空" %>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
+                    <%= password_field_tag :password,params[:password],class: "input-item input-pwd",placeholder: "请输入密码","data-toggle"=> "popover",title:"","data-content"=>"密码不能为空" %>
+                  </div>
+                </div>
+              </li>
+<!--               <li>
+                <input type="text" placeholder="验证码" class="input-item validate-code input-secure">
+                <div class="validate-img"><img src="" alt=""></div>
+                  <span class="validate-word"> 看不清楚？<br/>换一张</span>
+                  <p class="color-red pop-warning"></p>
+              </li>
+              <li class="clear"></li> -->
+            </ul>
+            <div class="input-line">
+                <label><input type="checkbox">记住我</label>
+                <%= link_to '忘记密码',login_forgot_url,class:'forgot-pwd' %>
+            </div> 
+            <%= submit_tag "登录",class: "btn btn-block btn-primary" %>
+          <% end %> 
         </div>
-        <div class="clear"></div>
     </div>
+    <div class="clear"></div>
+  </div>
 </div>        
 <div id="black-layer" style="display:none"></div>
 
