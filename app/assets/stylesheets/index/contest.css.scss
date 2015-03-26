@@ -2,25 +2,3 @@
 // Place all the styles related to the Index::Contest controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.contest{
-    h1{
-        font-size: 30px;
-        font-family: $font-family;
-        display: block;
-        border-left: 7px solid #123456;
-        padding:10px 15px;
-        color: #123456;
-    }
-    p.description{
-        margin: 15px 25px;
-    }
-    table.detail{
-        border-bottom: 1px solid #ddd;
-        margin-left: 15px;
-    }
-    .contest-cover{
-        width: 100%;
-        max-width: 250px;
-        float: right;
-    }
-}

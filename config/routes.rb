@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'login/forgot' => 'session#forgot'
     get 'login/regist' => 'session#regist'
     post 'login/regist' => 'session#regist_handler'
-
+    get 'login/login'=>'session#login',as: 'login_box' 
     get 'contest' => 'contest#index'
 
     get 'user/index'

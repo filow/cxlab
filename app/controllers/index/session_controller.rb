@@ -21,6 +21,12 @@ class Index::SessionController < IndexController
   end
 
   '''
+    用于显示登陆框
+  '''
+  def login
+  end
+
+  '''
     logout控制器用于在用户退出登录时从session中清除用户登录标志信息，跳转到首页
   '''
   def logout

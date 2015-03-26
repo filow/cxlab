@@ -1,40 +1,19 @@
-<% @contests.each do |contest| %>
-<div class="contest">
-    <h1><%= contest.name %></h1>
-    <div class="row">
-        <div class="col-md-9">
-            <p class="description">
-                <%= contest.summary %>
-            </p>
-            <table class="detail table">
-                <tr>
-                    <td>全称</td>
-                    <td><%= contest.fullname %></td>
-                </tr>
-                <tr>
-                    <td>等级</td>
-                    <td><%= contest.level %></td>
-                </tr>
-                <tr>
-                    <td>主办方</td>
-                    <td><%= contest.organizer %></td>
-                </tr>
-                <tr>
-                    <td>官方网站</td>
-                    <td><%= link_to contest.website_url %></td>
-                </tr>
-            </table>
+<div class="row">
+    <div class="col-md-3">
+        <div class="contests">
+        <% @contests.each do |contest| %>
+            <div style="background-color:<%= contest.color %>"><%= contest.color %> <br> 546342456</div>
+            
+            <div class="contest">
+                <%= image_tag contest.cover.url,class:"contest-cover" %>
+                <div class="name"><%= contest.name %></div>
+            </div>
+        <% end %>
+
         </div>
-        <div class="col-md-3">
-            <%= image_tag contest.cover.url,class:"contest-cover" %>
-        </div>
+        <div class="clearfix"></div>
     </div>
-    
-    
-
-    
-
 </div>
-    
+12312312
 
-<% end %>
+
