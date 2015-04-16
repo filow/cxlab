@@ -1,56 +1,15 @@
-<div class="bgvideo">
-    <div class="bgvideo-wrap">
-    </div>
-    <div class="bgvideo-news">
-        <div class="bgvideo-slogen">
-            <h1>最新比赛资讯</h1>
-            <div class="typer">
-                <span data-typer-targets="第三届蓝桥杯软件设计比赛开始报名了,第二届中国软件杯进入复赛阶段,ACM-ICPC亚洲邀请赛西安赛区将于周五进行" id="typer-text"></span>
-                <span id="typed-cursor">|</span>                
-            </div>
-        </div>
-        <a href="" class="bgvideo-button btn">查看更多</a>
-    </div>
-     <a class="scroll">
-        <span class="scroll-down"></span>
-        <span class="scroll-text">Scroll</span>
-    </a> 
-     <video autoplay loop preload="auto" style="width:100%;">
-        <source src="<%= asset_path "hero-home.mp4" %>" type="video/mp4">
-    </video> 
-</div>
+<section class="slogan"><h2>创新实验室的口号....</h2></section>
 
+<div class="row">
+  <div class="col-md-8">
+    234323
+  </div>
+  <div class="col-md-4">
+    retrew
+  </div>
+</div>
 <div class="container-fluid">
     <div class="main-content">
-        <section class="row section-one">
-            <!-- 实验室介绍 -->
-            <div class="section-ctn">
-                <div class="title lab">
-                    <h2>创新实验室</h2>
-                    <span class="title-en">INNOVATION LAB</span>
-                </div>  
-                <h2 class="slogen">一句话的创新实验室介绍标语</h2>
-                <p class="sub-slogen">其他第一些介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍</p>   
-                <div class="cxbanner">
-                    <div class="cxbanner-box">
-                        <img src="/assets/index/cxbanner-1.svg" alt="">
-                        <h3>标题1号标题</h3>
-                        <p>说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容</p>
-                    </div>
-                    <div class="cxbanner-box">
-                        <img src="/assets/index/cxbanner-1.svg" alt="">
-                        <h3>标题2号标题</h3>
-                        <p>说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容</p>
-                    </div>    
-                    <div class="cxbanner-box">
-                        <img src="/assets/index/cxbanner-1.svg" alt="">
-                        <h3>标题2号标题</h3>
-                        <p>说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容</p>
-                    </div>
-                    <div class="clear"></div>                                       
-                </div>        
-            </div>
-        </section>
         <section class="row section-two">
             <!-- 比赛新闻 -->
             <div class="section-ctn">
@@ -68,9 +27,6 @@
                         </li>
                         <% end %>
                     </ul>
-                </div>
-                <div class="coding">
-                    <%= render 'coding.svg' %>
                 </div>
                 <div class="clear"></div>
             </div>
@@ -201,6 +157,5 @@
 
 <%= content_for :js do %>
 <%= javascript_include_tag  "jquery.flexslider-min.js",'data-turbolinks-track' => true %>
-<%= javascript_include_tag  "jquery.typer.js",'data-turbolinks-track' => true %>
 
 <% end %>

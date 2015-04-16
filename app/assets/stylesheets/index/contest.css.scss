@@ -2,3 +2,9 @@
 // Place all the styles related to the Index::Contest controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.topbar {
+  position: fixed;
+  background-color: lighten($bg-sidebar,10%);
+  width: 100%;
+
+}

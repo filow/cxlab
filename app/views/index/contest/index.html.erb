@@ -1,3 +1,11 @@
+<div class="topbar">
+  <a href="/contest" class="active"><span class="circle"></span>概览</a>
+  <% @contests.each do |contest| %>
+      <a href="#"><span class="circle" style="border-color: <%= contest.color %>"></span><%= contest.name %></a>
+  <% end %>
+  <div class="clear"></div>
+</div>
+
 <div class="row">
     <div class="col-md-3">
         <div class="contests">

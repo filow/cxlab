@@ -1,19 +1,15 @@
-$cn-font:"Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei";
+$cn-font:"Source Han Sans CN","Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei";
 
 //
 // Variables
 // --------------------------------------------------
 
-// Grayscale
-$black-10:                 darken(#fff, 10%);
-$black-20:                 darken(#fff, 20%);
-$black-30:                 darken(#fff, 30%);
-$black-40:                 darken(#fff, 40%);
-$black-50:                 darken(#fff, 50%);
-$black-60:                 darken(#fff, 60%);
-$black-70:                 darken(#fff, 70%);
-$black-80:                 darken(#fff, 80%);
-$black-90:                 darken(#fff, 90%);
+// 全局色系
+$blue-base: #0071C5;
+$blue-dark: #0062A8;
+$blue-light: #00AEEF;
+
+$nav-hover-color: #0081d6;
 
 // Brand colors
 $brand-primary:           #428bca;
@@ -44,7 +40,7 @@ $navbar-background:        #232532;
 
 // Body
 $body-background:         #F9F9F9;
-$text-color:              $black-50;
+$text-color:              #f7f7f7;
 $text-color-gray:         #89949B;
 
 
@@ -68,7 +64,7 @@ $bg-darkgreen:      #306C67;
 $bg-blue:       #79B0EC;
 $bg-darkblue:     #4A90E2;
 $bg-darkcyan:     #68A0A5;
-
+$bg-sidebar: #203049;
 
 
 // Links

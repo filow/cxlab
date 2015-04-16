@@ -28,5 +28,3 @@ Rails.application.config.assets.precompile << Proc.new do |path|
 end
 
 Rails.application.config.assets.precompile += %w( ckeditor/* )
-
-Rails.application.config.assets.paths << Rails.root.join("assets", "videos")

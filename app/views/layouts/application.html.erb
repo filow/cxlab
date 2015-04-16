@@ -2,54 +2,58 @@
 <html>
 <head>
   <title>创新实验室管理系统</title>
-  <%= stylesheet_link_tag    "bootstrap_ball", media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    "index/common", media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    params[:controller], media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    "bootstrap_ball", media: 'all' %>
+  <%= stylesheet_link_tag    "index/common", media: 'all' %>
+  <%= stylesheet_link_tag    params[:controller], media: 'all' %>
   <%= yield :css %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<aside class="sidebar">
-    <header>
-        <div class="logo"><img src="" alt=""></div>
-        <div class="brand"><a href="/">创新实验室</a></div>
-    </header>
-    <nav>
-        <ul class="links">
-            <li class="active"><%= link_to '首页',index_index_url %></li>
-            <li><%= link_to '比赛列表',contest_url %></a></li>
-            <li><a href="#">帮助中心</a></li>
-            <li><%= link_to "后台管理",manage_url %></li>
-        </ul>
-        <hr>
+<header>
+  <nav>
+    <ul class="links">
+      <li class="active">
+        <a href="<%= index_index_url %>">首 页</a>
+      </li>
+      <li>
+        <a href="<%= contest_url %>"> 比赛列表</a>
+      </li>
+      <li><%= link_to "后台管理",manage_url %></li>
+    </ul>
+  </nav>
+    <div id="logo"><a href="<%= root_url %>"><%= image_tag 'index/logo.png' %></a></div>
+    <div id="userzone">
+      <nav>
         <ul class="links user">
-            <% if @student %>
-            <li class="info">
-              <a href="<%= user_index_path %>"><%= image_tag @student.avatar.url(:thumb_mini),width:30,height:30,id:"user-avatar" %> &nbsp;用户中心</a>
-            </li>
-            <li class="warning"><%= link_to "退出",logout_path,method: :delete %></li>
-            <% else %>
-            <li class="info">
-              <%= link_to '登录',login_box_url,remote: true %>
-            </li>
-            <li class="success"><a href="<%= login_regist_url %>">注册</a></li>
-            <% end %>
+          <% if @student %>
+              <li class="info">
+                <a href="<%= user_index_path %>"><%= image_tag @student.avatar.url(:thumb_mini),width:30,height:30,id:"user-avatar" %> &nbsp;用户中心</a>
+              </li>
+              <li class="warning"><%= link_to "退出",logout_path,method: :delete %></li>
+          <% else %>
+              <li class="info">
+                <%= link_to '登录',login_box_url,remote: true %>
+              </li>
+              <li class="success"><a href="<%= login_regist_url %>">注册</a></li>
+          <% end %>
         </ul>
-    </nav>
-    
-    <footer>
-        <div class="copyright text-center">
-            <div class="footer-logo">创新实验室</div>
-            <p class="text">Copyright © 2013-4ever cxlab</p>
-        </div>  
-    </footer>
-</aside>
+      </nav>
+    </div>
+
+</header>
+
 <div class="main">
-    <div class="content">
+    <div class="content container">
       <%= yield %>
     </div>  
 </div>
-    
+
+<footer>
+  <div class="copyright text-center">
+    <div class="footer-logo">创新实验室</div>
+    <p class="text">Copyright © 2013-4ever cxlab</p>
+  </div>
+</footer>
 
 <!-- 用户登录浮动框 -->
 <div id="login-pop" class="dialog" style="display:none"></div>
@@ -58,6 +62,7 @@
 
 </body>
 <%= javascript_include_tag  "index/common",'data-turbolinks-track' => true %>
+<script src="<%= asset_path 'semantic.min.js' %>"> </script>
 <%= javascript_include_tag params[:controller], 'data-turbolinks-track' => true %>
 <%= yield :js %>
 </html>
