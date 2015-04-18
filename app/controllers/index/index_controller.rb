@@ -16,4 +16,5 @@ class Index::IndexController < IndexController
     end
 
   end
+
 end

@@ -1,11 +1,40 @@
 <section class="slogan"><h2>创新实验室的口号....</h2></section>
 
-<div class="row">
+<div class="row" id="first-eye">
   <div class="col-md-8">
-    234323
+    <div class="shadow-box lunbo-box">
+      <%= image_tag 'index/slogan.jpg' %>
+      <div class="info">
+        <h3>测试内容</h3>
+        <p class="description">
+          测试内容and测试内容
+        </p>
+      </div>
+    </div>
   </div>
-  <div class="col-md-4">
-    retrew
+  <div class="col-md-4 shadow-box" id="news">
+    <div class="title">
+      <h3>比赛资讯 <small>COMPETITION NEWS</small></h3>
+    </div>
+    <div class="news-list">
+      <ul>
+        <% @news.each do |item| %>
+        <li><a href="<%= news_path(item.id) %>" title="<%= item.title %>" data-type="<%= item.contest %>"><%= item.title %> <span class="date"><%= date_mini item.publish_at %></span></a></li>
+        <% end %>
+        <li>
+          <a href="">未来知识产权产业会有什么样的发展趋势？ <span class="date">12-28</span></a>
+          <div class="popover" style="" role="tooltip">
+            <div class="arrow"></div>
+            <h3 class="popover-title">未来知识产权产业会有什么样的发展趋势</h3>
+            <div class="popover-content">未来知识产权产业会有什么样的发展趋势</div>
+          </div>
+        </li>
+        <li><a href="">未来知识产权产业会有什么样的发展趋势？ <span class="date">12-28</span></a></li>
+        <li><a href="">未来知识产权产业会有什么样的发展趋势？ <span class="date">12-28</span></a></li>
+        <li><a href="">未来知识产权产业会有什么样的发展趋势？ <span class="date">12-28</span></a></li>
+        <li><a href="">未来知识产权产业会有什么样的发展趋势？ <span class="date">12-28</span></a></li>
+      </ul>
+    </div>
   </div>
 </div>
 <div class="container-fluid">
@@ -13,20 +42,8 @@
         <section class="row section-two">
             <!-- 比赛新闻 -->
             <div class="section-ctn">
-                <div class="title">
-                    <h2>比赛资讯</h2>
-                    <span class="title-en">COMPETITION NEWS</span>
-                </div>    
                 <div class="cptt">
-                    <ul>
-                        <% @news.each do |item| %>
-                        <li>
-                            <a href="" class="news-button">
-                            <%= item.title %>
-                            <%= date_from_now item.publish_at %></a>
-                        </li>
-                        <% end %>
-                    </ul>
+
                 </div>
                 <div class="clear"></div>
             </div>

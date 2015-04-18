@@ -1,4 +1,58 @@
-//
+@import 'mixins.scss';
+
+section.slogan{
+  margin-bottom: 25px;
+  margin-top: 30px;
+}
+#first-eye{
+  margin-bottom: 30px;
+}
+.lunbo-box{
+  height: 320px;
+  .info {
+    position: absolute;
+    bottom: 15px;
+    left: 40px;
+    text-shadow: 0px 0px 5px #000;
+  }
+}
+
+#news{
+  height: 320px;
+  .news-list {
+    margin-top: 20px;
+    ul{
+      margin: 0;
+      padding: 0;
+    }
+    ul li{
+      a{
+        padding: 7px 6px;
+        color: #ededed;
+//        background-color: #fff;
+        display: block;
+        transition: all ease 0.2s;
+        &:hover{
+          border-left: 4px solid $blue-light;
+        }
+      }
+      span.date{
+        float: right;
+      }
+    }
+    .popover{
+      width: 370px;
+      .popover-title{
+        height: 60px;
+        overflow: hidden;
+      }
+      .popover-content{
+        min-height: 200px;
+        max-height: 260px;
+      }
+    }
+  }
+}
 //.section-ctn{
 //    width: 70%;
 //    margin-left: auto;

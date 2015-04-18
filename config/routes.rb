@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   
+
   get 'api/professions'
 
   scope module: 'index' do
     get 'index/index'
+
+    get 'news/' => 'news#index',as:'news_index'
+    get 'news/:id' => 'news#show',as:'news'
+    get 'news/:id/summary' => 'news#summary', defaults: {format: :json}
+
     get 'login/' => 'session#index'
     post 'login/' => 'session#create'
     delete 'logout' => 'session#logout',as:"logout"
