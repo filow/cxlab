@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require bootstrap/tooltip
+//= require bootstrap/popover
 //= require ejs
 //= require underscore
 // 关闭登录框

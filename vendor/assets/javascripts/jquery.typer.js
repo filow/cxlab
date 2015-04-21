@@ -200,7 +200,6 @@ String.prototype.rightChars = function(n){
       j = 0;
 
     if (currentText === newString) {
-      console.log("Our strings our equal, nothing to type");
       return $e;
     }
 

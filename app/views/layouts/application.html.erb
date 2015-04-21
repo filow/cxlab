@@ -7,6 +7,9 @@
   <%= stylesheet_link_tag    params[:controller], media: 'all' %>
   <%= yield :css %>
   <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+  <script src="<%= asset_path 'html5shiv.min.js' %>>"></script>
+  <![endif]-->
 </head>
 <body>
 <header>

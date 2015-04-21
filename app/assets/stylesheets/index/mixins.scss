@@ -10,7 +10,7 @@ $blue-dark: #0062A8;
 $blue-light: #00AEEF;
 $blue-dark2: #004280;
 
-$nav-hover-color: #0081d6;
+$theme-green: #41A28E;
 
 // Brand colors
 $brand-primary:           #428bca;
@@ -34,14 +34,14 @@ $sidebar-text-hover:    #1bb7a0;
 $sidebar-width:           225px;
 
 //Navbar
-$logo-background:         #232532;
-$navbar-height:           50px;
-$navbar-background:        #232532;
-
+$logo-background:         $theme-green;
+$header-height:           75px;
+$navbar-background:       #fff;
+$navbar-button-hover:     #f5f5f5;
 
 // Body
-$body-background:         #F9F9F9;
-$text-color:              #f7f7f7;
+$body-background:         #ECEEF1;
+$text-color:              #575d6a;
 $text-color-gray:         #89949B;
 
 
@@ -87,11 +87,9 @@ $headings-font-weight:    500;
 // Forms
 $input-color-placeholder: lighten($text-color, 25%);
 
-// Grid
-// Used with the grid mixins below
-$grid-columns:          12;
-$grid-column-padding:   15px; // Left and right inner padding
-$grid-float-breakpoint: 768px;
+// ShadowBox
+$shadow-box-bg: #fff;
+$shadow-box-sd: rgb(146, 197, 189);
 
 .animated {
   -webkit-animation-duration: .5s;

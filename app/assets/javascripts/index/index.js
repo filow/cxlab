@@ -1,6 +1,8 @@
 'use strict';
 $(document).ready(function(){
 
+    $('[data-typer-targets]').typer();
+
     $(".competition-list > .flexslider").flexslider({
         animation: "slide",
         animationSpeed: 1e3,

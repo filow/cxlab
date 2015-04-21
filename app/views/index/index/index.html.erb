@@ -1,13 +1,28 @@
-<section class="slogan"><h2>创新实验室的口号....</h2></section>
+<div class="typer">
 
-<div class="row" id="first-eye">
+</div>
+<section class="slogan">
+  <h2> &gt;
+    <span id="typer-text" data-typer-targets="第三届蓝桥杯软件设计比赛开始报名了,第二届中国软件杯进入复赛阶段,ACM-ICPC亚洲邀请赛西安赛区将于周五进行"></span>
+    <span id="typed-cursor">|</span>
+  </h2>
+</section>
+
+
+<div id="first-eye" class="" >
+  <div class="row">
   <div class="col-md-8">
-    <div class="shadow-box lunbo-box">
-      <%= image_tag 'index/slogan.jpg' %>
+    <div class=" lunbo-box shadow-box">
+        <%= image_tag 'index/slogan.jpg' %>
       <div class="info">
         <h3>测试内容</h3>
         <p class="description">
-          测试内容and测试内容
+          测试内容and测试内容测试内容and测试内容测试内容and测试内容 <br/>
+          测试内容and测试内容测试内容and测试内容测试内容and测试内容 <br/>
+          测试内容and测试内容测试内容and测试内容测试内容and测试内容 <br/>
+          测试内容and测试内容测试内容and测试内容测试内容and测试内容 <br/>
+          测试内容and测试内容测试内容and测试内容测试内容and测试内容 <br/>
+
         </p>
       </div>
     </div>
@@ -33,26 +48,25 @@
         <li><a href="">未来知识产权产业会有什么样的发展趋势？ <span class="date">12-28</span></a></li>
         <li><a href="">未来知识产权产业会有什么样的发展趋势？ <span class="date">12-28</span></a></li>
         <li><a href="">未来知识产权产业会有什么样的发展趋势？ <span class="date">12-28</span></a></li>
+        <li><a href="">未来知识产权产业会有什么样的发展趋势？ <span class="date">12-28</span></a></li>
       </ul>
     </div>
   </div>
+  </div>
 </div>
+
+
+<div class="competition">
+  <div class="header">
+    <h2>赛事介绍</h2>
+  </div>
+</div>
+
+
 <div class="container-fluid">
     <div class="main-content">
-        <section class="row section-two">
-            <!-- 比赛新闻 -->
-            <div class="section-ctn">
-                <div class="cptt">
-
-                </div>
-                <div class="clear"></div>
-            </div>
-        </section>
         <div class="row section-four">
             <div class="competition">
-                <div class="competition-header">
-                    <h1>赛事介绍</h1>
-                </div>
                 <div class="competition-list">
                     <div class="nav-control competition-nav">
                         <div class="container">
@@ -66,7 +80,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="flexslider">
+                    <div class="flexslider white-box">
                         <div class="container">
                             <ul class="slides">  <!-- slides begin -->
 <% @contests.each do |contest| %>
@@ -83,12 +97,12 @@
             </div>
             <div class="competition-desc-content">
                 <p><%= contest.summary %></p>
-            </div>  
-            <button class="btn competition-desc-btn">查看详细介绍</button>                    
+            </div>
+            <button class="btn competition-desc-btn">查看详细介绍</button>
         </div>
     </div>
-                
-    </div>  
+
+    </div>
     <div class="divider-line">
         <%= image_tag 'index/line.png' %>
         <p class="divider-content">比赛信息</p>
@@ -97,7 +111,7 @@
     <div class="col-md-5 col-md-offset-1  competition-info">
         <div class="competition-psg-header">
             <span class="competition-icon-bbs"></span>
-            <h4>通知公告</h4>  
+            <h4>通知公告</h4>
         </div>
         <div class="clear"></div>
         <ul>
@@ -111,7 +125,7 @@
     <div class="col-md-5 competition-post">
         <div class="competition-post-header">
             <span class="competition-icon-notify"></span>
-            <h4>论坛新帖</h4>  
+            <h4>论坛新帖</h4>
         </div>
         <div class="clear"></div>
         <ul>
@@ -121,8 +135,8 @@
             <li class="post-items"><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
             <li class="post-items"><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
         </ul>
-    </div>                          
-    </div>      
+    </div>
+    </div>
 <% if @contests_data[contest.id][:compete] %>
     <div class="divider-line">
     <img src="/assets/index/line.png" alt="">
@@ -143,10 +157,10 @@
                  <div class="tooltip-arrow"></div>
                 <div class="tooltip-inner">
                     <span><%= section.start_time.strftime("%m.%d")+" "+section.name %> </span>
-                </div>                       
-            </div>  
+                </div>
+            </div>
         </div>
-        <% end %>         
+        <% end %>
     </div>
     </div>
     <div class="clear"></div>
@@ -159,14 +173,14 @@
     </h2>
     </div>
 <% end %>
-    </div>  
+    </div>
     </li>
 <% end %>
 
                             </ul>  <!-- slides end -->
                         </div>
                     </div>
-                </div> <!-- competition list end --> 
+                </div> <!-- competition list end -->
             </div>
         </div>              
     </div>
@@ -174,5 +188,5 @@
 
 <%= content_for :js do %>
 <%= javascript_include_tag  "jquery.flexslider-min.js",'data-turbolinks-track' => true %>
-
+<%= javascript_include_tag  "jquery.typer.js",'data-turbolinks-track' => true %>
 <% end %>

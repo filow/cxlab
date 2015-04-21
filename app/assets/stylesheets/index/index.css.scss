@@ -1,24 +1,49 @@
 @import 'mixins.scss';
 
+h1,h2,h3,h4,h5,h6{
+  color: $text-color;
+}
 section.slogan{
   margin-bottom: 25px;
   margin-top: 30px;
 }
+#typed-cursor {
+  opacity: 1;
+  font-weight: 100;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  -ms-animation: blink 0.7s infinite;
+  -o-animation: blink 0.7s infinite;
+}
+
 #first-eye{
   margin-bottom: 30px;
 }
 .lunbo-box{
-  height: 320px;
+  h3{color: #eee;margin:10px 0 20px 0;}
+  height: 360px;
   .info {
     position: absolute;
-    bottom: 15px;
-    left: 40px;
-    text-shadow: 0px 0px 5px #000;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 750px;
+    bottom: 0;
+    color: #eee;
+    padding: 10px 17px;
+    height: 65px;
+    overflow: hidden;
+    transition: height 0.5s ease;
+  }
+  .info:hover{
+    height: 140px;
+  }
+  .description{
+    height: 60px;
+    overflow: hidden;
   }
 }
 
 #news{
-  height: 320px;
+  height: 360px;
   .news-list {
     margin-top: 20px;
     ul{
@@ -28,8 +53,7 @@ section.slogan{
     ul li{
       a{
         padding: 7px 6px;
-        color: #ededed;
-//        background-color: #fff;
+        color: #333;
         display: block;
         transition: all ease 0.2s;
         &:hover{
@@ -53,23 +77,220 @@ section.slogan{
     }
   }
 }
-//.section-ctn{
-//    width: 70%;
-//    margin-left: auto;
-//    margin-right: auto;
-//    padding:60px 0;
-//}
-//section{
-//    min-height: 400px;
-//    .title{
-//        h2{
-//            font-weight: 500;
-//        }
-//        .title-en{
-//            color: #aaa;
-//        }
-//    }
-//}
+.competition{
+  .header{
+    text-align: center;
+    h2{
+      margin: 40px auto 24px auto;
+    }
+    .nav{
+//      background-color: rgba(255,255,255,0.7);
+      .item{
+        float: left;
+        cursor: pointer;
+        a{
+          border-top:3px solid $bg-orange ;
+          display: block;
+//          background-color: #444;
+          padding: 25px 40px;
+          background-color: #efefef;
+          color: #000;
+        }
+      }
+    }
+  }
+  .content{
+    background-color: rgba(255,255,255,0.7);
+    height: 300px;
+  }
+}
+
+.section-four{
+    .divider{
+        border-left: 1px solid #ddd;
+    }
+    .fixed-competition-nav{
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        a{
+            padding: 10px 10px !important;
+        }
+    }
+
+    .competition-list{
+        .nav-control{
+            background-color: #f5f5f5;
+            margin-bottom: 20px;
+            li {
+                padding-left: 10px;
+                padding-right: 10px;
+                text-align: center;
+                font-size:16px;
+                a{
+                    -webkit-transition: all .3s ease;
+                    -moz-transition: all .3s ease;
+                    -o-transition: all .3s ease;
+                    transition: all .3s ease;
+                    &:hover{
+                        background: #f5f5f5;
+                        border-bottom: 4px solid #CDCDCD;
+                    }
+                }
+                &.flex-active a{
+                    border-bottom: 4px solid #f7a947;
+                    font-weight: bold;
+                    color:#222;
+                }
+
+            }
+            a {
+                padding: 20px  10px;
+                border-radius: 0;
+                color: #5d6266;
+                margin-bottom: 0;
+                border-bottom: 4px solid transparent;
+            }
+        }
+    }
+    .competition-desc{
+        margin-bottom: 20px;
+        padding: 30px 0;
+    }
+    .competition-desc-content{
+        margin: 30px 0;
+    }
+    .competition-psg{
+        margin-bottom: 20px;
+        padding: 40px 0;
+        .competition-psg-header{
+            margin-bottom: 30px;
+            .competition-icon-bbs{
+                float: left;
+                height: 50px;
+                width: 50px;
+                background-image: asset-url("index/icons.png");
+                background-position: 100px 0;
+            }
+            h4{
+                margin-left: 60px;
+                padding-top: 20px;
+                color: #666
+            }
+        }
+    }
+    .competition-pic{
+        height: 230px;
+    }
+    .divider-line{
+        img{
+            width: 100%;
+            max-width: 1247px;
+            height: 1px;
+        }
+        p{
+            position: absolute;
+            left: 50%;
+            width: 230px;
+            height: 40px;
+            margin-left: -115px;
+            margin-top: -30px;
+            background-color: #FFF;
+            text-align: center;
+            font-size: 30px;
+            color:#383838;
+        }
+    }
+    .info-time,.post-time{
+        float: right;
+        color: #bbb;
+    }
+    .info-items,.post-items{
+        margin-top: 10px;
+    }
+    .competition .label{
+        margin-right: 5px;
+    }
+    .competition-post{
+        .competition-post-header{
+            margin-bottom: 30px;
+             .competition-icon-notify{
+                float: left;
+                height: 50px;
+                width: 50px;
+                background-image: asset-url("index/icons.png");
+                background-position: 250px 0;
+            }
+            h4{
+                margin-left: 60px;
+                padding-top: 20px;
+                color: #666
+            }
+        }
+
+    }
+    .competition-progress{
+        margin-top: 30px;
+        padding: 20px 0;
+    }
+    .competition-progress-bar{
+        padding-top: 8px;
+        position: relative;
+    }
+    .competition-progress-tag{
+        bottom: -5px;
+        .tooltip{
+            opacity: 1;
+            font-size: 13px;
+            .tooltip-inner{
+                background-color: #E0E0E0;
+                color:#565656;
+            }
+            .tooltip-arrow{
+                border-bottom-color:  #E0E0E0;
+            }
+        }
+    }
+    .progress{
+        margin-bottom: 0;
+    }
+    .countdown-number{
+        color:#963F1F;
+        font-size: 38px;
+        margin: 0 5px;
+    }
+    .competition-countdown{
+        text-align: center;
+        margin-bottom: 20px;
+        padding-top: 35px;
+    }
+    #acm .competition-desc-title h2{
+        color:#184079;
+    }
+    #acm .competition-desc-btn {
+        background-color: #184079;
+        color:#fff;
+        padding: 8px 16px;
+    }
+    #softwarecup .competition-desc-title h2{
+        color:#D30000;
+    }
+    #softwarecup .competition-desc-btn{
+        color:#fff;
+        padding: 8px 16px;
+        background-color: #D30000;
+    }
+    #bluebrigecup .competition-desc-title h2{
+        color: #8DA1C3;
+    }
+    #bluebrigecup .competition-desc-btn{
+        color:#fff;
+        padding: 8px 16px;
+        background-color: #8DA1C3;
+    }
+}
+
 //.section-one{
 //    background:#f7f7f7;
 //    .title{
@@ -196,213 +417,21 @@ section.slogan{
 //    }
 //}
 //
-//.section-four{
-//    .divider{
-//        border-left: 1px solid #ddd;
-//    }
-//    .fixed-competition-nav{
-//        position: fixed;
-//        top: 0;
-//        z-index: 100;
-//        width: 100%;
-//        a{
-//            padding: 10px 10px !important;
-//        }
-//    }
-//    .competition-header{
-//        text-align: center;
-//        h1{
-//            padding-top: 30px;
-//            padding-bottom: 24px;
-//            background-color: #f5f5f5;
-//            margin: 0;
-//        }
-//    }
-//    .competition-list{
-//        .nav-control{
-//            background-color: #f5f5f5;
-//            margin-bottom: 20px;
-//            li {
-//                padding-left: 10px;
-//                padding-right: 10px;
-//                text-align: center;
-//                font-size:16px;
-//                a{
-//                    -webkit-transition: all .3s ease;
-//                    -moz-transition: all .3s ease;
-//                    -o-transition: all .3s ease;
-//                    transition: all .3s ease;
-//                    &:hover{
-//                        background: #f5f5f5;
-//                        border-bottom: 4px solid #CDCDCD;
-//                    }
-//                }
-//                &.flex-active a{
-//                    border-bottom: 4px solid #f7a947;
-//                    font-weight: bold;
-//                    color:#222;
-//                }
-//
-//            }
-//            a {
-//                padding: 20px  10px;
-//                border-radius: 0;
-//                color: #5d6266;
-//                margin-bottom: 0;
-//                border-bottom: 4px solid transparent;
-//            }
-//        }
-//    }
-//    .competition-desc{
-//        margin-bottom: 20px;
-//        padding: 30px 0;
-//    }
-//    .competition-desc-content{
-//        margin: 30px 0;
-//    }
-//    .competition-psg{
-//        margin-bottom: 20px;
-//        padding: 40px 0;
-//        .competition-psg-header{
-//            margin-bottom: 30px;
-//            .competition-icon-bbs{
-//                float: left;
-//                height: 50px;
-//                width: 50px;
-//                background-image: asset-url("index/icons.png");
-//                background-position: 100px 0;
-//            }
-//            h4{
-//                margin-left: 60px;
-//                padding-top: 20px;
-//                color: #666
-//            }
-//        }
-//    }
-//    .competition-pic{
-//        height: 230px;
-//    }
-//    .divider-line{
-//        img{
-//            width: 100%;
-//            max-width: 1247px;
-//            height: 1px;
-//        }
-//        p{
-//            position: absolute;
-//            left: 50%;
-//            width: 230px;
-//            height: 40px;
-//            margin-left: -115px;
-//            margin-top: -30px;
-//            background-color: #FFF;
-//            text-align: center;
-//            font-size: 30px;
-//            color:#383838;
-//        }
-//    }
-//    .info-time,.post-time{
-//        float: right;
-//        color: #bbb;
-//    }
-//    .info-items,.post-items{
-//        margin-top: 10px;
-//    }
-//    .competition .label{
-//        margin-right: 5px;
-//    }
-//    .competition-post{
-//        .competition-post-header{
-//            margin-bottom: 30px;
-//             .competition-icon-notify{
-//                float: left;
-//                height: 50px;
-//                width: 50px;
-//                background-image: asset-url("index/icons.png");
-//                background-position: 250px 0;
-//            }
-//            h4{
-//                margin-left: 60px;
-//                padding-top: 20px;
-//                color: #666
-//            }
-//        }
-//
-//    }
-//    .competition-progress{
-//        margin-top: 30px;
-//        padding: 20px 0;
-//    }
-//    .competition-progress-bar{
-//        padding-top: 8px;
-//        position: relative;
-//    }
-//    .competition-progress-tag{
-//        bottom: -5px;
-//        .tooltip{
-//            opacity: 1;
-//            font-size: 13px;
-//            .tooltip-inner{
-//                background-color: #E0E0E0;
-//                color:#565656;
-//            }
-//            .tooltip-arrow{
-//                border-bottom-color:  #E0E0E0;
-//            }
-//        }
-//    }
-//    .progress{
-//        margin-bottom: 0;
-//    }
-//    .countdown-number{
-//        color:#963F1F;
-//        font-size: 38px;
-//        margin: 0 5px;
-//    }
-//    .competition-countdown{
-//        text-align: center;
-//        margin-bottom: 20px;
-//        padding-top: 35px;
-//    }
-//    #acm .competition-desc-title h2{
-//        color:#184079;
-//    }
-//    #acm .competition-desc-btn {
-//        background-color: #184079;
-//        color:#fff;
-//        padding: 8px 16px;
-//    }
-//    #softwarecup .competition-desc-title h2{
-//        color:#D30000;
-//    }
-//    #softwarecup .competition-desc-btn{
-//        color:#fff;
-//        padding: 8px 16px;
-//        background-color: #D30000;
-//    }
-//    #bluebrigecup .competition-desc-title h2{
-//        color: #8DA1C3;
-//    }
-//    #bluebrigecup .competition-desc-btn{
-//        color:#fff;
-//        padding: 8px 16px;
-//        background-color: #8DA1C3;
-//    }
-//}
-//
-//@keyframes blink{
-//    0%{opacity:1}
-//    50%{opacity:0}
-//    100%{opacity:1}
-//}
-//@-webkit-keyframes blink{
-//    0%{opacity:1}
-//    50%{opacity:0}
-//    100%{opacity:1}
-//}
-//@-moz-keyframes blink{
-//    0%{opacity:1}
-//    50%{opacity:0}
-//    100%{opacity:1}
-//}
-//
+
+
+@keyframes blink{
+    0%{opacity:1}
+    50%{opacity:0}
+    100%{opacity:1}
+}
+@-webkit-keyframes blink{
+    0%{opacity:1}
+    50%{opacity:0}
+    100%{opacity:1}
+}
+@-moz-keyframes blink{
+    0%{opacity:1}
+    50%{opacity:0}
+    100%{opacity:1}
+}
+
