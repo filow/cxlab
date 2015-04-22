@@ -21,3 +21,5 @@
 
 # 忽略.idea文件
 /.idea
+
+/vendor/cache

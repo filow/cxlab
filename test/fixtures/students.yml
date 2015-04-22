@@ -1,0 +1,20 @@
+# schema:
+#  create_table "students", force: true do |t|
+#     t.string   "stuid",            limit: 20
+#     t.string   "name",                                        null: false
+#     t.string   "password",         limit: 64,                 null: false
+#     t.string   "email"
+#     t.string   "phone"
+#     t.integer  "profession_id"
+#     t.integer  "grade"
+#     t.datetime "created_at"
+#     t.datetime "updated_at"
+#     t.boolean  "is_email_checked",            default: false
+#     t.boolean  "is_phone_checked",            default: false
+#     t.string   "avatar"
+#   end
+
+user1:
+  stuid: 1206030207
+  name: user1
+  password: <%= Manage::Student.encrypt_password('1206030207','12345678') %>
