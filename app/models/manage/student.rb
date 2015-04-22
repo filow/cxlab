@@ -4,10 +4,12 @@ class Manage::Student < ActiveRecord::Base
     validates_uniqueness_of :stuid
     # 提交表单时必须包含uid以及nickname
     validates_presence_of :stuid
+    validates_format_of :stuid, with: /\A[1-9][0-9]{9}\z/,message: '应为10位长度的数字'
+
     validates_presence_of :name
 
     # 密码至少8位
-    validates_length_of :pwd,minimum: 8,allow_blank:true,on: [:create,:update]
+    validates_length_of :pwd,minimum: 8,allow_blank:true,on: [:create, :update]
 
     # 邮箱格式验证
     validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: [:create,:update],allow_blank:true
@@ -43,8 +45,6 @@ class Manage::Student < ActiveRecord::Base
     def self.encrypt_password(stuid,pw)
         Digest::SHA2.hexdigest(stuid+"_ADMIN_"+pw)
     end
-
-
 
     
 private

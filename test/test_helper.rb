@@ -18,4 +18,19 @@ class ActiveSupport::TestCase
     session[:admin_user_id]=nil
     session[:admin_user_uid]=nil
   end
+
+  def random_string(options={})
+    default_options = {length: 5,
+                       number: false,
+                       codes: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                       number_codes: '123456789'}
+    options = default_options.merge(options)
+    code = options[:number] ? options[:number_codes] : options[:codes]
+    code_length = code.length
+    result = ''
+    options[:length].times do
+      result += code[rand(code_length)]
+    end
+    result
+  end
 end
