@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   
 
+  namespace :cxpt do
+  get 'index/index'
+  end
+
+  root 'cxpt/index#index'
+
+
   get 'api/professions'
 
   scope module: 'index' do
@@ -28,7 +35,7 @@ Rails.application.routes.draw do
 
   end
 
-  root 'index/index#index'
+
   
   namespace :manage do
     get '/vcode' => 'session#vcode',format: :png

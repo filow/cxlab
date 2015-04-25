@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= yield :title %>实验室项目</title>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <!-- Bootstrap -->
+  <%= stylesheet_link_tag    'bootstrap_ball', media: 'all'%>
+  <%= stylesheet_link_tag    'cxpt', media: 'all'%>
+  <%= stylesheet_link_tag params[:controller]  %>
+  <%= yield :css %>
+  <%= csrf_meta_tags %>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="logo">
+        logo
+    </div>
+    <div class="nav">
+      <ul>
+
+        <% @nav.each do |n| %>
+        <li>
+          <%= link_to n['text'],{controller: 'cxpt/'+n['controller'], action: n['action']},class:'parent' %>
+          <% if n['children'] %>
+          <div class="child">
+            <% n['children'].each do |nc| %>
+            <%= link_to nc['text'],controller: 'cxpt/'+nc['controller'], action: nc['action'] %>
+            <% end %>
+          </div>
+          <% end %>
+        </li>
+        <% end %>
+        <li>
+          <%= link_to '创新实验室比赛系统首页',index_index_url %>
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+
+  <%= yield %>
+  <%= @nav %>
+</div>
+
+<%= javascript_include_tag 'cxpt/common' %>
+<%= javascript_include_tag params[:controller] %>
+<%= yield :js %>
+</body>
+</html>

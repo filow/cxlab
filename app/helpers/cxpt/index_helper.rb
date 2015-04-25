@@ -1,0 +1,2 @@
+module Cxpt::IndexHelper
+end

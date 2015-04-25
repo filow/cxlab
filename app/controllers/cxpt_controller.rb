@@ -1,2 +1,4 @@
-class CxptController
+class CxptController < ApplicationController
+
+
 end

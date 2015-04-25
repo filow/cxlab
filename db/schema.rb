@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128043712) do
+ActiveRecord::Schema.define(version: 20150423090933) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20150128043712) do
   add_index "configs", ["key"], name: "index_configs_on_key", unique: true, using: :btree
 
   create_table "contests", force: true do |t|
-    t.string   "name",                        null: false
+    t.string   "name",                               null: false
     t.text     "description"
     t.string   "level"
     t.string   "organizer"
@@ -90,11 +90,16 @@ ActiveRecord::Schema.define(version: 20150128043712) do
     t.text     "summary"
     t.string   "fullname"
     t.string   "website_url"
-    t.boolean  "is_deleted",  default: false
+    t.boolean  "is_deleted",         default: false
     t.string   "cover"
+    t.boolean  "is_single",          default: true
+    t.boolean  "is_group",           default: false
+    t.integer  "group_member_limit"
   end
 
   add_index "contests", ["is_deleted"], name: "index_contests_on_is_deleted", using: :btree
+  add_index "contests", ["is_group"], name: "index_contests_on_is_group", using: :btree
+  add_index "contests", ["is_single"], name: "index_contests_on_is_single", using: :btree
 
   create_table "mails", force: true do |t|
     t.string   "sid"
