@@ -100,6 +100,9 @@ nav ul.links{
       font-size: 14px;
     }
   }
+  li.info a{
+    padding: ($header-height - 33.5px)/2 40px;
+  }
 }
 
 
@@ -108,7 +111,7 @@ nav ul.user{
 }
 
 div.main{
-  padding-top: 70px;
+  padding-top: 100px;
 }
 
 

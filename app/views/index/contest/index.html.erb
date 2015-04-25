@@ -1,27 +1,11 @@
-<div class="topbar">
-  <a href="/contest" class="active"><span class="circle"></span>概览</a>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="<%= is_active_nav 0 %>"><%= link_to '概览',contest_path %></li>
   <% @contests.each do |contest| %>
-      <a href="#"><span class="circle" style="border-color: <%= contest.color %>"></span><%= contest.name %></a>
+  <li role="presentation" class="<%= is_active_nav contest.id %>"><%= link_to contest.name,contest_detail_path(contest.id) %></li>
   <% end %>
-  <div class="clear"></div>
+</ul>
+
+<div class="contest_detail">
 </div>
-
-<div class="row">
-    <div class="col-md-3">
-        <div class="contests">
-        <% @contests.each do |contest| %>
-            <div style="background-color:<%= contest.color %>"><%= contest.color %> <br> 546342456</div>
-            
-            <div class="contest">
-                <%= image_tag contest.cover.url,class:"contest-cover" %>
-                <div class="name"><%= contest.name %></div>
-            </div>
-        <% end %>
-
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</div>
-12312312
-
 

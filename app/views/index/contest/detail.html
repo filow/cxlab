@@ -1,0 +1,59 @@
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="<%= is_active_nav 0 %>"><%= link_to '概览',contest_path %></li>
+  <% @contests.each do |contest| %>
+  <li role="presentation" class="<%= is_active_nav contest.id %>"><%= link_to contest.name,contest_detail_path(contest.id) %></li>
+  <% end %>
+</ul>
+
+<div class="contest_detail">
+  <div class="jumbotron">
+    <%= image_tag @contest.cover.url,class:'contest_cover' %>
+    <h1><%= @contest.name %></h1>
+
+    <p><%= @contest.summary %></p>
+    <p>
+      <%= link_to '立即报名',contest_confirm_url(@contest),class:'btn btn-primary btn-lg',role:'button'  %>
+    </p>
+  </div>
+
+  <!-- TODO1: 如果比赛没有在举办，就不显示报名情况和比赛进度 -->
+  <div class="page-header">
+    <h2>报名情况</h2>
+  </div>
+
+  <p>这里显示当前比赛的报名情况，比如有n个个人参赛者，n个团队参赛，赛事总参与人数等等</p>
+
+  <div class="page-header">
+    <h2>比赛进度</h2>
+  </div>
+
+  <p>显示比赛的各个阶段的进度条</p>
+  <!-- / TODO1 -->
+
+
+  <div class="page-header">
+    <h2>最新动态</h2>
+  </div>
+  <p>比赛新闻列表</p>
+
+  <div class="page-header">
+    <h2>赛事介绍</h2>
+  </div>
+  <div class="description">
+    <%= raw @contest.description %>
+  </div>
+
+  <div class="page-header">
+    <h2>大赛文件</h2>
+  </div>
+  <p>暂时不开发</p>
+
+  <div class="page-header">
+    <h2>论坛动态</h2>
+  </div>
+  <p>暂时不开发</p>
+
+
+</div>
+

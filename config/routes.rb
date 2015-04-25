@@ -12,12 +12,15 @@ Rails.application.routes.draw do
 
     get 'login/' => 'session#index'
     post 'login/' => 'session#create'
-    delete 'logout' => 'session#logout',as:"logout"
+    delete 'logout' => 'session#logout',as:'logout'
     get 'login/forgot' => 'session#forgot'
     get 'login/regist' => 'session#regist'
     post 'login/regist' => 'session#regist_handler'
-    get 'login/login'=>'session#login',as: 'login_box' 
+    get 'login/login'=>'session#login',as: 'login_box'
+
     get 'contest' => 'contest#index'
+    get 'contest/:id' => 'contest#detail',as:'contest_detail'
+    get 'contest/:id/confirm' => 'contest#confirm',as:'contest_confirm'
 
     get 'user/index'
     get 'user/email_checked' => 'user#email_checked'
