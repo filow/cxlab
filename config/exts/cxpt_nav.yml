@@ -6,29 +6,111 @@
   text: '首页'
   controller: 'index'
   action: 'index'
-  children:
-    -
-      text: '子项目'
-      controller: 'index'
-      action: 'index'
-    -
-      text: '子项目'
-      controller: 'index'
-      action: 'index'
-    -
-      text: '子项目'
-      controller: 'index'
-      action: 'index'
+
 -
-  text: '无子代'
-  controller: 'index'
-  action: 'index'
--
-  text: '父项目'
+  text: '实验室概况'
   controller: 'index'
   action: 'index'
   children:
-      -
-        text: '子项目'
-        controller: 'index'
-        action: 'index'
+    -
+      text: '实验室简介'
+      controller: 'index'
+      action: 'index'
+    -
+      text: '管理体制'
+      controller: 'index'
+      action: 'index'
+-
+  text: '新闻公告'
+  controller: 'index'
+  action: 'index'
+  children:
+    -
+      text: '图片新闻'
+      controller: 'index'
+      action: 'index'
+    -
+      text: '通知公告'
+      controller: 'index'
+      action: 'index'
+    -
+      text: '创新动态'
+      controller: 'index'
+      action: 'index'
+-
+  text: '创新成果'
+  controller: 'index'
+  action: 'index'
+  children:
+    -
+      text: '创新作品'
+      controller: 'index'
+      action: 'index'
+    -
+      text: '专利'
+      controller: 'index'
+      action: 'index'
+    -
+      text: '论文'
+      controller: 'index'
+      action: 'index'
+-
+  text: '实验环境'
+  controller: 'index'
+  action: 'index'
+  children:
+    -
+      text: '实验环境'
+      controller: 'index'
+      action: 'index'
+    -
+      text: '仪器设备'
+      controller: 'index'
+      action: 'index'
+
+-
+  text: '师资队伍'
+  controller: 'index'
+  action: 'index'
+
+-
+  text: '管理规则'
+  controller: 'index'
+  action: 'index'
+
+-
+  text: '课程设置'
+  controller: 'index'
+  action: 'index'
+  children:
+    -
+      text: '教学计划'
+      controller: 'index'
+      action: 'index'
+    -
+      text: '实验项目'
+      controller: 'index'
+      action: 'index'
+    -
+      text: '课程信息'
+      controller: 'index'
+      action: 'index'
+
+-
+  text: '资料下载'
+  controller: 'index'
+  action: 'index'
+  children:
+    -
+      text: '学习资源'
+      controller: 'index'
+      action: 'index'
+    -
+      text: '常用工具'
+      controller: 'index'
+      action: 'index'
+    -
+      text: '表格下载'
+      controller: 'index'
+      action: 'index'
+

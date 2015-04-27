@@ -24,33 +24,40 @@
     <div class="logo">
         logo
     </div>
-    <div class="nav">
-      <ul>
 
-        <% @nav.each do |n| %>
-        <li>
-          <%= link_to n['text'],{controller: 'cxpt/'+n['controller'], action: n['action']},class:'parent' %>
-          <% if n['children'] %>
-          <div class="child">
-            <% n['children'].each do |nc| %>
-            <%= link_to nc['text'],controller: 'cxpt/'+nc['controller'], action: nc['action'] %>
-            <% end %>
-          </div>
-          <% end %>
-        </li>
-        <% end %>
-        <li>
-          <%= link_to '创新实验室比赛系统首页',index_index_url %>
-        </li>
-
-
-      </ul>
-    </div>
   </div>
-
-  <%= yield %>
-  <%= @nav %>
 </div>
+  <div class="nav">
+    <div class="container">
+
+        <ul>
+
+          <% @nav.each do |n| %>
+              <li>
+                <%= link_to n['text'],{controller: 'cxpt/'+n['controller'], action: n['action']},class:'parent' %>
+                <% if n['children'] %>
+                    <div class="child">
+                      <% n['children'].each do |nc| %>
+                          <%= link_to nc['text'],controller: 'cxpt/'+nc['controller'], action: nc['action'] %>
+                      <% end %>
+                    </div>
+                <% end %>
+              </li>
+          <% end %>
+          <li>
+            <%= link_to '比赛系统',index_index_url %>
+          </li>
+
+
+        </ul>
+      </div>
+
+  </div>
+<div class="container" id="main">
+  <%= yield %>
+</div>
+
+
 
 <%= javascript_include_tag 'cxpt/common' %>
 <%= javascript_include_tag params[:controller] %>

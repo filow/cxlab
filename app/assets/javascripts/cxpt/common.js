@@ -6,9 +6,9 @@ $(document).ready(function(){
     $('.nav .parent').mouseenter(function(){
         console.log('1');
         var p = $(this).parent('li');
-        p.find('.child').show();
+        p.find('.child').slideDown(200);
         p.mouseleave(function(){
-            p.find('.child').hide();
+            p.find('.child').slideUp(200);
         });
     });
 
