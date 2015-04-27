@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @cxpt_mnews.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @cxpt_mnews.content %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @cxpt_mnews.summary %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @cxpt_mnews.author %>
+</p>
+
+<p>
+  <strong>Publish at:</strong>
+  <%= @cxpt_mnews.publish_at %>
+</p>
+
+<p>
+  <strong>View count:</strong>
+  <%= @cxpt_mnews.view_count %>
+</p>
+
+<p>
+  <strong>Cxcate:</strong>
+  <%= @cxpt_mnews.cxcate_id %>
+</p>
+
+<%= link_to 'Edit', edit_cxpt_mnews_path(@cxpt_mnews) %> |
+<%= link_to 'Back', cxpt_mnews_index_path %>

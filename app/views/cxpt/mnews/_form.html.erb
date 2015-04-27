@@ -1,0 +1,45 @@
+<%= form_for(@cxpt_mnews) do |f| %>
+  <% if @cxpt_mnews.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cxpt_mnews.errors.count, "error") %> prohibited this cxpt_mnews from being saved:</h2>
+
+      <ul>
+      <% @cxpt_mnews.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= f.label :summary %><br>
+    <%= f.text_area :summary %>
+  </div>
+  <div class="field">
+    <%= f.label :author %><br>
+    <%= f.text_field :author %>
+  </div>
+  <div class="field">
+    <%= f.label :publish_at %><br>
+    <%= f.datetime_select :publish_at %>
+  </div>
+  <div class="field">
+    <%= f.label :view_count %><br>
+    <%= f.number_field :view_count %>
+  </div>
+  <div class="field">
+    <%= f.label :cxcate_id %><br>
+    <%= f.number_field :cxcate_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423090933) do
+ActiveRecord::Schema.define(version: 20150427123047) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -100,6 +100,29 @@ ActiveRecord::Schema.define(version: 20150423090933) do
   add_index "contests", ["is_deleted"], name: "index_contests_on_is_deleted", using: :btree
   add_index "contests", ["is_group"], name: "index_contests_on_is_group", using: :btree
   add_index "contests", ["is_single"], name: "index_contests_on_is_single", using: :btree
+
+  create_table "cxpt_cates", force: true do |t|
+    t.string "name"
+  end
+
+  add_index "cxpt_cates", ["name"], name: "index_cxpt_cates_on_name", using: :btree
+
+  create_table "cxpt_news", force: true do |t|
+    t.string   "title",                       null: false
+    t.text     "content",                     null: false
+    t.text     "summary",                     null: false
+    t.string   "author"
+    t.boolean  "is_draft",     default: true
+    t.datetime "publish_at"
+    t.integer  "view_count",   default: 0
+    t.integer  "cxpt_cate_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cxpt_news", ["publish_at"], name: "index_cxpt_news_on_publish_at", using: :btree
+  add_index "cxpt_news", ["title"], name: "index_cxpt_news_on_title", using: :btree
+  add_index "cxpt_news", ["view_count"], name: "index_cxpt_news_on_view_count", using: :btree
 
   create_table "mails", force: true do |t|
     t.string   "sid"

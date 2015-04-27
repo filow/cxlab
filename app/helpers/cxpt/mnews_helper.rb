@@ -1,0 +1,2 @@
+module Cxpt::MnewsHelper
+end

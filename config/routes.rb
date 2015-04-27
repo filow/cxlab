@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   
 
   namespace :cxpt do
+    resources :mnews
+  end
+
+  namespace :cxpt do
   get 'index/index'
   end
 

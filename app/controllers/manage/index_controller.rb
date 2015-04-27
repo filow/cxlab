@@ -6,6 +6,9 @@ class Manage::IndexController < ManageController
             {text: "发布资讯",icon: "newspaper-o",options:{controller: "news",action: "index"}},
             {text: "个人信息设置",icon: "user",options:{controller: "self",action: "index"}}
         ],
+        "省级创新平台"=> [
+            {text: "文章管理",icon: "list",options:{controller: "cxpt/mnews",action: "index"}},
+        ],
         "管理员管理"=> [
             {text: "管理员列表",icon: "list",options:{controller: "admins",action: "index"}},
             {text: "角色管理",icon: "users",options:{controller: "roles",action: "index"}},
