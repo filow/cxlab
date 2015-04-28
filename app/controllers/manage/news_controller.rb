@@ -10,8 +10,6 @@ class Manage::NewsController < ManageController
 
   def news_list
     @manage_news = Manage::News.order(id: :desc).select(:id,:title,:author,:summary,:is_draft,:is_deleted,:publish_at,:contest_id).all
-    puts "111"
-    puts @manage_news
   end
 
   # GET /manage/news/1

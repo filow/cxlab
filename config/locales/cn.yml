@@ -41,6 +41,8 @@ cn:
       manage/contest: 比赛大类
       manage/section: 比赛阶段
       manage/config: 设置
+      cxpt/mnews: 创新平台文章
+      cxpt/cate: 创新平台文章类别
     attributes:
       manage/admin:
         uid: 登陆id
@@ -109,6 +111,14 @@ cn:
         key: "设置键"
         value: "值"
         name: "说明"
+      cxpt/mnews:
+        title: 标题
+        author: 作者
+        content: 内容
+        publish_at: 发布时间
+        cxpt_cate_id: 所属项目
+        is_draft: 放入草稿箱
+
 
     errors:
       template:

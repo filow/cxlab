@@ -22,14 +22,9 @@ a:hover{
   width: 100%;
   display: block;
   margin-bottom: 10px;
-  .logo{
-    width: 280px;
-    height: 150px;
-    background-color: #666;
-    text-align: center;
-    line-height: 150px;
-    font-size: 24px;
-    color: #fff
+  .logo img{
+    height: 100px;
+    margin: 15px 0px;
   }
 }
 

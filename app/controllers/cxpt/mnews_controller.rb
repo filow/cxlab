@@ -4,17 +4,21 @@ class Cxpt::MnewsController < ManageController
   # GET /cxpt/mnews
   # GET /cxpt/mnews.json
   def index
-    @cxpt_mnews = Cxpt::Mnews.all
+    @cxpt_mnews = Cxpt::Mnews.select('left(summary, 300) as summary').select(:id,:title, :author, :publish_at, :view_count,:cxpt_cate_id,:is_draft).all
+    @cate = Cxpt::Cate.all_cates
   end
 
   # GET /cxpt/mnews/1
   # GET /cxpt/mnews/1.json
   def show
+    p @cxpt_mnews.cate
   end
 
   # GET /cxpt/mnews/new
   def new
     @cxpt_mnews = Cxpt::Mnews.new
+    @cxpt_mnews.publish_at = Time.now
+
   end
 
   # GET /cxpt/mnews/1/edit
@@ -69,6 +73,12 @@ class Cxpt::MnewsController < ManageController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cxpt_mnews_params
-      params.require(:cxpt_mnews).permit(:title, :content, :summary, :author, :publish_at, :view_count, :cxcate_id)
+      param=params.require(:cxpt_mnews).permit(:title, :author, :content, :is_draft, :publish_at,:cxpt_cate_id)
+      if params[:commit] == "存为草稿"
+        param[:is_draft] = true
+      else
+        param[:is_draft] = false
+      end
+      param
     end
 end

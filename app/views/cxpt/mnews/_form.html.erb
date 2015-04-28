@@ -1,45 +1,32 @@
-<%= form_for(@cxpt_mnews) do |f| %>
-  <% if @cxpt_mnews.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cxpt_mnews.errors.count, "error") %> prohibited this cxpt_mnews from being saved:</h2>
+<%= content_for :js do %>
+<%= javascript_include_tag 'ckeditor/init' %>
+<% end %>
 
-      <ul>
-      <% @cxpt_mnews.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :summary %><br>
-    <%= f.text_area :summary %>
-  </div>
-  <div class="field">
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
-  </div>
-  <div class="field">
-    <%= f.label :publish_at %><br>
-    <%= f.datetime_select :publish_at %>
-  </div>
-  <div class="field">
-    <%= f.label :view_count %><br>
-    <%= f.number_field :view_count %>
-  </div>
-  <div class="field">
-    <%= f.label :cxcate_id %><br>
-    <%= f.number_field :cxcate_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= form_for(@cxpt_mnews,html:{class:"form-inline edit_form"}) do |f| %>
+    <%= form_errors(@cxpt_mnews) %>
+    <table class="table">
+      <tr>
+        <td width="15%"><%= f.label :title %></td>
+        <td><%= f.select :cxpt_cate_id,options_for_select(Cxpt::Cate.all_cates,@cxpt_mnews.cxpt_cate_id)%><%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :content %></td>
+        <td><%= f.cktext_area :content,:ckeditor => {:uiColor => '#efefef'} %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :author %></td>
+        <td><%= f.text_field :author %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :publish_at %></td>
+        <td colspan="3"><%= f.datetime_local_field :publish_at %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="3">
+          <%= f.submit "立即发布",class:"btn btn-success",id:"publish_button" %>
+          <%= f.submit "存为草稿",class:"btn btn-primary" %>
+        </td>
+      </tr>
+    </table>
 <% end %>

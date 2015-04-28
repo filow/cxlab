@@ -1,39 +1,41 @@
-<p id="notice"><%= notice %></p>
+<%= link_to '返回目录页',cxpt_mnews_index_path,class: 'btn btn-primary' %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @cxpt_mnews.title %>
-</p>
+<div class="page-header">
+  <h2><%= @cxpt_mnews.title %> </h2>
+</div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @cxpt_mnews.content %>
-</p>
+<table class="table table-bordered">
+  <tr>
+    <td width="120px">当前状态</td>
+    <td><%= mnews_status_label @cxpt_mnews %></td>
+    <td>操作</td>
+    <td>
+      <%= link_to '编辑', edit_cxpt_mnews_path(@cxpt_mnews),class:"btn btn-warning" %>
+      <%= link_to '删除', cxpt_mnews_path(@cxpt_mnews),method: :delete,class:"btn btn-danger" %>
+    </td>
+  </tr>
+  <tr>
+    <td>所属类别</td>
+    <td><%= @cxpt_mnews.cate_name %></td>
+    <td>作者</td>
+    <td><%= @cxpt_mnews.author %></td>
+  </tr>
 
-<p>
-  <strong>Summary:</strong>
-  <%= @cxpt_mnews.summary %>
-</p>
+  <tr>
+    <td>发布日期</td>
+    <td><%= @cxpt_mnews.publish_at %></td>
+    <td>浏览量</td>
+    <td><%= @cxpt_mnews.view_count %></td>
+  </tr>
+  <tr>
+    <td>创建日期</td>
+    <td><%= @cxpt_mnews.created_at %></td>
+    <td>最后修改日期</td>
+    <td><%= @cxpt_mnews.updated_at %></td>
+  </tr>
+    <tr>
+      <td>正文</td>
+      <td colspan="3"><%= raw @cxpt_mnews.content %></td>
+    </tr>
 
-<p>
-  <strong>Author:</strong>
-  <%= @cxpt_mnews.author %>
-</p>
-
-<p>
-  <strong>Publish at:</strong>
-  <%= @cxpt_mnews.publish_at %>
-</p>
-
-<p>
-  <strong>View count:</strong>
-  <%= @cxpt_mnews.view_count %>
-</p>
-
-<p>
-  <strong>Cxcate:</strong>
-  <%= @cxpt_mnews.cxcate_id %>
-</p>
-
-<%= link_to 'Edit', edit_cxpt_mnews_path(@cxpt_mnews) %> |
-<%= link_to 'Back', cxpt_mnews_index_path %>
+</table>

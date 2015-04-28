@@ -102,7 +102,8 @@ ActiveRecord::Schema.define(version: 20150427123047) do
   add_index "contests", ["is_single"], name: "index_contests_on_is_single", using: :btree
 
   create_table "cxpt_cates", force: true do |t|
-    t.string "name"
+    t.string "name",               null: false
+    t.string "display", limit: 20
   end
 
   add_index "cxpt_cates", ["name"], name: "index_cxpt_cates_on_name", using: :btree

@@ -1,3 +1,50 @@
 // Place all the styles related to the Cxpt::Mnews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.filter_box{
+  background-color: #fefefe;
+  padding: 5px;
+  border: 1px solid #eAeAeA;
+  border-radius: 5px;
+
+  label.option{
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    border-radius: 3px;
+    background-color: white;
+    &:hover{
+      background-color: #eee;
+    }
+  }
+}
+input.rounded_input{
+  padding: 6px 12px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+div.summary_box{
+  height: 20px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.edit_form{
+  select#manage_news_contest_id{
+    margin-right: 10px;
+  }
+  input#manage_news_title {
+    width: 85%;
+    border-radius: 3px;
+    border: 1px solid #D5D5D5;
+    padding: 4px;
+  }
+  input#manage_news_author {
+    border-radius: 3px;
+    border: 1px solid #D5D5D5;
+    padding: 6px;
+  }
+  input#manage_news_publish_at {
+    border-radius: 5px;
+    border: 1px solid #D5D5D5;
+    padding: 4px;
+  }
+}
