@@ -1,12 +1,15 @@
 require 'test_helper'
 
 class Manage::StudentTest < ActiveSupport::TestCase
+
+  # sutid不能重复
   test 'stuid不能重复' do
     existed_student = students(:user1)
     test_student = Student.new(stuid: existed_student.stuid, name: 'test_name',pwd: '12345678')
     assert_not test_student.save
   end
 
+  # 随机生成长度为0～15的数字串
   test 'stuid应为10位数字' do
     # 数字情况
     (0..15).each do |x|
