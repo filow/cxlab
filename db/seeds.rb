@@ -6,7 +6,7 @@ Dir.glob('db/seeds/*').each do |file|
   require "#{Rails.root}/#{file}" if file =~ /seed.rb\z/
 end
 
-single = true
+single = false
 
 if single
   seed_classes = [:CxptCateSeed]

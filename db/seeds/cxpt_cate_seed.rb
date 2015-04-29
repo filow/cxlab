@@ -27,6 +27,9 @@ class CxptCateSeed
     result
   end
   def run
+    # 清空缓存
+    cache = Cache.new('cxpt')
+    cache[:cate_tree_cache] = nil
     data = filter(@raw_data)
     # 先将数据库中得所有节点的标记位置1
     Cxpt::Cate.update_all "edit_flag=1"
