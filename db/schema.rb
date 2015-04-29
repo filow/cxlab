@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427123047) do
+ActiveRecord::Schema.define(version: 20150428144045) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 20150427123047) do
     t.integer "node_id", null: false
   end
 
+  add_index "nodes_roles", ["node_id"], name: "nodes_roles_node_id_fk", using: :btree
   add_index "nodes_roles", ["role_id", "node_id"], name: "index_nodes_roles_on_role_id_and_node_id", using: :btree
 
   create_table "professions", force: true do |t|
@@ -231,6 +232,9 @@ ActiveRecord::Schema.define(version: 20150427123047) do
   add_foreign_key "competes", "contests", name: "competes_contest_id_fk", dependent: :delete
 
   add_foreign_key "configs", "config_types", name: "configs_config_type_id_fk", dependent: :delete
+
+  add_foreign_key "nodes_roles", "nodes", name: "nodes_roles_node_id_fk"
+  add_foreign_key "nodes_roles", "roles", name: "nodes_roles_role_id_fk"
 
   add_foreign_key "sections", "competes", name: "sections_compete_id_fk", dependent: :delete
 
