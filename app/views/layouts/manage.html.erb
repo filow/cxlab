@@ -2,9 +2,9 @@
 <html>
 <head>
   <title>后台管理</title>
-  <%= stylesheet_link_tag    "bootstrap_ball", media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    "manage/common", media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    params[:controller], media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    "bootstrap_ball", media: 'all' %>
+  <%= stylesheet_link_tag    "manage/common", media: 'all' %>
+  <%= stylesheet_link_tag    params[:controller], media: 'all' %>
   <%= yield :css %>
   <%= javascript_include_tag 'angular.min.js' %>
   <%= yield :before_js %>
@@ -24,8 +24,8 @@
 </div>
 
 </body>
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-<%= javascript_include_tag  "manage/common",'data-turbolinks-track' => true %>
-<%= javascript_include_tag params[:controller], 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application' %>
+<%= javascript_include_tag  "manage/common" %>
+<%= javascript_include_tag params[:controller] %>
 <%= yield :js %>
 </html>

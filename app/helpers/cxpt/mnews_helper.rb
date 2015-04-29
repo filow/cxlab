@@ -11,4 +11,17 @@ module Cxpt::MnewsHelper
     end
     tag
   end
+
+  def mnews_cate_option(tree_obj)
+    result = ''
+    tree_obj.each do |p|
+      result+=sprintf('<optgroup label="%s">',p.name)
+      p.child.each do |c|
+        type=c.display_text
+        result+=sprintf('<option value="%d" data-subtext="%s">%s</option>',c.id,type,c.name)
+      end
+      result+='</optgroup>'
+    end
+    result.html_safe
+  end
 end

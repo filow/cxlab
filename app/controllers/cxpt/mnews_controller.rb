@@ -6,6 +6,7 @@ class Cxpt::MnewsController < ManageController
   def index
     @cxpt_mnews = Cxpt::Mnews.select('left(summary, 300) as summary').select(:id,:title, :author, :publish_at, :view_count,:cxpt_cate_id,:is_draft).all
     @cate = Cxpt::Cate.all_cates
+    @cate_tree = Cxpt::Cate.tree_view
   end
 
   # GET /cxpt/mnews/1

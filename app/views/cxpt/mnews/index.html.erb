@@ -1,7 +1,13 @@
 <div class="page-header">
   <h2>创新平台文章管理</h2>
-  <%= link_to '添加新文章', new_cxpt_mnews_path,class:"btn btn-success" %>
+
+  <%= form_tag(new_cxpt_mnews_path, method: :get) do %>
+      <%= select_tag :cate,mnews_cate_option(@cate_tree),class:'selectpicker',id:'new_passage_select' %>
+      <button class="btn btn-success" id="new_passage_submit">添加新文章</button>
+  <% end %>
+
 </div>
+
 <div ng-app="newsList">
   <div ng-controller="listController">
     <div class="filter_box">
