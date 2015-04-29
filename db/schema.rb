@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428144045) do
+ActiveRecord::Schema.define(version: 20150429085914) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -102,8 +102,10 @@ ActiveRecord::Schema.define(version: 20150428144045) do
   add_index "contests", ["is_single"], name: "index_contests_on_is_single", using: :btree
 
   create_table "cxpt_cates", force: true do |t|
-    t.string "name",               null: false
-    t.string "display", limit: 20
+    t.string  "name",                 null: false
+    t.string  "display",   limit: 20
+    t.integer "pid"
+    t.boolean "edit_flag"
   end
 
   add_index "cxpt_cates", ["name"], name: "index_cxpt_cates_on_name", using: :btree
