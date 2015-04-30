@@ -1,5 +1,5 @@
 class Cxpt::Cate < ActiveRecord::Base
-  has_many :newses, :class_name => 'Cxpt::Mnews'
+  has_many :newses, :class_name => 'Cxpt::Mnews',foreign_key: 'cxpt_cate_id'
   has_many :children,class_name: 'Cxpt::Cate',foreign_key: "pid"
   belongs_to :parent, class_name: 'Cxpt::Cate',foreign_key: "pid"
 
@@ -40,4 +40,14 @@ class Cxpt::Cate < ActiveRecord::Base
     }
     rule[display.to_sym]
   end
+
+  def self.get_by_id(id)
+    if id
+      find(id)
+    else
+      self.new(name:'未分类')
+    end
+  end
+
+
 end

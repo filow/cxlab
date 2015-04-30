@@ -1,32 +1,56 @@
-<%= content_for :js do %>
+<%= content_for :before_js do %>
 <%= javascript_include_tag 'ckeditor/init' %>
 <% end %>
 
 <%= form_for(@cxpt_mnews,html:{class:"form-inline edit_form"}) do |f| %>
     <%= form_errors(@cxpt_mnews) %>
+    <%= f.hidden_field :cxpt_cate_id %>
     <table class="table">
+
       <tr>
         <td width="15%"><%= f.label :title %></td>
-        <td><%= f.select :cxpt_cate_id,options_for_select(Cxpt::Cate.all_cates,@cxpt_mnews.cxpt_cate_id)%><%= f.text_field :title %></td>
+        <td>
+          <% if @dopt[:title]==true %>
+          <%= f.text_field :title,class:'form-control',style:'width:60%' %>
+          <% end %>
+          <span class="label label-info">类别： <%= @cate.name %></span>
+        </td>
       </tr>
+
       <tr>
         <td><%= f.label :content %></td>
-        <td><%= f.cktext_area :content,:ckeditor => {:uiColor => '#efefef'} %></td>
+        <td>
+          <% if @dopt[:content]=='full' %>
+            <%= f.cktext_area :content,:ckeditor => {:uiColor => '#efefef'} %>
+          <% else %>
+            <%= f.cktext_area :content,:ckeditor => {uiColor: '#efefef',toolbar: 'mini'} %>
+          <% end %>
+        </td>
       </tr>
+
+      <% if @dopt[:author]==true %>
       <tr>
         <td><%= f.label :author %></td>
-        <td><%= f.text_field :author %></td>
+        <td><%= f.text_field :author,class:'form-control' %></td>
       </tr>
+      <% end %>
+
+      <% if @dopt[:publish_at]==true %>
       <tr>
         <td><%= f.label :publish_at %></td>
         <td colspan="3"><%= f.datetime_local_field :publish_at %></td>
       </tr>
+      <% end %>
+
       <tr>
         <td></td>
         <td colspan="3">
           <%= f.submit "立即发布",class:"btn btn-success",id:"publish_button" %>
+          <% if @dopt[:is_draft]==true %>
           <%= f.submit "存为草稿",class:"btn btn-primary" %>
+          <% end %>
         </td>
       </tr>
+
     </table>
 <% end %>

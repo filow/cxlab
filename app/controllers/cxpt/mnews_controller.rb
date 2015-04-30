@@ -17,23 +17,43 @@ class Cxpt::MnewsController < ManageController
 
   # GET /cxpt/mnews/new
   def new
-    @cxpt_mnews = Cxpt::Mnews.new
-    @cxpt_mnews.publish_at = Time.now
+    @cate = Cxpt::Cate.get_by_id(params[:cate])
+    set_view_stats
 
+    # 如果是文章页应当直接跳转到文章的对应页面
+    if @cate.display == 'passage'
+      # 首先寻找是否已经存在标题为cate.name的文章
+      passage = @cate.newses.where('title = ?',@cate.name).select(:id).first
+      # 如果不存在就新建一个
+      passage ||= Cxpt::Mnews.init_passage_news(@cate)
+      # 如果最后创建成功了
+      if passage
+        logger.info passage.to_json
+        redirect_to edit_cxpt_mnews_url(passage.id)
+      else
+        redirect_to :index, flash: '初始化文章失败！'
+      end
+    else
+      @cxpt_mnews = Cxpt::Mnews.new(publish_at: Time.now, cxpt_cate_id: @cate.id)
+    end
   end
 
   # GET /cxpt/mnews/1/edit
   def edit
+    @cate = @cxpt_mnews.cate
+    set_view_stats
+
   end
 
   # POST /cxpt/mnews
   # POST /cxpt/mnews.json
   def create
+    @cate = Cxpt::Cate.get_by_id(params[:cxpt_cate_id])
     @cxpt_mnews = Cxpt::Mnews.new(cxpt_mnews_params)
-
+    set_view_stats
     respond_to do |format|
       if @cxpt_mnews.save
-        format.html { redirect_to @cxpt_mnews, notice: 'Mnews was successfully created.' }
+        format.html { redirect_to @cxpt_mnews, notice: '文章添加成功.' }
         format.json { render :show, status: :created, location: @cxpt_mnews }
       else
         format.html { render :new }
@@ -45,9 +65,11 @@ class Cxpt::MnewsController < ManageController
   # PATCH/PUT /cxpt/mnews/1
   # PATCH/PUT /cxpt/mnews/1.json
   def update
+    @cate = @cxpt_mnews.cate
+    set_view_stats
     respond_to do |format|
       if @cxpt_mnews.update(cxpt_mnews_params)
-        format.html { redirect_to @cxpt_mnews, notice: 'Mnews was successfully updated.' }
+        format.html { redirect_to @cxpt_mnews, notice: '信息已更新' }
         format.json { render :show, status: :ok, location: @cxpt_mnews }
       else
         format.html { render :edit }
@@ -61,10 +83,13 @@ class Cxpt::MnewsController < ManageController
   def destroy
     @cxpt_mnews.destroy
     respond_to do |format|
-      format.html { redirect_to cxpt_mnews_index_url, notice: 'Mnews was successfully destroyed.' }
+      format.html { redirect_to cxpt_mnews_index_url, notice: '删除成功' }
       format.json { head :no_content }
     end
   end
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -82,4 +107,18 @@ class Cxpt::MnewsController < ManageController
       end
       param
     end
+  def set_view_stats
+    stats = {title: true, content: 'full', author: false, publish_at: true, is_draft: false, image_uploader: false}
+    display = @cate.display
+    if display == 'passage'
+      stats.merge!({title: false, publish_at: false})
+    elsif display == 'gallery'
+      stats.merge!({content: 'mini', publish_at: false, image_uploader: true})
+    elsif display == 'image'
+      stats.merge!({author: true, is_draft: true, image_uploader: true})
+    else
+      stats.merge!({author: true, is_draft: true})
+    end
+    @dopt = stats 
+  end
 end
