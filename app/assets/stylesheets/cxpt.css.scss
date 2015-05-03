@@ -1,9 +1,6 @@
-$color_base_bg:#F7F7F7; //18%灰
-$color_primary:#428bca;
-
-$nav-bg-color: #2d608c;
+@import 'cxpt/mixins.scss';
 body{
-  background-color: $color_base_bg;
+  background-image: image-url('cxpt/global_bg.gif');
   color:#333;
   min-width: 700px;
   margin: 0;
@@ -23,7 +20,7 @@ a:hover{
   display: block;
   margin-bottom: 10px;
   .logo img{
-    height: 100px;
+    height: 81px;
     margin: 15px 0px;
   }
 }
@@ -51,6 +48,7 @@ a:hover{
         position: absolute;
         display: none;
         background-color: $nav-bg-color;
+        z-index: 999;
       }
       div.child a{
 
@@ -64,7 +62,21 @@ a:hover{
   }
 }
 
-#main{
+#main-container{
   background-color: #fff;
   margin-top: 20px;
+  border-radius: 5px;
+  padding:20px;
+}
+#main{
+  min-height: 500px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  padding-right: 15px;
+}
+div.aside{
+  min-height: 500px;
+  padding-bottom: 10px;
+  border-right: 1px solid #E4E4E4;
+
 }

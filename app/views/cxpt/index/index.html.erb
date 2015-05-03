@@ -1,7 +1,80 @@
-<div class="page-header">
-  <h2>首页</h2>
+<%= content_for :lunbo do %>
+
+
+<div class="news-flow">
+<div class="row">
+  <div class="lunbo col-md-8">
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+        <% count=-1 %>
+        <% @news_with_cover.each_with_index do |news,i| %>
+        <div class="item <%= 'active' if i==0 %>" data-id="<%= i %>">
+          <%= link_to image_tag(news.cover.url),'#' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-list col-md-4">
+    <ul id="news-list-ul">
+      <% @news_with_cover.each_with_index do |news,index| %>
+        <li class="<%= 'active' if index==0 %>" data-id="<%= index %>"><div class="fixed_box"><%= news.title %></div></li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
+</div>
+<div class="divider"></div>
+
+<% end %>
+
+
+<!-- 正文部分 -->
+<div class="row">
+  <div class="col-md-6">
+
+    <div class="list-item-box">
+      <div class="header">
+        <div class="title">
+          <%= link_to "公司简介",'#' %>
+        </div>
+        <div class="more">
+          <%= link_to "更多>>",'#' %>
+        </div>
+      </div>
+      <div class="list" style="max-height:270px">
+        <% if @intro %>
+          <%= raw @intro %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    
+    <div class="list-item-box">
+      <div class="header">
+        <div class="title">
+          <a>申报通知</a>
+        </div>
+        <div class="more">
+          <%= link_to "更多>>",'#' %>
+        </div>
+      </div>
+      <div class="list">
+        <table class="table table-condensed box-table" >
+          <% [].each do |rp| %>
+          <tr>
+            <td><div class="fixed_box"><%= link_to rp.title,tech_passage_path(rp) %></div>  </td>
+            <td width="70px"><%= rp.created_at.strftime("%y-%m-%d") %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<div class="page-header">
-  <h3>资讯列表</h3>
-</div>

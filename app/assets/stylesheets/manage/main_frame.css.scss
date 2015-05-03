@@ -31,6 +31,7 @@ a,button{
 
 }
 .navbar{
+	z-index: 1500;
 	position: fixed;
 	right: 0;
 	left: 0;
@@ -278,11 +279,12 @@ a,button{
 }//.navbar end
 
 .sidebar{
-	float:left;
+	z-index: 1000;
 	width: $sidebar-width;
 	background: $sidebar-background;
 	overflow: hidden;
 	position:fixed;
+	height: 100%;
 	color: $sidebar-text-color;
 	@include box-sizing(border-box);
 	@include transition(all .3s ease);

@@ -23,10 +23,10 @@ $brand-danger:            #d9534f;
 $brand-info:              #5bc0de;
 
 // Sidebar colors
-$sidebar-background:        #F1F1F1;
+$sidebar-background:        lighten(#50b89f,40%);
 //$sidebar-background:        #273135;
 // $sidebar-text-color:        #000;
-$sidebar-text-color:        #767676;
+$sidebar-text-color:        #3d3d3d;
 $sidebar-active-background: #50B89F;
 $sidebar-header-color:      rgb(58,58,58);
 // $sidebar-header-color:      rgba(137,148,155,.4);

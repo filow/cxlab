@@ -38,4 +38,10 @@ class Cxpt::Mnews < ActiveRecord::Base
       x.content = ''
     end
   end
+
+  def self.news_with_cover
+    image_cates = Cxpt::Cate.where(display: 'image').select(:id).load
+    image_cate_ids = image_cates.collect {|x| x.id}
+    self.where('is_draft = 0 and publish_at < ?',Time.now).where(cxpt_cate_id: image_cate_ids).order(publish_at: :desc)
+  end
 end
