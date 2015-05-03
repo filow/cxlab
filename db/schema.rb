@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429085914) do
+ActiveRecord::Schema.define(version: 20150503075310) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20150429085914) do
     t.integer  "cxpt_cate_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cover"
   end
 
   add_index "cxpt_news", ["publish_at"], name: "index_cxpt_news_on_publish_at", using: :btree

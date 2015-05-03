@@ -20,24 +20,16 @@
             <label class="option"><input type="radio" value="未发布" ng-model="flt.status" name="status"> 未发布</label>
             <label class="option"><input type="radio" value="草稿" ng-model="flt.status" name="status"> 草稿</label>
           </td>
-        </tr>
-        <tr ng-init="select_all()">
           <td>发布类别</td>
           <td>
-            <form name="haha">
-              <button class="btn btn-default" ng-click="select_all()">全选</button>
-              <% @cate.each do |cate| %>
-                  <label class="option"><input type="checkbox" ng-model="flt.cate_id['<%= cate[0]  %>']" name="cate" data-cate="<%= cate[0] %>"> <%= cate[0] %></label>
-              <% end %>
-            </form>
+            <%= select_tag :ui_cate,mnews_cate_option_with_all(@cate_tree),class:'selectpicker' %>
           </td>
-        </tr>
-        <tr>
           <td>搜索</td>
           <td><input type="text" name="search" ng-model="flt.search" class="rounded_input" placeholder="标题/摘要"></td>
         </tr>
       </table>
     </div>
+    <br>
     <table class="table table-condensed">
       <thead>
       <th>类别</th>
@@ -78,19 +70,18 @@
         var news_list = angular.module('newsList',[]);
         news_list.controller('listController', function ($scope,$http){
             $scope.flt = {
-                cate_id:{},
+                ui_cate_name:"全选",
                 status:"已发布",
                 search:"",
             };
 
-            $scope.select_all = function () {
-                for(key in haha.cate){
-                    if(typeof(haha.cate[key]) == "object"){
-                        var cate = haha.cate[key].getAttribute('data-cate');
-                        $scope.flt.cate_id[cate] = true;
-                    }
-                }
-            };
+            $('#ui_cate').change(function(){
+              var this_obj = $(this);
+              var cate_id = this_obj.val();
+              var cate_name = this_obj.find('option[value='+cate_id+']').html();
+              $scope.flt.ui_cate_name = cate_name;
+              $scope.$digest();
+            });
 
             $scope.getData = function (){
                 var data = $http.get('<%= cxpt_mnews_index_path(format: :json) %>',{cache: true});
@@ -118,19 +109,12 @@
             return function (items, flt){
                 var result = [];
                 var status = flt.status;
-                var cate_arr = [];
                 var search_text = flt.search;
-                // 将所有选中项目的名字都汇总到cate_arr中
-                for(i in flt.cate_id){
-                    if(flt.cate_id[i]){
-                        cate_arr.push(i);
-                    }
-                }
                 for(i in items){
                     // 如果列表元素的状态与选中的状态相同
                     if(items[i].stats.text==status){
                         // 如果列表元素的类别在cate_arr中
-                        if(cate_arr.indexOf(items[i].cate)>=0){
+                        if(flt.ui_cate_name === '全选' || flt.ui_cate_name==items[i].cate ){
                             // 如果有输入搜索词且在title或summary中出现
                             if(search_text != ""){
                                 if(items[i].title.indexOf(search_text)>=0 || items[i].summary.indexOf(search_text)>=0){

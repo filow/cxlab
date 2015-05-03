@@ -115,6 +115,7 @@ cn:
         title: 标题
         author: 作者
         content: 内容
+        cover: 封面图片
         publish_at: 发布时间
         cxpt_cate_id: 所属项目
         is_draft: 放入草稿箱

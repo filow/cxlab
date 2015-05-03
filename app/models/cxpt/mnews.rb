@@ -4,6 +4,9 @@ class Cxpt::Mnews < ActiveRecord::Base
   validates_length_of :title,minimum: 5
   validates_length_of :content,maximum: 60000
 
+  mount_uploader :cover, CxptNewsCoverUploader
+
+
   before_save :set_summary_and_pure_content
 
   def set_summary_and_pure_content

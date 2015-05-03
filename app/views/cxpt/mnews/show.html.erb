@@ -20,7 +20,10 @@
     <td>作者</td>
     <td><%= @cxpt_mnews.author %></td>
   </tr>
-
+  <tr>
+    <td>封面图片</td>
+    <td colspan="3"><%= image_tag @cxpt_mnews.cover %></td>
+  </tr>
   <tr>
     <td>发布日期</td>
     <td><%= @cxpt_mnews.publish_at %></td>

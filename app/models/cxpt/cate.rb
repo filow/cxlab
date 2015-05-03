@@ -10,8 +10,8 @@ class Cxpt::Cate < ActiveRecord::Base
   # 输出树形的cate列表
   def self.tree_view
     cache = Cache.new('cxpt')
-    # c = cache[:cate_tree_cache]
-    # return c if c
+    c = cache[:cate_tree_cache]
+    return c if c
 
     result = []
     parent = self.select(:id,:name,:display).where('pid=0').all

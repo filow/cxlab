@@ -99,7 +99,7 @@ class Cxpt::MnewsController < ManageController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cxpt_mnews_params
-      param=params.require(:cxpt_mnews).permit(:title, :author, :content, :is_draft, :publish_at,:cxpt_cate_id)
+      param=params.require(:cxpt_mnews).permit(:title, :author, :content, :is_draft, :publish_at,:cxpt_cate_id, :cover)
       if params[:commit] == "存为草稿"
         param[:is_draft] = true
       else

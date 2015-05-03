@@ -16,7 +16,12 @@
           <span class="label label-info">类别： <%= @cate.name %></span>
         </td>
       </tr>
-
+      <% if @dopt[:image_uploader]==true %>
+      <tr>
+        <td><%= f.label :cover %></td>
+        <td><%= f.file_field :cover %></td>
+      </tr>
+      <% end %>
       <tr>
         <td><%= f.label :content %></td>
         <td>

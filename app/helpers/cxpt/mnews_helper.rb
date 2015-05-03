@@ -24,4 +24,11 @@ module Cxpt::MnewsHelper
     end
     result.html_safe
   end
+  def mnews_cate_option_with_all(tree_obj)
+    result='<optgroup label="全选">' \
+          +'<option value="0" data-subtext="">全选</option>' \
+          +'</optgroup>'
+    result+= mnews_cate_option(tree_obj)
+    result.html_safe
+  end
 end
