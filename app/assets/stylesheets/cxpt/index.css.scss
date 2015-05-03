@@ -104,21 +104,24 @@ div.list-item-box{
   .title{
     font-family: $font-family;
     font-size: 20px;
-    border-bottom: 3px solid lighten($color_primary,25%);
-    color:lighten($color_primary,25%);
-    width: 30%;
+    border-bottom: 3px solid $color_primary;
+    width: 32%;
     float: left;
     letter-spacing: 4px;
     // text-align: center;
-    a:hover{
+    a{
       color:$color_primary;
+      &:hover{
+        color:lighten($color_primary,15%);
+      }
+      
     }
     
   }
   .more{
     text-align: right;
-    width: 70%;
-    border-bottom: 3px solid lighten($color_primary,60%);
+    width: 68%;
+    border-bottom: 3px solid #E5E5E5;
     float: right;
     padding-top: 5px;
     a{

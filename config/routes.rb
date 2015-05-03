@@ -3,10 +3,9 @@ Rails.application.routes.draw do
 
   namespace :cxpt do
     resources :mnews
-  end
-
-  namespace :cxpt do
-  get 'index/index'
+    get 'passages' => 'passage#index',as: 'passages'
+    get 'passage/:id' => 'passage#show',as: 'pshow'
+    get 'index/index'
   end
 
   root 'cxpt/index#index'

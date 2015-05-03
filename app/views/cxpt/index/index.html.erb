@@ -38,15 +38,15 @@
     <div class="list-item-box">
       <div class="header">
         <div class="title">
-          <%= link_to "公司简介",'#' %>
+          <%= link_to "实验室简介",cxpt_pshow_path(@sys_intro) %>
         </div>
         <div class="more">
-          <%= link_to "更多>>",'#' %>
+          <%= link_to "更多>>",cxpt_pshow_path(@sys_intro) %>
         </div>
       </div>
       <div class="list" style="max-height:270px">
-        <% if @intro %>
-          <%= raw @intro %>
+        <% if @sys_intro %>
+          <%= raw @sys_intro.content %>
         <% end %>
       </div>
     </div>
@@ -57,7 +57,7 @@
     <div class="list-item-box">
       <div class="header">
         <div class="title">
-          <a>申报通知</a>
+          <a>通知公告</a>
         </div>
         <div class="more">
           <%= link_to "更多>>",'#' %>
@@ -65,10 +65,10 @@
       </div>
       <div class="list">
         <table class="table table-condensed box-table" >
-          <% [].each do |rp| %>
+          <% @tzgg.each do |p| %>
           <tr>
-            <td><div class="fixed_box"><%= link_to rp.title,tech_passage_path(rp) %></div>  </td>
-            <td width="70px"><%= rp.created_at.strftime("%y-%m-%d") %></td>
+            <td><div class="fixed_box"><%= link_to p.title,'#' %></div>  </td>
+            <td width="70px"><%= p.publish_at.strftime("%y-%m-%d") %></td>
           </tr>
           <% end %>
         </table>
@@ -77,4 +77,3 @@
 
   </div>
 </div>
-
