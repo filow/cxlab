@@ -67,7 +67,7 @@
         <table class="table table-condensed box-table" >
           <% @tzgg.each do |p| %>
           <tr>
-            <td><div class="fixed_box"><%= link_to p.title,'#' %></div>  </td>
+            <td><div class="fixed_box"><%= link_to p.title,cxpt_pshow_path(p) %></div>  </td>
             <td width="70px"><%= p.publish_at.strftime("%y-%m-%d") %></td>
           </tr>
           <% end %>

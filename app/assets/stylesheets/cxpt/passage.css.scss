@@ -1,3 +1,21 @@
 // Place all the styles related to the Cxpt::Passage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'mixins.scss';
+#passage_title{
+  text-align: center;
+  font-size: 30px;
+  font-family: $font-family;
+  font-weight: 300;
+  margin-top: 10px;
+  word-wrap: break-word;
+  width: 90%;
+}
+#passage_content{
+  padding: 15px;
+}
+#passage_detail{
+  text-align: center;
+  color: #666;
+  margin-top: 10px;
+}

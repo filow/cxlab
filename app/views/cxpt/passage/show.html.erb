@@ -1,2 +1,16 @@
-<h1>Cxpt::Passage#show</h1>
-<p>Find me in app/views/cxpt/passage/show.html.erb</p>
+<ol class="breadcrumb">
+    <li><a href="/">首页</a></li>
+    <li class="active">查看文章</li>
+</ol>
+<div class="block-center" id="passage_title">
+    <%= @passage.title %>
+</div>
+<div id="passage_detail">
+    发布日期：<%= @passage.publish_at.strftime('%Y-%m-%d') %>  
+    
+    作者: <%= @passage.author || '信息工程创新实验中心' %>
+</div>
+<hr>
+<div id="passage_content">
+  <%= raw @passage.content %>
+</div>

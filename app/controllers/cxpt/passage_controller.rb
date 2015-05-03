@@ -3,5 +3,6 @@ class Cxpt::PassageController < CxptController
   end
 
   def show
+    @passage = Cxpt::Mnews.find(params[:id])
   end
 end
