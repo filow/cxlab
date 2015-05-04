@@ -19,7 +19,7 @@
         text-align: left;
         padding: 20px 30px;
         background-color: #FFF;
-        border-bottom: 1px solid #EEE;
+        border-right: 1px solid #EEE;
         cursor: pointer;
         // height: 40px;
         // word-break: break-all;
@@ -32,12 +32,15 @@
         &:hover,&.active{
           background-color: #27ae60;
           color:#FFF;
+          border-color: lighten(#27ae60,10%);
         }
         &:first-child{
           border-top-right-radius: 5px;
+          border-top:  1px solid #EEE;
         }
         &:last-child{
           border-bottom-right-radius: 5px;
+          border-bottom:  1px solid #EEE;
         }
       }
 

@@ -25,7 +25,7 @@ a:hover{
   }
 }
 
-.nav{
+div.nav{
   background-color: $nav-bg-color;
   margin-top: 5px;
   ul{
@@ -65,8 +65,10 @@ a:hover{
 #main-container{
   background-color: #fff;
   margin-top: 20px;
+  margin-bottom: 20px;
   border-radius: 5px;
   padding:20px;
+
 }
 #main{
   min-height: 500px;

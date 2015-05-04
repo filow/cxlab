@@ -1,2 +1,37 @@
-<h1>Cxpt::Passage#index</h1>
-<p>Find me in app/views/cxpt/passage/index.html.erb</p>
+<%= content_for :aside do %>
+<ul class="nav nav-pills nav-stacked">
+  <% @ancestor.children.each do |c| %>
+      <% if c.id == @cate.id %>
+          <%= content_tag :li,(link_to c.name,cxpt_pcate_path(c.name)),class:'active' %>
+      <% else %>
+          <%= content_tag :li,(link_to c.name,cxpt_pcate_path(c.name)) %>
+      <% end %>
+  <% end %>
+</ul>
+<% end %>
+<ol class="breadcrumb">
+  <li><a href="/">首页</a></li>
+  <li><%= link_to @ancestor.name,cxpt_pcate_path(@ancestor.name) %></li>
+  <li><%=  @cate.name %></li>
+</ol>
+
+<% unless @passages.empty? %>
+<table class="table">
+  <thead>
+  <tr>
+    <th>标题</th>
+    <th width="20%">发布时间</th>
+  </tr>
+  </thead>
+  <% @passages.each do |p| %>
+  <tr>
+    <td><%= link_to p.title,cxpt_pshow_url(p) %></td>
+    <td><%= p.publish_at.strftime('%Y-%m-%d') %></td>
+  </tr>
+  <% end %>
+<% else %>
+    <div class="alert alert-warning">
+      <strong>抱歉 :(</strong> 该类别下还没有文章
+    </div>
+<% end %>
+</table>

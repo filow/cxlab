@@ -9,126 +9,77 @@
   is_passage: false
 -
   text: '实验室概况'
-  controller: 'index'
-  action: 'index'
   children:
     -
       text: '实验室简介'
-      controller: 'index'
-      action: 'index'
       type: passage
     -
       text: '管理体制'
-      controller: 'index'
-      action: 'index'
       type: passage
 -
   text: '新闻公告'
-  controller: 'index'
-  action: 'index'
   children:
     -
       text: '图片新闻'
-      controller: 'index'
-      action: 'index'
       type: image
     -
       text: '通知公告'
-      controller: 'index'
-      action: 'index'
       type: list
     -
       text: '创新动态'
-      controller: 'index'
-      action: 'index'
       type: list
 -
   text: '创新成果'
-  controller: 'index'
-  action: 'index'
   children:
     -
       text: '创新作品'
-      controller: 'index'
-      action: 'index'
       type: gallery
     -
       text: '专利'
-      controller: 'index'
-      action: 'index'
       type: gallery
     -
       text: '论文'
-      controller: 'index'
-      action: 'index'
       type: gallery
 -
   text: '实验环境'
-  controller: 'index'
-  action: 'index'
   children:
     -
       text: '实验环境'
-      controller: 'index'
-      action: 'index'
       type: passage
     -
       text: '仪器设备'
-      controller: 'index'
-      action: 'index'
       type: passage
 
 -
   text: '师资队伍'
-  controller: 'index'
-  action: 'index'
   type: passage
 
 -
   text: '管理规则'
-  controller: 'index'
-  action: 'index'
   type: passage
 
 -
   text: '课程设置'
-  controller: 'index'
-  action: 'index'
   children:
     -
       text: '教学计划'
-      controller: 'index'
-      action: 'index'
       type: list
     -
       text: '实验项目'
-      controller: 'index'
-      action: 'index'
       type: list
     -
       text: '课程信息'
-      controller: 'index'
-      action: 'index'
       type: list
 
 -
   text: '资料下载'
-  controller: 'index'
-  action: 'index'
   children:
     -
       text: '学习资源'
-      controller: 'index'
-      action: 'index'
       type: list
     -
       text: '常用工具'
-      controller: 'index'
-      action: 'index'
       type: list
     -
       text: '表格下载'
-      controller: 'index'
-      action: 'index'
       type: list
-

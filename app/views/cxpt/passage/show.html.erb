@@ -1,6 +1,19 @@
+<%= content_for :aside do %>
+<ul class="nav nav-pills nav-stacked">
+  <% @ancestor.children.each do |c| %>
+      <% if c.id == @cate.id %>
+          <%= content_tag :li,(link_to c.name,cxpt_pcate_path(c.name)),class:'active' %>
+      <% else %>
+          <%= content_tag :li,(link_to c.name,cxpt_pcate_path(c.name)) %>
+      <% end %>
+<% end %>
+</ul>
+<% end %>
 <ol class="breadcrumb">
-    <li><a href="/">首页</a></li>
-    <li class="active">查看文章</li>
+  <li><a href="/">首页</a></li>
+  <li><%= link_to @ancestor.name,cxpt_pcate_path(@ancestor.name) %></li>
+  <li><%= link_to @cate.name,cxpt_pcate_path(@cate.name) %></li>
+  <li class="active">文章： <%= @passage.title %></li>
 </ol>
 <div class="block-center" id="passage_title">
     <%= @passage.title %>

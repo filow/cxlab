@@ -34,11 +34,12 @@
 
           <% @nav.each do |n| %>
               <li>
-                <%= link_to n['text'],{controller: 'cxpt/'+n['controller'], action: n['action']},class:'parent' %>
+                <%= cxpt_nav_link n,class:'parent' %>
                 <% if n['children'] %>
                     <div class="child">
                       <% n['children'].each do |nc| %>
-                          <%= link_to nc['text'],controller: 'cxpt/'+nc['controller'], action: nc['action'] %>
+                          <%= cxpt_nav_link nc %>
+
                       <% end %>
                     </div>
                 <% end %>

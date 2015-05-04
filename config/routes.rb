@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :cxpt do
     resources :mnews
-    get 'passages' => 'passage#index',as: 'passages'
+    get 'cate/:id' => 'passage#index',as: 'pcate'
     get 'passage/:id' => 'passage#show',as: 'pshow'
     get 'index/index'
   end
