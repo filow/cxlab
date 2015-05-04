@@ -1,4 +1,7 @@
 <%= content_for :aside do %>
+<div class="sidebar">
+  <div class="title">栏目列表</div>
+</div>
 <ul class="nav nav-pills nav-stacked">
   <% @ancestor.children.each do |c| %>
       <% if c.id == @cate.id %>

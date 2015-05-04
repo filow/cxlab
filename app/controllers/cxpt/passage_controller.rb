@@ -15,6 +15,7 @@ class Cxpt::PassageController < CxptController
 
   def show
     @passage = Cxpt::Mnews.find(params[:id])
+    @passage.increment!(:view_count)
     @cate = @passage.cate
     @ancestor = @cate.parent
   end

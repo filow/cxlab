@@ -30,6 +30,17 @@
 
 <% end %>
 
+<%= content_for :aside do %>
+    <div class="sidebar">
+      <div class="title">赛事通知</div>
+    </div>
+    <marquee direction="up" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="2" height="100px" width="90%" style="height: 100px; width: 90%;">
+      2015年挑战杯开赛啦！<a>详情查看</a><br>
+      2015年挑战杯开赛啦！<a>详情查看</a><br>
+      2015年挑战杯开赛啦！<a>详情查看</a><br>
+    </marquee>
+
+<% end %>
 
 <!-- 正文部分 -->
 <div class="row">

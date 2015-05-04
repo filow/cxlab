@@ -82,3 +82,18 @@ div.aside{
   border-right: 1px solid #E4E4E4;
 
 }
+
+div.sidebar{
+  background: image-url('cxpt/sidebar_bg2.png') no-repeat;
+  height: 48px;
+  width: 223px;
+  margin-left: -29px;
+  margin-bottom: 15px;
+  .title{
+    font-size: 21px;
+    font-family: $font-family;
+    line-height: 2.8;
+    text-align: center;
+    color: #ffffff;
+  }
+}

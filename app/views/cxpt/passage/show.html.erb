@@ -1,4 +1,7 @@
 <%= content_for :aside do %>
+<div class="sidebar">
+  <div class="title">栏目列表</div>
+</div>
 <ul class="nav nav-pills nav-stacked">
   <% @ancestor.children.each do |c| %>
       <% if c.id == @cate.id %>
@@ -20,8 +23,9 @@
 </div>
 <div id="passage_detail">
     发布日期：<%= @passage.publish_at.strftime('%Y-%m-%d') %>  
-    
-    作者: <%= @passage.author || '信息工程创新实验中心' %>
+    <% if @passage.author && @passage.author.length > 0 %>作者<% else %>信息工程创新实验中心<% end %>
+
+    浏览量： <%= @passage.view_count %>
 </div>
 <hr>
 <div id="passage_content">

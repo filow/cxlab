@@ -59,6 +59,17 @@
   <div class="row">
     <div class="aside col-md-3">
         <%= yield :aside %>
+      <div class="sidebar">
+        <div class="title">热门文章</div>
+      </div>
+      <table class="table table-condensed">
+        <% @hot_passages.each do |p| %>
+            <tr>
+              <td><%= link_to p.title,cxpt_pshow_url(p) %></td>
+              <td><%= p.view_count %></td>
+            </tr>
+        <% end %>
+      </table>
     </div>
     <div class="col-md-9">
       <div id="main">

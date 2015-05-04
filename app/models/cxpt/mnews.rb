@@ -17,7 +17,7 @@ class Cxpt::Mnews < ActiveRecord::Base
 
 
   def self.published
-    self.where('publish_at < ?',Time.now).where(is_draft: false).order(publish_at: :desc)
+    self.where('publish_at < ?',Time.now).where(is_draft: false)
   end
 
   def cate_name
