@@ -30,9 +30,9 @@
 
         }
         &:hover,&.active{
-          background-color: #27ae60;
+          background-color: $color-primary;
           color:#FFF;
-          border-color: lighten(#27ae60,10%);
+          border-color: lighten($color-primary,10%);
         }
         &:first-child{
           border-top-right-radius: 5px;
@@ -70,7 +70,7 @@
       background-position: 0px 7px;
       &:hover{
         text-decoration: none;
-        color:#27ae60;
+        color:$color-primary;
       }
     }
   }
