@@ -3,7 +3,6 @@ class Manage::IndexController < ManageController
     @navs={
         "快捷导航"=> [
             {text: "系统概览",icon: "dashboard",options:{controller: "index",action: "dashboard"}},
-            {text: "发布资讯",icon: "newspaper-o",options:{controller: "news",action: "index"}},
             {text: "个人信息设置",icon: "user",options:{controller: "self",action: "index"}}
         ],
         "省级创新平台"=> [
@@ -21,7 +20,7 @@ class Manage::IndexController < ManageController
         "比赛管理"=> [
             {text: "比赛大类管理",icon: "list",options:{controller: "contests",action: "index"}},
             {text: "举办比赛",icon: "star",options:{controller: "competes",action: "index"}},
-
+            {text: "发布资讯",icon: "newspaper-o",options:{controller: "news",action: "index"}}
         ],
         "系统管理"=> [
             {text: "系统设置",icon: "cog",options:{controller: "configs",action: "index"}},

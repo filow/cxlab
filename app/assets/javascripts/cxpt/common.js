@@ -4,12 +4,10 @@
 $(document).ready(function(){
     'use strict';
     $('.nav .parent').mouseenter(function(){
-        console.log('1');
         var p = $(this).parent('li');
         p.find('.child').slideDown(200);
         p.mouseleave(function(){
             p.find('.child').slideUp(200);
         });
     });
-
 });

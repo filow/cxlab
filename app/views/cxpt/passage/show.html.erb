@@ -22,8 +22,8 @@
     <%= @passage.title %>
 </div>
 <div id="passage_detail">
-    发布日期：<%= @passage.publish_at.strftime('%Y-%m-%d') %>  
-    <% if @passage.author && @passage.author.length > 0 %>作者<% else %>信息工程创新实验中心<% end %>
+    发布日期：<%= @passage.publish_at.strftime('%Y-%m-%d') %>
+    作者： <% if @passage.author && @passage.author.length > 0 %>@passage.author<% else %>信息工程创新实验中心<% end %>
 
     浏览量： <%= @passage.view_count %>
 </div>
