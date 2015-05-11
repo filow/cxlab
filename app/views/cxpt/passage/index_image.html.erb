@@ -1,0 +1,29 @@
+<%= content_for :aside do %>
+    <%= render partial: "sidebar", locals: {cates: @ancestor.children,current: @cate} %>
+<% end %>
+
+<% unless @passages.empty? %>
+    <table class="table image-table">
+      <thead>
+      <tr>
+        <th width="290px"></th>
+        <th></th>
+      </tr>
+      </thead>
+      <% @passages.each do |p| %>
+          <tr>
+            <td><%= image_tag p.cover.url(:thumb),width:280,height:147 %></td>
+            <td>
+              <h4><%= link_to p.title,cxpt_pshow_url(p) %></h4>
+              <p>
+                <%= p.summary %>
+              </p>
+          </tr>
+      <% end %>
+<% else %>
+    <div class="alert alert-warning">
+      <strong>抱歉 :(</strong> 该类别下还没有文章
+    </div>
+<% end %>
+</table>
+

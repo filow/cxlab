@@ -10,7 +10,9 @@ class Cxpt::PassageController < CxptController
       redirect_to cxpt_pcate_url(child.name)
     end
     @ancestor = @cate.parent
-    @passages = @cate.newses
+    @passages = @cate.newses.select(:id,:title,:summary,:cover,:publish_at,:cxpt_cate_id)
+
+    render :index_image if @cate.display == 'image'
   end
 
   def show
