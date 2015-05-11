@@ -1,0 +1,12 @@
+<div class="sidebar">
+  <div class="title">栏目列表</div>
+</div>
+<ul class="nav nav-pills nav-stacked">
+  <% cates.each do |c| %>
+      <% if c.id == current.id %>
+          <%= content_tag :li,(link_to c.name,cxpt_pcate_path(c.name)),class:'active' %>
+      <% else %>
+          <%= content_tag :li,(link_to c.name,cxpt_pcate_path(c.name)) %>
+      <% end %>
+  <% end %>
+</ul>
