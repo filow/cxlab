@@ -48,7 +48,7 @@ class Cxpt::MnewsController < ManageController
   # POST /cxpt/mnews
   # POST /cxpt/mnews.json
   def create
-    @cate = Cxpt::Cate.get_by_id(params[:cxpt_cate_id])
+    @cate = Cxpt::Cate.get_by_id(params.require(:cxpt_mnews)[:cxpt_cate_id])
     @cxpt_mnews = Cxpt::Mnews.new(cxpt_mnews_params)
     set_view_stats
     respond_to do |format|

@@ -72,7 +72,7 @@
             $scope.flt = {
                 ui_cate_name:"全选",
                 status:"已发布",
-                search:"",
+                search:""
             };
 
             $('#ui_cate').change(function(){
@@ -88,14 +88,19 @@
                 data.success(function (data){
                     var time_now = new Date();
                     for(key in data){
-                        data[key]["publish_at"] = new Date(data[key]["publish_at"]);
-                        if(data[key].is_draft){
-                            data[key]["stats"]={stl: "default",text:"草稿"};
-                        }else if(data[key]["publish_at"]<time_now){
+                        if(!data[key]["publish_at"]){
                             data[key]["stats"]={stl: "success",text:"已发布"};
-                        }else if(data[key]["publish_at"]>time_now){
-                            data[key]["stats"]={stl: "info",text:"未发布"};
+                        }else{
+                            data[key]["publish_at"] = new Date(data[key]["publish_at"]);
+                            if(data[key].is_draft){
+                                data[key]["stats"]={stl: "default",text:"草稿"};
+                            }else if(data[key]["publish_at"]<time_now){
+                                data[key]["stats"]={stl: "success",text:"已发布"};
+                            }else if(data[key]["publish_at"]>time_now){
+                                data[key]["stats"]={stl: "info",text:"未发布"};
+                            }
                         }
+
                     }
 
                     $scope.dataset = data;

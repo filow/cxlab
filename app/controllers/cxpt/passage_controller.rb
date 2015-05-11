@@ -13,6 +13,7 @@ class Cxpt::PassageController < CxptController
     @passages = @cate.newses.select(:id,:title,:summary,:cover,:publish_at,:cxpt_cate_id).page(params[:page])
 
     render :index_image if @cate.display == 'image'
+    render :index_gallery if @cate.display == 'gallery'
   end
 
   def show

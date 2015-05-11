@@ -30,3 +30,18 @@
     overflow: hidden;
   }
 }
+
+.gallery-item{
+  float: left;
+  width: 250px;
+  box-shadow: 0 0 3px #e7e7e7;
+  h4{
+    margin-top: 0;
+  }
+  .description{
+    border: 1px solid #e7e7e7;
+    border-top: 0;
+    padding: 10px;
+    height: 100px;
+  }
+}
