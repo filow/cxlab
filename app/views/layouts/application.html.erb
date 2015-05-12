@@ -24,7 +24,7 @@
       <li><%= link_to "后台管理",manage_url %></li>
     </ul>
   </nav>
-    <div id="logo"><a href="<%= root_url %>"><%= image_tag 'index/logo.png' %></a></div>
+    <div id="logo"><a href="<%= index_index_url %>"><%= image_tag 'index/logo.png' %></a></div>
     <div id="userzone">
       <nav>
         <ul class="links user">
@@ -34,7 +34,7 @@
               </li>
               <li class="warning"><%= link_to "退出",logout_path,method: :delete %></li>
           <% else %>
-              <li class="info">
+              <li class="">
                 <%= link_to '登录',login_box_url,remote: true %>
               </li>
               <li class="success"><a href="<%= login_regist_url %>">注册</a></li>

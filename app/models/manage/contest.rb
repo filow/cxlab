@@ -36,6 +36,11 @@ class Manage::Contest < ActiveRecord::Base
         valid_compete.sections.order(:start_time)
     end
 
+    def holding_compete
+      now = Time.now.strftime('%Y-%m-%d')
+      competes.where('start_time <= ? and end_time >= ?',now,now)
+    end
+
     def next_section_with_list(section_list)
         ordered_list = section_list.sort_by{|sec| sec.start_time}
         now = DateTime.now

@@ -1,1 +1,23 @@
-确认页面
+<div class="contest_detail">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="page-header">
+        <h3>请确认您的报名信息</h3>
+      </div>
+      <div class="compete-sign-info-box">
+        <div class="cover">
+          <%= image_tag @contest.cover %>
+        </div>
+
+        <div class="detail">
+          <h4>蓝桥杯</h4>
+          <p>比赛时间：     </p>
+          <p>参赛形式</p>
+        </div>
+      </div>
+
+      <%= debug @contest.holding_compete %>
+    </div>
+  </div>
+
+</div>

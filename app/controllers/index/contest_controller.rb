@@ -6,10 +6,14 @@ class Index::ContestController < IndexController
   end
 
   def detail
+
   end
 
   def confirm
-
+    holding_compete = @contest.holding_compete
+    if holding_compete.length == 0
+      render :confirm_error
+    end
 
   end
 

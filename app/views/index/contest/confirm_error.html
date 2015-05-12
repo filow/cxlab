@@ -1,0 +1,17 @@
+<div class="contest_detail">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="page-header">
+        <h3>抱歉，该比赛目前不在报名时间内</h3>
+      </div>
+      <h4>往届比赛列表</h4>
+      <ul>
+      <% @contest.competes.each do |c| %>
+        <li><%= c.start_time %></li>
+      <% end %>
+      </ul>
+      <%= link_to '返回比赛详情',contest_detail_path(@contest),class:'btn btn-default' %>
+    </div>
+  </div>
+
+</div>

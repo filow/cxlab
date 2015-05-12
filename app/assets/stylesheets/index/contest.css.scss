@@ -22,3 +22,27 @@
     background-color: #fff;
   }
 }
+
+.compete-sign-info-box{
+  background-color: #F5F5F5;
+  img{
+    width: 100px;
+
+  }
+  .cover{
+    float: left;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+  }
+  .detail{
+    padding: 10px;
+    padding-left: 110px;
+    height: 100px;
+    h4{
+      margin-top: 0;
+    }
+    p{
+    }
+  }
+}
