@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503075310) do
+ActiveRecord::Schema.define(version: 20150512082822) do
 
   create_table "admins", force: true do |t|
     t.string   "uid",                                  null: false
@@ -190,14 +190,12 @@ ActiveRecord::Schema.define(version: 20150503075310) do
 
   create_table "sections", force: true do |t|
     t.string   "name",       null: false
-    t.datetime "start_time"
     t.datetime "end_time"
     t.integer  "compete_id"
   end
 
   add_index "sections", ["compete_id"], name: "sections_compete_id_fk", using: :btree
   add_index "sections", ["end_time"], name: "index_sections_on_end_time", using: :btree
-  add_index "sections", ["start_time"], name: "index_sections_on_start_time", using: :btree
 
   create_table "students", force: true do |t|
     t.string   "stuid",            limit: 20

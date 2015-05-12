@@ -31,24 +31,9 @@ class Manage::Contest < ActiveRecord::Base
     end
 
 
-    def holding_sections
-        valid_compete = Manage::Compete.holdings.find(id)
-        valid_compete.sections.order(:start_time)
-    end
-
     def holding_compete
       now = Time.now.strftime('%Y-%m-%d')
       competes.where('start_time <= ? and end_time >= ?',now,now)
     end
 
-    def next_section_with_list(section_list)
-        ordered_list = section_list.sort_by{|sec| sec.start_time}
-        now = DateTime.now
-        ordered_list.each do |section|
-            if section.start_time >= now
-                return section
-            end
-        end
-        return nil
-    end
 end

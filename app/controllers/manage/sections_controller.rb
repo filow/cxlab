@@ -10,8 +10,6 @@ class Manage::SectionsController < ManageController
   # GET /manage/sections/new
   def new
     @manage_section = Manage::Section.new
-    @manage_section.start_time = @compete.start_time
-    @manage_section.end_time = @compete.end_time
   end
 
   # GET /manage/sections/1/edit
@@ -77,7 +75,7 @@ class Manage::SectionsController < ManageController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def manage_section_params
-      param = params.require(:manage_section).permit(:name, :start_time, :end_time)
+      param = params.require(:manage_section).permit(:name, :end_time)
       param[:compete_id]=@compete.id
       param
     end

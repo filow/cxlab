@@ -3,43 +3,12 @@ class Manage::Section < ActiveRecord::Base
     # 阶段名称在所在的比赛中不能重复
     validate :name_must_be_unique_in_one_compete
     # 阶段开始时间必须小于比赛的开始时间，结束时间必须早于比赛的结束时间
-    validate :start_time_should_behind_its_parent
     validate :end_time_should_earlier_than_its_parent
 
     belongs_to :compete
     has_many :xforms
 
 
-    def progress_bar_time
-        the_compete = compete
-
-        global_start_time = the_compete.start_time
-        global_end_time = the_compete.end_time
-        start_days = (start_time.to_date - global_start_time).to_i
-        end_days = (global_end_time - end_time.to_date).to_i
-        [start_days,during_days,end_days].collect{|x| x.to_f/the_compete.during_days*100}
-    end
-
-    def during_days
-        (end_time.to_date - start_time.to_date).to_i
-    end
-
-    def days_hours_left
-        secs = (start_time.to_i - DateTime.now.to_i)
-        {days: secs/(3600*24), hours: secs % (3600*24)/3600}
-    end
-
-    def percents_after_compete_start
-        100.0*secs_after_compete_start/compete.during_days
-    end
-
-    def secs_after_compete_start
-        (start_time.to_date-compete.start_time.to_date).to_i
-    end
-
-    def is_started?
-        return start_time.to_date < Date.today
-    end
 private
 
     def name_must_be_unique_in_one_compete
@@ -53,13 +22,6 @@ private
             if c >= 1
                 errors.add(:name,"已经存在，请再取一个")
             end
-        end
-    end
-
-    def start_time_should_behind_its_parent
-        parent = compete
-        if start_time.to_date < parent.start_time
-            errors.add(:start_time,"不能比比赛的开始时间 [#{parent.start_time}] 更早")
         end
     end
 

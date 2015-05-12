@@ -1,6 +1,7 @@
 <div class="page-header">
-  <h2>举办比赛</h2>
+  <h2>赛事管理</h2>
 </div>
+
 <% @manage_competes.each do |compete| %>
   <%= render partial:'item',locals:{compete: compete} %>
 <% end %>

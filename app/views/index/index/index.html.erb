@@ -84,81 +84,11 @@
             <div class="competition-desc-content">
                 <p><%= contest.summary %></p>
             </div>
-            <button class="btn competition-desc-btn">查看详细介绍</button>
+          <%= link_to '查看详细介绍',contest_detail_path(contest),class:'btn btn-primary' %>
         </div>
+    </div>
     </div>
 
-    </div>
-    <div class="divider-line">
-        <%= image_tag 'index/line.png' %>
-        <p class="divider-content">比赛信息</p>
-    </div>
-    <div class="row competition-psg">
-    <div class="col-md-5 col-md-offset-1  competition-info">
-        <div class="competition-psg-header">
-            <span class="competition-icon-bbs"></span>
-            <h4>通知公告</h4>
-        </div>
-        <div class="clear"></div>
-        <ul>
-            <li class="info-items"><a href="">这是一条测试新闻哈哈哈哈<span class="info-time">2014-10-20</span></a></li>
-            <li class="info-items"><a href="">这是一条测试新闻哈哈哈哈<span class="info-time">2014-10-20</span></a></li>
-            <li class="info-items"><a href="">这是一条测试新闻哈哈哈哈<span class="info-time">2014-10-20</span></a></li>
-            <li class="info-items"><a href="">这是一条测试新闻哈哈哈哈<span class="info-time">2014-10-20</span></a></li>
-            <li class="info-items"><a href="">这是一条测试新闻哈哈哈哈<span class="info-time">2014-10-20</span></a></li>
-        </ul>
-    </div>
-    <div class="col-md-5 competition-post">
-        <div class="competition-post-header">
-            <span class="competition-icon-notify"></span>
-            <h4>论坛新帖</h4>
-        </div>
-        <div class="clear"></div>
-        <ul>
-            <li class="post-items"><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
-            <li class="post-items"><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
-            <li class="post-items"><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
-            <li class="post-items"><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
-            <li class="post-items"><a href="">这是一条测试新闻哈哈哈哈<span class="post-time">2014-10-20</span></a></li>
-        </ul>
-    </div>
-    </div>
-<% if @contests_data[contest.id][:compete] %>
-    <div class="divider-line">
-    <img src="/assets/index/line.png" alt="">
-    <p class="divider-content">赛事进度</p>
-    </div>
-
-    <div class="row competition-progress">
-    <div class="col-md-10 col-md-offset-1 competition-progress-bar">
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="<%= @contests_data[contest.id][:percent] %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @contests_data[contest.id][:percent] %>%;">
-            </div>
-        </div>
-        <% @contests_data[contest.id][:holdings].each do |section| %>
-        <!-- section.is_started?属性可以用来判断该阶段是否已经开始，并用不同颜色加以区分 -->
-        <!-- <%= section.is_started? %> -->
-        <div class="competition-progress-tag">
-             <div class="tooltip bottom" role="tooltip" style="left:<%= section.percents_after_compete_start-4.5 %>%;">
-                 <div class="tooltip-arrow"></div>
-                <div class="tooltip-inner">
-                    <span><%= section.start_time.strftime("%m.%d")+" "+section.name %> </span>
-                </div>
-            </div>
-        </div>
-        <% end %>
-    </div>
-    </div>
-    <div class="clear"></div>
-    <div class="competition-countdown">
-    <h2>
-        <% if @contests_data[contest.id][:next_section] %>
-        <% left = @contests_data[contest.id][:next_section].days_hours_left %>
-        距离<%= @contests_data[contest.id][:next_section].name %>还有<span class="countdown-number"><%= left[:days] %></span>天<span class="countdown-number"><%= left[:hours] %></span>小时
-        <% end %>
-    </h2>
-    </div>
-<% end %>
     </div>
     </li>
 <% end %>

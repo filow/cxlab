@@ -24,21 +24,9 @@
     </table>
     <h4>比赛阶段</h4>
     <table class="table">
-      <% compete.sections.order(start_time: :asc,end_time: :asc).each do |section| %>
+      <% compete.sections.order(end_time: :asc).each do |section| %>
       <tr>
         <td width="80px"><%= section.name %></td>
-        <td width="100px"><%= section.start_time.strftime("%Y-%m-%d") %></td>
-        <td>
-          <% process = section.progress_bar_time %>
-          <div class="progress" id="sub_timeline">
-            <div class="progress-bar progress-bar-default" style="width: <%= process[0] %>%">
-            </div>
-            <div class="progress-bar progress-bar-success" style="width: <%= process[1] %>%">
-            </div>
-            <div class="progress-bar progress-bar-default" style="width: <%= process[2] %>%">
-            </div>
-          </div>
-        </td>
         <td width="100px"><%= section.end_time.strftime("%Y-%m-%d") %></td>
         <td width="90px">
           <%= link_to fa_icon('info'), manage_compete_section_path(compete,section),remote:true,class:"btn btn-info btn-sm" %>
