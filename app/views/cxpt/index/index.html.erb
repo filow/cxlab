@@ -88,3 +88,85 @@
 
   </div>
 </div>
+<div class="row">
+
+  <div class="col-md-6">
+
+    <div class="list-item-box">
+      <div class="header">
+        <div class="title">
+          <%= link_to "创新动态",cxpt_pcate_url('创新动态') %>
+        </div>
+        <div class="more">
+          <%= link_to "更多>>",cxpt_pcate_url('创新动态') %>
+        </div>
+      </div>
+      <div class="list">
+        <table class="table table-condensed box-table" >
+          <% @cxdt.each do |p| %>
+              <tr>
+                <td><div class="fixed_box"><%= link_to p.title,cxpt_pshow_path(p) %></div>  </td>
+                <td width="70px"><%= p.publish_at.strftime("%y-%m-%d") %></td>
+              </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-6">
+
+    <div class="list-item-box">
+      <div class="header">
+        <div class="title">
+          <%= link_to "教学计划",cxpt_pcate_url('教学计划') %>
+        </div>
+        <div class="more">
+          <%= link_to "更多>>",cxpt_pcate_url('教学计划') %>
+        </div>
+      </div>
+      <div class="list">
+        <table class="table table-condensed box-table" >
+          <% @cxdt.each do |p| %>
+              <tr>
+                <td><div class="fixed_box"><%= link_to p.title,cxpt_pshow_path(p) %></div>  </td>
+                <td width="70px"><%= p.publish_at.strftime("%y-%m-%d") %></td>
+              </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="list-item-box">
+      <div class="header">
+        <div class="title">
+          <%= link_to "创新成果",cxpt_pcate_url('创新成果') %>
+        </div>
+        <div class="more">
+          <%= link_to "更多>>",cxpt_pcate_url('创新成果') %>
+        </div>
+      </div>
+      <div class="list">
+        <table class="table table-condensed box-table" >
+          <% @cxcg.each do |p| %>
+              <div class="gallery-item">
+                <%= image_tag(p.cover.url(:index_thumb),width:200) %>
+                <div class="description">
+                  <h5><%= p.title %></h5>
+                </div>
+              </div>
+          <% end %>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

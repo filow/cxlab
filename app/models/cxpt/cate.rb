@@ -24,6 +24,10 @@ class Cxpt::Cate < ActiveRecord::Base
     result
   end
 
+  def index_list
+    newses.where('is_draft=false and publish_at<?',Time.now).select(:id,:title,:publish_at)
+  end
+
   def child=(obj)
     @child = obj
   end

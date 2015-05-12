@@ -10,7 +10,7 @@ class Cxpt::PassageController < CxptController
       redirect_to cxpt_pcate_url(child.name)
     end
     @ancestor = @cate.parent
-    @passages = @cate.newses.select(:id,:title,:summary,:cover,:publish_at,:cxpt_cate_id).page(params[:page])
+    @passages = @cate.newses.select(:id,:title,:summary,:cover,:publish_at,:cxpt_cate_id).where(is_draft: false).page(params[:page])
 
     render :index_image if @cate.display == 'image'
     render :index_gallery if @cate.display == 'gallery'

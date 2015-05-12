@@ -39,6 +39,9 @@ class CxptNewsCoverUploader < CarrierWave::Uploader::Base
   version :thumb do
     process :resize_to_fill => [280, 147]
   end
+  version :index_thumb,:from_version=> :thumb do
+    process :resize_to_fill => [200, 105]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

@@ -6,9 +6,9 @@
 
       <% @passages.each do |p| %>
           <div class="gallery-item">
-            <%= image_tag p.cover.url(:thumb),width:250 %>
+            <%= image_tag(p.cover.url(:thumb),width:250) %>
             <div class="description">
-              <h4><%= link_to p.title,cxpt_pshow_url(p) %></h4>
+              <h4><%= p.title %></h4>
               <p>
                 <%= p.summary %>
               </p>
@@ -20,6 +20,5 @@
       <strong>抱歉 :(</strong> 该类别下还没有文章
     </div>
 <% end %>
-</table>
 <div class="clear"></div>
 <%= paginate @passages %>
