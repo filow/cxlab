@@ -5,7 +5,35 @@ class Manage::CompetesController < ManageController
   # GET /manage/competes
   # GET /manage/competes.json
   def index
-    @manage_competes = Manage::Compete.all
+    @contests = Manage::Contest.order(is_deleted: :desc,id: :desc).to_a
+    @contests.sort! do |a,b|
+      if a.current_compete != 0
+        if b.current_compete != 0
+          # 如果两个比赛都有对应的正在进行的赛事，就按比赛数量逆序排列
+          b.competes_count <=> a.competes_count
+        else
+          # 如果只有a有，那么a排前面
+          -1
+        end
+      else
+        if b.current_compete != nil
+          # 如果只有b有，那么b排前面
+          1
+        else
+          # 如果都没有，也按照比赛数量逆序排序
+          b.competes_count <=> a.competes_count
+        end
+      end
+    end
+
+    @competes = @contests[0].competes.order(start_time: :desc)
+    if params[:contest]
+      current = @contests.find_all {|x| x.id == params[:contest].to_i}
+      if current.length > 0
+        @current = current[0]
+      end
+    end
+    @current ||= @contests[0]
   end
 
   # GET /manage/competes/1

@@ -11,3 +11,19 @@
 .panel-body table td:first-child{
     font-weight: bold;
 }
+.nav-pills li {
+  .success{
+    background-color: #35b558;
+    color: #fff;
+    &:hover{
+      background-color: darken(#35b558,20%);
+    }
+  }
+}
+.nav-pills a{
+  border: 1px solid;
+  margin: 4px;
+  &:hover {
+    background-color: #0071C5;
+  }
+}

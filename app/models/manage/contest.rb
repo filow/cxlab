@@ -30,6 +30,19 @@ class Manage::Contest < ActiveRecord::Base
         '#'+filename[from..pos-1]
     end
 
+    def competes_count
+      @competes_count ||= competes.where(is_deleted: false).count
+    end
+
+    def current_compete
+      return @current_compete if @current_compete
+      f = holding_compete.first
+      if f
+        @current_compete = f
+      else
+        @current_compete = 0
+      end
+    end
 
     def holding_compete
       now = Time.now.strftime('%Y-%m-%d')

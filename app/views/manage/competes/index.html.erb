@@ -2,7 +2,15 @@
   <h2>赛事管理</h2>
 </div>
 
-<% @manage_competes.each do |compete| %>
+
+<ul class="nav nav-pills" role="tablist">
+  <% @contests.each do |contest| %>
+      <li role="presentation" class="<%= 'active' if contest.id == @current.id %>"><a href="?contest=<%= contest.id %>"><%= contest.name %> <span class="badge"><%= contest.competes_count %></span></a> </li>
+  <% end %>
+  <li role="presentation"><a href="<%= new_manage_contest_path %>" class="success"> <i class="fa fa-plus"></i> 添加比赛大类</a></li>
+</ul>
+
+<% @competes.each do |compete| %>
   <%= render partial:'item',locals:{compete: compete} %>
 <% end %>
 
